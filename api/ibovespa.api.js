@@ -2,8 +2,8 @@ const express = require('express');
 const _ = require('lodash');
 const router = express.Router();
 const getStocksInfo = require('../statusinvest');
-const { RECUPERACAO_JUDICIAL } = require('../recuperacaoJudicial');
-const { getMediaMovel } = require('../getMediaMovel');
+const array = require('../recuperacaoJudicial');
+const media = require('../getMediaMovel');
 
 
 router.get('/all', async (req, res) => {
@@ -24,13 +24,14 @@ router.get('/filtered', async (req, res) => {
                 stock['Margem Ebit'] > 0 &&
                 stock['Dividend Yield'] > 6 &&
                 stock['Cotação'] < (((stock['Dividend Yield'] / 100) * stock['Cotação']) / 0.06) &&
-                !RECUPERACAO_JUDICIAL.includes(stock.Ativo);
+                !array.RECUPERACAO_JUDICIAL.includes(stock.Ativo);
         });
         const sorted = _.orderBy(filtered, ['EV/EBIT', 'Liquidez Média Diária'], ['asc', 'desc']);
         const uniqueSorted = _.slice(_.uniqBy(sorted, a => a.Empresa), 0, 50)
-        const finalStocks = await Promise.all(uniqueSorted.map(async (item) => {
-            const medias = await getMediaMovel(item.Ativo);
+        const finalStocks = await Promise.all(uniqueSorted.map(async (item, index) => {
+            const medias = await media.getMediaMovel(item.Ativo);
             return {
+                Ranking: index+1,
                 ...item,
                 ...medias
             }
