@@ -14,7 +14,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "lodash": "^4.17.21",
-    "moving-averages": "^4.0.6",
-    "statusinvest": "^0.0.1"
+    "moving-averages": "^4.0.6"
   }
 }

@@ -27,4 +27,7 @@ exports.RECUPERACAO_JUDICIAL = ['ATMP3',
     'NUTR3',
     'TXRX3',
     'SYNE3',
-    'TXRX4']
+    'TXRX4',
+    'AMER3',
+    'NEXP3'
+]
