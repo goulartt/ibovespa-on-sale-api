@@ -1,10 +1,12 @@
 {
   "name": "ibovespa-on-sale-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API do Ibovespa em Promoção: indicadores fundamentalistas (CVM) e de mercado (Yahoo) das ações da B3",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "test": "LOG_LEVEL=silent node --test",
+    "test:coverage": "LOG_LEVEL=silent node --test --experimental-test-coverage",
     "build:data": "node scripts/build-data.js"
   },
   "keywords": [],

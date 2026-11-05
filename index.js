@@ -1,14 +1,21 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const ibov = require("./api/ibovespa.api");
+// Entry point: Vercel imports the exported app; `npm start` runs it as a standalone server.
+const config = require('./src/config');
+const { createApp } = require('./src/app');
+const { createStocksRepository } = require('./src/repository/stocksRepository');
+const { logger } = require('./src/lib/logger');
+const bundledDataset = require('./data/stocks.json');
 
-app.use(express.json({ extended: false }));
-app.use(cors({
-    credentials: true
-}));
-app.use('/api/ibovespa', ibov)
+const stocksRepository = createStocksRepository({
+    url: config.stocksDataUrl,
+    ttlMs: config.stocksCacheTtlMs,
+    timeoutMs: config.httpTimeoutMs,
+    fallback: bundledDataset,
+});
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server is running in port: ${PORT}`))
+const app = createApp({ stocksRepository, staleAfterMs: config.staleAfterMs });
+
+if (require.main === module) {
+    app.listen(config.port, () => logger.info(`Server is running on port ${config.port}`));
+}
+
 module.exports = app;

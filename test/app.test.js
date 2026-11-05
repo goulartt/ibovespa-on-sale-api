@@ -1,0 +1,99 @@
+const { test, describe, before, after } = require('node:test');
+const assert = require('node:assert/strict');
+const { createApp } = require('../src/app');
+const { createLogger } = require('../src/lib/logger');
+const { dataset, stock } = require('./helpers');
+
+const logger = createLogger('silent');
+const DATA = dataset([
+    stock({ Ativo: 'BBB3', Empresa: 'B', 'EV/EBIT': 4 }),
+    stock({ Ativo: 'AAA3', Empresa: 'A', 'EV/EBIT': 2, 'Dividend Yield': 12 }),
+    stock({ Ativo: 'LOW3', Empresa: 'LOW', 'Dividend Yield': 3 }),
+]);
+
+async function serve(app) {
+    const server = await new Promise(resolve => { const s = app.listen(0, () => resolve(s)); });
+    return { server, base: `http://127.0.0.1:${server.address().port}` };
+}
+
+describe('HTTP API', () => {
+    let ctx;
+    let failing;
+    before(async () => {
+        const stocksRepository = {
+            getDataset: async () => { if (failing) throw new Error('secret internals'); return DATA; },
+        };
+        const now = () => Date.parse(DATA.updatedAt) + 1000;
+        ctx = await serve(createApp({ stocksRepository, logger, staleAfterMs: 60_000, now }));
+    });
+    after(() => ctx.server.close());
+
+    test('GET /api/ibovespa/all returns every stock with data headers', async () => {
+        const res = await fetch(`${ctx.base}/api/ibovespa/all`);
+        assert.equal(res.status, 200);
+        assert.equal(res.headers.get('x-data-updated-at'), DATA.updatedAt);
+        assert.match(res.headers.get('access-control-expose-headers'), /X-Data-Updated-At/);
+        assert.match(res.headers.get('cache-control'), /s-maxage/);
+        assert.equal(res.headers.get('x-powered-by'), null);
+        assert.equal((await res.json()).length, 3);
+    });
+
+    test('GET /api/ibovespa/filtered returns the ranking', async () => {
+        const body = await (await fetch(`${ctx.base}/api/ibovespa/filtered`)).json();
+        assert.deepEqual(body.map(s => [s.Ranking, s.Ativo]), [[1, 'AAA3'], [2, 'BBB3']]);
+    });
+
+    test('filtered accepts limit and minDy', async () => {
+        const limited = await (await fetch(`${ctx.base}/api/ibovespa/filtered?limit=1`)).json();
+        assert.deepEqual(limited.map(s => s.Ativo), ['AAA3']);
+        const highDy = await (await fetch(`${ctx.base}/api/ibovespa/filtered?minDy=10`)).json();
+        assert.deepEqual(highDy.map(s => s.Ativo), ['AAA3']);
+    });
+
+    test('invalid query params return 400 with a message', async () => {
+        for (const qs of ['limit=0', 'limit=abc', 'limit=1.5', 'limit=1000', 'minDy=-1']) {
+            const res = await fetch(`${ctx.base}/api/ibovespa/filtered?${qs}`);
+            assert.equal(res.status, 400, qs);
+            assert.match((await res.json()).error, /inválido/);
+        }
+    });
+
+    test('GET /api/health reports data freshness', async () => {
+        const body = await (await fetch(`${ctx.base}/api/health`)).json();
+        assert.deepEqual(body, { status: 'ok', dataUpdatedAt: DATA.updatedAt, stocks: 3 });
+    });
+
+    test('unknown routes return a JSON 404', async () => {
+        const res = await fetch(`${ctx.base}/nope`);
+        assert.equal(res.status, 404);
+        assert.deepEqual(await res.json(), { error: 'Rota não encontrada.' });
+    });
+
+    test('internal errors return 500 without leaking details', async () => {
+        failing = true;
+        try {
+            const res = await fetch(`${ctx.base}/api/ibovespa/filtered`);
+            assert.equal(res.status, 500);
+            const body = await res.json();
+            assert.equal(body.error, 'Erro interno ao processar a requisição.');
+            assert.doesNotMatch(JSON.stringify(body), /secret/);
+        } finally {
+            failing = false;
+        }
+    });
+
+    test('health reports stale data', async () => {
+        const app = createApp({
+            stocksRepository: { getDataset: async () => DATA },
+            logger,
+            staleAfterMs: 1000,
+            now: () => Date.parse(DATA.updatedAt) + 5000,
+        });
+        const { server, base } = await serve(app);
+        try {
+            assert.equal((await (await fetch(`${base}/api/health`)).json()).status, 'stale');
+        } finally {
+            server.close();
+        }
+    });
+});

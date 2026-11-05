@@ -2,6 +2,7 @@
 // DFP = annual statements, ITR = quarterly statements, FCA = registry (CNPJ -> B3 tickers).
 const axios = require('axios');
 const AdmZip = require('adm-zip');
+const { logger: defaultLogger } = require('../lib/logger');
 
 const BASE = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC';
 
@@ -9,15 +10,16 @@ const DRE_ACCOUNT = /^3\.\d\d(\.\d\d)?$/; // first two levels of the income stat
 const BPA_ACCOUNTS = new Set(['1.01.01', '1.01.02']);
 const BPP_ACCOUNT = c => c === '2.01.04' || c === '2.02.01' || /^2\.\d\d$/.test(c); // + level 2 (equity)
 
-async function downloadZip(doc, year) {
+// Downloads one yearly CVM zip. Returns null when that year is not published yet (404).
+async function downloadZip(doc, year, { http = axios, logger = defaultLogger } = {}) {
     const url = `${BASE}/${doc}/DADOS/${doc.toLowerCase()}_cia_aberta_${year}.zip`;
     try {
-        const { data } = await axios.get(url, { responseType: 'arraybuffer', timeout: 5 * 60 * 1000 });
-        console.log(`downloaded ${url}`);
+        const { data } = await http.get(url, { responseType: 'arraybuffer', timeout: 5 * 60 * 1000 });
+        logger.info(`downloaded ${url}`);
         return new AdmZip(Buffer.from(data));
     } catch (e) {
         if (e.response && e.response.status === 404) {
-            console.log(`not published yet: ${url}`);
+            logger.info(`not published yet: ${url}`);
             return null;
         }
         throw e;
@@ -53,7 +55,7 @@ function latestVersionOnly(rows) {
 
 const scale = r => (r.ESCALA_MOEDA === 'MIL' ? 1000 : 1);
 
-// companies: cnpj -> { filings: dtRefer -> { type, con: Map, ind: Map, shares, dreLabel } }
+// companies: cnpj -> { filings: dtRefer -> { type, con: Map, ind: Map, labels, equityAccount, shares } }
 function ingest(companies, zip, type, year) {
     const prefix = `${type.toLowerCase()}_cia_aberta`;
     const filing = (cnpj, dtRefer) => {
@@ -195,17 +197,18 @@ function readTickers(fcaZips) {
     return byCnpj;
 }
 
-async function loadFundamentals(now = new Date()) {
+async function loadFundamentals({ now = new Date(), download = downloadZip } = {}) {
     const year = now.getUTCFullYear();
     const companies = new Map();
     for (const [type, y] of [['DFP', year - 2], ['DFP', year - 1], ['DFP', year], ['ITR', year - 1], ['ITR', year]]) {
-        const zip = await downloadZip(type, y);
+        const zip = await download(type, y);
         if (zip) ingest(companies, zip, type, y);
     }
+    if (companies.size === 0) throw new Error('no CVM statements could be loaded');
 
     const fcaZips = [];
     for (const y of [year, year - 1]) {
-        const zip = await downloadZip('FCA', y);
+        const zip = await download('FCA', y);
         if (zip) fcaZips.push({ zip, year: y });
     }
     const tickers = readTickers(fcaZips);
@@ -226,4 +229,13 @@ async function loadFundamentals(now = new Date()) {
     return result;
 }
 
-module.exports = { loadFundamentals, _internals: { ingest, buildCompany, ttm, downloadZip } };
+module.exports = {
+    loadFundamentals,
+    downloadZip,
+    // exported for tests
+    readCsv,
+    latestVersionOnly,
+    ingest,
+    buildCompany,
+    readTickers,
+};
