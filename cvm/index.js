@@ -1,0 +1,229 @@
+// Fundamentals from CVM open data (https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp, -itr, -fca).
+// DFP = annual statements, ITR = quarterly statements, FCA = registry (CNPJ -> B3 tickers).
+const axios = require('axios');
+const AdmZip = require('adm-zip');
+
+const BASE = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC';
+
+const DRE_ACCOUNT = /^3\.\d\d(\.\d\d)?$/; // first two levels of the income statement
+const BPA_ACCOUNTS = new Set(['1.01.01', '1.01.02']);
+const BPP_ACCOUNT = c => c === '2.01.04' || c === '2.02.01' || /^2\.\d\d$/.test(c); // + level 2 (equity)
+
+async function downloadZip(doc, year) {
+    const url = `${BASE}/${doc}/DADOS/${doc.toLowerCase()}_cia_aberta_${year}.zip`;
+    try {
+        const { data } = await axios.get(url, { responseType: 'arraybuffer', timeout: 5 * 60 * 1000 });
+        console.log(`downloaded ${url}`);
+        return new AdmZip(Buffer.from(data));
+    } catch (e) {
+        if (e.response && e.response.status === 404) {
+            console.log(`not published yet: ${url}`);
+            return null;
+        }
+        throw e;
+    }
+}
+
+function readCsv(zip, name, keep) {
+    const entry = zip.getEntry(name);
+    if (!entry) return [];
+    const lines = entry.getData().toString('latin1').split(/\r?\n/);
+    const header = lines[0].split(';');
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) {
+        if (!lines[i]) continue;
+        const cols = lines[i].split(';');
+        if (cols.length !== header.length) continue;
+        const row = {};
+        for (let j = 0; j < header.length; j++) row[header[j]] = cols[j];
+        if (!keep || keep(row)) rows.push(row);
+    }
+    return rows;
+}
+
+// Keeps only the latest version (VERSAO) of each filing (CNPJ + DT_REFER).
+function latestVersionOnly(rows) {
+    const max = new Map();
+    for (const r of rows) {
+        const k = `${r.CNPJ_CIA}|${r.DT_REFER}`;
+        max.set(k, Math.max(max.get(k) || 0, Number(r.VERSAO)));
+    }
+    return rows.filter(r => Number(r.VERSAO) === max.get(`${r.CNPJ_CIA}|${r.DT_REFER}`));
+}
+
+const scale = r => (r.ESCALA_MOEDA === 'MIL' ? 1000 : 1);
+
+// companies: cnpj -> { filings: dtRefer -> { type, con: Map, ind: Map, shares, dreLabel } }
+function ingest(companies, zip, type, year) {
+    const prefix = `${type.toLowerCase()}_cia_aberta`;
+    const filing = (cnpj, dtRefer) => {
+        if (!companies.has(cnpj)) companies.set(cnpj, { filings: new Map() });
+        const filings = companies.get(cnpj).filings;
+        if (!filings.has(dtRefer)) filings.set(dtRefer, { type, con: new Map(), ind: new Map() });
+        return filings.get(dtRefer);
+    };
+
+    for (const src of ['con', 'ind']) {
+        const dre = latestVersionOnly(readCsv(zip, `${prefix}_DRE_${src}_${year}.csv`, r => DRE_ACCOUNT.test(r.CD_CONTA)));
+        for (const r of dre) {
+            const f = filing(r.CNPJ_CIA, r.DT_REFER);
+            f[src].set(`DRE|${r.ORDEM_EXERC}|${r.DT_INI_EXERC}|${r.CD_CONTA}`, Number(r.VL_CONTA) * scale(r));
+            if (r.ORDEM_EXERC === 'ÚLTIMO') {
+                f.labels = f.labels || { con: new Map(), ind: new Map() };
+                f.labels[src].set(r.CD_CONTA, r.DS_CONTA);
+            }
+        }
+        for (const [file, keep] of [['BPA', c => BPA_ACCOUNTS.has(c)], ['BPP', BPP_ACCOUNT]]) {
+            const bp = latestVersionOnly(readCsv(zip, `${prefix}_${file}_${src}_${year}.csv`,
+                r => keep(r.CD_CONTA) && r.ORDEM_EXERC === 'ÚLTIMO'));
+            for (const r of bp) {
+                const f = filing(r.CNPJ_CIA, r.DT_REFER);
+                f[src].set(`BP|${r.CD_CONTA}`, Number(r.VL_CONTA) * scale(r));
+                if (/^Patrim[ôo]nio L[íi]quido/i.test(r.DS_CONTA) && r.CD_CONTA.split('.').length === 2) {
+                    f.equityAccount = f.equityAccount || {};
+                    f.equityAccount[src] = r.CD_CONTA;
+                }
+            }
+        }
+    }
+
+    const capital = latestVersionOnly(readCsv(zip, `${prefix}_composicao_capital_${year}.csv`));
+    for (const r of capital) {
+        const on = Number(r.QT_ACAO_ORDIN_CAP_INTEGR) - Number(r.QT_ACAO_ORDIN_TESOURO || 0);
+        const pn = Number(r.QT_ACAO_PREF_CAP_INTEGR) - Number(r.QT_ACAO_PREF_TESOURO || 0);
+        if (on + pn > 0) filing(r.CNPJ_CIA, r.DT_REFER).shares = { on, pn };
+    }
+}
+
+// Year-to-date value of an account: the period of the given order (ÚLTIMO/PENÚLTIMO)
+// with the earliest start date (the quarter-only rows start later).
+function ytd(values, ordem, conta) {
+    let best = null;
+    for (const [k, v] of values) {
+        const [kind, o, dtIni, c] = k.split('|');
+        if (kind === 'DRE' && o === ordem && c === conta && (!best || dtIni < best.dtIni)) best = { dtIni, v };
+    }
+    return best;
+}
+
+const dayBefore = iso => {
+    const d = new Date(`${iso}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() - 1);
+    return d.toISOString().slice(0, 10);
+};
+
+// Trailing twelve months: last annual (DFP) + current YTD - previous year's YTD.
+// `account` is an account code, or a function (filing, src) -> code, because the same line can
+// have different codes in different filings.
+function ttm(company, latest, src, account) {
+    const codeFor = typeof account === 'function' ? account : () => account;
+    const conta = codeFor(latest, src);
+    if (!conta) return null;
+    const values = latest[src];
+    const cur = ytd(values, 'ÚLTIMO', conta);
+    if (!cur) return null;
+    if (latest.type === 'DFP') return cur.v;
+    const prev = ytd(values, 'PENÚLTIMO', conta);
+    const annual = company.filings.get(dayBefore(cur.dtIni));
+    const annualConta = annual && annual.type === 'DFP' && codeFor(annual, src);
+    const annualValue = annualConta && ytd(annual[src], 'ÚLTIMO', annualConta);
+    if (!prev || !annualValue) return null;
+    return annualValue.v + cur.v - prev.v;
+}
+
+// Net income attributable to the controlling shareholders (or total net income), found by name.
+function netIncomeAccount(filing, src) {
+    const labels = (filing.labels && filing.labels[src]) || new Map();
+    const find = (re, parent) => [...labels.entries()]
+        .find(([code, label]) => re.test(label) && (parent ? code.startsWith(`${parent}.`) : code.split('.').length === 2));
+    const total = find(/^Lucro( ou |\s*\/\s*)Preju[ií]zo (L[ií]quido )?(Consolidado )?do Per[ií]odo/i);
+    const controladora = total && find(/Controladora/i, total[0]);
+    // Some companies without minority interests fill the "Controladora" line with zeros.
+    const hasValue = code => [...filing[src]].some(([k, v]) => k.endsWith(`|${code}`) && k.startsWith('DRE|ÚLTIMO') && v !== 0);
+    return (controladora && hasValue(controladora[0]) ? controladora : total || [])[0];
+}
+
+function buildCompany(cnpj, company) {
+    const dates = [...company.filings.keys()].sort();
+    const latestDate = dates[dates.length - 1];
+    const latest = company.filings.get(latestDate);
+    const src = latest.con.size > 0 ? 'con' : 'ind';
+    const values = latest[src];
+    if (values.size === 0) return null;
+
+    const sharesFiling = [...dates].reverse().map(d => company.filings.get(d)).find(f => f.shares);
+    if (!sharesFiling) return null;
+
+    const labels = (latest.labels && latest.labels[src]) || new Map();
+    const lucro = ttm(company, latest, src, netIncomeAccount);
+    // Banks and insurers don't have an EBIT line (3.05 has a different meaning in their DRE).
+    const financeira = !/^Resultado Antes do Resultado Financeiro/i.test(labels.get('3.05') || '');
+    const get = conta => values.get(`BP|${conta}`) ?? 0;
+
+    return {
+        cnpj,
+        dataBalanco: latestDate,
+        financeira,
+        acoes: sharesFiling.shares,
+        receita: ttm(company, latest, src, '3.01'),
+        ebit: financeira ? null : ttm(company, latest, src, '3.05'),
+        lucro,
+        patrimonio: latest.equityAccount && latest.equityAccount[src] ? get(latest.equityAccount[src]) : null,
+        dividaLiquida: financeira ? null : get('2.01.04') + get('2.02.01') - get('1.01.01') - get('1.01.02'),
+    };
+}
+
+// cnpj -> { empresa, tickers: [{ ticker, classe: 'ON' | 'PN' | 'UNIT' }] }
+function readTickers(fcaZips) {
+    const byCnpj = new Map();
+    for (const { zip, year } of fcaZips) { // newest year first; keep the newest registry per company
+        const rows = latestVersionOnly(readCsv(zip, `fca_cia_aberta_valor_mobiliario_${year}.csv`)
+            .map(r => ({ ...r, CNPJ_CIA: r.CNPJ_Companhia, DT_REFER: r.Data_Referencia, VERSAO: r.Versao })));
+        const seenThisYear = new Set();
+        for (const r of rows) {
+            if (r.Mercado !== 'Bolsa' || r.Data_Fim_Negociacao || !r.Codigo_Negociacao) continue;
+            const classe = { 'Ações Ordinárias': 'ON', 'Ações Preferenciais': 'PN', 'Units': 'UNIT' }[r.Valor_Mobiliario];
+            if (!classe) continue;
+            if (byCnpj.has(r.CNPJ_CIA) && !seenThisYear.has(r.CNPJ_CIA)) continue;
+            seenThisYear.add(r.CNPJ_CIA);
+            if (!byCnpj.has(r.CNPJ_CIA)) byCnpj.set(r.CNPJ_CIA, { empresa: r.Nome_Empresarial, tickers: [] });
+            const entry = byCnpj.get(r.CNPJ_CIA);
+            const ticker = r.Codigo_Negociacao.trim().toUpperCase();
+            if (!entry.tickers.some(t => t.ticker === ticker)) entry.tickers.push({ ticker, classe });
+        }
+    }
+    return byCnpj;
+}
+
+async function loadFundamentals(now = new Date()) {
+    const year = now.getUTCFullYear();
+    const companies = new Map();
+    for (const [type, y] of [['DFP', year - 2], ['DFP', year - 1], ['DFP', year], ['ITR', year - 1], ['ITR', year]]) {
+        const zip = await downloadZip(type, y);
+        if (zip) ingest(companies, zip, type, y);
+    }
+
+    const fcaZips = [];
+    for (const y of [year, year - 1]) {
+        const zip = await downloadZip('FCA', y);
+        if (zip) fcaZips.push({ zip, year: y });
+    }
+    const tickers = readTickers(fcaZips);
+
+    // Ignore companies whose last statement is older than ~18 months (deregistered / delinquent).
+    const cutoff = new Date(now);
+    cutoff.setUTCMonth(cutoff.getUTCMonth() - 18);
+    const minDate = cutoff.toISOString().slice(0, 10);
+
+    const result = [];
+    for (const [cnpj, company] of companies) {
+        const listed = tickers.get(cnpj);
+        if (!listed || listed.tickers.length === 0) continue;
+        const fundamentals = buildCompany(cnpj, company);
+        if (!fundamentals || fundamentals.dataBalanco < minDate) continue;
+        result.push({ ...fundamentals, empresa: listed.empresa, tickers: listed.tickers });
+    }
+    return result;
+}
+
+module.exports = { loadFundamentals, _internals: { ingest, buildCompany, ttm, downloadZip } };
