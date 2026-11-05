@@ -34,6 +34,8 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 - Lucro em todos os últimos balanços anuais (mínimo 3) e nos últimos 12 meses.
 - Dívida líquida / EBIT < 3.
 - Fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM).
+- Cada ação traz o `Setor`: o setor de atividade da CVM agrupado em Energia e saneamento,
+  Commodities, Construção e imóveis, Financeiro, Consumo, Indústria e serviços ou Outros.
 - Ordenação por EV/EBIT ou pela Fórmula Mágica (posição no EV/EBIT + posição no ROIC); uma ação por empresa.
 
 As respostas trazem o cabeçalho `X-Data-Updated-At`. Erros retornam JSON `{ "error": "..." }`.

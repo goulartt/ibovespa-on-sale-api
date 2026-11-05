@@ -1,7 +1,9 @@
-// Issuer status from the CVM company registry (https://dados.cvm.gov.br/dataset/cia_aberta-cad).
-// SIT_EMISSOR tells whether a company is operating normally or under judicial/extrajudicial
-// recovery, bankruptcy or liquidation. It replaces the old hand-maintained list of tickers.
+// Company registry from CVM (https://dados.cvm.gov.br/dataset/cia_aberta-cad):
+// - SIT_EMISSOR tells whether a company operates normally or is under judicial/extrajudicial
+//   recovery, bankruptcy or liquidation (replaces the old hand-maintained ticker list);
+// - SETOR_ATIV is the company's activity sector, grouped into main sectors for the UI.
 const axios = require('axios');
+const { sectorGroup } = require('../domain/sectors');
 
 const REGISTRY_URL = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv';
 
@@ -25,22 +27,30 @@ function parseCsv(text) {
     });
 }
 
-// Returns Map cnpj -> { situacao, desde } for active companies in a distressed situation.
-function parseIssuerStatus(text) {
+// Returns Map cnpj -> { situacao, desde, setor } for active companies.
+// `situacao` is null for companies operating normally.
+function parseRegistry(text) {
     const result = new Map();
     for (const row of parseCsv(text)) {
         if (row.SIT !== 'ATIVO') continue;
-        const situacao = DISTRESSED_STATUSES[(row.SIT_EMISSOR || '').trim()];
-        if (situacao) result.set(row.CNPJ_CIA, { situacao, desde: row.DT_INI_SIT_EMISSOR || null });
+        const situacao = DISTRESSED_STATUSES[(row.SIT_EMISSOR || '').trim()] || null;
+        result.set(row.CNPJ_CIA, {
+            situacao,
+            desde: situacao ? row.DT_INI_SIT_EMISSOR || null : null,
+            setor: sectorGroup(row.SETOR_ATIV),
+        });
     }
     return result;
 }
 
-async function loadIssuerStatus({ http = axios } = {}) {
+async function loadRegistry({ http = axios } = {}) {
     const { data } = await http.get(REGISTRY_URL, { responseType: 'arraybuffer', timeout: 2 * 60 * 1000 });
-    const statuses = parseIssuerStatus(Buffer.from(data).toString('latin1'));
-    if (statuses.size === 0) throw new Error('CVM registry has no distressed companies; the file format may have changed');
-    return statuses;
+    const registry = parseRegistry(Buffer.from(data).toString('latin1'));
+    const distressed = [...registry.values()].filter(c => c.situacao).length;
+    if (registry.size < 100 || distressed === 0) {
+        throw new Error(`CVM registry looks wrong (${registry.size} companies, ${distressed} distressed); the file format may have changed`);
+    }
+    return registry;
 }
 
-module.exports = { loadIssuerStatus, parseIssuerStatus, DISTRESSED_STATUSES };
+module.exports = { loadRegistry, parseRegistry, DISTRESSED_STATUSES };

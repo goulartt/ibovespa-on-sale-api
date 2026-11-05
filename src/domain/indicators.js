@@ -49,6 +49,7 @@ function buildStock(company, ticker, market, cap) {
     return {
         'Ativo': ticker,
         'Empresa': company.empresa,
+        'Setor': company.setor ?? null,
         'Cotação': round(market.price),
         'P/L': round(ratio(cap, company.lucro)),
         'P/VP': round(ratio(cap, company.patrimonio)),

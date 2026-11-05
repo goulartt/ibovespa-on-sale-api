@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-05T23:35:09.151Z",
+ "updatedAt": "2026-11-05T23:44:40.842Z",
  "sources": [
   "CVM dados abertos (DFP/ITR/FCA)",
   "Yahoo Finance"
@@ -8,6 +8,7 @@
   {
    "Ativo": "AALR3",
    "Empresa": "ALLIANÇA SAÚDE E PARTICIPAÇÕES S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.2,
    "P/L": -0.24,
    "P/VP": -1.33,
@@ -60,6 +61,7 @@
   {
    "Ativo": "ABCB4",
    "Empresa": "BCO ABC BRASIL S.A.",
+   "Setor": "Financeiro",
    "Cotação": 22.74,
    "P/L": 5.75,
    "P/VP": 0.81,
@@ -112,6 +114,7 @@
   {
    "Ativo": "ABEV3",
    "Empresa": "AMBEV S.A.",
+   "Setor": "Consumo",
    "Cotação": 15.48,
    "P/L": 15.15,
    "P/VP": 2.61,
@@ -164,6 +167,7 @@
   {
    "Ativo": "AERI3",
    "Empresa": "AERIS IND. E COM. DE EQUIP. PARA GER. DE ENG. S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 1.88,
    "P/L": -0.12,
    "P/VP": -0.12,
@@ -216,6 +220,7 @@
   {
    "Ativo": "AFLT3",
    "Empresa": "AFLUENTE TRANSMISSÃO DE ENERGIA ELÉTRICA S/A",
+   "Setor": "Energia e saneamento",
    "Cotação": 6.43,
    "P/L": 10.96,
    "P/VP": 1.62,
@@ -268,6 +273,7 @@
   {
    "Ativo": "AGRO3",
    "Empresa": "BRASILAGRO - CIA BRAS DE PROP AGRICOLAS",
+   "Setor": "Commodities",
    "Cotação": 18.02,
    "P/L": -19.94,
    "P/VP": 0.89,
@@ -320,6 +326,7 @@
   {
    "Ativo": "AGXY3",
    "Empresa": "Agrogalaxy Participações S.A. - Em Recuperação Judicial",
+   "Setor": "Consumo",
    "Cotação": 0.29,
    "P/L": 3.96,
    "P/VP": -26.18,
@@ -368,6 +375,7 @@
   {
    "Ativo": "AHEB3",
    "Empresa": "SAO PAULO TURISMO S.A.",
+   "Setor": "Consumo",
    "Cotação": 23,
    "P/L": 4,
    "P/VP": 0.67,
@@ -420,6 +428,7 @@
   {
    "Ativo": "AHEB5",
    "Empresa": "SAO PAULO TURISMO S.A.",
+   "Setor": "Consumo",
    "Cotação": 58,
    "P/L": 4,
    "P/VP": 0.67,
@@ -472,6 +481,7 @@
   {
    "Ativo": "AHEB6",
    "Empresa": "SAO PAULO TURISMO S.A.",
+   "Setor": "Consumo",
    "Cotação": 55,
    "P/L": 4,
    "P/VP": 0.67,
@@ -524,6 +534,7 @@
   {
    "Ativo": "ALLD3",
    "Empresa": "ALLIED TECNOLOGIA S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.26,
    "P/L": 1.39,
    "P/VP": 0.32,
@@ -576,6 +587,7 @@
   {
    "Ativo": "ALOS3",
    "Empresa": "ALLOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 25.05,
    "P/L": 13.41,
    "P/VP": 0.97,
@@ -628,6 +640,7 @@
   {
    "Ativo": "ALPA3",
    "Empresa": "ALPARGATAS S.A.",
+   "Setor": "Consumo",
    "Cotação": 10.63,
    "P/L": 11.28,
    "P/VP": 2.19,
@@ -680,6 +693,7 @@
   {
    "Ativo": "ALPA4",
    "Empresa": "ALPARGATAS S.A.",
+   "Setor": "Consumo",
    "Cotação": 12.66,
    "P/L": 11.28,
    "P/VP": 2.19,
@@ -732,6 +746,7 @@
   {
    "Ativo": "ALPK3",
    "Empresa": "ALLPARK EMPREENDIMENTOS, PARTICIPAÇÕES E SERVIÇOS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.66,
    "P/L": 47.91,
    "P/VP": 2.12,
@@ -784,6 +799,7 @@
   {
    "Ativo": "AMBP3",
    "Empresa": "AMBIPAR PARTICIP. E EMPREEND. S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Energia e saneamento",
    "Cotação": 0.14,
    "P/L": -226.72,
    "P/VP": 10.77,
@@ -832,6 +848,7 @@
   {
    "Ativo": "AMER3",
    "Empresa": "AMERICANAS S.A. - em Recuperação Judicial",
+   "Setor": "Consumo",
    "Cotação": 4.2,
    "P/L": -3,
    "P/VP": 0.2,
@@ -884,6 +901,7 @@
   {
    "Ativo": "AMOB3",
    "Empresa": "Automob Participações S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 10.39,
    "P/L": -1.05,
    "P/VP": 0.21,
@@ -928,6 +946,7 @@
   {
    "Ativo": "ANIM3",
    "Empresa": "ANIMA HOLDING S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.39,
    "P/L": 5.87,
    "P/VP": 0.3,
@@ -980,6 +999,7 @@
   {
    "Ativo": "ARML3",
    "Empresa": "ARMAC LOCAÇÃO, LOGÍSTICA E SERVIÇOS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.08,
    "P/L": 17.2,
    "P/VP": 0.69,
@@ -1032,6 +1052,7 @@
   {
    "Ativo": "ARND3",
    "Empresa": "Arandu Investimentos S.A.",
+   "Setor": "Financeiro",
    "Cotação": 0.74,
    "P/L": -518.37,
    "P/VP": 0.75,
@@ -1084,6 +1105,7 @@
   {
    "Ativo": "ASAI3",
    "Empresa": "SENDAS DISTRIBUIDORA S.A.",
+   "Setor": "Consumo",
    "Cotação": 8.45,
    "P/L": 11.72,
    "P/VP": 1.78,
@@ -1136,6 +1158,7 @@
   {
    "Ativo": "ATED3",
    "Empresa": "Atom Educação e Editora S.A.",
+   "Setor": "Consumo",
    "Cotação": 0.89,
    "P/L": -3.58,
    "P/VP": 1.2,
@@ -1176,6 +1199,7 @@
   {
    "Ativo": "AUAU3",
    "Empresa": "União Pet Participações S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.92,
    "P/L": 17.47,
    "P/VP": 1.06,
@@ -1220,6 +1244,7 @@
   {
    "Ativo": "AURE3",
    "Empresa": "Auren Energia S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 11.18,
    "P/L": -10.72,
    "P/VP": 0.92,
@@ -1272,6 +1297,7 @@
   {
    "Ativo": "AVLL3",
    "Empresa": "ALPHAVILLE S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 5.37,
    "P/L": -0.39,
    "P/VP": -0.19,
@@ -1324,6 +1350,7 @@
   {
    "Ativo": "AXIA3",
    "Empresa": "AXIA Energia S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 47.69,
    "P/L": 11.35,
    "P/VP": 1.12,
@@ -1376,6 +1403,7 @@
   {
    "Ativo": "AXIA7",
    "Empresa": "AXIA Energia S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 47.79,
    "P/L": 11.35,
    "P/VP": 1.12,
@@ -1428,6 +1456,7 @@
   {
    "Ativo": "AZEV3",
    "Empresa": "AZEVEDO E TRAVASSOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 9.55,
    "P/L": -0.62,
    "P/VP": 0.99,
@@ -1480,6 +1509,7 @@
   {
    "Ativo": "AZEV4",
    "Empresa": "AZEVEDO E TRAVASSOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 0.66,
    "P/L": -0.62,
    "P/VP": 0.99,
@@ -1532,6 +1562,7 @@
   {
    "Ativo": "AZTE3",
    "Empresa": "Azevedo & Travassos Energia S.A.",
+   "Setor": "Commodities",
    "Cotação": 0.68,
    "P/L": -2.51,
    "P/VP": 0.1,
@@ -1576,6 +1607,7 @@
   {
    "Ativo": "AZUL3",
    "Empresa": "AZUL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 11.5,
    "P/L": 2.61,
    "P/VP": -0.82,
@@ -1628,6 +1660,7 @@
   {
    "Ativo": "AZZA3",
    "Empresa": "AZZAS 2154 S.A.",
+   "Setor": "Consumo",
    "Cotação": 14.06,
    "P/L": 8.77,
    "P/VP": 0.35,
@@ -1680,6 +1713,7 @@
   {
    "Ativo": "B1003",
    "Empresa": "B100 S.A.",
+   "Setor": "Financeiro",
    "Cotação": 33,
    "P/L": -2,
    "P/VP": 15.11,
@@ -1724,6 +1758,7 @@
   {
    "Ativo": "B3SA3",
    "Empresa": "B3 S.A. - BRASIL, BOLSA, BALCÃO",
+   "Setor": "Financeiro",
    "Cotação": 14.36,
    "P/L": 13.47,
    "P/VP": 3.83,
@@ -1776,6 +1811,7 @@
   {
    "Ativo": "BALM3",
    "Empresa": "BAUMER S.A.",
+   "Setor": "Commodities",
    "Cotação": 22,
    "P/L": 8.2,
    "P/VP": 1.15,
@@ -1828,6 +1864,7 @@
   {
    "Ativo": "BALM4",
    "Empresa": "BAUMER S.A.",
+   "Setor": "Commodities",
    "Cotação": 15.9,
    "P/L": 8.2,
    "P/VP": 1.15,
@@ -1880,6 +1917,7 @@
   {
    "Ativo": "BAZA3",
    "Empresa": "BCO AMAZONIA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 65.96,
    "P/L": 4.19,
    "P/VP": 0.51,
@@ -1932,6 +1970,7 @@
   {
    "Ativo": "BBAS3",
    "Empresa": "BCO BRASIL S.A.",
+   "Setor": "Financeiro",
    "Cotação": 16.49,
    "P/L": 7.67,
    "P/VP": 0.49,
@@ -1984,6 +2023,7 @@
   {
    "Ativo": "BBDC3",
    "Empresa": "BCO BRADESCO S.A.",
+   "Setor": "Financeiro",
    "Cotação": 12.69,
    "P/L": 5.35,
    "P/VP": 0.71,
@@ -2036,6 +2076,7 @@
   {
    "Ativo": "BBDC4",
    "Empresa": "BCO BRADESCO S.A.",
+   "Setor": "Financeiro",
    "Cotação": 13.77,
    "P/L": 5.35,
    "P/VP": 0.71,
@@ -2088,6 +2129,7 @@
   {
    "Ativo": "BBSE3",
    "Empresa": "BB SEGURIDADE PARTICIPAÇÕES S.A.",
+   "Setor": "Financeiro",
    "Cotação": 37.9,
    "P/L": 8.01,
    "P/VP": 6.76,
@@ -2140,6 +2182,7 @@
   {
    "Ativo": "BDLL3",
    "Empresa": "BARDELLA S.A. INDUSTRIAS MECANICAS EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Indústria e serviços",
    "Cotação": 4.8,
    "P/L": -0.39,
    "P/VP": -0.02,
@@ -2192,6 +2235,7 @@
   {
    "Ativo": "BDLL4",
    "Empresa": "BARDELLA S.A. INDUSTRIAS MECANICAS EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.14,
    "P/L": -0.39,
    "P/VP": -0.02,
@@ -2244,6 +2288,7 @@
   {
    "Ativo": "BEEF3",
    "Empresa": "MINERVA S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.54,
    "P/L": 5.49,
    "P/VP": 1.15,
@@ -2296,6 +2341,7 @@
   {
    "Ativo": "BEES3",
    "Empresa": "BANESTES S.A. - BCO EST ESPIRITO SANTO",
+   "Setor": "Financeiro",
    "Cotação": 8.9,
    "P/L": 7.08,
    "P/VP": 1.25,
@@ -2348,6 +2394,7 @@
   {
    "Ativo": "BEES4",
    "Empresa": "BANESTES S.A. - BCO EST ESPIRITO SANTO",
+   "Setor": "Financeiro",
    "Cotação": 9.36,
    "P/L": 7.08,
    "P/VP": 1.25,
@@ -2400,6 +2447,7 @@
   {
    "Ativo": "BGIP3",
    "Empresa": "BCO ESTADO DE SERGIPE S.A. - BANESE",
+   "Setor": "Financeiro",
    "Cotação": 48.99,
    "P/L": 5.56,
    "P/VP": 0.96,
@@ -2452,6 +2500,7 @@
   {
    "Ativo": "BGIP4",
    "Empresa": "BCO ESTADO DE SERGIPE S.A. - BANESE",
+   "Setor": "Financeiro",
    "Cotação": 32.67,
    "P/L": 5.56,
    "P/VP": 0.96,
@@ -2504,6 +2553,7 @@
   {
    "Ativo": "BHIA3",
    "Empresa": "Grupo Casas Bahia S.A. - Em Recuperação Judicial",
+   "Setor": "Consumo",
    "Cotação": 0.69,
    "P/L": -0.05,
    "P/VP": -0.08,
@@ -2556,6 +2606,7 @@
   {
    "Ativo": "BIED3",
    "Empresa": "BIOMA EDUCAÇÃO S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.71,
    "P/L": -2.76,
    "P/VP": 3.87,
@@ -2608,6 +2659,7 @@
   {
    "Ativo": "BIOM3",
    "Empresa": "BIOMM S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.5,
    "P/L": 24.82,
    "P/VP": 2.31,
@@ -2660,6 +2712,7 @@
   {
    "Ativo": "BLAU3",
    "Empresa": "Blau Farmacêutica S.A.",
+   "Setor": "Consumo",
    "Cotação": 8.6,
    "P/L": 8.41,
    "P/VP": 0.85,
@@ -2712,6 +2765,7 @@
   {
    "Ativo": "BMEB3",
    "Empresa": "BCO MERCANTIL DO BRASIL S.A.",
+   "Setor": "Financeiro",
    "Cotação": 46.9,
    "P/L": 7.22,
    "P/VP": 1.91,
@@ -2764,6 +2818,7 @@
   {
    "Ativo": "BMEB4",
    "Empresa": "BCO MERCANTIL DO BRASIL S.A.",
+   "Setor": "Financeiro",
    "Cotação": 53.2,
    "P/L": 7.22,
    "P/VP": 1.91,
@@ -2816,6 +2871,7 @@
   {
    "Ativo": "BMGB4",
    "Empresa": "BANCO BMG S/A",
+   "Setor": "Financeiro",
    "Cotação": 5.47,
    "P/L": 5.58,
    "P/VP": 0.69,
@@ -2868,6 +2924,7 @@
   {
    "Ativo": "BMIN4",
    "Empresa": "BCO MERCANTIL DE INVESTIMENTOS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 18.51,
    "P/L": 6.98,
    "P/VP": 0.6,
@@ -2920,6 +2977,7 @@
   {
    "Ativo": "BMKS3",
    "Empresa": "BICICLETAS MONARK S.A.",
+   "Setor": "Consumo",
    "Cotação": 350,
    "P/L": 2.67,
    "P/VP": 0.77,
@@ -2972,6 +3030,7 @@
   {
    "Ativo": "BMOB3",
    "Empresa": "BEMOBI MOBILE TECH S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 24.07,
    "P/L": 12.19,
    "P/VP": 2.01,
@@ -3024,6 +3083,7 @@
   {
    "Ativo": "BNBR3",
    "Empresa": "BCO NORDESTE DO BRASIL S.A.",
+   "Setor": "Financeiro",
    "Cotação": 102.34,
    "P/L": 3.66,
    "P/VP": 0.6,
@@ -3076,6 +3136,7 @@
   {
    "Ativo": "BOBR4",
    "Empresa": "BOMBRIL S.A. - Em recuperação Judicial",
+   "Setor": "Consumo",
    "Cotação": 1.51,
    "P/L": 5.78,
    "P/VP": -0.26,
@@ -3128,6 +3189,7 @@
   {
    "Ativo": "BPAR3",
    "Empresa": "BCO ESTADO DO PARA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 180,
    "P/L": 9.74,
    "P/VP": 0.76,
@@ -3180,6 +3242,7 @@
   {
    "Ativo": "BRAP3",
    "Empresa": "BRADESPAR S.A.",
+   "Setor": "Commodities",
    "Cotação": 17.4,
    "P/L": 12.35,
    "P/VP": 0.9,
@@ -3232,6 +3295,7 @@
   {
    "Ativo": "BRAP4",
    "Empresa": "BRADESPAR S.A.",
+   "Setor": "Commodities",
    "Cotação": 18.88,
    "P/L": 12.35,
    "P/VP": 0.9,
@@ -3284,6 +3348,7 @@
   {
    "Ativo": "BRAV3",
    "Empresa": "Brava Energia S.A.",
+   "Setor": "Commodities",
    "Cotação": 15.76,
    "P/L": 134.44,
    "P/VP": 0.6,
@@ -3336,6 +3401,7 @@
   {
    "Ativo": "BRKM3",
    "Empresa": "BRASKEM S.A.",
+   "Setor": "Commodities",
    "Cotação": 3.15,
    "P/L": -0.47,
    "P/VP": -0.2,
@@ -3388,6 +3454,7 @@
   {
    "Ativo": "BRKM5",
    "Empresa": "BRASKEM S.A.",
+   "Setor": "Commodities",
    "Cotação": 3.03,
    "P/L": -0.47,
    "P/VP": -0.2,
@@ -3440,6 +3507,7 @@
   {
    "Ativo": "BRKM6",
    "Empresa": "BRASKEM S.A.",
+   "Setor": "Commodities",
    "Cotação": 3.68,
    "P/L": -0.47,
    "P/VP": -0.2,
@@ -3492,6 +3560,7 @@
   {
    "Ativo": "BRSR3",
    "Empresa": "BANCO DO ESTADO DO RIO GRANDE DO SUL SA",
+   "Setor": "Financeiro",
    "Cotação": 17,
    "P/L": 3.88,
    "P/VP": 0.54,
@@ -3544,6 +3613,7 @@
   {
    "Ativo": "BRSR5",
    "Empresa": "BANCO DO ESTADO DO RIO GRANDE DO SUL SA",
+   "Setor": "Financeiro",
    "Cotação": 15.64,
    "P/L": 3.88,
    "P/VP": 0.54,
@@ -3596,6 +3666,7 @@
   {
    "Ativo": "BRSR6",
    "Empresa": "BANCO DO ESTADO DO RIO GRANDE DO SUL SA",
+   "Setor": "Financeiro",
    "Cotação": 12.61,
    "P/L": 3.88,
    "P/VP": 0.54,
@@ -3648,6 +3719,7 @@
   {
    "Ativo": "BSLI3",
    "Empresa": "BRB BANCO DE BRASILIA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 2,
    "P/L": 1.41,
    "P/VP": 0.25,
@@ -3696,6 +3768,7 @@
   {
    "Ativo": "BSLI4",
    "Empresa": "BRB BANCO DE BRASILIA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 2.06,
    "P/L": 1.41,
    "P/VP": 0.25,
@@ -3744,6 +3817,7 @@
   {
    "Ativo": "CALI3",
    "Empresa": "CONSTRUTORA ADOLPHO LINDENBERG S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 28.11,
    "P/L": 4.03,
    "P/VP": 0.48,
@@ -3796,6 +3870,7 @@
   {
    "Ativo": "CAMB3",
    "Empresa": "CAMBUCI S.A.",
+   "Setor": "Consumo",
    "Cotação": 7.17,
    "P/L": 4.91,
    "P/VP": 0.95,
@@ -3848,6 +3923,7 @@
   {
    "Ativo": "CAML3",
    "Empresa": "CAMIL ALIMENTOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.13,
    "P/L": 19.38,
    "P/VP": 0.46,
@@ -3900,6 +3976,7 @@
   {
    "Ativo": "CASH3",
    "Empresa": "MÉLIUZ S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.94,
    "P/L": -4.43,
    "P/VP": 1.02,
@@ -3952,6 +4029,7 @@
   {
    "Ativo": "CASN3",
    "Empresa": "CIA CATARINENSE DE AGUAS E SANEAM.-CASAN",
+   "Setor": "Energia e saneamento",
    "Cotação": 6.02,
    "P/L": 15.73,
    "P/VP": 2.25,
@@ -4004,6 +4082,7 @@
   {
    "Ativo": "CASN4",
    "Empresa": "CIA CATARINENSE DE AGUAS E SANEAM.-CASAN",
+   "Setor": "Energia e saneamento",
    "Cotação": 5.01,
    "P/L": 15.73,
    "P/VP": 2.25,
@@ -4056,6 +4135,7 @@
   {
    "Ativo": "CBAV3",
    "Empresa": "COMPANHIA BRASILEIRA DE ALUMÍNIO",
+   "Setor": "Commodities",
    "Cotação": 11.25,
    "P/L": 12.25,
    "P/VP": 1.38,
@@ -4108,6 +4188,7 @@
   {
    "Ativo": "CBEE3",
    "Empresa": "AMPLA ENERGIA E SERVICOS S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 8.19,
    "P/L": 15.98,
    "P/VP": 0.37,
@@ -4160,6 +4241,7 @@
   {
    "Ativo": "CCTY3",
    "Empresa": "Belora RDVC City Desenvolvimento Imobiliário S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 4.5,
    "P/L": -0.2,
    "P/VP": 0.43,
@@ -4204,6 +4286,7 @@
   {
    "Ativo": "CEBR3",
    "Empresa": "COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB",
+   "Setor": "Energia e saneamento",
    "Cotação": 23,
    "P/L": 10.76,
    "P/VP": 1.45,
@@ -4256,6 +4339,7 @@
   {
    "Ativo": "CEBR5",
    "Empresa": "COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB",
+   "Setor": "Energia e saneamento",
    "Cotação": 23.49,
    "P/L": 10.76,
    "P/VP": 1.45,
@@ -4308,6 +4392,7 @@
   {
    "Ativo": "CEBR6",
    "Empresa": "COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB",
+   "Setor": "Energia e saneamento",
    "Cotação": 26,
    "P/L": 10.76,
    "P/VP": 1.45,
@@ -4360,6 +4445,7 @@
   {
    "Ativo": "CEDO3",
    "Empresa": "CIA FIACAO TECIDOS CEDRO CACHOEIRA",
+   "Setor": "Consumo",
    "Cotação": 7,
    "P/L": -1.21,
    "P/VP": 0.23,
@@ -4412,6 +4498,7 @@
   {
    "Ativo": "CEDO4",
    "Empresa": "CIA FIACAO TECIDOS CEDRO CACHOEIRA",
+   "Setor": "Consumo",
    "Cotação": 4.5,
    "P/L": -1.21,
    "P/VP": 0.23,
@@ -4464,6 +4551,7 @@
   {
    "Ativo": "CEEB3",
    "Empresa": "CIA ELETRICIDADE EST. DA BAHIA - COELBA",
+   "Setor": "Energia e saneamento",
    "Cotação": 43.75,
    "P/L": 7.49,
    "P/VP": 1.29,
@@ -4516,6 +4604,7 @@
   {
    "Ativo": "CEEB5",
    "Empresa": "CIA ELETRICIDADE EST. DA BAHIA - COELBA",
+   "Setor": "Energia e saneamento",
    "Cotação": 38,
    "P/L": 7.49,
    "P/VP": 1.29,
@@ -4568,6 +4657,7 @@
   {
    "Ativo": "CEED3",
    "Empresa": "CIA ESTADUAL DE DISTRIB ENER ELET-CEEE-D",
+   "Setor": "Energia e saneamento",
    "Cotação": 10,
    "P/L": -1.58,
    "P/VP": -0.16,
@@ -4620,6 +4710,7 @@
   {
    "Ativo": "CEED4",
    "Empresa": "CIA ESTADUAL DE DISTRIB ENER ELET-CEEE-D",
+   "Setor": "Energia e saneamento",
    "Cotação": 20,
    "P/L": -1.58,
    "P/VP": -0.16,
@@ -4672,6 +4763,7 @@
   {
    "Ativo": "CEGR3",
    "Empresa": "CIA DISTRIB DE GAS DO RIO DE JANEIRO-CEG",
+   "Setor": "Energia e saneamento",
    "Cotação": 57,
    "P/L": 19.74,
    "P/VP": 6.01,
@@ -4724,6 +4816,7 @@
   {
    "Ativo": "CGAS3",
    "Empresa": "CIA GAS DE SAO PAULO - COMGAS",
+   "Setor": "Energia e saneamento",
    "Cotação": 120,
    "P/L": 10.27,
    "P/VP": 9.85,
@@ -4776,6 +4869,7 @@
   {
    "Ativo": "CGAS5",
    "Empresa": "CIA GAS DE SAO PAULO - COMGAS",
+   "Setor": "Energia e saneamento",
    "Cotação": 114.6,
    "P/L": 10.27,
    "P/VP": 9.85,
@@ -4828,6 +4922,7 @@
   {
    "Ativo": "CGRA3",
    "Empresa": "GRAZZIOTIN S.A.",
+   "Setor": "Consumo",
    "Cotação": 22.4,
    "P/L": 7.27,
    "P/VP": 0.57,
@@ -4880,6 +4975,7 @@
   {
    "Ativo": "CGRA4",
    "Empresa": "GRAZZIOTIN S.A.",
+   "Setor": "Consumo",
    "Cotação": 22.32,
    "P/L": 7.27,
    "P/VP": 0.57,
@@ -4932,6 +5028,7 @@
   {
    "Ativo": "CLSC3",
    "Empresa": "CENTRAIS ELET DE SANTA CATARINA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 150.21,
    "P/L": 7.27,
    "P/VP": 1.5,
@@ -4984,6 +5081,7 @@
   {
    "Ativo": "CLSC4",
    "Empresa": "CENTRAIS ELET DE SANTA CATARINA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 174.87,
    "P/L": 7.27,
    "P/VP": 1.5,
@@ -5036,6 +5134,7 @@
   {
    "Ativo": "CMIG3",
    "Empresa": "CIA ENERGETICA DE MINAS GERAIS - CEMIG",
+   "Setor": "Energia e saneamento",
    "Cotação": 16.65,
    "P/L": 7.68,
    "P/VP": 1.21,
@@ -5088,6 +5187,7 @@
   {
    "Ativo": "CMIG4",
    "Empresa": "CIA ENERGETICA DE MINAS GERAIS - CEMIG",
+   "Setor": "Energia e saneamento",
    "Cotação": 10.16,
    "P/L": 7.68,
    "P/VP": 1.21,
@@ -5140,6 +5240,7 @@
   {
    "Ativo": "COCE3",
    "Empresa": "CIA ENERGETICA DO CEARA - COELCE",
+   "Setor": "Energia e saneamento",
    "Cotação": 29.5,
    "P/L": 3.7,
    "P/VP": 0.43,
@@ -5192,6 +5293,7 @@
   {
    "Ativo": "COCE5",
    "Empresa": "CIA ENERGETICA DO CEARA - COELCE",
+   "Setor": "Energia e saneamento",
    "Cotação": 27.99,
    "P/L": 3.7,
    "P/VP": 0.43,
@@ -5244,6 +5346,7 @@
   {
    "Ativo": "COGN3",
    "Empresa": "COGNA EDUCAÇÃO S.A.",
+   "Setor": "Consumo",
    "Cotação": 1.39,
    "P/L": 3.96,
    "P/VP": 0.2,
@@ -5296,6 +5399,7 @@
   {
    "Ativo": "CPFE3",
    "Empresa": "CPFL ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 42.2,
    "P/L": 8.1,
    "P/VP": 2.05,
@@ -5348,6 +5452,7 @@
   {
    "Ativo": "CPLE3",
    "Empresa": "CIA PARANAENSE DE ENERGIA - COPEL",
+   "Setor": "Energia e saneamento",
    "Cotação": 14.45,
    "P/L": 13.69,
    "P/VP": 1.78,
@@ -5400,6 +5505,7 @@
   {
    "Ativo": "CRPG3",
    "Empresa": "TRONOX PIGMENTOS DO BRASIL S.A.",
+   "Setor": "Commodities",
    "Cotação": 17,
    "P/L": -2.78,
    "P/VP": 0.64,
@@ -5452,6 +5558,7 @@
   {
    "Ativo": "CRPG5",
    "Empresa": "TRONOX PIGMENTOS DO BRASIL S.A.",
+   "Setor": "Commodities",
    "Cotação": 8.02,
    "P/L": -2.78,
    "P/VP": 0.64,
@@ -5504,6 +5611,7 @@
   {
    "Ativo": "CRPG6",
    "Empresa": "TRONOX PIGMENTOS DO BRASIL S.A.",
+   "Setor": "Commodities",
    "Cotação": 8.97,
    "P/L": -2.78,
    "P/VP": 0.64,
@@ -5556,6 +5664,7 @@
   {
    "Ativo": "CSAN3",
    "Empresa": "COSAN S.A.",
+   "Setor": "Commodities",
    "Cotação": 2.5,
    "P/L": -1.11,
    "P/VP": 0.31,
@@ -5608,6 +5717,7 @@
   {
    "Ativo": "CSED3",
    "Empresa": "CRUZEIRO DO SUL EDUCACIONAL S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.35,
    "P/L": 5.12,
    "P/VP": 0.95,
@@ -5660,6 +5770,7 @@
   {
    "Ativo": "CSMG3",
    "Empresa": "CIA SANEAMENTO DE MINAS GERAIS-COPASA MG",
+   "Setor": "Energia e saneamento",
    "Cotação": 48.95,
    "P/L": 14.35,
    "P/VP": 2.1,
@@ -5712,6 +5823,7 @@
   {
    "Ativo": "CSUD3",
    "Empresa": "CSU DIGITAL S.A.",
+   "Setor": "Outros",
    "Cotação": 14.02,
    "P/L": 5.91,
    "P/VP": 1.18,
@@ -5764,6 +5876,7 @@
   {
    "Ativo": "CTKA3",
    "Empresa": "KARSTEN S.A.",
+   "Setor": "Consumo",
    "Cotação": 34.16,
    "P/L": 3.19,
    "P/VP": 2.01,
@@ -5816,6 +5929,7 @@
   {
    "Ativo": "CTKA4",
    "Empresa": "KARSTEN S.A.",
+   "Setor": "Consumo",
    "Cotação": 27.9,
    "P/L": 3.19,
    "P/VP": 2.01,
@@ -5868,6 +5982,7 @@
   {
    "Ativo": "CURY3",
    "Empresa": "Cury Construtora e Incorporadora S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 26.65,
    "P/L": 7.47,
    "P/VP": 4.01,
@@ -5920,6 +6035,7 @@
   {
    "Ativo": "CVCB3",
    "Empresa": "CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A.",
+   "Setor": "Consumo",
    "Cotação": 0.82,
    "P/L": -3.24,
    "P/VP": 1.32,
@@ -5972,6 +6088,7 @@
   {
    "Ativo": "CXSE3",
    "Empresa": "CAIXA SEGURIDADE PARTICIPAÇÕES S.A.",
+   "Setor": "Financeiro",
    "Cotação": 20.95,
    "P/L": 13.9,
    "P/VP": 4.56,
@@ -6024,6 +6141,7 @@
   {
    "Ativo": "CYRE3",
    "Empresa": "CYRELA BRAZIL REALTY S.A.EMPREEND E PART",
+   "Setor": "Construção e imóveis",
    "Cotação": 18.19,
    "P/L": 3.85,
    "P/VP": 0.63,
@@ -6076,6 +6194,7 @@
   {
    "Ativo": "CYRE4",
    "Empresa": "CYRELA BRAZIL REALTY S.A.EMPREEND E PART",
+   "Setor": "Construção e imóveis",
    "Cotação": 17.16,
    "P/L": 3.85,
    "P/VP": 0.63,
@@ -6128,6 +6247,7 @@
   {
    "Ativo": "DASA3",
    "Empresa": "DIAGNOSTICOS DA AMERICA S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.95,
    "P/L": -4.11,
    "P/VP": 0.54,
@@ -6180,6 +6300,7 @@
   {
    "Ativo": "DESK3",
    "Empresa": "DESKTOP S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 19.54,
    "P/L": 40.65,
    "P/VP": 1.55,
@@ -6232,6 +6353,7 @@
   {
    "Ativo": "DEXP3",
    "Empresa": "DEXXOS PARTICIPAÇÕES S.A.",
+   "Setor": "Outros",
    "Cotação": 7.18,
    "P/L": 5.92,
    "P/VP": 0.79,
@@ -6284,6 +6406,7 @@
   {
    "Ativo": "DEXP4",
    "Empresa": "DEXXOS PARTICIPAÇÕES S.A.",
+   "Setor": "Outros",
    "Cotação": 7.25,
    "P/L": 5.92,
    "P/VP": 0.79,
@@ -6336,6 +6459,7 @@
   {
    "Ativo": "DIRR3",
    "Empresa": "DIRECIONAL ENGENHARIA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 8.36,
    "P/L": 5.08,
    "P/VP": 1.59,
@@ -6388,6 +6512,7 @@
   {
    "Ativo": "DMVF3",
    "Empresa": "D1000 VAREJO FARMA PARTICIPAÇÕES S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.51,
    "P/L": 10.5,
    "P/VP": 0.25,
@@ -6440,6 +6565,7 @@
   {
    "Ativo": "DOHL3",
    "Empresa": "DOHLER S.A.",
+   "Setor": "Consumo",
    "Cotação": 6.46,
    "P/L": null,
    "P/VP": 0.62,
@@ -6492,6 +6618,7 @@
   {
    "Ativo": "DOHL4",
    "Empresa": "DOHLER S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.6,
    "P/L": null,
    "P/VP": 0.62,
@@ -6544,6 +6671,7 @@
   {
    "Ativo": "DOTZ3",
    "Empresa": "Dotz S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 6.61,
    "P/L": 3.07,
    "P/VP": -0.41,
@@ -6596,6 +6724,7 @@
   {
    "Ativo": "DTCY3",
    "Empresa": "DTCOM - DIRECT TO COMPANY S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 1.85,
    "P/L": -23.56,
    "P/VP": -102.45,
@@ -6648,6 +6777,7 @@
   {
    "Ativo": "DXCO3",
    "Empresa": "DEXCO S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 4.58,
    "P/L": -115.3,
    "P/VP": 0.56,
@@ -6700,6 +6830,7 @@
   {
    "Ativo": "EALT3",
    "Empresa": "ELECTRO ACO ALTONA S.A.",
+   "Setor": "Commodities",
    "Cotação": 11.8,
    "P/L": 4.33,
    "P/VP": 0.68,
@@ -6752,6 +6883,7 @@
   {
    "Ativo": "EALT4",
    "Empresa": "ELECTRO ACO ALTONA S.A.",
+   "Setor": "Commodities",
    "Cotação": 11.01,
    "P/L": 4.33,
    "P/VP": 0.68,
@@ -6804,6 +6936,7 @@
   {
    "Ativo": "ECOM3",
    "Empresa": "ECONOMATICA S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 0.87,
    "P/L": 0.37,
    "P/VP": 0.35,
@@ -6856,6 +6989,7 @@
   {
    "Ativo": "ECOR3",
    "Empresa": "ECORODOVIAS INFRAESTRUTURA E LOGÍSTICA S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 4.88,
    "P/L": 6.22,
    "P/VP": 0.77,
@@ -6908,6 +7042,7 @@
   {
    "Ativo": "EGIE3",
    "Empresa": "ENGIE BRASIL ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 26.64,
    "P/L": 7.69,
    "P/VP": 1.89,
@@ -6960,6 +7095,7 @@
   {
    "Ativo": "EKTR3",
    "Empresa": "ELEKTRO REDES S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 51.52,
    "P/L": 11.66,
    "P/VP": 3.67,
@@ -7012,6 +7148,7 @@
   {
    "Ativo": "EKTR4",
    "Empresa": "ELEKTRO REDES S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 37,
    "P/L": 11.66,
    "P/VP": 3.67,
@@ -7064,6 +7201,7 @@
   {
    "Ativo": "EMAE3",
    "Empresa": "EMAE - EMPRESA METROP. DE AGUAS E ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 150,
    "P/L": -32.71,
    "P/VP": 4.68,
@@ -7116,6 +7254,7 @@
   {
    "Ativo": "EMAE4",
    "Empresa": "EMAE - EMPRESA METROP. DE AGUAS E ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 42.17,
    "P/L": -32.71,
    "P/VP": 4.68,
@@ -7168,6 +7307,7 @@
   {
    "Ativo": "EMBJ3",
    "Empresa": "EMBRAER S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 101.75,
    "P/L": 31.1,
    "P/VP": 3.65,
@@ -7220,6 +7360,7 @@
   {
    "Ativo": "ENEV3",
    "Empresa": "ENEVA S.A",
+   "Setor": "Energia e saneamento",
    "Cotação": 26.32,
    "P/L": 52.3,
    "P/VP": 2.29,
@@ -7272,6 +7413,7 @@
   {
    "Ativo": "ENGI11",
    "Empresa": "ENERGISA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 44.79,
    "P/L": 15.73,
    "P/VP": 1.04,
@@ -7324,6 +7466,7 @@
   {
    "Ativo": "ENGI3",
    "Empresa": "ENERGISA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 11.12,
    "P/L": 15.73,
    "P/VP": 1.04,
@@ -7376,6 +7519,7 @@
   {
    "Ativo": "ENGI4",
    "Empresa": "ENERGISA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 8.45,
    "P/L": 15.73,
    "P/VP": 1.04,
@@ -7428,6 +7572,7 @@
   {
    "Ativo": "ENJU3",
    "Empresa": "ENJOEI S.A.",
+   "Setor": "Consumo",
    "Cotação": 6.7,
    "P/L": -24.04,
    "P/VP": 6.6,
@@ -7480,6 +7625,7 @@
   {
    "Ativo": "ENMT3",
    "Empresa": "ENERGISA MATO GROSSO-DISTRIBUIDORA DE ENERGIA S/A",
+   "Setor": "Energia e saneamento",
    "Cotação": 28.2,
    "P/L": 10.8,
    "P/VP": 1.56,
@@ -7532,6 +7678,7 @@
   {
    "Ativo": "ENMT4",
    "Empresa": "ENERGISA MATO GROSSO-DISTRIBUIDORA DE ENERGIA S/A",
+   "Setor": "Energia e saneamento",
    "Cotação": 28.5,
    "P/L": 10.8,
    "P/VP": 1.56,
@@ -7584,6 +7731,7 @@
   {
    "Ativo": "EQTL3",
    "Empresa": "EQUATORIAL S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 33.18,
    "P/L": 43.45,
    "P/VP": 1.45,
@@ -7636,6 +7784,7 @@
   {
    "Ativo": "ESPA3",
    "Empresa": "MPM Corpóreos S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.75,
    "P/L": 21.89,
    "P/VP": 0.2,
@@ -7688,6 +7837,7 @@
   {
    "Ativo": "ESTR4",
    "Empresa": "MANUFATURA DE BRINQUEDOS ESTRELA S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.35,
    "P/L": 0.13,
    "P/VP": -0.08,
@@ -7740,6 +7890,7 @@
   {
    "Ativo": "ETER3",
    "Empresa": "ETERNIT S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 2.82,
    "P/L": 5.71,
    "P/VP": 0.21,
@@ -7792,6 +7943,7 @@
   {
    "Ativo": "EUCA3",
    "Empresa": "EUCATEX S.A. INDUSTRIA E COMERCIO",
+   "Setor": "Construção e imóveis",
    "Cotação": 19.75,
    "P/L": 4.35,
    "P/VP": 0.58,
@@ -7844,6 +7996,7 @@
   {
    "Ativo": "EUCA4",
    "Empresa": "EUCATEX S.A. INDUSTRIA E COMERCIO",
+   "Setor": "Construção e imóveis",
    "Cotação": 18.52,
    "P/L": 4.35,
    "P/VP": 0.58,
@@ -7896,6 +8049,7 @@
   {
    "Ativo": "EVEN3",
    "Empresa": "EVEN CONSTRUTORA E INCORPORADORA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 3.41,
    "P/L": 3.42,
    "P/VP": 0.29,
@@ -7948,6 +8102,7 @@
   {
    "Ativo": "EZTC3",
    "Empresa": "EZ TEC EMPREEND. E PARTICIPACOES S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 9.14,
    "P/L": 4.77,
    "P/VP": 0.48,
@@ -8000,6 +8155,7 @@
   {
    "Ativo": "FASA3",
    "Empresa": "FASA S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Consumo",
    "Cotação": 0.25,
    "P/L": -0.47,
    "P/VP": 0.28,
@@ -8052,6 +8208,7 @@
   {
    "Ativo": "FESA3",
    "Empresa": "CIA FERRO LIGAS DA BAHIA - FERBASA",
+   "Setor": "Commodities",
    "Cotação": 9.8,
    "P/L": 15.33,
    "P/VP": 0.69,
@@ -8104,6 +8261,7 @@
   {
    "Ativo": "FESA4",
    "Empresa": "CIA FERRO LIGAS DA BAHIA - FERBASA",
+   "Setor": "Commodities",
    "Cotação": 5.01,
    "P/L": 15.33,
    "P/VP": 0.69,
@@ -8156,6 +8314,7 @@
   {
    "Ativo": "FHER3",
    "Empresa": "FERTILIZANTES HERINGER S.A.",
+   "Setor": "Commodities",
    "Cotação": 2.7,
    "P/L": -0.64,
    "P/VP": -0.11,
@@ -8208,6 +8367,7 @@
   {
    "Ativo": "FIGE3",
    "Empresa": "INVESTIMENTOS BEMGE S.A.",
+   "Setor": "Financeiro",
    "Cotação": 32.94,
    "P/L": 4.78,
    "P/VP": 0.4,
@@ -8260,6 +8420,7 @@
   {
    "Ativo": "FIQE3",
    "Empresa": "Unifique Telecomunicações S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.43,
    "P/L": 9.45,
    "P/VP": 1.74,
@@ -8312,6 +8473,7 @@
   {
    "Ativo": "FLRY3",
    "Empresa": "FLEURY S.A.",
+   "Setor": "Consumo",
    "Cotação": 20.27,
    "P/L": 15.65,
    "P/VP": 2,
@@ -8364,6 +8526,7 @@
   {
    "Ativo": "FRAS3",
    "Empresa": "FRASLE MOBILITY S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 21.53,
    "P/L": 20.6,
    "P/VP": 2.38,
@@ -8416,6 +8579,7 @@
   {
    "Ativo": "FRIO3",
    "Empresa": "METALFRIO SOLUTIONS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 205,
    "P/L": 19.71,
    "P/VP": 2.66,
@@ -8468,6 +8632,7 @@
   {
    "Ativo": "GEPA3",
    "Empresa": "RIO PARANAPANEMA ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 31,
    "P/L": 13.03,
    "P/VP": 2.13,
@@ -8520,6 +8685,7 @@
   {
    "Ativo": "GEPA4",
    "Empresa": "RIO PARANAPANEMA ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 31,
    "P/L": 13.03,
    "P/VP": 2.13,
@@ -8572,6 +8738,7 @@
   {
    "Ativo": "GFSA3",
    "Empresa": "GAFISA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 0.22,
    "P/L": -0.01,
    "P/VP": 0,
@@ -8624,6 +8791,7 @@
   {
    "Ativo": "GGBR3",
    "Empresa": "GERDAU S.A.",
+   "Setor": "Commodities",
    "Cotação": 20.63,
    "P/L": 16.47,
    "P/VP": 0.81,
@@ -8676,6 +8844,7 @@
   {
    "Ativo": "GGBR4",
    "Empresa": "GERDAU S.A.",
+   "Setor": "Commodities",
    "Cotação": 23.99,
    "P/L": 16.47,
    "P/VP": 0.81,
@@ -8728,6 +8897,7 @@
   {
    "Ativo": "GGPS3",
    "Empresa": "GPS PARTICIPAÇÕES E EMPREENDIMENTOS S.A.",
+   "Setor": "Outros",
    "Cotação": 10.36,
    "P/L": 8.51,
    "P/VP": 1.72,
@@ -8780,6 +8950,7 @@
   {
    "Ativo": "GMAT3",
    "Empresa": "GRUPO MATEUS S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.71,
    "P/L": 5.27,
    "P/VP": 0.69,
@@ -8832,6 +9003,7 @@
   {
    "Ativo": "GOAU3",
    "Empresa": "METALURGICA GERDAU S.A.",
+   "Setor": "Commodities",
    "Cotação": 9.54,
    "P/L": 14.03,
    "P/VP": 0.25,
@@ -8884,6 +9056,7 @@
   {
    "Ativo": "GOAU4",
    "Empresa": "METALURGICA GERDAU S.A.",
+   "Setor": "Commodities",
    "Cotação": 10.69,
    "P/L": 14.03,
    "P/VP": 0.25,
@@ -8936,6 +9109,7 @@
   {
    "Ativo": "GPAR3",
    "Empresa": "CIA CELG DE PARTICIPACOES - CELGPAR",
+   "Setor": "Energia e saneamento",
    "Cotação": 19.96,
    "P/L": -0.08,
    "P/VP": null,
@@ -8988,6 +9162,7 @@
   {
    "Ativo": "GRND3",
    "Empresa": "GRENDENE S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.71,
    "P/L": 5.78,
    "P/VP": 1.04,
@@ -9040,6 +9215,7 @@
   {
    "Ativo": "GSHP3",
    "Empresa": "GENERAL SHOPPING E OUTLETS DO BRASIL BRASIL S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.75,
    "P/L": -0.02,
    "P/VP": 0,
@@ -9092,6 +9268,7 @@
   {
    "Ativo": "HAPV3",
    "Empresa": "HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.18,
    "P/L": -11437.88,
    "P/VP": 41.32,
@@ -9144,6 +9321,7 @@
   {
    "Ativo": "HBOR3",
    "Empresa": "HELBOR EMPREENDIMENTOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 1.47,
    "P/L": 42.8,
    "P/VP": 0.07,
@@ -9196,6 +9374,7 @@
   {
    "Ativo": "HBRE3",
    "Empresa": "HBR Realty Empreendimentos Imobiliários S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 1.86,
    "P/L": 5.25,
    "P/VP": 0.07,
@@ -9248,6 +9427,7 @@
   {
    "Ativo": "HBSA3",
    "Empresa": "HIDROVIAS DO BRASIL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 2.95,
    "P/L": -22.44,
    "P/VP": 1.92,
@@ -9300,6 +9480,7 @@
   {
    "Ativo": "HBTS5",
    "Empresa": "CIA HABITASUL DE PARTICIPACOES",
+   "Setor": "Financeiro",
    "Cotação": 32,
    "P/L": 4.29,
    "P/VP": 0.45,
@@ -9352,6 +9533,7 @@
   {
    "Ativo": "HETA3",
    "Empresa": "HERCULES S.A. FABRICA DE TALHERES",
+   "Setor": "Commodities",
    "Cotação": 96,
    "P/L": 22.33,
    "P/VP": -0.05,
@@ -9404,6 +9586,7 @@
   {
    "Ativo": "HETA4",
    "Empresa": "HERCULES S.A. FABRICA DE TALHERES",
+   "Setor": "Commodities",
    "Cotação": 4.81,
    "P/L": 22.33,
    "P/VP": -0.05,
@@ -9456,6 +9639,7 @@
   {
    "Ativo": "HOOT4",
    "Empresa": "HOTEIS OTHON S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Consumo",
    "Cotação": 7.28,
    "P/L": 5.13,
    "P/VP": -3.22,
@@ -9508,6 +9692,7 @@
   {
    "Ativo": "HYPE3",
    "Empresa": "HYPERA S.A.",
+   "Setor": "Consumo",
    "Cotação": 21.86,
    "P/L": 8.49,
    "P/VP": 1.04,
@@ -9560,6 +9745,7 @@
   {
    "Ativo": "IFCM3",
    "Empresa": "INFRACOMMERCE CXAAS S.A.",
+   "Setor": "Consumo",
    "Cotação": 1.22,
    "P/L": -9.22,
    "P/VP": 21.93,
@@ -9612,6 +9798,7 @@
   {
    "Ativo": "IGTI11",
    "Empresa": "IGUATEMI S.A.",
+   "Setor": "Consumo",
    "Cotação": 22.81,
    "P/L": 9.81,
    "P/VP": 1.27,
@@ -9664,6 +9851,7 @@
   {
    "Ativo": "IGTI3",
    "Empresa": "IGUATEMI S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.84,
    "P/L": 9.81,
    "P/VP": 1.27,
@@ -9716,6 +9904,7 @@
   {
    "Ativo": "IGTI4",
    "Empresa": "IGUATEMI S.A.",
+   "Setor": "Consumo",
    "Cotação": 9.37,
    "P/L": 9.81,
    "P/VP": 1.27,
@@ -9768,6 +9957,7 @@
   {
    "Ativo": "INEP3",
    "Empresa": "INEPAR S.A. INDUSTRIA E CONSTRUCOES EM RECUPERACAO JUDICIAL",
+   "Setor": "Indústria e serviços",
    "Cotação": 0.99,
    "P/L": -0.21,
    "P/VP": -0.03,
@@ -9820,6 +10010,7 @@
   {
    "Ativo": "INTB3",
    "Empresa": "Intelbras S.A. Ind. de Telecomunicação Eletrônica Brasileira",
+   "Setor": "Consumo",
    "Cotação": 14.4,
    "P/L": 7.54,
    "P/VP": 1.39,
@@ -9872,6 +10063,7 @@
   {
    "Ativo": "IRBR3",
    "Empresa": "IRB - BRASIL RESSEGUROS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 57.11,
    "P/L": 19.27,
    "P/VP": 0.87,
@@ -9924,6 +10116,7 @@
   {
    "Ativo": "ISAE3",
    "Empresa": "ISA ENERGIA BRASIL",
+   "Setor": "Energia e saneamento",
    "Cotação": 34.73,
    "P/L": 6.78,
    "P/VP": 0.85,
@@ -9976,6 +10169,7 @@
   {
    "Ativo": "ISAE4",
    "Empresa": "ISA ENERGIA BRASIL",
+   "Setor": "Energia e saneamento",
    "Cotação": 25.71,
    "P/L": 6.78,
    "P/VP": 0.85,
@@ -10028,6 +10222,7 @@
   {
    "Ativo": "ITSA3",
    "Empresa": "ITAÚSA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 13.21,
    "P/L": 7.99,
    "P/VP": 1.47,
@@ -10080,6 +10275,7 @@
   {
    "Ativo": "ITSA4",
    "Empresa": "ITAÚSA S.A.",
+   "Setor": "Financeiro",
    "Cotação": 12.82,
    "P/L": 7.99,
    "P/VP": 1.47,
@@ -10132,6 +10328,7 @@
   {
    "Ativo": "ITUB3",
    "Empresa": "ITAU UNIBANCO HOLDING S.A.",
+   "Setor": "Financeiro",
    "Cotação": 44.35,
    "P/L": 9.93,
    "P/VP": 2.04,
@@ -10184,6 +10381,7 @@
   {
    "Ativo": "ITUB4",
    "Empresa": "ITAU UNIBANCO HOLDING S.A.",
+   "Setor": "Financeiro",
    "Cotação": 39.97,
    "P/L": 9.93,
    "P/VP": 2.04,
@@ -10236,6 +10434,7 @@
   {
    "Ativo": "JALL3",
    "Empresa": "Jalles Machado S.A.",
+   "Setor": "Commodities",
    "Cotação": 1.99,
    "P/L": -119.24,
    "P/VP": 3.12,
@@ -10288,6 +10487,7 @@
   {
    "Ativo": "JFEN3",
    "Empresa": "JOAO FORTES ENGENHARIA S.A. - Em Recuperação Judicial",
+   "Setor": "Construção e imóveis",
    "Cotação": 3.91,
    "P/L": -0.32,
    "P/VP": -0.16,
@@ -10340,6 +10540,7 @@
   {
    "Ativo": "JHSF3",
    "Empresa": "JHSF PARTICIPACOES S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 9.44,
    "P/L": 2.94,
    "P/VP": 0.79,
@@ -10392,6 +10593,7 @@
   {
    "Ativo": "JOPA3",
    "Empresa": "JOSAPAR-JOAQUIM OLIVEIRA S.A. - PARTICIP",
+   "Setor": "Consumo",
    "Cotação": 19.95,
    "P/L": 14.25,
    "P/VP": 0.27,
@@ -10444,6 +10646,7 @@
   {
    "Ativo": "JOPA4",
    "Empresa": "JOSAPAR-JOAQUIM OLIVEIRA S.A. - PARTICIP",
+   "Setor": "Consumo",
    "Cotação": 18,
    "P/L": 14.25,
    "P/VP": 0.27,
@@ -10496,6 +10699,7 @@
   {
    "Ativo": "JSLG3",
    "Empresa": "JSL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.49,
    "P/L": -15.98,
    "P/VP": 1.3,
@@ -10548,6 +10752,7 @@
   {
    "Ativo": "KEPL3",
    "Empresa": "KEPLER WEBER S.A.",
+   "Setor": "Commodities",
    "Cotação": 6.69,
    "P/L": 8.29,
    "P/VP": 1.45,
@@ -10600,6 +10805,7 @@
   {
    "Ativo": "LAND3",
    "Empresa": "Terra Santa Propriedades Agrícolas S.A.",
+   "Setor": "Commodities",
    "Cotação": 9.52,
    "P/L": -64.21,
    "P/VP": 1.4,
@@ -10652,6 +10858,7 @@
   {
    "Ativo": "LAVV3",
    "Empresa": "Lavvi Empreendimentos Imobiliários S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 7.41,
    "P/L": 40.11,
    "P/VP": 8.43,
@@ -10704,6 +10911,7 @@
   {
    "Ativo": "LEVE3",
    "Empresa": "MAHLE METAL LEVE S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 31.14,
    "P/L": 6.06,
    "P/VP": 4.37,
@@ -10756,6 +10964,7 @@
   {
    "Ativo": "LIGT3",
    "Empresa": "LIGHT S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 2.48,
    "P/L": 0.38,
    "P/VP": 0.1,
@@ -10808,6 +11017,7 @@
   {
    "Ativo": "LJQQ3",
    "Empresa": "Lojas Quero Quero S.A.",
+   "Setor": "Consumo",
    "Cotação": 1.1,
    "P/L": -1.15,
    "P/VP": 0.78,
@@ -10860,6 +11070,7 @@
   {
    "Ativo": "LOGG3",
    "Empresa": "LOG COMMERCIAL PROPERTIES E PARTICIPAÇÕES",
+   "Setor": "Construção e imóveis",
    "Cotação": 20.2,
    "P/L": 4.72,
    "P/VP": 0.5,
@@ -10912,6 +11123,7 @@
   {
    "Ativo": "LOGN3",
    "Empresa": "LOG-IN LOGISTICA INTERMODAL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 23.5,
    "P/L": 18.17,
    "P/VP": 2.07,
@@ -10964,6 +11176,7 @@
   {
    "Ativo": "LPSB3",
    "Empresa": "LPS BRASIL - CONSULTORIA DE IMOVEIS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 0.96,
    "P/L": 4.51,
    "P/VP": 0.56,
@@ -11016,6 +11229,7 @@
   {
    "Ativo": "LREN3",
    "Empresa": "LOJAS RENNER S.A.",
+   "Setor": "Consumo",
    "Cotação": 9.53,
    "P/L": 6.13,
    "P/VP": 0.88,
@@ -11068,6 +11282,7 @@
   {
    "Ativo": "LUPA3",
    "Empresa": "LUPATECH S.A",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.9,
    "P/L": -0.12,
    "P/VP": -0.62,
@@ -11120,6 +11335,7 @@
   {
    "Ativo": "LWSA3",
    "Empresa": "LWSA S/A",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.16,
    "P/L": -8.67,
    "P/VP": 0.73,
@@ -11172,6 +11388,7 @@
   {
    "Ativo": "MATD3",
    "Empresa": "HOSPITAL MATER DEI S.A.",
+   "Setor": "Consumo",
    "Cotação": 4.52,
    "P/L": 10.55,
    "P/VP": 0.99,
@@ -11224,6 +11441,7 @@
   {
    "Ativo": "MDIA3",
    "Empresa": "M.DIAS BRANCO S.A. IND COM DE ALIMENTOS",
+   "Setor": "Consumo",
    "Cotação": 16.35,
    "P/L": 8.45,
    "P/VP": 0.65,
@@ -11276,6 +11494,7 @@
   {
    "Ativo": "MDNE3",
    "Empresa": "MOURA DUBEUX ENGENHARIA S/A",
+   "Setor": "Construção e imóveis",
    "Cotação": 16.04,
    "P/L": 2.97,
    "P/VP": 0.73,
@@ -11328,6 +11547,7 @@
   {
    "Ativo": "MEAL3",
    "Empresa": "INTERNATIONAL MEAL COMPANY ALIMENTACAO S.A.",
+   "Setor": "Consumo",
    "Cotação": 0.78,
    "P/L": -149.33,
    "P/VP": 32.7,
@@ -11380,6 +11600,7 @@
   {
    "Ativo": "MELK3",
    "Empresa": "Melnick Desenvolvimento Imobiliário S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 2.3,
    "P/L": 3.67,
    "P/VP": 0.38,
@@ -11432,6 +11653,7 @@
   {
    "Ativo": "MGEL4",
    "Empresa": "MANGELS INDUSTRIAL S.A.",
+   "Setor": "Commodities",
    "Cotação": 5.16,
    "P/L": 0.74,
    "P/VP": 0.49,
@@ -11484,6 +11706,7 @@
   {
    "Ativo": "MGLU3",
    "Empresa": "MAGAZINE LUIZA S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.43,
    "P/L": 47.59,
    "P/VP": 0.38,
@@ -11536,6 +11759,7 @@
   {
    "Ativo": "MILS3",
    "Empresa": "MILLS LOCAÇÃO, SERVIÇOS E LOGÍSTICA S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 16.14,
    "P/L": 8.19,
    "P/VP": 1.95,
@@ -11588,6 +11812,7 @@
   {
    "Ativo": "MMAQ3",
    "Empresa": "MINASMAQUINAS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 2550.01,
    "P/L": null,
    "P/VP": 0.36,
@@ -11640,6 +11865,7 @@
   {
    "Ativo": "MMAQ4",
    "Empresa": "MINASMAQUINAS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 2550.01,
    "P/L": null,
    "P/VP": 0.36,
@@ -11692,6 +11918,7 @@
   {
    "Ativo": "MNDL3",
    "Empresa": "MUNDIAL S.A. - PRODUTOS DE CONSUMO",
+   "Setor": "Consumo",
    "Cotação": 17.6,
    "P/L": -5.2,
    "P/VP": 1.61,
@@ -11744,6 +11971,7 @@
   {
    "Ativo": "MNPR3",
    "Empresa": "MINUPAR PARTICIPACOES S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.61,
    "P/L": 5.87,
    "P/VP": 1.13,
@@ -11796,6 +12024,7 @@
   {
    "Ativo": "MOTV3",
    "Empresa": "MOTIVA INFRAESTRUTURA DE MOBILIDADE S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 14.58,
    "P/L": 4.83,
    "P/VP": 1.52,
@@ -11848,6 +12077,7 @@
   {
    "Ativo": "MOVI3",
    "Empresa": "MOVIDA PARTICIPACOES SA",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.91,
    "P/L": 4.87,
    "P/VP": 0.6,
@@ -11900,6 +12130,7 @@
   {
    "Ativo": "MRVE3",
    "Empresa": "MRV ENGENHARIA E PARTICIPACOES S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 4.1,
    "P/L": -4.01,
    "P/VP": 0.44,
@@ -11952,6 +12183,7 @@
   {
    "Ativo": "MSPA3",
    "Empresa": "CIA MELHORAMENTOS DE SAO PAULO",
+   "Setor": "Commodities",
    "Cotação": 37.4,
    "P/L": -5.01,
    "P/VP": 0.3,
@@ -12004,6 +12236,7 @@
   {
    "Ativo": "MSPA4",
    "Empresa": "CIA MELHORAMENTOS DE SAO PAULO",
+   "Setor": "Commodities",
    "Cotação": 33,
    "P/L": -5.01,
    "P/VP": 0.3,
@@ -12056,6 +12289,7 @@
   {
    "Ativo": "MTRE3",
    "Empresa": "Mitre Realty Empreendimentos e Participações S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 3.01,
    "P/L": 4.85,
    "P/VP": 0.3,
@@ -12108,6 +12342,7 @@
   {
    "Ativo": "MTSA3",
    "Empresa": "METISA METALURGICA TIMBOENSE S.A.",
+   "Setor": "Commodities",
    "Cotação": 76,
    "P/L": 14.57,
    "P/VP": 1.06,
@@ -12160,6 +12395,7 @@
   {
    "Ativo": "MTSA4",
    "Empresa": "METISA METALURGICA TIMBOENSE S.A.",
+   "Setor": "Commodities",
    "Cotação": 41.05,
    "P/L": 14.57,
    "P/VP": 1.06,
@@ -12212,6 +12448,7 @@
   {
    "Ativo": "MULT3",
    "Empresa": "MULTIPLAN - EMPREEND IMOBILIARIOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 26.24,
    "P/L": 8.29,
    "P/VP": 1.84,
@@ -12264,6 +12501,7 @@
   {
    "Ativo": "MWET3",
    "Empresa": "WETZEL S.A.",
+   "Setor": "Commodities",
    "Cotação": 24.5,
    "P/L": -1.21,
    "P/VP": -1.53,
@@ -12316,6 +12554,7 @@
   {
    "Ativo": "MWET4",
    "Empresa": "WETZEL S.A.",
+   "Setor": "Commodities",
    "Cotação": 24.78,
    "P/L": -1.21,
    "P/VP": -1.53,
@@ -12368,6 +12607,7 @@
   {
    "Ativo": "MYPK3",
    "Empresa": "IOCHPE MAXION S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 9.42,
    "P/L": 15.43,
    "P/VP": 0.3,
@@ -12420,6 +12660,7 @@
   {
    "Ativo": "NATU3",
    "Empresa": "NATURA COSMÉTICOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.35,
    "P/L": -2.77,
    "P/VP": 0.58,
@@ -12472,6 +12713,7 @@
   {
    "Ativo": "NEXP3",
    "Empresa": "Nexpe Participações S.A",
+   "Setor": "Construção e imóveis",
    "Cotação": 2.23,
    "P/L": 0.06,
    "P/VP": -0.05,
@@ -12524,6 +12766,7 @@
   {
    "Ativo": "NUTR3",
    "Empresa": "NUTRIPLANT INDUSTRIA E COMERCIO S.A.",
+   "Setor": "Commodities",
    "Cotação": 2.52,
    "P/L": 4.27,
    "P/VP": 0.65,
@@ -12576,6 +12819,7 @@
   {
    "Ativo": "ODER4",
    "Empresa": "CONSERVAS ODERICH S.A.",
+   "Setor": "Consumo",
    "Cotação": 100,
    "P/L": 16.88,
    "P/VP": 1.85,
@@ -12628,6 +12872,7 @@
   {
    "Ativo": "OFSA3",
    "Empresa": "OUROFINO S.A.",
+   "Setor": "Consumo",
    "Cotação": 24.76,
    "P/L": 5.64,
    "P/VP": 1.61,
@@ -12680,6 +12925,7 @@
   {
    "Ativo": "ONCO3",
    "Empresa": "ONCOCLÍNICAS DO BRASIL SERVIÇOS MÉDICOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 0.87,
    "P/L": -0.23,
    "P/VP": 9.94,
@@ -12732,6 +12978,7 @@
   {
    "Ativo": "OPCT3",
    "Empresa": "Oceanpact Serviços Maritimos S.A.",
+   "Setor": "Commodities",
    "Cotação": 9.08,
    "P/L": 10.83,
    "P/VP": 1.76,
@@ -12784,6 +13031,7 @@
   {
    "Ativo": "ORVR3",
    "Empresa": "Orizon Valorização de Resíduos S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 16.98,
    "P/L": 46.4,
    "P/VP": 0.44,
@@ -12836,6 +13084,7 @@
   {
    "Ativo": "OSXB3",
    "Empresa": "OSX BRASIL S.A. - Em Recuperação Judicial",
+   "Setor": "Outros",
    "Cotação": 1.51,
    "P/L": 0,
    "P/VP": 0,
@@ -12888,6 +13137,7 @@
   {
    "Ativo": "PASS3",
    "Empresa": "Compass Gás e Energia S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 19.58,
    "P/L": 12.16,
    "P/VP": 1.73,
@@ -12940,6 +13190,7 @@
   {
    "Ativo": "PATI3",
    "Empresa": "PANATLANTICA S.A.",
+   "Setor": "Commodities",
    "Cotação": 29,
    "P/L": 11.42,
    "P/VP": 0.9,
@@ -12992,6 +13243,7 @@
   {
    "Ativo": "PATI4",
    "Empresa": "PANATLANTICA S.A.",
+   "Setor": "Commodities",
    "Cotação": 35.45,
    "P/L": 11.42,
    "P/VP": 0.9,
@@ -13044,6 +13296,7 @@
   {
    "Ativo": "PCAR3",
    "Empresa": "CIA BRASILEIRA DE DISTRIBUICAO",
+   "Setor": "Consumo",
    "Cotação": 2.39,
    "P/L": -0.55,
    "P/VP": 2.88,
@@ -13096,6 +13349,7 @@
   {
    "Ativo": "PDGR3",
    "Empresa": "PDG REALTY S.A. EMPREEND E PARTICIPACOES",
+   "Setor": "Construção e imóveis",
    "Cotação": 0.2,
    "P/L": 0,
    "P/VP": 0,
@@ -13148,6 +13402,7 @@
   {
    "Ativo": "PDTC3",
    "Empresa": "PADTEC HOLDING S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 1.55,
    "P/L": 11.05,
    "P/VP": 0.88,
@@ -13200,6 +13455,7 @@
   {
    "Ativo": "PEAB3",
    "Empresa": "CIA PARTICIPACOES ALIANCA DA BAHIA",
+   "Setor": "Outros",
    "Cotação": 35,
    "P/L": 15.11,
    "P/VP": 0.71,
@@ -13252,6 +13508,7 @@
   {
    "Ativo": "PEAB4",
    "Empresa": "CIA PARTICIPACOES ALIANCA DA BAHIA",
+   "Setor": "Outros",
    "Cotação": 38,
    "P/L": 15.11,
    "P/VP": 0.71,
@@ -13304,6 +13561,7 @@
   {
    "Ativo": "PETR3",
    "Empresa": "PETROLEO BRASILEIRO S.A. PETROBRAS",
+   "Setor": "Commodities",
    "Cotação": 51.78,
    "P/L": 4.77,
    "P/VP": 1.32,
@@ -13356,6 +13614,7 @@
   {
    "Ativo": "PETR4",
    "Empresa": "PETROLEO BRASILEIRO S.A. PETROBRAS",
+   "Setor": "Commodities",
    "Cotação": 45.95,
    "P/L": 4.77,
    "P/VP": 1.32,
@@ -13408,6 +13667,7 @@
   {
    "Ativo": "PFRM3",
    "Empresa": "PROFARMA DISTRIB PROD FARMACEUTICOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 6.75,
    "P/L": 5.36,
    "P/VP": 0.49,
@@ -13460,6 +13720,7 @@
   {
    "Ativo": "PGMN3",
    "Empresa": "EMPREENDIMENTOS PAGUE MENOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 2.42,
    "P/L": 5.31,
    "P/VP": 0.51,
@@ -13512,6 +13773,7 @@
   {
    "Ativo": "PINE3",
    "Empresa": "BCO PINE S.A",
+   "Setor": "Financeiro",
    "Cotação": 9.04,
    "P/L": 4.09,
    "P/VP": 1.35,
@@ -13564,6 +13826,7 @@
   {
    "Ativo": "PINE4",
    "Empresa": "BCO PINE S.A",
+   "Setor": "Financeiro",
    "Cotação": 10.4,
    "P/L": 4.09,
    "P/VP": 1.35,
@@ -13616,6 +13879,7 @@
   {
    "Ativo": "PLPL3",
    "Empresa": "Plano & Plano Desenvolvimento Imobiliário S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 4.4,
    "P/L": 2.92,
    "P/VP": 0.73,
@@ -13668,6 +13932,7 @@
   {
    "Ativo": "PMAM3",
    "Empresa": "PARANAPANEMA S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Commodities",
    "Cotação": 0.26,
    "P/L": -0.06,
    "P/VP": -0.01,
@@ -13720,6 +13985,7 @@
   {
    "Ativo": "PNVL3",
    "Empresa": "DIMED S.A. DISTRIBUIDORA DE MEDICAMENTOS",
+   "Setor": "Consumo",
    "Cotação": 10.7,
    "P/L": 11.61,
    "P/VP": 1.21,
@@ -13772,6 +14038,7 @@
   {
    "Ativo": "POMO3",
    "Empresa": "MARCOPOLO S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.36,
    "P/L": 3.62,
    "P/VP": 1.01,
@@ -13824,6 +14091,7 @@
   {
    "Ativo": "POMO4",
    "Empresa": "MARCOPOLO S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.58,
    "P/L": 3.62,
    "P/VP": 1.01,
@@ -13876,6 +14144,7 @@
   {
    "Ativo": "POSI3",
    "Empresa": "POSITIVO TECNOLOGIA S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.11,
    "P/L": 34.55,
    "P/VP": 0.28,
@@ -13928,6 +14197,7 @@
   {
    "Ativo": "PRIO3",
    "Empresa": "PRIO S.A.",
+   "Setor": "Commodities",
    "Cotação": 61.54,
    "P/L": 12.7,
    "P/VP": 1.74,
@@ -13980,6 +14250,7 @@
   {
    "Ativo": "PRNR3",
    "Empresa": "PRINER SERVIÇOS INDUSTRIAIS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 12.71,
    "P/L": 16.52,
    "P/VP": 1.31,
@@ -14032,6 +14303,7 @@
   {
    "Ativo": "PSSA3",
    "Empresa": "PORTO SEGURO S.A.",
+   "Setor": "Financeiro",
    "Cotação": 43.71,
    "P/L": 7.61,
    "P/VP": 1.73,
@@ -14084,6 +14356,7 @@
   {
    "Ativo": "PTBL3",
    "Empresa": "PBG S/A",
+   "Setor": "Construção e imóveis",
    "Cotação": 1.45,
    "P/L": -0.64,
    "P/VP": -1.97,
@@ -14136,6 +14409,7 @@
   {
    "Ativo": "QUAL3",
    "Empresa": "QUALICORP CONSULTORIA E CORRETORA DE SEGUROS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 1.39,
    "P/L": 15.03,
    "P/VP": 0.29,
@@ -14188,6 +14462,7 @@
   {
    "Ativo": "RADL3",
    "Empresa": "Raia Drogasil S.A.",
+   "Setor": "Consumo",
    "Cotação": 14.69,
    "P/L": 19.13,
    "P/VP": 3.52,
@@ -14240,6 +14515,7 @@
   {
    "Ativo": "RAIL3",
    "Empresa": "RUMO S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 14.19,
    "P/L": 21.46,
    "P/VP": 1.79,
@@ -14292,6 +14568,7 @@
   {
    "Ativo": "RANI3",
    "Empresa": "IRANI PAPEL E EMBALAGEM S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 8.46,
    "P/L": 13.38,
    "P/VP": 1.31,
@@ -14344,6 +14621,7 @@
   {
    "Ativo": "RAPT3",
    "Empresa": "RANDONCORP S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 7.78,
    "P/L": -5.13,
    "P/VP": 0.39,
@@ -14396,6 +14674,7 @@
   {
    "Ativo": "RAPT4",
    "Empresa": "RANDONCORP S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.58,
    "P/L": -5.13,
    "P/VP": 0.39,
@@ -14448,6 +14727,7 @@
   {
    "Ativo": "RCSL3",
    "Empresa": "RECRUSUL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 1.65,
    "P/L": -0.01,
    "P/VP": -0.01,
@@ -14500,6 +14780,7 @@
   {
    "Ativo": "RCSL4",
    "Empresa": "RECRUSUL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 0.7,
    "P/L": -0.01,
    "P/VP": -0.01,
@@ -14552,6 +14833,7 @@
   {
    "Ativo": "RDOR3",
    "Empresa": "Rede D'Or São Luiz S.A.",
+   "Setor": "Consumo",
    "Cotação": 32.67,
    "P/L": 14.77,
    "P/VP": 3.11,
@@ -14604,6 +14886,7 @@
   {
    "Ativo": "RECV3",
    "Empresa": "PETRORECÔNCAVO S.A.",
+   "Setor": "Commodities",
    "Cotação": 10.16,
    "P/L": 5.97,
    "P/VP": 0.67,
@@ -14656,6 +14939,7 @@
   {
    "Ativo": "REDE3",
    "Empresa": "REDE ENERGIA PARTICIPAÇÕES S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 5.09,
    "P/L": 12.72,
    "P/VP": 1.88,
@@ -14708,6 +14992,7 @@
   {
    "Ativo": "RENT3",
    "Empresa": "Localiza Rent a Car S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 29.07,
    "P/L": 9.37,
    "P/VP": 1.18,
@@ -14760,6 +15045,7 @@
   {
    "Ativo": "RENT4",
    "Empresa": "Localiza Rent a Car S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 28.75,
    "P/L": 9.37,
    "P/VP": 1.18,
@@ -14812,6 +15098,7 @@
   {
    "Ativo": "RIAA3",
    "Empresa": "GUARARAPES CONFECCOES S.A.",
+   "Setor": "Consumo",
    "Cotação": 6.14,
    "P/L": 2.01,
    "P/VP": 0.57,
@@ -14864,6 +15151,7 @@
   {
    "Ativo": "RNEW3",
    "Empresa": "RENOVA ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 0.86,
    "P/L": -2.2,
    "P/VP": 0.28,
@@ -14916,6 +15204,7 @@
   {
    "Ativo": "RNEW4",
    "Empresa": "RENOVA ENERGIA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 0.81,
    "P/L": -2.2,
    "P/VP": 0.28,
@@ -14968,6 +15257,7 @@
   {
    "Ativo": "ROMI3",
    "Empresa": "ROMI S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.38,
    "P/L": 5.54,
    "P/VP": 0.4,
@@ -15020,6 +15310,7 @@
   {
    "Ativo": "RPAD3",
    "Empresa": "ALFA HOLDINGS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 7.5,
    "P/L": 8.6,
    "P/VP": 0.61,
@@ -15072,6 +15363,7 @@
   {
    "Ativo": "RPAD5",
    "Empresa": "ALFA HOLDINGS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 7.81,
    "P/L": 8.6,
    "P/VP": 0.61,
@@ -15124,6 +15416,7 @@
   {
    "Ativo": "RPAD6",
    "Empresa": "ALFA HOLDINGS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 7.5,
    "P/L": 8.6,
    "P/VP": 0.61,
@@ -15176,6 +15469,7 @@
   {
    "Ativo": "RPMG3",
    "Empresa": "REFINARIA DE PETROLEOS MANGUINHOS S.A.",
+   "Setor": "Commodities",
    "Cotação": 0.85,
    "P/L": -0.03,
    "P/VP": -0.01,
@@ -15224,6 +15518,7 @@
   {
    "Ativo": "RSID3",
    "Empresa": "ROSSI RESIDENCIAL S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": null,
    "Cotação": 1.6,
    "P/L": -0.21,
    "P/VP": -0.03,
@@ -15276,6 +15571,7 @@
   {
    "Ativo": "RSUL4",
    "Empresa": "METALURGICA RIOSULENSE S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 39.35,
    "P/L": 3.91,
    "P/VP": 0.79,
@@ -15328,6 +15624,7 @@
   {
    "Ativo": "RVEE3",
    "Empresa": "REVEE S.A.",
+   "Setor": "Consumo",
    "Cotação": 0.61,
    "P/L": -2.91,
    "P/VP": 2.01,
@@ -15372,6 +15669,7 @@
   {
    "Ativo": "SANB11",
    "Empresa": "BCO SANTANDER (BRASIL) S.A.",
+   "Setor": "Financeiro",
    "Cotação": 25.94,
    "P/L": 7.31,
    "P/VP": 0.74,
@@ -15424,6 +15722,7 @@
   {
    "Ativo": "SANB3",
    "Empresa": "BCO SANTANDER (BRASIL) S.A.",
+   "Setor": "Financeiro",
    "Cotação": 12.85,
    "P/L": 7.31,
    "P/VP": 0.74,
@@ -15476,6 +15775,7 @@
   {
    "Ativo": "SANB4",
    "Empresa": "BCO SANTANDER (BRASIL) S.A.",
+   "Setor": "Financeiro",
    "Cotação": 12.84,
    "P/L": 7.31,
    "P/VP": 0.74,
@@ -15528,6 +15828,7 @@
   {
    "Ativo": "SAPR11",
    "Empresa": "CIA SANEAMENTO DO PARANA - SANEPAR",
+   "Setor": "Energia e saneamento",
    "Cotação": 30.68,
    "P/L": 20.66,
    "P/VP": 0.78,
@@ -15580,6 +15881,7 @@
   {
    "Ativo": "SAPR3",
    "Empresa": "CIA SANEAMENTO DO PARANA - SANEPAR",
+   "Setor": "Energia e saneamento",
    "Cotação": 6.37,
    "P/L": 20.66,
    "P/VP": 0.78,
@@ -15632,6 +15934,7 @@
   {
    "Ativo": "SAPR4",
    "Empresa": "CIA SANEAMENTO DO PARANA - SANEPAR",
+   "Setor": "Energia e saneamento",
    "Cotação": 6.15,
    "P/L": 20.66,
    "P/VP": 0.78,
@@ -15684,6 +15987,7 @@
   {
    "Ativo": "SAUD3",
    "Empresa": "BRADSAÚDE S.A.",
+   "Setor": "Consumo",
    "Cotação": 14.8,
    "P/L": 20.67,
    "P/VP": 2.2,
@@ -15736,6 +16040,7 @@
   {
    "Ativo": "SBFG3",
    "Empresa": "Grupo SBF S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.09,
    "P/L": 2.8,
    "P/VP": 0.37,
@@ -15788,6 +16093,7 @@
   {
    "Ativo": "SBSP3",
    "Empresa": "CIA SANEAMENTO BASICO EST SAO PAULO",
+   "Setor": "Energia e saneamento",
    "Cotação": 25.03,
    "P/L": 7.53,
    "P/VP": 1.94,
@@ -15840,6 +16146,7 @@
   {
    "Ativo": "SCAR3",
    "Empresa": "SAO CARLOS EMPREEND E PARTICIPACOES S.A.",
+   "Setor": "Outros",
    "Cotação": 10.5,
    "P/L": -36.36,
    "P/VP": 0.62,
@@ -15892,6 +16199,7 @@
   {
    "Ativo": "SEER3",
    "Empresa": "SER EDUCACIONAL S.A.",
+   "Setor": "Consumo",
    "Cotação": 10.81,
    "P/L": 5.09,
    "P/VP": 0.91,
@@ -15944,6 +16252,7 @@
   {
    "Ativo": "SEQL3",
    "Empresa": "SEQUOIA LOGÍSTICA E TRANSPORTES S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 6.19,
    "P/L": -148.1,
    "P/VP": -156.06,
@@ -15996,6 +16305,7 @@
   {
    "Ativo": "SHUL3",
    "Empresa": "SCHULZ S.A.",
+   "Setor": "Commodities",
    "Cotação": 30,
    "P/L": 20.91,
    "P/VP": 3.46,
@@ -16048,6 +16358,7 @@
   {
    "Ativo": "SHUL4",
    "Empresa": "SCHULZ S.A.",
+   "Setor": "Commodities",
    "Cotação": 4.16,
    "P/L": 20.91,
    "P/VP": 3.46,
@@ -16100,6 +16411,7 @@
   {
    "Ativo": "SIMH3",
    "Empresa": "SIMPAR S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.38,
    "P/L": -17.22,
    "P/VP": 0.32,
@@ -16152,6 +16464,7 @@
   {
    "Ativo": "SLCE3",
    "Empresa": "SLC AGRICOLA S.A.",
+   "Setor": "Commodities",
    "Cotação": 16.35,
    "P/L": 20.89,
    "P/VP": 1.33,
@@ -16204,6 +16517,7 @@
   {
    "Ativo": "SMFT3",
    "Empresa": "SMARTFIT ESCOLA DE GINÁSTICA E DANÇA S.A.",
+   "Setor": "Consumo",
    "Cotação": 17.71,
    "P/L": 15.83,
    "P/VP": 1.78,
@@ -16256,6 +16570,7 @@
   {
    "Ativo": "SMTO3",
    "Empresa": "SAO MARTINHO S.A.",
+   "Setor": "Commodities",
    "Cotação": 20.42,
    "P/L": 8.12,
    "P/VP": 0.89,
@@ -16308,6 +16623,7 @@
   {
    "Ativo": "SNSY3",
    "Empresa": "SANSUY S.A. INDUSTRIA DE PLASTICOS",
+   "Setor": "Commodities",
    "Cotação": 9.89,
    "P/L": -0.2,
    "P/VP": -0.02,
@@ -16360,6 +16676,7 @@
   {
    "Ativo": "SNSY5",
    "Empresa": "SANSUY S.A. INDUSTRIA DE PLASTICOS",
+   "Setor": "Commodities",
    "Cotação": 2.1,
    "P/L": -0.2,
    "P/VP": -0.02,
@@ -16412,6 +16729,7 @@
   {
    "Ativo": "SNSY6",
    "Empresa": "SANSUY S.A. INDUSTRIA DE PLASTICOS",
+   "Setor": "Commodities",
    "Cotação": 11.51,
    "P/L": -0.2,
    "P/VP": -0.02,
@@ -16464,6 +16782,7 @@
   {
    "Ativo": "SOJA3",
    "Empresa": "BOA SAFRA SEMENTES S.A.",
+   "Setor": "Consumo",
    "Cotação": 5.92,
    "P/L": 36,
    "P/VP": 0.62,
@@ -16516,6 +16835,7 @@
   {
    "Ativo": "SOND3",
    "Empresa": "SONDOTECNICA ENGENHARIA SOLOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 38.66,
    "P/L": 3.88,
    "P/VP": 2.45,
@@ -16568,6 +16888,7 @@
   {
    "Ativo": "SOND5",
    "Empresa": "SONDOTECNICA ENGENHARIA SOLOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 80,
    "P/L": 3.88,
    "P/VP": 2.45,
@@ -16620,6 +16941,7 @@
   {
    "Ativo": "SOND6",
    "Empresa": "SONDOTECNICA ENGENHARIA SOLOS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 90.1,
    "P/L": 3.88,
    "P/VP": 2.45,
@@ -16672,6 +16994,7 @@
   {
    "Ativo": "SUZB3",
    "Empresa": "SUZANO S.A.",
+   "Setor": "Commodities",
    "Cotação": 52.29,
    "P/L": 7.89,
    "P/VP": 1.29,
@@ -16724,6 +17047,7 @@
   {
    "Ativo": "SYNE3",
    "Empresa": "SYN PROP & TECH S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 2.75,
    "P/L": 7.71,
    "P/VP": 0.29,
@@ -16776,6 +17100,7 @@
   {
    "Ativo": "TAEE11",
    "Empresa": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 39.6,
    "P/L": 8.3,
    "P/VP": 1.68,
@@ -16828,6 +17153,7 @@
   {
    "Ativo": "TAEE3",
    "Empresa": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 12.98,
    "P/L": 8.3,
    "P/VP": 1.68,
@@ -16880,6 +17206,7 @@
   {
    "Ativo": "TAEE4",
    "Empresa": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+   "Setor": "Energia e saneamento",
    "Cotação": 13.36,
    "P/L": 8.3,
    "P/VP": 1.68,
@@ -16932,6 +17259,7 @@
   {
    "Ativo": "TASA3",
    "Empresa": "TAURUS ARMAS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 5.01,
    "P/L": 24.14,
    "P/VP": 0.5,
@@ -16984,6 +17312,7 @@
   {
    "Ativo": "TASA4",
    "Empresa": "TAURUS ARMAS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 4.4,
    "P/L": 24.14,
    "P/VP": 0.5,
@@ -17036,6 +17365,7 @@
   {
    "Ativo": "TCSA3",
    "Empresa": "TECNISA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 5.38,
    "P/L": -6.13,
    "P/VP": 1.57,
@@ -17088,6 +17418,7 @@
   {
    "Ativo": "TECN3",
    "Empresa": "TECHNOS S.A.",
+   "Setor": "Consumo",
    "Cotação": 7.66,
    "P/L": 3.75,
    "P/VP": 0.91,
@@ -17140,6 +17471,7 @@
   {
    "Ativo": "TELB3",
    "Empresa": "TELEC BRASILEIRAS S.A. TELEBRAS",
+   "Setor": "Indústria e serviços",
    "Cotação": 12.3,
    "P/L": 8.43,
    "P/VP": 0.69,
@@ -17192,6 +17524,7 @@
   {
    "Ativo": "TELB4",
    "Empresa": "TELEC BRASILEIRAS S.A. TELEBRAS",
+   "Setor": "Indústria e serviços",
    "Cotação": 7.2,
    "P/L": 8.43,
    "P/VP": 0.69,
@@ -17244,6 +17577,7 @@
   {
    "Ativo": "TEND3",
    "Empresa": "CONSTRUTORA TENDA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 16.25,
    "P/L": 1.61,
    "P/VP": 0.61,
@@ -17296,6 +17630,7 @@
   {
    "Ativo": "TFCO4",
    "Empresa": "TRACK & FIELD CO S.A.",
+   "Setor": "Consumo",
    "Cotação": 10.05,
    "P/L": 64.35,
    "P/VP": 15.37,
@@ -17348,6 +17683,7 @@
   {
    "Ativo": "TGMA3",
    "Empresa": "TEGMA GESTAO LOGISTICA S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 34.58,
    "P/L": 8.98,
    "P/VP": 2.29,
@@ -17400,6 +17736,7 @@
   {
    "Ativo": "TIMS3",
    "Empresa": "TIM S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 19.96,
    "P/L": 26.69,
    "P/VP": 1.91,
@@ -17452,6 +17789,7 @@
   {
    "Ativo": "TOKY3",
    "Empresa": "GRUPO TOKY S.A. - EM RECUPERAÇÃO JUDICIAL",
+   "Setor": "Consumo",
    "Cotação": 5.11,
    "P/L": -1.07,
    "P/VP": -2.85,
@@ -17504,6 +17842,7 @@
   {
    "Ativo": "TOTS3",
    "Empresa": "TOTVS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 32.65,
    "P/L": 13.13,
    "P/VP": 3.43,
@@ -17556,6 +17895,7 @@
   {
    "Ativo": "TPIS3",
    "Empresa": "TPI - TRIUNFO PARTICIP. E INVEST. S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 12.5,
    "P/L": -1.4,
    "P/VP": 1.15,
@@ -17608,6 +17948,7 @@
   {
    "Ativo": "TRIS3",
    "Empresa": "TRISUL S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 4.17,
    "P/L": 5.15,
    "P/VP": 0.64,
@@ -17660,6 +18001,7 @@
   {
    "Ativo": "TTEN3",
    "Empresa": "Três Tentos Agroindustrial S/A",
+   "Setor": "Commodities",
    "Cotação": 10.12,
    "P/L": 8.61,
    "P/VP": 1.01,
@@ -17712,6 +18054,7 @@
   {
    "Ativo": "TUPY3",
    "Empresa": "TUPY S.A.",
+   "Setor": "Commodities",
    "Cotação": 15.45,
    "P/L": -2.62,
    "P/VP": 0.88,
@@ -17764,6 +18107,7 @@
   {
    "Ativo": "TXRX4",
    "Empresa": "TEXTIL RENAUXVIEW S.A.",
+   "Setor": "Consumo",
    "Cotação": 1.85,
    "P/L": -0.12,
    "P/VP": -0.02,
@@ -17816,6 +18160,7 @@
   {
    "Ativo": "UCAS3",
    "Empresa": "UNICASA INDÚSTRIA DE MÓVEIS S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 0.95,
    "P/L": -3.87,
    "P/VP": 0.37,
@@ -17868,6 +18213,7 @@
   {
    "Ativo": "UGPA3",
    "Empresa": "ULTRAPAR PARTICIPACOES S.A.",
+   "Setor": "Commodities",
    "Cotação": 30.6,
    "P/L": 9.65,
    "P/VP": 1.67,
@@ -17920,6 +18266,7 @@
   {
    "Ativo": "UNIP3",
    "Empresa": "UNIPAR CARBOCLORO S.A.",
+   "Setor": "Commodities",
    "Cotação": 50.95,
    "P/L": 21.64,
    "P/VP": 2.87,
@@ -17972,6 +18319,7 @@
   {
    "Ativo": "UNIP5",
    "Empresa": "UNIPAR CARBOCLORO S.A.",
+   "Setor": "Commodities",
    "Cotação": 52.48,
    "P/L": 21.64,
    "P/VP": 2.87,
@@ -18024,6 +18372,7 @@
   {
    "Ativo": "UNIP6",
    "Empresa": "UNIPAR CARBOCLORO S.A.",
+   "Setor": "Commodities",
    "Cotação": 51.64,
    "P/L": 21.64,
    "P/VP": 2.87,
@@ -18076,6 +18425,7 @@
   {
    "Ativo": "USIM3",
    "Empresa": "USINAS SID DE MINAS GERAIS S.A.-USIMINAS",
+   "Setor": "Commodities",
    "Cotação": 4.71,
    "P/L": 4.37,
    "P/VP": 0.26,
@@ -18128,6 +18478,7 @@
   {
    "Ativo": "USIM5",
    "Empresa": "USINAS SID DE MINAS GERAIS S.A.-USIMINAS",
+   "Setor": "Commodities",
    "Cotação": 4.83,
    "P/L": 4.37,
    "P/VP": 0.26,
@@ -18180,6 +18531,7 @@
   {
    "Ativo": "USIM6",
    "Empresa": "USINAS SID DE MINAS GERAIS S.A.-USIMINAS",
+   "Setor": "Commodities",
    "Cotação": 6.6,
    "P/L": 4.37,
    "P/VP": 0.26,
@@ -18232,6 +18584,7 @@
   {
    "Ativo": "VALE3",
    "Empresa": "VALE S.A.",
+   "Setor": "Commodities",
    "Cotação": 62.67,
    "P/L": 116.64,
    "P/VP": 1.28,
@@ -18284,6 +18637,7 @@
   {
    "Ativo": "VAMO3",
    "Empresa": "VAMOS LOCAÇÃO DE CAMINHÕES, MÁQUINAS E EQUIPAMENTOS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 2.59,
    "P/L": 7.6,
    "P/VP": 0.92,
@@ -18336,6 +18690,7 @@
   {
    "Ativo": "VBBR3",
    "Empresa": "VIBRA ENERGIA S/A",
+   "Setor": "Consumo",
    "Cotação": 28.6,
    "P/L": 6.77,
    "P/VP": 1.45,
@@ -18388,6 +18743,7 @@
   {
    "Ativo": "VITT3",
    "Empresa": "VITTIA S.A.",
+   "Setor": "Commodities",
    "Cotação": 2.6,
    "P/L": 6.25,
    "P/VP": 0.67,
@@ -18440,6 +18796,7 @@
   {
    "Ativo": "VIVA3",
    "Empresa": "Vivara Participações S.A.",
+   "Setor": "Consumo",
    "Cotação": 18.18,
    "P/L": 5.02,
    "P/VP": 1.34,
@@ -18492,6 +18849,7 @@
   {
    "Ativo": "VIVR3",
    "Empresa": "VIVER INCORPORADORA E CONSTRUTORA S.A.",
+   "Setor": "Construção e imóveis",
    "Cotação": 2.68,
    "P/L": -0.78,
    "P/VP": 0.3,
@@ -18544,6 +18902,7 @@
   {
    "Ativo": "VIVT3",
    "Empresa": "TELEFÔNICA BRASIL S.A",
+   "Setor": "Indústria e serviços",
    "Cotação": 31.12,
    "P/L": 15.07,
    "P/VP": 1.51,
@@ -18596,6 +18955,7 @@
   {
    "Ativo": "VLID3",
    "Empresa": "VALID SOLUÇÕES S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 13.84,
    "P/L": 4.8,
    "P/VP": 0.63,
@@ -18648,6 +19008,7 @@
   {
    "Ativo": "VSTE3",
    "Empresa": "VESTE S.A. ESTILO",
+   "Setor": "Consumo",
    "Cotação": 2.42,
    "P/L": 5.84,
    "P/VP": 0.25,
@@ -18700,6 +19061,7 @@
   {
    "Ativo": "VTRU3",
    "Empresa": "VITRU EDUCAÇÃO S.A.",
+   "Setor": "Consumo",
    "Cotação": 12.25,
    "P/L": 1.67,
    "P/VP": 0.46,
@@ -18752,6 +19114,7 @@
   {
    "Ativo": "VULC3",
    "Empresa": "VULCABRAS S.A.",
+   "Setor": "Consumo",
    "Cotação": 11.85,
    "P/L": 4,
    "P/VP": 1.4,
@@ -18804,6 +19167,7 @@
   {
    "Ativo": "VVEO3",
    "Empresa": "CM Hospitalar S.A",
+   "Setor": "Consumo",
    "Cotação": 0.68,
    "P/L": 3.78,
    "P/VP": 0.12,
@@ -18856,6 +19220,7 @@
   {
    "Ativo": "WEGE3",
    "Empresa": "WEG S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 48.3,
    "P/L": 32.33,
    "P/VP": 9.48,
@@ -18908,6 +19273,7 @@
   {
    "Ativo": "WEST3",
    "Empresa": "WESTWING COMÉRCIO VAREJISTA S.A.",
+   "Setor": "Consumo",
    "Cotação": 3.43,
    "P/L": -3.77,
    "P/VP": 0.26,
@@ -18960,6 +19326,7 @@
   {
    "Ativo": "WHRL3",
    "Empresa": "WHIRLPOOL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.29,
    "P/L": 16.52,
    "P/VP": 2.45,
@@ -19012,6 +19379,7 @@
   {
    "Ativo": "WHRL4",
    "Empresa": "WHIRLPOOL S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 3.08,
    "P/L": 16.52,
    "P/VP": 2.45,
@@ -19064,6 +19432,7 @@
   {
    "Ativo": "WIZC3",
    "Empresa": "WIZ CO PARTICIPAÇÕES E CORRETAGEM DE SEGUROS S.A.",
+   "Setor": "Financeiro",
    "Cotação": 5.95,
    "P/L": 4.79,
    "P/VP": 0.71,
@@ -19116,6 +19485,7 @@
   {
    "Ativo": "WLMM3",
    "Empresa": "WLM PART. E COMÉRCIO DE MÁQUINAS E VEÍCULOS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 16.8,
    "P/L": 7.35,
    "P/VP": 0.71,
@@ -19168,6 +19538,7 @@
   {
    "Ativo": "WLMM4",
    "Empresa": "WLM PART. E COMÉRCIO DE MÁQUINAS E VEÍCULOS S.A.",
+   "Setor": "Indústria e serviços",
    "Cotação": 14.97,
    "P/L": 7.35,
    "P/VP": 0.71,
@@ -19220,6 +19591,7 @@
   {
    "Ativo": "YDUQ3",
    "Empresa": "YDUQS PARTICIPACOES S.A.",
+   "Setor": "Consumo",
    "Cotação": 9.07,
    "P/L": 20.33,
    "P/VP": 0.79,
