@@ -98,6 +98,27 @@ describe('buildStock', () => {
         assert.equal(s['Situação'], 'Em recuperação judicial');
     });
 
+    test('computes payout, ROIC, dividend history and profit history', () => {
+        const s = buildStock(
+            { ...company, lucrosAnuais: [{ ano: 2024, lucro: -5.4 }, { ano: 2025, lucro: 80.6 }] },
+            'XXXX3',
+            { ...market, dividendosMedia5a: 0.5, anosComDividendos: 4 },
+            1000,
+        );
+        assert.equal(s.Payout, 80); // 8% yield x 1000 cap / 100 profit
+        assert.equal(s.ROIC, 25); // 200 EBIT / (500 equity + 300 net debt)
+        assert.equal(s['DY Médio 5 Anos'], 5);
+        assert.equal(s['Anos com Dividendos'], 4);
+        assert.deepEqual(s['Lucros Anuais'], [{ ano: 2024, lucro: -5 }, { ano: 2025, lucro: 81 }]);
+        assert.equal(s['Anos com Lucro'], 1);
+    });
+
+    test('payout and ROIC are null when they cannot be computed', () => {
+        const s = buildStock({ ...company, lucro: -10, patrimonio: -400 }, 'XXXX3', market, 1000);
+        assert.equal(s.Payout, null);
+        assert.equal(s.ROIC, null);
+    });
+
     test('financial companies have no EV/EBIT', () => {
         const s = buildStock({ ...company, ebit: null, dividaLiquida: null }, 'BANK4', market, 1000);
         assert.equal(s['EV/EBIT'], null);

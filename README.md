@@ -22,9 +22,19 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 | Rota | Descrição |
 | --- | --- |
-| `GET /api/ibovespa/filtered` | Ranking: liquidez > R$ 1 mi/dia, margem EBIT > 0, DY > 6%, fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM), ordenado por EV/EBIT. Parâmetros opcionais: `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
+| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
+
+### Critérios do ranking
+
+- Liquidez média diária > R$ 1 mi e margem EBIT positiva.
+- DY sustentável > 6%: o menor entre o DY de 12 meses e o DY médio de 5 anos (exclui dividendos extraordinários).
+- Payout ≤ 100% e proventos pagos em pelo menos 3 dos últimos 5 anos.
+- Lucro em todos os últimos balanços anuais (mínimo 3) e nos últimos 12 meses.
+- Dívida líquida / EBIT < 3.
+- Fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM).
+- Ordenação por EV/EBIT ou pela Fórmula Mágica (posição no EV/EBIT + posição no ROIC); uma ação por empresa.
 
 As respostas trazem o cabeçalho `X-Data-Updated-At`. Erros retornam JSON `{ "error": "..." }`.
 

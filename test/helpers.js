@@ -19,6 +19,13 @@ function stock(overrides = {}) {
         'EV/EBIT': 5,
         'Margem Ebit': 20,
         'Liquidez Média Diária': 5_000_000,
+        'DY Médio 5 Anos': 8,
+        'Anos com Dividendos': 5,
+        'Payout': 50,
+        'P/L': 6,
+        'ROIC': 20,
+        'Dívida Líquida/EBIT': 1,
+        'Lucros Anuais': [2021, 2022, 2023, 2024, 2025].map(ano => ({ ano, lucro: 100 })),
         ...overrides,
     };
 }

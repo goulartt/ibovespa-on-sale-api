@@ -86,6 +86,18 @@ describe('buildCompany', () => {
         assert.deepEqual(c.acoes, { on: 990, pn: 500 }); // treasury shares removed, from the DFP
     });
 
+    test('collects the net income of each annual statement', () => {
+        const dfp2024 = cvmZip({
+            'dfp_cia_aberta_DRE_con_2024.csv': [DRE_HEADER,
+                ...dre('2024-12-31', 'ÚLTIMO', '2024-01-01', '2024-12-31', { receita: 900, ebit: 100, lucro: -20, controladora: -25 })],
+        });
+        const companies = companiesFrom([dfp2024, 'DFP', 2024], [dfp2025(), 'DFP', 2025], [itr2026(), 'ITR', 2026]);
+        assert.deepEqual(buildCompany(CNPJ, companies.get(CNPJ)).lucrosAnuais, [
+            { ano: 2024, lucro: -25_000 },
+            { ano: 2025, lucro: 90_000 },
+        ]);
+    });
+
     test('uses the latest version of a resubmitted filing', () => {
         const companies = companiesFrom([dfp2025(), 'DFP', 2025], [itr2026({ versao: 2 }), 'ITR', 2026]);
         assert.equal(buildCompany(CNPJ, companies.get(CNPJ)).receita, 1_200_000);
@@ -187,7 +199,7 @@ describe('loadFundamentals', () => {
         assert.equal(result.length, 1);
         assert.equal(result[0].empresa, 'EMPRESA');
         assert.deepEqual(result[0].tickers, [{ ticker: 'EMPR3', classe: 'ON' }]);
-        assert.ok(requested.includes('DFP-2024') && requested.includes('ITR-2025') && requested.includes('FCA-2025'));
+        assert.ok(['DFP-2021', 'DFP-2026', 'ITR-2025', 'FCA-2025'].every(r => requested.includes(r)));
     });
 
     test('drops companies whose last statement is too old', async () => {

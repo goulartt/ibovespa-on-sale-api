@@ -6,6 +6,7 @@ const { logger: defaultLogger } = require('../lib/logger');
 
 const BASE = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC';
 
+const PROFIT_HISTORY_YEARS = 5;
 const DRE_ACCOUNT = /^3\.\d\d(\.\d\d)?$/; // first two levels of the income statement
 const BPA_ACCOUNTS = new Set(['1.01.01', '1.01.02']);
 const BPP_ACCOUNT = c => c === '2.01.04' || c === '2.02.01' || /^2\.\d\d$/.test(c); // + level 2 (equity)
@@ -145,6 +146,19 @@ function netIncomeAccount(filing, src) {
     return (controladora && hasValue(controladora[0]) ? controladora : total || [])[0];
 }
 
+// Net income of each fiscal year (from the annual DFP statements), oldest first, last 5 years.
+function annualNetIncome(company) {
+    const result = [];
+    for (const [date, filing] of [...company.filings].sort(([a], [b]) => a.localeCompare(b))) {
+        if (filing.type !== 'DFP') continue;
+        const src = filing.con.size > 0 ? 'con' : 'ind';
+        const conta = netIncomeAccount(filing, src);
+        const value = conta && ytd(filing[src], 'ÚLTIMO', conta);
+        if (value) result.push({ ano: Number(date.slice(0, 4)), lucro: value.v });
+    }
+    return result.slice(-PROFIT_HISTORY_YEARS);
+}
+
 function buildCompany(cnpj, company) {
     const dates = [...company.filings.keys()].sort();
     const latestDate = dates[dates.length - 1];
@@ -165,6 +179,7 @@ function buildCompany(cnpj, company) {
     return {
         cnpj,
         dataBalanco: latestDate,
+        lucrosAnuais: annualNetIncome(company),
         financeira,
         acoes: sharesFiling.shares,
         receita: ttm(company, latest, src, '3.01'),
@@ -200,7 +215,8 @@ function readTickers(fcaZips) {
 async function loadFundamentals({ now = new Date(), download = downloadZip } = {}) {
     const year = now.getUTCFullYear();
     const companies = new Map();
-    for (const [type, y] of [['DFP', year - 2], ['DFP', year - 1], ['DFP', year], ['ITR', year - 1], ['ITR', year]]) {
+    const dfpYears = Array.from({ length: PROFIT_HISTORY_YEARS + 1 }, (_, i) => year - PROFIT_HISTORY_YEARS + i);
+    for (const [type, y] of [...dfpYears.map(y => ['DFP', y]), ['ITR', year - 1], ['ITR', year]]) {
         const zip = await download(type, y);
         if (zip) ingest(companies, zip, type, y);
     }

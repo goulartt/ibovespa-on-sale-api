@@ -96,3 +96,24 @@ describe('fetchChart', () => {
         assert.equal(calls, 1);
     });
 });
+
+describe('dividend history', () => {
+    test('splits dividends into trailing 12-month windows over 5 years', () => {
+        const dividends = {
+            a: { amount: 1, date: NOW_S - 30 * DAY },
+            b: { amount: 2, date: NOW_S - 400 * DAY },
+            c: { amount: 0.5, date: NOW_S - 1000 * DAY },
+            d: { amount: 7, date: NOW_S - 6 * 365 * DAY }, // older than 5 years: ignored
+        };
+        const m = parseChart(chart({ dividends }), NOW_S * 1000);
+        assert.equal(m.dividendos12m, 1);
+        assert.equal(m.dividendosMedia5a, (1 + 2 + 0.5) / 5);
+        assert.equal(m.anosComDividendos, 3);
+    });
+
+    test('a company that never paid has zero history', () => {
+        const m = parseChart(chart(), NOW_S * 1000);
+        assert.equal(m.dividendosMedia5a, 0);
+        assert.equal(m.anosComDividendos, 0);
+    });
+});

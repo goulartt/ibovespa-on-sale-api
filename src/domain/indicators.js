@@ -42,6 +42,10 @@ function marketCap(company, prices) {
 
 function buildStock(company, ticker, market, cap) {
     const ev = company.dividaLiquida == null ? null : cap + company.dividaLiquida;
+    const investedCapital = company.patrimonio == null || company.dividaLiquida == null ? null : company.patrimonio + company.dividaLiquida;
+    // Share of the (company-level) net income paid out, based on this ticker's dividends.
+    const payout = company.lucro > 0 && market.price > 0 ? percent((market.dividendos12m / market.price) * cap, company.lucro) : null;
+    const lucrosAnuais = company.lucrosAnuais || [];
     return {
         'Ativo': ticker,
         'Empresa': company.empresa,
@@ -50,14 +54,20 @@ function buildStock(company, ticker, market, cap) {
         'P/VP': round(ratio(cap, company.patrimonio)),
         'PSR': round(ratio(cap, company.receita)),
         'Dividend Yield': round(percent(market.dividendos12m, market.price)),
+        'DY Médio 5 Anos': round(percent(market.dividendosMedia5a, market.price)),
+        'Anos com Dividendos': market.anosComDividendos ?? null,
+        'Payout': round(payout),
         'P/EBIT': round(ratio(cap, company.ebit)),
         'EV/EBIT': round(ratio(ev, company.ebit)),
         'Margem Ebit': round(percent(company.ebit, company.receita)),
         'Margem Líquida': round(percent(company.lucro, company.receita)),
         'ROE': round(percent(company.lucro, company.patrimonio)),
+        'ROIC': investedCapital > 0 ? round(percent(company.ebit, investedCapital)) : null,
         'Dívida Líquida/Patrimônio': round(ratio(company.dividaLiquida, company.patrimonio)),
         'Dívida Líquida/EBIT': round(ratio(company.dividaLiquida, company.ebit)),
         'Liquidez Média Diária': round(market.liquidezMediaDiaria, 0),
+        'Lucros Anuais': lucrosAnuais.map(({ ano, lucro }) => ({ ano, lucro: round(lucro, 0) })),
+        'Anos com Lucro': lucrosAnuais.filter(y => y.lucro > 0).length,
         'Data Balanço': company.dataBalanco,
         'Situação': company.situacao ?? null,
         'MA5': round(market.MA5),

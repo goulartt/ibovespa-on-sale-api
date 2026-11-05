@@ -1,5 +1,5 @@
 const express = require('express');
-const { rankStocks, DEFAULT_CRITERIA } = require('../domain/ranking');
+const { rankStocks, DEFAULT_CRITERIA, SORTS } = require('../domain/ranking');
 const { HttpError } = require('../lib/httpError');
 
 const asyncHandler = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
@@ -13,6 +13,15 @@ function numberParam(query, name, { min, max, integer = false, fallback }) {
         throw new HttpError(400, `Parâmetro "${name}" inválido: use ${integer ? 'um inteiro' : 'um número'} entre ${min} e ${max}.`);
     }
     return value;
+}
+
+function enumParam(query, name, allowed, fallback) {
+    const raw = query[name];
+    if (raw === undefined || raw === '') return fallback;
+    if (!allowed.includes(raw)) {
+        throw new HttpError(400, `Parâmetro "${name}" inválido: use ${allowed.join(' ou ')}.`);
+    }
+    return raw;
 }
 
 function createIbovespaRouter({ stocksRepository }) {
@@ -33,6 +42,7 @@ function createIbovespaRouter({ stocksRepository }) {
         const criteria = {
             limit: numberParam(req.query, 'limit', { min: 1, max: 200, integer: true, fallback: DEFAULT_CRITERIA.limit }),
             minDividendYield: numberParam(req.query, 'minDy', { min: 0, max: 100, fallback: DEFAULT_CRITERIA.minDividendYield }),
+            sort: enumParam(req.query, 'sort', SORTS, DEFAULT_CRITERIA.sort),
         };
         const dataset = await stocksRepository.getDataset();
         sendStocks(res, dataset, rankStocks(dataset.stocks, criteria));

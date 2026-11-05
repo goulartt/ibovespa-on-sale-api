@@ -6,8 +6,8 @@ const { dataset, stock } = require('./helpers');
 
 const logger = createLogger('silent');
 const DATA = dataset([
-    stock({ Ativo: 'BBB3', Empresa: 'B', 'EV/EBIT': 4 }),
-    stock({ Ativo: 'AAA3', Empresa: 'A', 'EV/EBIT': 2, 'Dividend Yield': 12 }),
+    stock({ Ativo: 'BBB3', Empresa: 'B', 'EV/EBIT': 4, ROIC: 50 }),
+    stock({ Ativo: 'AAA3', Empresa: 'A', 'EV/EBIT': 2, 'Dividend Yield': 12, 'DY Médio 5 Anos': 12, ROIC: 5 }),
     stock({ Ativo: 'LOW3', Empresa: 'LOW', 'Dividend Yield': 3 }),
 ]);
 
@@ -50,8 +50,14 @@ describe('HTTP API', () => {
         assert.deepEqual(highDy.map(s => s.Ativo), ['AAA3']);
     });
 
+    test('filtered can sort by the magic formula', async () => {
+        const body = await (await fetch(`${ctx.base}/api/ibovespa/filtered?sort=magicFormula`)).json();
+        // AAA3: ev 0 + roic 1 = 1; BBB3: ev 1 + roic 0 = 1 -> tie broken by EV/EBIT
+        assert.deepEqual(body.map(s => s.Ativo), ['AAA3', 'BBB3']);
+    });
+
     test('invalid query params return 400 with a message', async () => {
-        for (const qs of ['limit=0', 'limit=abc', 'limit=1.5', 'limit=1000', 'minDy=-1']) {
+        for (const qs of ['limit=0', 'limit=abc', 'limit=1.5', 'limit=1000', 'minDy=-1', 'sort=price']) {
             const res = await fetch(`${ctx.base}/api/ibovespa/filtered?${qs}`);
             assert.equal(res.status, 400, qs);
             assert.match((await res.json()).error, /inválido/);

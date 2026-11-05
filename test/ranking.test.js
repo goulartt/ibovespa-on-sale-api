@@ -64,3 +64,68 @@ describe('rankStocks', () => {
         assert.equal(stocks[0].Ranking, undefined);
     });
 });
+
+describe('dividend sustainability and quality rules', () => {
+    const keeps = (overrides) => rankStocks([stock(overrides)]).length === 1;
+
+    test('uses the lower of the 12-month and 5-year dividend yields', () => {
+        assert.equal(keeps({ 'Dividend Yield': 55, 'DY Médio 5 Anos': 7 }), true);
+        assert.equal(keeps({ 'Dividend Yield': 55, 'DY Médio 5 Anos': 5 }), false); // one-off special dividend
+        assert.equal(keeps({ 'Dividend Yield': 5, 'DY Médio 5 Anos': 12 }), false); // stopped paying recently
+        assert.equal(keeps({ 'DY Médio 5 Anos': null }), false);
+    });
+
+    test('requires a payout between 0 and 100% of net income', () => {
+        assert.equal(keeps({ Payout: 100 }), true);
+        assert.equal(keeps({ Payout: 108 }), false);
+        assert.equal(keeps({ Payout: null }), false);
+    });
+
+    test('requires dividends in at least 3 of the last 5 years', () => {
+        assert.equal(keeps({ 'Anos com Dividendos': 3 }), true);
+        assert.equal(keeps({ 'Anos com Dividendos': 2 }), false);
+    });
+
+    test('requires net debt below 3x EBIT (net cash is fine)', () => {
+        assert.equal(keeps({ 'Dívida Líquida/EBIT': -0.5 }), true);
+        assert.equal(keeps({ 'Dívida Líquida/EBIT': 3 }), false);
+        assert.equal(keeps({ 'Dívida Líquida/EBIT': null }), false);
+    });
+
+    test('requires a profit in every annual statement (at least 3) and in the last 12 months', () => {
+        const years = values => values.map((lucro, i) => ({ ano: 2021 + i, lucro }));
+        assert.equal(keeps({ 'Lucros Anuais': years([1, 2, 3]) }), true);
+        assert.equal(keeps({ 'Lucros Anuais': years([1, 2]) }), false);
+        assert.equal(keeps({ 'Lucros Anuais': years([1, -2, 3, 4, 5]) }), false);
+        assert.equal(keeps({ 'P/L': -3 }), false);
+        assert.equal(keeps({ 'Lucros Anuais': undefined }), false);
+    });
+});
+
+describe('magic formula sort', () => {
+    test('ranks by the sum of the EV/EBIT and ROIC positions', () => {
+        const stocks = [
+            stock({ Ativo: 'CHEAP3', Empresa: 'CHEAP', 'EV/EBIT': 2, ROIC: 5 }),   // ev 0 + roic 2 = 2
+            stock({ Ativo: 'QUAL3', Empresa: 'QUAL', 'EV/EBIT': 6, ROIC: 40 }),    // ev 2 + roic 0 = 2
+            stock({ Ativo: 'BOTH3', Empresa: 'BOTH', 'EV/EBIT': 3, ROIC: 30 }),    // ev 1 + roic 1 = 2... tie
+            stock({ Ativo: 'BAD3', Empresa: 'BAD', 'EV/EBIT': 9, ROIC: 1 }),       // ev 3 + roic 3 = 6
+        ];
+        const ranked = rankStocks(stocks, { sort: 'magicFormula' }).map(s => s.Ativo);
+        assert.deepEqual(ranked, ['CHEAP3', 'BOTH3', 'QUAL3', 'BAD3']); // ties broken by EV/EBIT
+        assert.deepEqual(rankStocks(stocks).map(s => s.Ativo), ['CHEAP3', 'BOTH3', 'QUAL3', 'BAD3']);
+    });
+
+    test('quality can beat a slightly cheaper but poor business', () => {
+        const stocks = [
+            stock({ Ativo: 'A3', Empresa: 'A', 'EV/EBIT': 2, ROIC: 3 }),
+            stock({ Ativo: 'B3', Empresa: 'B', 'EV/EBIT': 2.5, ROIC: 35 }),
+            stock({ Ativo: 'C3', Empresa: 'C', 'EV/EBIT': 4, ROIC: 30 }),
+        ];
+        assert.equal(rankStocks(stocks, { sort: 'magicFormula' })[0].Ativo, 'B3');
+        assert.equal(rankStocks(stocks)[0].Ativo, 'A3');
+    });
+
+    test('rejects unknown sorts', () => {
+        assert.throws(() => rankStocks([stock()], { sort: 'nope' }), /unknown sort/);
+    });
+});
