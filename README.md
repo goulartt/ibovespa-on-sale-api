@@ -22,7 +22,7 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 | Rota | Descrição |
 | --- | --- |
-| `GET /api/ibovespa/filtered` | Ranking: liquidez > R$ 1 mi/dia, margem EBIT > 0, DY > 6%, fora de recuperação judicial, ordenado por EV/EBIT. Parâmetros opcionais: `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
+| `GET /api/ibovespa/filtered` | Ranking: liquidez > R$ 1 mi/dia, margem EBIT > 0, DY > 6%, fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM), ordenado por EV/EBIT. Parâmetros opcionais: `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
 
@@ -62,4 +62,5 @@ test/                            testes
   por um P/VP implausível.
 - Bancos e seguradoras não têm EBIT/EV, então ficam fora do ranking.
 - O DY usa os proventos do Yahoo, que incluem dividendos extraordinários.
-- A lista de empresas em recuperação judicial (`src/domain/recuperacaoJudicial.js`) é manual.
+- Empresas em recuperação judicial/extrajudicial, falência ou liquidação são identificadas pelo
+  cadastro da CVM (`cad_cia_aberta.csv`, campo `SIT_EMISSOR`) a cada atualização dos dados.

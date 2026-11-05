@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { loadFundamentals } = require('../src/sources/cvm');
+const { loadIssuerStatus } = require('../src/sources/cvmRegistry');
 const { getMarketData } = require('../src/sources/yahoo');
 const { buildStocks } = require('../src/domain/indicators');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
@@ -40,7 +41,10 @@ function writeAtomically(file, content) {
 }
 
 async function main() {
-    const companies = await loadFundamentals();
+    const statuses = await loadIssuerStatus();
+    const companies = (await loadFundamentals())
+        .map(c => ({ ...c, situacao: statuses.get(c.cnpj)?.situacao ?? null }));
+    logger.info(`${companies.filter(c => c.situacao).length} listed companies in a distressed situation (CVM registry)`);
     const tickers = companies.flatMap(c => c.tickers.map(t => t.ticker));
     logger.info(`${companies.length} companies with CVM statements, ${tickers.length} tickers`);
 

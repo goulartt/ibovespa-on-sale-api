@@ -59,6 +59,7 @@ function buildStock(company, ticker, market, cap) {
         'Dívida Líquida/EBIT': round(ratio(company.dividaLiquida, company.ebit)),
         'Liquidez Média Diária': round(market.liquidezMediaDiaria, 0),
         'Data Balanço': company.dataBalanco,
+        'Situação': company.situacao ?? null,
         'MA5': round(market.MA5),
         'MA10': round(market.MA10),
         'MA20': round(market.MA20),

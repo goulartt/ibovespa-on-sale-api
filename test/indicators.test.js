@@ -90,6 +90,12 @@ describe('buildStock', () => {
         assert.equal(s['Liquidez Média Diária'], 1234568);
         assert.equal(s.MA5, 9.88);
         assert.equal(s.MA200, null);
+        assert.equal(s['Situação'], null);
+    });
+
+    test('carries the CVM issuer situation', () => {
+        const s = buildStock({ ...company, situacao: 'Em recuperação judicial' }, 'XXXX3', market, 1000);
+        assert.equal(s['Situação'], 'Em recuperação judicial');
     });
 
     test('financial companies have no EV/EBIT', () => {

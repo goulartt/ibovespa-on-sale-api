@@ -1,14 +1,14 @@
 const _ = require('lodash');
-const { RECUPERACAO_JUDICIAL } = require('./recuperacaoJudicial');
 
-// "Ibovespa em promoção": liquid, profitable companies paying > 6% dividend yield,
-// ranked by the cheapest EV/EBIT, one ticker per company.
+// "Ibovespa em promoção": liquid, profitable companies paying > 6% dividend yield, operating
+// normally (not in judicial/extrajudicial recovery, bankruptcy or liquidation according to the
+// CVM registry), ranked by the cheapest EV/EBIT, one ticker per company.
 const DEFAULT_CRITERIA = Object.freeze({
     minLiquidity: 1_000_000,
     minEbitMargin: 0,
     minDividendYield: 6,
     limit: 50,
-    excludedTickers: RECUPERACAO_JUDICIAL,
+    excludedTickers: [], // manual overrides, if ever needed
 });
 
 function rankStocks(stocks, criteria = {}) {
@@ -20,6 +20,7 @@ function rankStocks(stocks, criteria = {}) {
         stock['Margem Ebit'] > c.minEbitMargin &&
         stock['Dividend Yield'] > c.minDividendYield &&
         stock['EV/EBIT'] != null &&
+        !stock['Situação'] &&
         !excluded.has(stock.Ativo));
 
     // Cheapest first; for the same company keep its most liquid ticker.

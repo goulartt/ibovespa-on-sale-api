@@ -16,10 +16,19 @@ describe('rankStocks', () => {
         assert.deepEqual(rankStocks(stocks).map(s => s.Ativo), ['OK3']);
     });
 
-    test('excludes companies in judicial recovery', () => {
-        const stocks = [stock({ Ativo: 'OIBR3', Empresa: 'OI' }), stock({ Ativo: 'OK3', Empresa: 'OK' })];
-        assert.deepEqual(rankStocks(stocks).map(s => s.Ativo), ['OK3']);
-        assert.deepEqual(rankStocks(stocks, { excludedTickers: [] }).map(s => s.Ativo).sort(), ['OIBR3', 'OK3']);
+    test('excludes companies in recovery, bankruptcy or liquidation', () => {
+        const stocks = [
+            stock({ Ativo: 'LIGT3', Empresa: 'LIGHT', 'Situação': 'Em recuperação judicial' }),
+            stock({ Ativo: 'PCAR3', Empresa: 'CBD', 'Situação': 'Em recuperação extrajudicial' }),
+            stock({ Ativo: 'OK3', Empresa: 'OK', 'Situação': null }),
+            stock({ Ativo: 'OLD3', Empresa: 'OLD' }), // datasets built before the field existed
+        ];
+        assert.deepEqual(rankStocks(stocks).map(s => s.Ativo).sort(), ['OK3', 'OLD3']);
+    });
+
+    test('supports manual exclusions', () => {
+        const stocks = [stock({ Ativo: 'AAA3', Empresa: 'A' }), stock({ Ativo: 'BBB3', Empresa: 'B' })];
+        assert.deepEqual(rankStocks(stocks, { excludedTickers: ['AAA3'] }).map(s => s.Ativo), ['BBB3']);
     });
 
     test('ranks by EV/EBIT ascending and numbers the result', () => {
