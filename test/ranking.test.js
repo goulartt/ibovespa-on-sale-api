@@ -181,6 +181,13 @@ describe('deep value strategy', () => {
         assert.deepEqual(deep(stocks).map(s => s.Ativo), ['OK3']);
     });
 
+    test('excludes banks and insurers only in Deep Value', () => {
+        const insurer = stock({ Ativo: 'PSSA3', Empresa: 'PORTO', 'Instituição Financeira': true, ROCE: 20, 'Dívida Líquida/EBITDA': 0, 'P/L': 8 });
+        assert.deepEqual(deep([insurer]), []);
+        assert.equal(rankStocks([insurer]).length, 1); // dividendos
+        assert.equal(rankStocks([insurer], { strategy: 'qualidade' }).length, 1);
+    });
+
     test('ranks by the highest EBIT/EV, negative EV last', () => {
         const stocks = [
             stock({ Ativo: 'B3', Empresa: 'B', 'EV/EBIT': 10, 'EBIT/EV': 10 }),

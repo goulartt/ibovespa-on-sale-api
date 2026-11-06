@@ -48,8 +48,9 @@ async function main() {
             ...c,
             situacao: info?.situacao ?? null,
             setor: info?.setor ?? null,
-            // banks/insurers filed in the industrial format: drop the EBIT-based figures
-            ...(info?.financeira && { financeira: true, ebit: null, ebitda: null, dividaLiquida: null, capitalEmpregado: null }),
+            // banks/insurers by CVM sector (some file in the industrial format, e.g. Porto Seguro);
+            // only the Deep Value strategy excludes them
+            instituicaoFinanceira: Boolean(info?.financeira),
         };
     });
     logger.info(`${companies.filter(c => c.situacao).length} listed companies in a distressed situation (CVM registry)`);

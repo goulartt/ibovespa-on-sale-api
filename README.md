@@ -29,6 +29,9 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 ### Estratégia `deepValue`
 
 - Só os filtros comuns + EBIT positivo, ordenado pelo maior EBIT/EV (EV/EBIT invertido).
+- Sem bancos, seguradoras e holdings financeiras (campo `Instituição Financeira`): identificados pelo
+  formato da DRE ou pelo setor da CVM; corretoras de seguros, como Wiz e Qualicorp, continuam.
+  Nas outras estratégias, bancos no formato bancário ficam de fora naturalmente por não terem EBIT.
 
 ### Estratégia `dividendos`
 
@@ -48,8 +51,6 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 ### Comum às duas
 
 - Liquidez média diária > R$ 1 mi e fora de recuperação judicial/extrajudicial, falência ou liquidação.
-- Sem bancos, seguradoras e holdings financeiras: identificados pelo formato da DRE ou pelo setor da
-  CVM (corretoras de seguros, como Wiz e Qualicorp, continuam).
 - Ordenação pelo maior EBIT/EV (empresas com EV negativo ficam no fim).
 - Cada ação traz o `Setor`: o setor de atividade da CVM agrupado em Energia e saneamento,
   Commodities, Construção e imóveis, Financeiro, Consumo, Indústria e serviços ou Outros.

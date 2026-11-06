@@ -74,6 +74,8 @@ function buildStock(company, ticker, market, cap) {
         'Anos com Lucro': lucrosAnuais.filter(y => y.lucro > 0).length,
         'Data Balanço': company.dataBalanco,
         'Situação': company.situacao ?? null,
+        // bank/insurer by statement format or by CVM sector
+        'Instituição Financeira': Boolean(company.financeira || company.instituicaoFinanceira),
         'MA5': round(market.MA5),
         'MA10': round(market.MA10),
         'MA20': round(market.MA20),

@@ -91,6 +91,7 @@ describe('buildStock', () => {
         assert.equal(s.MA5, 9.88);
         assert.equal(s.MA200, null);
         assert.equal(s['Situação'], null);
+        assert.equal(s['Instituição Financeira'], false);
     });
 
     test('carries the CVM issuer situation', () => {
@@ -126,6 +127,11 @@ describe('buildStock', () => {
         const s = buildStock({ ...company, lucro: -10, patrimonio: -400 }, 'XXXX3', market, 1000);
         assert.equal(s.Payout, null);
         assert.equal(s.ROIC, null);
+    });
+
+    test('flags financial institutions by statement format or CVM sector', () => {
+        assert.equal(buildStock({ ...company, instituicaoFinanceira: true }, 'PSSA3', market, 1000)['Instituição Financeira'], true);
+        assert.equal(buildStock({ ...company, financeira: true }, 'ITUB4', market, 1000)['Instituição Financeira'], true);
     });
 
     test('financial companies have no EV/EBIT', () => {

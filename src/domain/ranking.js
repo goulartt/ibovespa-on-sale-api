@@ -31,10 +31,12 @@ const earningsYield = s =>
 
 const STRATEGIES = {
     // "Deep Value": the cheapest companies by EBIT/EV, with only the basic filters
-    // (liquidity, positive EBIT, no banks/insurers, no judicial recovery).
+    // (liquidity, positive EBIT, no banks/insurers, no judicial recovery). Banks filed in the
+    // banking format have no EBIT anyway; this also drops insurers and financial holdings that file
+    // in the industrial format (Porto Seguro, Caixa Seguridade, Itaúsa...).
     deepValue: {
         defaults: {},
-        isEligible: stock => stock['Margem Ebit'] > 0,
+        isEligible: stock => stock['Margem Ebit'] > 0 && !stock['Instituição Financeira'],
     },
 
     // "Dividendos sustentáveis": cheap companies whose dividends look sustainable.
