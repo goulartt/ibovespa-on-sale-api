@@ -56,8 +56,14 @@ describe('HTTP API', () => {
         assert.deepEqual(body.map(s => s.Ativo), ['AAA3', 'BBB3']);
     });
 
+    test('filtered accepts a strategy', async () => {
+        const res = await fetch(`${ctx.base}/api/ibovespa/filtered?strategy=qualidade`);
+        assert.equal(res.status, 200);
+        assert.deepEqual(await res.json(), []); // the fixtures have no ROCE
+    });
+
     test('invalid query params return 400 with a message', async () => {
-        for (const qs of ['limit=0', 'limit=abc', 'limit=1.5', 'limit=1000', 'minDy=-1', 'sort=price']) {
+        for (const qs of ['limit=0', 'limit=abc', 'limit=1.5', 'limit=1000', 'minDy=-1', 'sort=price', 'strategy=x']) {
             const res = await fetch(`${ctx.base}/api/ibovespa/filtered?${qs}`);
             assert.equal(res.status, 400, qs);
             assert.match((await res.json()).error, /inválido/);

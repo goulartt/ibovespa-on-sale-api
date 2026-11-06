@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-05T23:44:40.842Z",
+ "updatedAt": "2026-11-05T23:57:40.371Z",
  "sources": [
   "CVM dados abertos (DFP/ITR/FCA)",
   "Yahoo Finance"
@@ -23,8 +23,10 @@
    "Margem Líquida": -118.94,
    "ROE": 544.08,
    "ROIC": -1045.42,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -1.4,
    "Dívida Líquida/EBIT": -0.34,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 190157,
    "Lucros Anuais": [
     {
@@ -76,8 +78,10 @@
    "Margem Líquida": 12.6,
    "ROE": 14.05,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 18215655,
    "Lucros Anuais": [
     {
@@ -129,8 +133,10 @@
    "Margem Líquida": 17.69,
    "ROE": 17.22,
    "ROIC": 32.38,
+   "ROCE": 23.35,
    "Dívida Líquida/Patrimônio": -0.21,
    "Dívida Líquida/EBIT": -0.82,
+   "Dívida Líquida/EBITDA": -0.65,
    "Liquidez Média Diária": 533207166,
    "Lucros Anuais": [
     {
@@ -182,8 +188,10 @@
    "Margem Líquida": -177.89,
    "ROE": 95.04,
    "ROIC": -51.34,
+   "ROCE": -55.42,
    "Dívida Líquida/Patrimônio": -1.96,
    "Dívida Líquida/EBIT": -3.98,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 201185,
    "Lucros Anuais": [
     {
@@ -235,8 +243,10 @@
    "Margem Líquida": 56.97,
    "ROE": 14.82,
    "ROIC": 22.38,
+   "ROCE": 16.78,
    "Dívida Líquida/Patrimônio": -0.18,
    "Dívida Líquida/EBIT": -1,
+   "Dívida Líquida/EBITDA": -0.99,
    "Liquidez Média Diária": 6309,
    "Lucros Anuais": [
     {
@@ -288,8 +298,10 @@
    "Margem Líquida": -9.73,
    "ROE": -4.44,
    "ROIC": -1.62,
+   "ROCE": -1.71,
    "Dívida Líquida/Patrimônio": 0.62,
    "Dívida Líquida/EBIT": -23.56,
+   "Dívida Líquida/EBITDA": 46.85,
    "Liquidez Média Diária": 4563166,
    "Lucros Anuais": [
     {
@@ -341,8 +353,10 @@
    "Margem Líquida": 70.06,
    "ROE": -661.54,
    "ROIC": 91.36,
+   "ROCE": 38.75,
    "Dívida Líquida/Patrimônio": -5.11,
    "Dívida Líquida/EBIT": 1.36,
+   "Dívida Líquida/EBITDA": 1.13,
    "Liquidez Média Diária": 54218,
    "Lucros Anuais": [
     {
@@ -390,8 +404,10 @@
    "Margem Líquida": 9.91,
    "ROE": 16.64,
    "ROIC": 29.69,
+   "ROCE": 12.33,
    "Dívida Líquida/Patrimônio": -0.32,
    "Dívida Líquida/EBIT": -1.59,
+   "Dívida Líquida/EBITDA": -1.48,
    "Liquidez Média Diária": 184,
    "Lucros Anuais": [
     {
@@ -443,8 +459,10 @@
    "Margem Líquida": 9.91,
    "ROE": 16.64,
    "ROIC": 29.69,
+   "ROCE": 12.33,
    "Dívida Líquida/Patrimônio": -0.32,
    "Dívida Líquida/EBIT": -1.59,
+   "Dívida Líquida/EBITDA": -1.48,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -496,8 +514,10 @@
    "Margem Líquida": 9.91,
    "ROE": 16.64,
    "ROIC": 29.69,
+   "ROCE": 12.33,
    "Dívida Líquida/Patrimônio": -0.32,
    "Dívida Líquida/EBIT": -1.59,
+   "Dívida Líquida/EBITDA": -1.48,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -549,8 +569,10 @@
    "Margem Líquida": 6.56,
    "ROE": 23.06,
    "ROIC": 33.3,
+   "ROCE": 26.6,
    "Dívida Líquida/Patrimônio": 0.02,
    "Dívida Líquida/EBIT": 0.07,
+   "Dívida Líquida/EBITDA": 0.06,
    "Liquidez Média Diária": 8347723,
    "Lucros Anuais": [
     {
@@ -602,8 +624,10 @@
    "Margem Líquida": 32.27,
    "ROE": 7.22,
    "ROIC": 15.5,
+   "ROCE": 6.13,
    "Dívida Líquida/Patrimônio": -0.25,
    "Dívida Líquida/EBIT": -2.12,
+   "Dívida Líquida/EBITDA": -1.5,
    "Liquidez Média Diária": 215629104,
    "Lucros Anuais": [
     {
@@ -655,8 +679,10 @@
    "Margem Líquida": 14.52,
    "ROE": 19.37,
    "ROIC": 18.55,
+   "ROCE": 16.98,
    "Dívida Líquida/Patrimônio": 0.15,
    "Dívida Líquida/EBIT": 0.71,
+   "Dívida Líquida/EBITDA": 0.53,
    "Liquidez Média Diária": 145499,
    "Lucros Anuais": [
     {
@@ -708,8 +734,10 @@
    "Margem Líquida": 14.52,
    "ROE": 19.37,
    "ROIC": 18.55,
+   "ROCE": 16.98,
    "Dívida Líquida/Patrimônio": 0.15,
    "Dívida Líquida/EBIT": 0.71,
+   "Dívida Líquida/EBITDA": 0.53,
    "Liquidez Média Diária": 39008884,
    "Lucros Anuais": [
     {
@@ -761,8 +789,10 @@
    "Margem Líquida": 0.83,
    "ROE": 4.42,
    "ROIC": 17.35,
+   "ROCE": 14.77,
    "Dívida Líquida/Patrimônio": 3.23,
    "Dívida Líquida/EBIT": 4.4,
+   "Dívida Líquida/EBITDA": 2.24,
    "Liquidez Média Diária": 839383,
    "Lucros Anuais": [
     {
@@ -814,8 +844,10 @@
    "Margem Líquida": -1.42,
    "ROE": -4.75,
    "ROIC": 14.75,
+   "ROCE": 9.4,
    "Dívida Líquida/Patrimônio": 2.93,
    "Dívida Líquida/EBIT": 5.06,
+   "Dívida Líquida/EBITDA": 3,
    "Liquidez Média Diária": 565915,
    "Lucros Anuais": [
     {
@@ -863,8 +895,10 @@
    "Margem Líquida": -2.19,
    "ROE": -6.74,
    "ROIC": 4,
+   "ROCE": 2.09,
    "Dívida Líquida/Patrimônio": 0.41,
    "Dívida Líquida/EBIT": 7.25,
+   "Dívida Líquida/EBITDA": 1.69,
    "Liquidez Média Diária": 10788058,
    "Lucros Anuais": [
     {
@@ -916,8 +950,10 @@
    "Margem Líquida": -2.79,
    "ROE": -20.02,
    "ROIC": 4.76,
+   "ROCE": 4.4,
    "Dívida Líquida/Patrimônio": 1.45,
    "Dívida Líquida/EBIT": 12.42,
+   "Dívida Líquida/EBITDA": 6.17,
    "Liquidez Média Diária": 1160384,
    "Lucros Anuais": [
     {
@@ -961,8 +997,10 @@
    "Margem Líquida": 3.71,
    "ROE": 5.16,
    "ROIC": 14.89,
+   "ROCE": 12.03,
    "Dívida Líquida/Patrimônio": 1.41,
    "Dívida Líquida/EBIT": 3.93,
+   "Dívida Líquida/EBITDA": 2.83,
    "Liquidez Média Diária": 34327988,
    "Lucros Anuais": [
     {
@@ -1014,8 +1052,10 @@
    "Margem Líquida": 3.11,
    "ROE": 3.99,
    "ROIC": 12.38,
+   "ROCE": 10.39,
    "Dívida Líquida/Patrimônio": 1.54,
    "Dívida Líquida/EBIT": 4.9,
+   "Dívida Líquida/EBITDA": 2.99,
    "Liquidez Média Diária": 6646664,
    "Lucros Anuais": [
     {
@@ -1067,8 +1107,10 @@
    "Margem Líquida": -0.53,
    "ROE": -0.15,
    "ROIC": null,
+   "ROCE": -20.3,
    "Dívida Líquida/Patrimônio": -1.03,
    "Dívida Líquida/EBIT": 5.12,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 6077,
    "Lucros Anuais": [
     {
@@ -1120,8 +1162,10 @@
    "Margem Líquida": 1.24,
    "ROE": 15.21,
    "ROIC": 24.2,
+   "ROCE": 14.11,
    "Dívida Líquida/Patrimônio": 1.86,
    "Dívida Líquida/EBIT": 2.69,
+   "Dívida Líquida/EBITDA": 1.9,
    "Liquidez Média Diária": 181035949,
    "Lucros Anuais": [
     {
@@ -1173,8 +1217,10 @@
    "Margem Líquida": -27.97,
    "ROE": -33.63,
    "ROIC": -31.21,
+   "ROCE": -25.69,
    "Dívida Líquida/Patrimônio": -0.06,
    "Dívida Líquida/EBIT": 0.21,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 14112,
    "Lucros Anuais": [
     {
@@ -1214,8 +1260,10 @@
    "Margem Líquida": 3.84,
    "ROE": 6.04,
    "ROIC": 14.58,
+   "ROCE": 12.27,
    "Dívida Líquida/Patrimônio": -0.09,
    "Dívida Líquida/EBIT": -0.68,
+   "Dívida Líquida/EBITDA": -0.33,
    "Liquidez Média Diária": 21422535,
    "Lucros Anuais": [
     {
@@ -1259,8 +1307,10 @@
    "Margem Líquida": -8.09,
    "ROE": -8.54,
    "ROIC": 4.9,
+   "ROCE": 3.88,
    "Dívida Líquida/Patrimônio": 1.57,
    "Dívida Líquida/EBIT": 12.48,
+   "Dívida Líquida/EBITDA": 6.34,
    "Liquidez Média Diária": 58823690,
    "Lucros Anuais": [
     {
@@ -1312,8 +1362,10 @@
    "Margem Líquida": -19.03,
    "ROE": 48.52,
    "ROIC": 32.18,
+   "ROCE": 17.67,
    "Dívida Líquida/Patrimônio": -2.77,
    "Dívida Líquida/EBIT": 4.87,
+   "Dívida Líquida/EBITDA": 4.81,
    "Liquidez Média Diária": 3663,
    "Lucros Anuais": [
     {
@@ -1365,8 +1417,10 @@
    "Margem Líquida": 27.05,
    "ROE": 9.86,
    "ROIC": 6.89,
+   "ROCE": 4.59,
    "Dívida Líquida/Patrimônio": 0.37,
    "Dívida Líquida/EBIT": 3.89,
+   "Dívida Líquida/EBITDA": 2.74,
    "Liquidez Média Diária": 926671144,
    "Lucros Anuais": [
     {
@@ -1418,8 +1472,10 @@
    "Margem Líquida": 27.05,
    "ROE": 9.86,
    "ROIC": 6.89,
+   "ROCE": 4.59,
    "Dívida Líquida/Patrimônio": 0.37,
    "Dívida Líquida/EBIT": 3.89,
+   "Dívida Líquida/EBITDA": 2.74,
    "Liquidez Média Diária": 128554796,
    "Lucros Anuais": [
     {
@@ -1471,8 +1527,10 @@
    "Margem Líquida": -120.71,
    "ROE": -160.34,
    "ROIC": -77.98,
+   "ROCE": -61.58,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 10052392,
    "Lucros Anuais": [
     {
@@ -1524,8 +1582,10 @@
    "Margem Líquida": -120.71,
    "ROE": -160.34,
    "ROIC": -77.98,
+   "ROCE": -61.58,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 5782325,
    "Lucros Anuais": [
     {
@@ -1577,8 +1637,10 @@
    "Margem Líquida": -295.64,
    "ROE": -3.8,
    "ROIC": -4.07,
+   "ROCE": -4.3,
    "Dívida Líquida/Patrimônio": 0.02,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1651501,
    "Lucros Anuais": [
     {
@@ -1622,8 +1684,10 @@
    "Margem Líquida": 7.46,
    "ROE": -31.48,
    "ROIC": 28.79,
+   "ROCE": 27.16,
    "Dívida Líquida/Patrimônio": -3.91,
    "Dívida Líquida/EBIT": 4.67,
+   "Dívida Líquida/EBITDA": 2.82,
    "Liquidez Média Diária": 2849601,
    "Lucros Anuais": [
     {
@@ -1675,8 +1739,10 @@
    "Margem Líquida": 2.85,
    "ROE": 4.03,
    "ROIC": 7.47,
+   "ROCE": 6.37,
    "Dívida Líquida/Patrimônio": 0.27,
    "Dívida Líquida/EBIT": 2.81,
+   "Dívida Líquida/EBITDA": 1.46,
    "Liquidez Média Diária": 80646391,
    "Lucros Anuais": [
     {
@@ -1728,8 +1794,10 @@
    "Margem Líquida": 1794.99,
    "ROE": -753.62,
    "ROIC": -18316.51,
+   "ROCE": -753.42,
    "Dívida Líquida/Patrimônio": -0.96,
    "Dívida Líquida/EBIT": 0.13,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 4167,
    "Lucros Anuais": [
     {
@@ -1773,8 +1841,10 @@
    "Margem Líquida": 44.41,
    "ROE": 28.46,
    "ROIC": 42.23,
+   "ROCE": 18.53,
    "Dívida Líquida/Patrimônio": -0.08,
    "Dívida Líquida/EBIT": -0.22,
+   "Dívida Líquida/EBITDA": -0.21,
    "Liquidez Média Diária": 982925981,
    "Lucros Anuais": [
     {
@@ -1826,8 +1896,10 @@
    "Margem Líquida": 11.01,
    "ROE": 14.02,
    "ROIC": 29.62,
+   "ROCE": 17.62,
    "Dívida Líquida/Patrimônio": -0.26,
    "Dívida Líquida/EBIT": -1.22,
+   "Dívida Líquida/EBITDA": -1.04,
    "Liquidez Média Diária": 2311,
    "Lucros Anuais": [
     {
@@ -1879,8 +1951,10 @@
    "Margem Líquida": 11.01,
    "ROE": 14.02,
    "ROIC": 29.62,
+   "ROCE": 17.62,
    "Dívida Líquida/Patrimônio": -0.26,
    "Dívida Líquida/EBIT": -1.22,
+   "Dívida Líquida/EBITDA": -1.04,
    "Liquidez Média Diária": 17227,
    "Lucros Anuais": [
     {
@@ -1932,8 +2006,10 @@
    "Margem Líquida": 12.82,
    "ROE": 12.14,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 281762,
    "Lucros Anuais": [
     {
@@ -1985,8 +2061,10 @@
    "Margem Líquida": 3.71,
    "ROE": 6.43,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 979624637,
    "Lucros Anuais": [
     {
@@ -2038,8 +2116,10 @@
    "Margem Líquida": 8.49,
    "ROE": 13.3,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 215861609,
    "Lucros Anuais": [
     {
@@ -2091,8 +2171,10 @@
    "Margem Líquida": 8.49,
    "ROE": 13.3,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1080170025,
    "Lucros Anuais": [
     {
@@ -2144,8 +2226,10 @@
    "Margem Líquida": null,
    "ROE": 84.38,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 295991370,
    "Lucros Anuais": [
     {
@@ -2197,8 +2281,10 @@
    "Margem Líquida": -43.78,
    "ROE": 5.98,
    "ROIC": null,
+   "ROCE": -44.44,
    "Dívida Líquida/Patrimônio": -0.67,
    "Dívida Líquida/EBIT": -7.52,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 734,
    "Lucros Anuais": [
     {
@@ -2250,8 +2336,10 @@
    "Margem Líquida": -43.78,
    "ROE": 5.98,
    "ROIC": null,
+   "ROCE": -44.44,
    "Dívida Líquida/Patrimônio": -0.67,
    "Dívida Líquida/EBIT": -7.52,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1720,
    "Lucros Anuais": [
     {
@@ -2303,8 +2391,10 @@
    "Margem Líquida": 0.8,
    "ROE": 21.02,
    "ROIC": 23.51,
+   "ROCE": 15.31,
    "Dívida Líquida/Patrimônio": 6.58,
    "Dívida Líquida/EBIT": 3.69,
+   "Dívida Líquida/EBITDA": 2.93,
    "Liquidez Média Diária": 89405329,
    "Lucros Anuais": [
     {
@@ -2356,8 +2446,10 @@
    "Margem Líquida": 7.61,
    "ROE": 17.62,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 114055,
    "Lucros Anuais": [
     {
@@ -2409,8 +2501,10 @@
    "Margem Líquida": 7.61,
    "ROE": 17.62,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 33222,
    "Lucros Anuais": [
     {
@@ -2462,8 +2556,10 @@
    "Margem Líquida": 8.57,
    "ROE": 17.22,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 12182,
    "Lucros Anuais": [
     {
@@ -2515,8 +2611,10 @@
    "Margem Líquida": 8.57,
    "ROE": 17.22,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 24114,
    "Lucros Anuais": [
     {
@@ -2568,8 +2666,10 @@
    "Margem Líquida": -44.42,
    "ROE": 159.69,
    "ROIC": null,
+   "ROCE": -27.82,
    "Dívida Líquida/Patrimônio": -0.69,
    "Dívida Líquida/EBIT": -2.55,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 13956239,
    "Lucros Anuais": [
     {
@@ -2621,8 +2721,10 @@
    "Margem Líquida": -13.39,
    "ROE": -139.96,
    "ROIC": -11.73,
+   "ROCE": -6.04,
    "Dívida Líquida/Patrimônio": 1.75,
    "Dívida Líquida/EBIT": -5.43,
+   "Dívida Líquida/EBITDA": 98.41,
    "Liquidez Média Diária": 13513,
    "Lucros Anuais": [
     {
@@ -2674,8 +2776,10 @@
    "Margem Líquida": 7.89,
    "ROE": 9.33,
    "ROIC": 9.9,
+   "ROCE": 10.41,
    "Dívida Líquida/Patrimônio": 0.25,
    "Dívida Líquida/EBIT": 2.05,
+   "Dívida Líquida/EBITDA": 2,
    "Liquidez Média Diária": 348690,
    "Lucros Anuais": [
     {
@@ -2727,8 +2831,10 @@
    "Margem Líquida": 13.09,
    "ROE": 10.09,
    "ROIC": 13.51,
+   "ROCE": 9.92,
    "Dívida Líquida/Patrimônio": -0.01,
    "Dívida Líquida/EBIT": -0.1,
+   "Dívida Líquida/EBITDA": -0.08,
    "Liquidez Média Diária": 3398018,
    "Lucros Anuais": [
     {
@@ -2780,8 +2886,10 @@
    "Margem Líquida": 8.73,
    "ROE": 26.44,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 326343,
    "Lucros Anuais": [
     {
@@ -2833,8 +2941,10 @@
    "Margem Líquida": 8.73,
    "ROE": 26.44,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 2123476,
    "Lucros Anuais": [
     {
@@ -2886,8 +2996,10 @@
    "Margem Líquida": 6.86,
    "ROE": 12.46,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 9187934,
    "Lucros Anuais": [
     {
@@ -2939,8 +3051,10 @@
    "Margem Líquida": 19.99,
    "ROE": 8.56,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1907,
    "Lucros Anuais": [
     {
@@ -2992,8 +3106,10 @@
    "Margem Líquida": 445.49,
    "ROE": 28.82,
    "ROIC": -56.97,
+   "ROCE": -11.36,
    "Dívida Líquida/Patrimônio": -0.79,
    "Dívida Líquida/EBIT": 6.46,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 19034,
    "Lucros Anuais": [
     {
@@ -3045,8 +3161,10 @@
    "Margem Líquida": 8.49,
    "ROE": 16.49,
    "ROIC": 25.68,
+   "ROCE": 14.95,
    "Dívida Líquida/Patrimônio": -0.3,
    "Dívida Líquida/EBIT": -1.64,
+   "Dívida Líquida/EBITDA": -1.16,
    "Liquidez Média Diária": 22124531,
    "Lucros Anuais": [
     {
@@ -3098,8 +3216,10 @@
    "Margem Líquida": 25.85,
    "ROE": 16.4,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 22000,
    "Lucros Anuais": [
     {
@@ -3151,8 +3271,10 @@
    "Margem Líquida": 3.93,
    "ROE": -4.42,
    "ROIC": null,
+   "ROCE": 52.6,
    "Dívida Líquida/Patrimônio": -0.08,
    "Dívida Líquida/EBIT": 0.68,
+   "Dívida Líquida/EBITDA": 0.61,
    "Liquidez Média Diária": 35191,
    "Lucros Anuais": [
     {
@@ -3204,8 +3326,10 @@
    "Margem Líquida": 4.42,
    "ROE": 7.84,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -3257,8 +3381,10 @@
    "Margem Líquida": null,
    "ROE": 7.26,
    "ROIC": 6.75,
+   "ROCE": 6.7,
    "Dívida Líquida/Patrimônio": -0.03,
    "Dívida Líquida/EBIT": -0.48,
+   "Dívida Líquida/EBITDA": -0.48,
    "Liquidez Média Diária": 1272313,
    "Lucros Anuais": [
     {
@@ -3310,8 +3436,10 @@
    "Margem Líquida": null,
    "ROE": 7.26,
    "ROIC": 6.75,
+   "ROCE": 6.7,
    "Dívida Líquida/Patrimônio": -0.03,
    "Dívida Líquida/EBIT": -0.48,
+   "Dívida Líquida/EBITDA": -0.48,
    "Liquidez Média Diária": 73180962,
    "Lucros Anuais": [
     {
@@ -3363,8 +3491,10 @@
    "Margem Líquida": 0.44,
    "ROE": 0.44,
    "ROIC": 12.05,
+   "ROCE": 7.52,
    "Dívida Líquida/Patrimônio": 0.85,
    "Dívida Líquida/EBIT": 3.82,
+   "Dívida Líquida/EBITDA": 1.83,
    "Liquidez Média Diária": 83049355,
    "Lucros Anuais": [
     {
@@ -3416,8 +3546,10 @@
    "Margem Líquida": -7.85,
    "ROE": 42.33,
    "ROIC": 7.46,
+   "ROCE": 5.45,
    "Dívida Líquida/Patrimônio": -3.32,
    "Dívida Líquida/EBIT": 19.2,
+   "Dívida Líquida/EBITDA": 6.35,
    "Liquidez Média Diária": 302503,
    "Lucros Anuais": [
     {
@@ -3469,8 +3601,10 @@
    "Margem Líquida": -7.85,
    "ROE": 42.33,
    "ROIC": 7.46,
+   "ROCE": 5.45,
    "Dívida Líquida/Patrimônio": -3.32,
    "Dívida Líquida/EBIT": 19.2,
+   "Dívida Líquida/EBITDA": 6.35,
    "Liquidez Média Diária": 30830399,
    "Lucros Anuais": [
     {
@@ -3522,8 +3656,10 @@
    "Margem Líquida": -7.85,
    "ROE": 42.33,
    "ROIC": 7.46,
+   "ROCE": 5.45,
    "Dívida Líquida/Patrimônio": -3.32,
    "Dívida Líquida/EBIT": 19.2,
+   "Dívida Líquida/EBITDA": 6.35,
    "Liquidez Média Diária": 1314,
    "Lucros Anuais": [
     {
@@ -3575,8 +3711,10 @@
    "Margem Líquida": 7.1,
    "ROE": 13.86,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 163471,
    "Lucros Anuais": [
     {
@@ -3628,8 +3766,10 @@
    "Margem Líquida": 7.1,
    "ROE": 13.86,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1565,
    "Lucros Anuais": [
     {
@@ -3681,8 +3821,10 @@
    "Margem Líquida": 7.1,
    "ROE": 13.86,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 36904733,
    "Lucros Anuais": [
     {
@@ -3734,8 +3876,10 @@
    "Margem Líquida": 7.37,
    "ROE": 17.52,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 54291,
    "Lucros Anuais": [
     {
@@ -3783,8 +3927,10 @@
    "Margem Líquida": 7.37,
    "ROE": 17.52,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 39247,
    "Lucros Anuais": [
     {
@@ -3832,8 +3978,10 @@
    "Margem Líquida": 11.33,
    "ROE": 11.9,
    "ROIC": 13.36,
+   "ROCE": 9.06,
    "Dívida Líquida/Patrimônio": 0.32,
    "Dívida Líquida/EBIT": 1.8,
+   "Dívida Líquida/EBITDA": 1.74,
    "Liquidez Média Diária": 996,
    "Lucros Anuais": [
     {
@@ -3885,8 +4033,10 @@
    "Margem Líquida": 16.11,
    "ROE": 19.24,
    "ROIC": 22.18,
+   "ROCE": 17.85,
    "Dívida Líquida/Patrimônio": -0.17,
    "Dívida Líquida/EBIT": -0.9,
+   "Dívida Líquida/EBITDA": -0.74,
    "Liquidez Média Diária": 316476,
    "Lucros Anuais": [
     {
@@ -3938,8 +4088,10 @@
    "Margem Líquida": 0.67,
    "ROE": 2.38,
    "ROIC": 7.7,
+   "ROCE": 7.01,
    "Dívida Líquida/Patrimônio": 1.43,
    "Dívida Líquida/EBIT": 7.65,
+   "Dívida Líquida/EBITDA": 5.04,
    "Liquidez Média Diária": 7083014,
    "Lucros Anuais": [
     {
@@ -3991,8 +4143,10 @@
    "Margem Líquida": -20.31,
    "ROE": -23.1,
    "ROIC": -21.34,
+   "ROCE": -13.91,
    "Dívida Líquida/Patrimônio": -0.26,
    "Dívida Líquida/EBIT": 1.63,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 9242938,
    "Lucros Anuais": [
     {
@@ -4044,8 +4198,10 @@
    "Margem Líquida": 19.01,
    "ROE": 14.32,
    "ROIC": 12.15,
+   "ROCE": 12.43,
    "Dívida Líquida/Patrimônio": 0.84,
    "Dívida Líquida/EBIT": 3.76,
+   "Dívida Líquida/EBITDA": 2.8,
    "Liquidez Média Diária": 120,
    "Lucros Anuais": [
     {
@@ -4097,8 +4253,10 @@
    "Margem Líquida": 19.01,
    "ROE": 14.32,
    "ROIC": 12.15,
+   "ROCE": 12.43,
    "Dívida Líquida/Patrimônio": 0.84,
    "Dívida Líquida/EBIT": 3.76,
+   "Dívida Líquida/EBITDA": 2.8,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -4150,8 +4308,10 @@
    "Margem Líquida": 6.41,
    "ROE": 11.3,
    "ROIC": 11.76,
+   "ROCE": 8.12,
    "Dívida Líquida/Patrimônio": 0.55,
    "Dívida Líquida/EBIT": 3.02,
+   "Dívida Líquida/EBITDA": 1.63,
    "Liquidez Média Diária": 39624747,
    "Lucros Anuais": [
     {
@@ -4203,8 +4363,10 @@
    "Margem Líquida": 2.24,
    "ROE": 2.32,
    "ROIC": 8.25,
+   "ROCE": 8.73,
    "Dívida Líquida/Patrimônio": 0.56,
    "Dívida Líquida/EBIT": 4.37,
+   "Dívida Líquida/EBITDA": 3.19,
    "Liquidez Média Diária": 1446,
    "Lucros Anuais": [
     {
@@ -4256,8 +4418,10 @@
    "Margem Líquida": null,
    "ROE": -215,
    "ROIC": -214.94,
+   "ROCE": -95.8,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 504,
    "Lucros Anuais": [
     {
@@ -4301,8 +4465,10 @@
    "Margem Líquida": 35.02,
    "ROE": 13.45,
    "ROIC": 24.05,
+   "ROCE": 17.15,
    "Dívida Líquida/Patrimônio": -0.24,
    "Dívida Líquida/EBIT": -1.33,
+   "Dívida Líquida/EBITDA": -1.28,
    "Liquidez Média Diária": 169931,
    "Lucros Anuais": [
     {
@@ -4354,8 +4520,10 @@
    "Margem Líquida": 35.02,
    "ROE": 13.45,
    "ROIC": 24.05,
+   "ROCE": 17.15,
    "Dívida Líquida/Patrimônio": -0.24,
    "Dívida Líquida/EBIT": -1.33,
+   "Dívida Líquida/EBITDA": -1.28,
    "Liquidez Média Diária": 175030,
    "Lucros Anuais": [
     {
@@ -4407,8 +4575,10 @@
    "Margem Líquida": 35.02,
    "ROE": 13.45,
    "ROIC": 24.05,
+   "ROCE": 17.15,
    "Dívida Líquida/Patrimônio": -0.24,
    "Dívida Líquida/EBIT": -1.33,
+   "Dívida Líquida/EBITDA": -1.28,
    "Liquidez Média Diária": 91289,
    "Lucros Anuais": [
     {
@@ -4460,8 +4630,10 @@
    "Margem Líquida": -6.11,
    "ROE": -19.17,
    "ROIC": 5.06,
+   "ROCE": 5.17,
    "Dívida Líquida/Patrimônio": 1.21,
    "Dívida Líquida/EBIT": 10.82,
+   "Dívida Líquida/EBITDA": 5.54,
    "Liquidez Média Diária": 232,
    "Lucros Anuais": [
     {
@@ -4513,8 +4685,10 @@
    "Margem Líquida": -6.11,
    "ROE": -19.17,
    "ROIC": 5.06,
+   "ROCE": 5.17,
    "Dívida Líquida/Patrimônio": 1.21,
    "Dívida Líquida/EBIT": 10.82,
+   "Dívida Líquida/EBITDA": 5.54,
    "Liquidez Média Diária": 7637,
    "Lucros Anuais": [
     {
@@ -4566,8 +4740,10 @@
    "Margem Líquida": 7.54,
    "ROE": 17.28,
    "ROIC": 15.23,
+   "ROCE": 13.2,
    "Dívida Líquida/Patrimônio": 2.34,
    "Dívida Líquida/EBIT": 4.6,
+   "Dívida Líquida/EBITDA": 3.63,
    "Liquidez Média Diária": 50074,
    "Lucros Anuais": [
     {
@@ -4619,8 +4795,10 @@
    "Margem Líquida": 7.54,
    "ROE": 17.28,
    "ROIC": 15.23,
+   "ROCE": 13.2,
    "Dívida Líquida/Patrimônio": 2.34,
    "Dívida Líquida/EBIT": 4.6,
+   "Dívida Líquida/EBITDA": 3.63,
    "Liquidez Média Diária": 626,
    "Lucros Anuais": [
     {
@@ -4672,8 +4850,10 @@
    "Margem Líquida": -6.29,
    "ROE": 10.19,
    "ROIC": 18.56,
+   "ROCE": 8.4,
    "Dívida Líquida/Patrimônio": -1.83,
    "Dívida Líquida/EBIT": 11.86,
+   "Dívida Líquida/EBITDA": 7.67,
    "Liquidez Média Diária": 169,
    "Lucros Anuais": [
     {
@@ -4725,8 +4905,10 @@
    "Margem Líquida": -6.29,
    "ROE": 10.19,
    "ROIC": 18.56,
+   "ROCE": 8.4,
    "Dívida Líquida/Patrimônio": -1.83,
    "Dívida Líquida/EBIT": 11.86,
+   "Dívida Líquida/EBITDA": 7.67,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -4778,8 +4960,10 @@
    "Margem Líquida": 15.6,
    "ROE": 30.44,
    "ROIC": 48.11,
+   "ROCE": 36.34,
    "Dívida Líquida/Patrimônio": 0.05,
    "Dívida Líquida/EBIT": 0.1,
+   "Dívida Líquida/EBITDA": 0.08,
    "Liquidez Média Diária": 2081,
    "Lucros Anuais": [
     {
@@ -4831,8 +5015,10 @@
    "Margem Líquida": 15.11,
    "ROE": 95.9,
    "ROIC": 28.12,
+   "ROCE": 22.76,
    "Dívida Líquida/Patrimônio": 5.59,
    "Dívida Líquida/EBIT": 3.02,
+   "Dívida Líquida/EBITDA": 2.43,
    "Liquidez Média Diária": 8669,
    "Lucros Anuais": [
     {
@@ -4884,8 +5070,10 @@
    "Margem Líquida": 15.11,
    "ROE": 95.9,
    "ROIC": 28.12,
+   "ROCE": 22.76,
    "Dívida Líquida/Patrimônio": 5.59,
    "Dívida Líquida/EBIT": 3.02,
+   "Dívida Líquida/EBITDA": 2.43,
    "Liquidez Média Diária": 114176,
    "Lucros Anuais": [
     {
@@ -4937,8 +5125,10 @@
    "Margem Líquida": 9.86,
    "ROE": 7.81,
    "ROIC": 7.3,
+   "ROCE": 5.27,
    "Dívida Líquida/Patrimônio": -0.18,
    "Dívida Líquida/EBIT": -3.07,
+   "Dívida Líquida/EBITDA": -1.9,
    "Liquidez Média Diária": 36608,
    "Lucros Anuais": [
     {
@@ -4990,8 +5180,10 @@
    "Margem Líquida": 9.86,
    "ROE": 7.81,
    "ROIC": 7.3,
+   "ROCE": 5.27,
    "Dívida Líquida/Patrimônio": -0.18,
    "Dívida Líquida/EBIT": -3.07,
+   "Dívida Líquida/EBITDA": -1.9,
    "Liquidez Média Diária": 145112,
    "Lucros Anuais": [
     {
@@ -5043,8 +5235,10 @@
    "Margem Líquida": 6.99,
    "ROE": 20.7,
    "ROIC": 15.75,
+   "ROCE": 13.43,
    "Dívida Líquida/Patrimônio": 1.22,
    "Dívida Líquida/EBIT": 3.49,
+   "Dívida Líquida/EBITDA": 2.74,
    "Liquidez Média Diária": 20392,
    "Lucros Anuais": [
     {
@@ -5096,8 +5290,10 @@
    "Margem Líquida": 6.99,
    "ROE": 20.7,
    "ROIC": 15.75,
+   "ROCE": 13.43,
    "Dívida Líquida/Patrimônio": 1.22,
    "Dívida Líquida/EBIT": 3.49,
+   "Dívida Líquida/EBITDA": 2.74,
    "Liquidez Média Diária": 1715044,
    "Lucros Anuais": [
     {
@@ -5149,8 +5345,10 @@
    "Margem Líquida": 10.51,
    "ROE": 15.74,
    "ROIC": 14.04,
+   "ROCE": 12.38,
    "Dívida Líquida/Patrimônio": 0.66,
    "Dívida Líquida/EBIT": 2.83,
+   "Dívida Líquida/EBITDA": 2.29,
    "Liquidez Média Diária": 2473866,
    "Lucros Anuais": [
     {
@@ -5202,8 +5400,10 @@
    "Margem Líquida": 10.51,
    "ROE": 15.74,
    "ROIC": 14.04,
+   "ROCE": 12.38,
    "Dívida Líquida/Patrimônio": 0.66,
    "Dívida Líquida/EBIT": 2.83,
+   "Dívida Líquida/EBITDA": 2.29,
    "Liquidez Média Diária": 200918129,
    "Lucros Anuais": [
     {
@@ -5255,8 +5455,10 @@
    "Margem Líquida": 6.78,
    "ROE": 11.58,
    "ROIC": 15.18,
+   "ROCE": 16.36,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 3.54,
+   "Dívida Líquida/EBITDA": 2.78,
    "Liquidez Média Diária": 5081,
    "Lucros Anuais": [
     {
@@ -5308,8 +5510,10 @@
    "Margem Líquida": 6.78,
    "ROE": 11.58,
    "ROIC": 15.18,
+   "ROCE": 16.36,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 3.54,
+   "Dívida Líquida/EBITDA": 2.78,
    "Liquidez Média Diária": 248855,
    "Lucros Anuais": [
     {
@@ -5361,8 +5565,10 @@
    "Margem Líquida": 8.96,
    "ROE": 5.11,
    "ROIC": 7.71,
+   "ROCE": 6.79,
    "Dívida Líquida/Patrimônio": 0.38,
    "Dívida Líquida/EBIT": 3.59,
+   "Dívida Líquida/EBITDA": 2.4,
    "Liquidez Média Diária": 111489119,
    "Lucros Anuais": [
     {
@@ -5414,8 +5620,10 @@
    "Margem Líquida": 13.17,
    "ROE": 25.36,
    "ROIC": 22.5,
+   "ROCE": 18,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 2.39,
+   "Dívida Líquida/EBITDA": 2.02,
    "Liquidez Média Diária": 96749031,
    "Lucros Anuais": [
     {
@@ -5467,8 +5675,10 @@
    "Margem Líquida": 11.2,
    "ROE": 12.98,
    "ROIC": 12.53,
+   "ROCE": 10.79,
    "Dívida Líquida/Patrimônio": 0.83,
    "Dívida Líquida/EBIT": 3.62,
+   "Dívida Líquida/EBITDA": 2.81,
    "Liquidez Média Diária": 360345565,
    "Lucros Anuais": [
     {
@@ -5520,8 +5730,10 @@
    "Margem Líquida": -12.38,
    "ROE": -23.1,
    "ROIC": -26.17,
+   "ROCE": -18.64,
    "Dívida Líquida/Patrimônio": -0.15,
    "Dívida Líquida/EBIT": 0.69,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -5573,8 +5785,10 @@
    "Margem Líquida": -12.38,
    "ROE": -23.1,
    "ROIC": -26.17,
+   "ROCE": -18.64,
    "Dívida Líquida/Patrimônio": -0.15,
    "Dívida Líquida/EBIT": 0.69,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 87727,
    "Lucros Anuais": [
     {
@@ -5626,8 +5840,10 @@
    "Margem Líquida": -12.38,
    "ROE": -23.1,
    "ROIC": -26.17,
+   "ROCE": -18.64,
    "Dívida Líquida/Patrimônio": -0.15,
    "Dívida Líquida/EBIT": 0.69,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 3641,
    "Lucros Anuais": [
     {
@@ -5679,8 +5895,10 @@
    "Margem Líquida": -22.18,
    "ROE": -27.87,
    "ROIC": 2.1,
+   "ROCE": 1.47,
    "Dívida Líquida/Patrimônio": 1.49,
    "Dívida Líquida/EBIT": 28.48,
+   "Dívida Líquida/EBITDA": 8.54,
    "Liquidez Média Diária": 163916541,
    "Lucros Anuais": [
     {
@@ -5732,8 +5950,10 @@
    "Margem Líquida": 10.59,
    "ROE": 18.49,
    "ROIC": 27.36,
+   "ROCE": 14.78,
    "Dívida Líquida/Patrimônio": 0.29,
    "Dívida Líquida/EBIT": 0.83,
+   "Dívida Líquida/EBITDA": 0.56,
    "Liquidez Média Diária": 2434208,
    "Lucros Anuais": [
     {
@@ -5785,8 +6005,10 @@
    "Margem Líquida": 14.88,
    "ROE": 14.6,
    "ROIC": 11.58,
+   "ROCE": 11.26,
    "Dívida Líquida/Patrimônio": 0.89,
    "Dívida Líquida/EBIT": 4.06,
+   "Dívida Líquida/EBITDA": 2.67,
    "Liquidez Média Diária": 300340356,
    "Lucros Anuais": [
     {
@@ -5838,8 +6060,10 @@
    "Margem Líquida": 14.84,
    "ROE": 19.98,
    "ROIC": 19,
+   "ROCE": 17.83,
    "Dívida Líquida/Patrimônio": 0.14,
    "Dívida Líquida/EBIT": 0.64,
+   "Dívida Líquida/EBITDA": 0.39,
    "Liquidez Média Diária": 939877,
    "Lucros Anuais": [
     {
@@ -5891,8 +6115,10 @@
    "Margem Líquida": 7.72,
    "ROE": 62.78,
    "ROIC": 17.15,
+   "ROCE": 15.62,
    "Dívida Líquida/Patrimônio": 3.71,
    "Dívida Líquida/EBIT": 4.59,
+   "Dívida Líquida/EBITDA": 3.57,
    "Liquidez Média Diária": 724,
    "Lucros Anuais": [
     {
@@ -5944,8 +6170,10 @@
    "Margem Líquida": 7.72,
    "ROE": 62.78,
    "ROIC": 17.15,
+   "ROCE": 15.62,
    "Dívida Líquida/Patrimônio": 3.71,
    "Dívida Líquida/EBIT": 4.59,
+   "Dívida Líquida/EBITDA": 3.57,
    "Liquidez Média Diária": 23597,
    "Lucros Anuais": [
     {
@@ -5997,8 +6225,10 @@
    "Margem Líquida": 17.89,
    "ROE": 53.62,
    "ROIC": 82.82,
+   "ROCE": 35.12,
    "Dívida Líquida/Patrimônio": -0.14,
    "Dívida Líquida/EBIT": -0.2,
+   "Dívida Líquida/EBITDA": -0.19,
    "Liquidez Média Diária": 152176307,
    "Lucros Anuais": [
     {
@@ -6050,8 +6280,10 @@
    "Margem Líquida": -8.94,
    "ROE": -40.86,
    "ROIC": 46.27,
+   "ROCE": 29.36,
    "Dívida Líquida/Patrimônio": 0.64,
    "Dívida Líquida/EBIT": 0.84,
+   "Dívida Líquida/EBITDA": 0.44,
    "Liquidez Média Diária": 25068061,
    "Lucros Anuais": [
     {
@@ -6103,8 +6335,10 @@
    "Margem Líquida": null,
    "ROE": 32.79,
    "ROIC": 39.08,
+   "ROCE": 35.71,
    "Dívida Líquida/Patrimônio": -0.09,
    "Dívida Líquida/EBIT": -0.26,
+   "Dívida Líquida/EBITDA": -0.26,
    "Liquidez Média Diária": 159816943,
    "Lucros Anuais": [
     {
@@ -6156,8 +6390,10 @@
    "Margem Líquida": 20.67,
    "ROE": 16.38,
    "ROIC": 13.52,
+   "ROCE": 10.31,
    "Dívida Líquida/Patrimônio": 0.39,
    "Dívida Líquida/EBIT": 2.06,
+   "Dívida Líquida/EBITDA": 1.91,
    "Liquidez Média Diária": 287594136,
    "Lucros Anuais": [
     {
@@ -6209,8 +6445,10 @@
    "Margem Líquida": 20.67,
    "ROE": 16.38,
    "ROIC": 13.52,
+   "ROCE": 10.31,
    "Dívida Líquida/Patrimônio": 0.39,
    "Dívida Líquida/EBIT": 2.06,
+   "Dívida Líquida/EBITDA": 1.91,
    "Liquidez Média Diária": 11889037,
    "Lucros Anuais": [
     {
@@ -6262,8 +6500,10 @@
    "Margem Líquida": -9.63,
    "ROE": -13.08,
    "ROIC": 5.27,
+   "ROCE": 4.6,
    "Dívida Líquida/Patrimônio": 0.76,
    "Dívida Líquida/EBIT": 8.17,
+   "Dívida Líquida/EBITDA": 3.25,
    "Liquidez Média Diária": 5689375,
    "Lucros Anuais": [
     {
@@ -6315,8 +6555,10 @@
    "Margem Líquida": 4.4,
    "ROE": 3.81,
    "ROIC": 15.21,
+   "ROCE": 12.09,
    "Dívida Líquida/Patrimônio": 0.81,
    "Dívida Líquida/EBIT": 2.95,
+   "Dívida Líquida/EBITDA": 1.79,
    "Liquidez Média Diária": 12815231,
    "Lucros Anuais": [
     {
@@ -6368,8 +6610,10 @@
    "Margem Líquida": 8.16,
    "ROE": 13.35,
    "ROIC": 18.76,
+   "ROCE": 14.01,
    "Dívida Líquida/Patrimônio": -0.07,
    "Dívida Líquida/EBIT": -0.42,
+   "Dívida Líquida/EBITDA": -0.35,
    "Liquidez Média Diária": 826445,
    "Lucros Anuais": [
     {
@@ -6421,8 +6665,10 @@
    "Margem Líquida": 8.16,
    "ROE": 13.35,
    "ROIC": 18.76,
+   "ROCE": 14.01,
    "Dívida Líquida/Patrimônio": -0.07,
    "Dívida Líquida/EBIT": -0.42,
+   "Dívida Líquida/EBITDA": -0.35,
    "Liquidez Média Diária": 32576,
    "Lucros Anuais": [
     {
@@ -6474,8 +6720,10 @@
    "Margem Líquida": 17.73,
    "ROE": 31.27,
    "ROIC": 34.99,
+   "ROCE": 9.48,
    "Dívida Líquida/Patrimônio": 0.21,
    "Dívida Líquida/EBIT": 0.5,
+   "Dívida Líquida/EBITDA": 0.47,
    "Liquidez Média Diária": 139175330,
    "Lucros Anuais": [
     {
@@ -6527,8 +6775,10 @@
    "Margem Líquida": 0.79,
    "ROE": 2.35,
    "ROIC": 9.44,
+   "ROCE": 6.55,
    "Dívida Líquida/Patrimônio": 0.04,
    "Dívida Líquida/EBIT": 0.37,
+   "Dívida Líquida/EBITDA": 0.14,
    "Liquidez Média Diária": 276283,
    "Lucros Anuais": [
     {
@@ -6580,8 +6830,10 @@
    "Margem Líquida": null,
    "ROE": null,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0.09,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 21,
    "Lucros Anuais": [
     {
@@ -6633,8 +6885,10 @@
    "Margem Líquida": null,
    "ROE": null,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0.09,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 12417,
    "Lucros Anuais": [
     {
@@ -6686,8 +6940,10 @@
    "Margem Líquida": 7.77,
    "ROE": -13.2,
    "ROIC": null,
+   "ROCE": 53.97,
    "Dívida Líquida/Patrimônio": -0.29,
    "Dívida Líquida/EBIT": 0.71,
+   "Dívida Líquida/EBITDA": 0.54,
    "Liquidez Média Diária": 705942,
    "Lucros Anuais": [
     {
@@ -6739,8 +6995,10 @@
    "Margem Líquida": -12.23,
    "ROE": 434.83,
    "ROIC": null,
+   "ROCE": -42.07,
    "Dívida Líquida/Patrimônio": 9.65,
    "Dívida Líquida/EBIT": 2.1,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 679,
    "Lucros Anuais": [
     {
@@ -6792,8 +7050,10 @@
    "Margem Líquida": -0.43,
    "ROE": -0.49,
    "ROIC": 6.75,
+   "ROCE": 5.03,
    "Dívida Líquida/Patrimônio": 0.62,
    "Dívida Líquida/EBIT": 5.65,
+   "Dívida Líquida/EBITDA": 2.17,
    "Liquidez Média Diária": 24261056,
    "Lucros Anuais": [
     {
@@ -6845,8 +7105,10 @@
    "Margem Líquida": 10.93,
    "ROE": 15.66,
    "ROIC": 7.06,
+   "ROCE": 7,
    "Dívida Líquida/Patrimônio": 0.26,
    "Dívida Líquida/EBIT": 2.94,
+   "Dívida Líquida/EBITDA": 1.77,
    "Liquidez Média Diária": 2748,
    "Lucros Anuais": [
     {
@@ -6898,8 +7160,10 @@
    "Margem Líquida": 10.93,
    "ROE": 15.66,
    "ROIC": 7.06,
+   "ROCE": 7,
    "Dívida Líquida/Patrimônio": 0.26,
    "Dívida Líquida/EBIT": 2.94,
+   "Dívida Líquida/EBITDA": 1.77,
    "Liquidez Média Diária": 96582,
    "Lucros Anuais": [
     {
@@ -6951,8 +7215,10 @@
    "Margem Líquida": 515.49,
    "ROE": 93.35,
    "ROIC": -93.79,
+   "ROCE": -73.05,
    "Dívida Líquida/Patrimônio": -0.05,
    "Dívida Líquida/EBIT": 0.06,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 21246,
    "Lucros Anuais": [
     {
@@ -7004,8 +7270,10 @@
    "Margem Líquida": 4.59,
    "ROE": 12.41,
    "ROIC": 14.75,
+   "ROCE": 11.79,
    "Dívida Líquida/Patrimônio": 5.39,
    "Dívida Líquida/EBIT": 5.72,
+   "Dívida Líquida/EBITDA": 4.11,
    "Liquidez Média Diária": 120012897,
    "Lucros Anuais": [
     {
@@ -7057,8 +7325,10 @@
    "Margem Líquida": 28.94,
    "ROE": 24.6,
    "ROIC": 16.2,
+   "ROCE": 13.38,
    "Dívida Líquida/Patrimônio": 1.54,
    "Dívida Líquida/EBIT": 3.75,
+   "Dívida Líquida/EBITDA": 3.04,
    "Liquidez Média Diária": 114905246,
    "Lucros Anuais": [
     {
@@ -7110,8 +7380,10 @@
    "Margem Líquida": 7.13,
    "ROE": 31.42,
    "ROIC": 19.89,
+   "ROCE": 18.67,
    "Dívida Líquida/Patrimônio": 3.68,
    "Dívida Líquida/EBIT": 3.95,
+   "Dívida Líquida/EBITDA": 3.23,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -7163,8 +7435,10 @@
    "Margem Líquida": 7.13,
    "ROE": 31.42,
    "ROIC": 19.89,
+   "ROCE": 18.67,
    "Dívida Líquida/Patrimônio": 3.68,
    "Dívida Líquida/EBIT": 3.95,
+   "Dívida Líquida/EBITDA": 3.23,
    "Liquidez Média Diária": 10913,
    "Lucros Anuais": [
     {
@@ -7216,8 +7490,10 @@
    "Margem Líquida": -19.87,
    "ROE": -14.3,
    "ROIC": -145.13,
+   "ROCE": -18.86,
    "Dívida Líquida/Patrimônio": -0.68,
    "Dívida Líquida/EBIT": 1.45,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -7269,8 +7545,10 @@
    "Margem Líquida": -19.87,
    "ROE": -14.3,
    "ROIC": -145.13,
+   "ROCE": -18.86,
    "Dívida Líquida/Patrimônio": -0.68,
    "Dívida Líquida/EBIT": 1.45,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 124663,
    "Lucros Anuais": [
     {
@@ -7322,8 +7600,10 @@
    "Margem Líquida": 5.28,
    "ROE": 11.75,
    "ROIC": 18.29,
+   "ROCE": 9.02,
    "Dívida Líquida/Patrimônio": 0.08,
    "Dívida Líquida/EBIT": 0.4,
+   "Dívida Líquida/EBITDA": 0.3,
    "Liquidez Média Diária": 613398972,
    "Lucros Anuais": [
     {
@@ -7375,8 +7655,10 @@
    "Margem Líquida": 5.03,
    "ROE": 4.38,
    "ROIC": 8.64,
+   "ROCE": 7.2,
    "Dívida Líquida/Patrimônio": 0.9,
    "Dívida Líquida/EBIT": 5.49,
+   "Dívida Líquida/EBITDA": 3.18,
    "Liquidez Média Diária": 360806953,
    "Lucros Anuais": [
     {
@@ -7428,8 +7710,10 @@
    "Margem Líquida": 4.13,
    "ROE": 6.6,
    "ROIC": 11.93,
+   "ROCE": 9.53,
    "Dívida Líquida/Patrimônio": 1.45,
    "Dívida Líquida/EBIT": 4.95,
+   "Dívida Líquida/EBITDA": 3.72,
    "Liquidez Média Diária": 252232775,
    "Lucros Anuais": [
     {
@@ -7481,8 +7765,10 @@
    "Margem Líquida": 4.13,
    "ROE": 6.6,
    "ROIC": 11.93,
+   "ROCE": 9.53,
    "Dívida Líquida/Patrimônio": 1.45,
    "Dívida Líquida/EBIT": 4.95,
+   "Dívida Líquida/EBITDA": 3.72,
    "Liquidez Média Diária": 88264,
    "Lucros Anuais": [
     {
@@ -7534,8 +7820,10 @@
    "Margem Líquida": 4.13,
    "ROE": 6.6,
    "ROIC": 11.93,
+   "ROCE": 9.53,
    "Dívida Líquida/Patrimônio": 1.45,
    "Dívida Líquida/EBIT": 4.95,
+   "Dívida Líquida/EBITDA": 3.72,
    "Liquidez Média Diária": 124640,
    "Lucros Anuais": [
     {
@@ -7587,8 +7875,10 @@
    "Margem Líquida": -20.11,
    "ROE": -27.47,
    "ROIC": -901.57,
+   "ROCE": -23.64,
    "Dívida Líquida/Patrimônio": -0.97,
    "Dívida Líquida/EBIT": 3.15,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 873291,
    "Lucros Anuais": [
     {
@@ -7640,8 +7930,10 @@
    "Margem Líquida": 6.04,
    "ROE": 14.47,
    "ROIC": 12.76,
+   "ROCE": 11.43,
    "Dívida Líquida/Patrimônio": 2.2,
    "Dívida Líquida/EBIT": 5.39,
+   "Dívida Líquida/EBITDA": 4.29,
    "Liquidez Média Diária": 34717,
    "Lucros Anuais": [
     {
@@ -7693,8 +7985,10 @@
    "Margem Líquida": 6.04,
    "ROE": 14.47,
    "ROIC": 12.76,
+   "ROCE": 11.43,
    "Dívida Líquida/Patrimônio": 2.2,
    "Dívida Líquida/EBIT": 5.39,
+   "Dívida Líquida/EBITDA": 4.29,
    "Liquidez Média Diária": 18350,
    "Lucros Anuais": [
     {
@@ -7746,8 +8040,10 @@
    "Margem Líquida": 1.75,
    "ROE": 3.34,
    "ROIC": 9.76,
+   "ROCE": 8.34,
    "Dívida Líquida/Patrimônio": 1.89,
    "Dívida Líquida/EBIT": 6.69,
+   "Dívida Líquida/EBITDA": 4.9,
    "Liquidez Média Diária": 575923798,
    "Lucros Anuais": [
     {
@@ -7799,8 +8095,10 @@
    "Margem Líquida": 0.7,
    "ROE": 0.89,
    "ROIC": 10.63,
+   "ROCE": 10.18,
    "Dívida Líquida/Patrimônio": 0.75,
    "Dívida Líquida/EBIT": 4.04,
+   "Dívida Líquida/EBITDA": 2.42,
    "Liquidez Média Diária": 1035829,
    "Lucros Anuais": [
     {
@@ -7852,8 +8150,10 @@
    "Margem Líquida": 94.25,
    "ROE": -62.71,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -0.55,
    "Dívida Líquida/EBIT": 0.51,
+   "Dívida Líquida/EBITDA": 0.5,
    "Liquidez Média Diária": 930,
    "Lucros Anuais": [
     {
@@ -7905,8 +8205,10 @@
    "Margem Líquida": 2.66,
    "ROE": 3.61,
    "ROIC": 3.81,
+   "ROCE": 3.67,
    "Dívida Líquida/Patrimônio": 0.19,
    "Dívida Líquida/EBIT": 4.21,
+   "Dívida Líquida/EBITDA": 1.74,
    "Liquidez Média Diária": 408628,
    "Lucros Anuais": [
     {
@@ -7958,8 +8260,10 @@
    "Margem Líquida": 12.67,
    "ROE": 13.28,
    "ROIC": 16.73,
+   "ROCE": 13.92,
    "Dívida Líquida/Patrimônio": 0.16,
    "Dívida Líquida/EBIT": 0.82,
+   "Dívida Líquida/EBITDA": 0.54,
    "Liquidez Média Diária": 8140,
    "Lucros Anuais": [
     {
@@ -8011,8 +8315,10 @@
    "Margem Líquida": 12.67,
    "ROE": 13.28,
    "ROIC": 16.73,
+   "ROCE": 13.92,
    "Dívida Líquida/Patrimônio": 0.16,
    "Dívida Líquida/EBIT": 0.82,
+   "Dívida Líquida/EBITDA": 0.54,
    "Liquidez Média Diária": 1772968,
    "Lucros Anuais": [
     {
@@ -8064,8 +8370,10 @@
    "Margem Líquida": 12.83,
    "ROE": 8.6,
    "ROIC": 6.72,
+   "ROCE": 4.6,
    "Dívida Líquida/Patrimônio": 0.3,
    "Dívida Líquida/EBIT": 3.46,
+   "Dívida Líquida/EBITDA": 3.39,
    "Liquidez Média Diária": 6907514,
    "Lucros Anuais": [
     {
@@ -8117,8 +8425,10 @@
    "Margem Líquida": 36.95,
    "ROE": 9.99,
    "ROIC": 7.42,
+   "ROCE": 5.98,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": 0,
    "Liquidez Média Diária": 60491249,
    "Lucros Anuais": [
     {
@@ -8170,8 +8480,10 @@
    "Margem Líquida": -30.38,
    "ROE": -60.26,
    "ROIC": -44.71,
+   "ROCE": -50.63,
    "Dívida Líquida/Patrimônio": 0.32,
    "Dívida Líquida/EBIT": -0.55,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 32972,
    "Lucros Anuais": [
     {
@@ -8223,8 +8535,10 @@
    "Margem Líquida": 6.78,
    "ROE": 4.49,
    "ROIC": 0.68,
+   "ROCE": 0.5,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -22.76,
+   "Dívida Líquida/EBITDA": -1.5,
    "Liquidez Média Diária": 13359,
    "Lucros Anuais": [
     {
@@ -8276,8 +8590,10 @@
    "Margem Líquida": 6.78,
    "ROE": 4.49,
    "ROIC": 0.68,
+   "ROCE": 0.5,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -22.76,
+   "Dívida Líquida/EBITDA": -1.5,
    "Liquidez Média Diária": 8851866,
    "Lucros Anuais": [
     {
@@ -8329,8 +8645,10 @@
    "Margem Líquida": -6.77,
    "ROE": 16.81,
    "ROIC": null,
+   "ROCE": -52.82,
    "Dívida Líquida/Patrimônio": 0.05,
    "Dívida Líquida/EBIT": 0.33,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 29209,
    "Lucros Anuais": [
     {
@@ -8382,8 +8700,10 @@
    "Margem Líquida": 62.34,
    "ROE": 8.37,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 52,
    "Lucros Anuais": [
     {
@@ -8435,8 +8755,10 @@
    "Margem Líquida": 17.16,
    "ROE": 18.41,
    "ROIC": 22.64,
+   "ROCE": 15.18,
    "Dívida Líquida/Patrimônio": 0.3,
    "Dívida Líquida/EBIT": 1.02,
+   "Dívida Líquida/EBITDA": 0.55,
    "Liquidez Média Diária": 8730023,
    "Lucros Anuais": [
     {
@@ -8488,8 +8810,10 @@
    "Margem Líquida": 8.01,
    "ROE": 12.76,
    "ROIC": 14.85,
+   "ROCE": 12.14,
    "Dívida Líquida/Patrimônio": 0.64,
    "Dívida Líquida/EBIT": 2.62,
+   "Dívida Líquida/EBITDA": 1.56,
    "Liquidez Média Diária": 127190632,
    "Lucros Anuais": [
     {
@@ -8541,8 +8865,10 @@
    "Margem Líquida": 5.39,
    "ROE": 11.54,
    "ROIC": 19.35,
+   "ROCE": 12.73,
    "Dívida Líquida/Patrimônio": 0.48,
    "Dívida Líquida/EBIT": 1.67,
+   "Dívida Líquida/EBITDA": 1.23,
    "Liquidez Média Diária": 7660967,
    "Lucros Anuais": [
     {
@@ -8594,8 +8920,10 @@
    "Margem Líquida": 2.65,
    "ROE": 13.49,
    "ROIC": 19.74,
+   "ROCE": 30.12,
    "Dívida Líquida/Patrimônio": 1.47,
    "Dívida Líquida/EBIT": 3.02,
+   "Dívida Líquida/EBITDA": 2.27,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -8647,8 +8975,10 @@
    "Margem Líquida": 16.3,
    "ROE": 16.32,
    "ROIC": 19.33,
+   "ROCE": 15.53,
    "Dívida Líquida/Patrimônio": 0.59,
    "Dívida Líquida/EBIT": 1.92,
+   "Dívida Líquida/EBITDA": 1.08,
    "Liquidez Média Diária": 1285,
    "Lucros Anuais": [
     {
@@ -8700,8 +9030,10 @@
    "Margem Líquida": 16.3,
    "ROE": 16.32,
    "ROIC": 19.33,
+   "ROCE": 15.53,
    "Dívida Líquida/Patrimônio": 0.59,
    "Dívida Líquida/EBIT": 1.92,
+   "Dívida Líquida/EBITDA": 1.08,
    "Liquidez Média Diária": 20126,
    "Lucros Anuais": [
     {
@@ -8753,8 +9085,10 @@
    "Margem Líquida": -124.05,
    "ROE": -39.87,
    "ROIC": -13.54,
+   "ROCE": -14.62,
    "Dívida Líquida/Patrimônio": 0.94,
    "Dívida Líquida/EBIT": -3.58,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1910052,
    "Lucros Anuais": [
     {
@@ -8806,8 +9140,10 @@
    "Margem Líquida": 3.86,
    "ROE": 4.94,
    "ROIC": 9.74,
+   "ROCE": 8.39,
    "Dívida Líquida/Patrimônio": 0.14,
    "Dívida Líquida/EBIT": 1.26,
+   "Dívida Líquida/EBITDA": 0.79,
    "Liquidez Média Diária": 896955,
    "Lucros Anuais": [
     {
@@ -8859,8 +9195,10 @@
    "Margem Líquida": 3.86,
    "ROE": 4.94,
    "ROIC": 9.74,
+   "ROCE": 8.39,
    "Dívida Líquida/Patrimônio": 0.14,
    "Dívida Líquida/EBIT": 1.26,
+   "Dívida Líquida/EBITDA": 0.79,
    "Liquidez Média Diária": 284612471,
    "Lucros Anuais": [
     {
@@ -8912,8 +9250,10 @@
    "Margem Líquida": 5.1,
    "ROE": 20.23,
    "ROIC": 26.3,
+   "ROCE": 13.58,
    "Dívida Líquida/Patrimônio": 0.45,
    "Dívida Líquida/EBIT": 1.18,
+   "Dívida Líquida/EBITDA": 0.96,
    "Liquidez Média Diária": 84562691,
    "Lucros Anuais": [
     {
@@ -8965,8 +9305,10 @@
    "Margem Líquida": 3.99,
    "ROE": 13.12,
    "ROIC": 14.93,
+   "ROCE": 11.57,
    "Dívida Líquida/Patrimônio": 0.09,
    "Dívida Líquida/EBIT": 0.54,
+   "Dívida Líquida/EBITDA": 0.41,
    "Liquidez Média Diária": 35296122,
    "Lucros Anuais": [
     {
@@ -9018,8 +9360,10 @@
    "Margem Líquida": 1.38,
    "ROE": 1.76,
    "ROIC": 9.72,
+   "ROCE": 8.37,
    "Dívida Líquida/Patrimônio": 0.14,
    "Dívida Líquida/EBIT": 1.25,
+   "Dívida Líquida/EBITDA": 0.78,
    "Liquidez Média Diária": 507000,
    "Lucros Anuais": [
     {
@@ -9071,8 +9415,10 @@
    "Margem Líquida": 1.38,
    "ROE": 1.76,
    "ROIC": 9.72,
+   "ROCE": 8.37,
    "Dívida Líquida/Patrimônio": 0.14,
    "Dívida Líquida/EBIT": 1.25,
+   "Dívida Líquida/EBITDA": 0.78,
    "Liquidez Média Diária": 137641929,
    "Lucros Anuais": [
     {
@@ -9124,8 +9470,10 @@
    "Margem Líquida": 217.09,
    "ROE": null,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": 0,
    "Liquidez Média Diária": 95,
    "Lucros Anuais": [
     {
@@ -9177,8 +9525,10 @@
    "Margem Líquida": 22.71,
    "ROE": 18.04,
    "ROIC": 9.91,
+   "ROCE": 8.82,
    "Dívida Líquida/Patrimônio": -0.11,
    "Dívida Líquida/EBIT": -1.26,
+   "Dívida Líquida/EBITDA": -0.98,
    "Liquidez Média Diária": 13875531,
    "Lucros Anuais": [
     {
@@ -9230,8 +9580,10 @@
    "Margem Líquida": -209.37,
    "ROE": 23.14,
    "ROIC": -379.23,
+   "ROCE": -57.76,
    "Dívida Líquida/Patrimônio": -1.06,
    "Dívida Líquida/EBIT": -5.03,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1349,
    "Lucros Anuais": [
     {
@@ -9283,8 +9635,10 @@
    "Margem Líquida": -0.55,
    "ROE": -0.36,
    "ROIC": 2.91,
+   "ROCE": 2.31,
    "Dívida Líquida/Patrimônio": 0.1,
    "Dívida Líquida/EBIT": 3.25,
+   "Dívida Líquida/EBITDA": 2.32,
    "Liquidez Média Diária": 82294145,
    "Lucros Anuais": [
     {
@@ -9336,8 +9690,10 @@
    "Margem Líquida": 0.41,
    "ROE": 0.16,
    "ROIC": 2.66,
+   "ROCE": 2.32,
    "Dívida Líquida/Patrimônio": 0.63,
    "Dívida Líquida/EBIT": 14.48,
+   "Dívida Líquida/EBITDA": 12.93,
    "Liquidez Média Diária": 2338591,
    "Lucros Anuais": [
     {
@@ -9389,8 +9745,10 @@
    "Margem Líquida": 6.56,
    "ROE": 1.39,
    "ROIC": 8.82,
+   "ROCE": 8.06,
    "Dívida Líquida/Patrimônio": 0.59,
    "Dívida Líquida/EBIT": 4.21,
+   "Dívida Líquida/EBITDA": 4.14,
    "Liquidez Média Diária": 2183365,
    "Lucros Anuais": [
     {
@@ -9442,8 +9800,10 @@
    "Margem Líquida": -7.96,
    "ROE": -8.56,
    "ROIC": 11.84,
+   "ROCE": 9.55,
    "Dívida Líquida/Patrimônio": 1.2,
    "Dívida Líquida/EBIT": 4.62,
+   "Dívida Líquida/EBITDA": 2.78,
    "Liquidez Média Diária": 6812505,
    "Lucros Anuais": [
     {
@@ -9495,8 +9855,10 @@
    "Margem Líquida": 150.62,
    "ROE": 10.46,
    "ROIC": 7.97,
+   "ROCE": 4.49,
    "Dívida Líquida/Patrimônio": 0.28,
    "Dívida Líquida/EBIT": 2.73,
+   "Dívida Líquida/EBITDA": 2.63,
    "Liquidez Média Diária": 1000,
    "Lucros Anuais": [
     {
@@ -9548,8 +9910,10 @@
    "Margem Líquida": 18.13,
    "ROE": -0.23,
    "ROIC": null,
+   "ROCE": 62.87,
    "Dívida Líquida/Patrimônio": -0.93,
    "Dívida Líquida/EBIT": 83.98,
+   "Dívida Líquida/EBITDA": 83.98,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -9601,8 +9965,10 @@
    "Margem Líquida": 18.13,
    "ROE": -0.23,
    "ROIC": null,
+   "ROCE": 62.87,
    "Dívida Líquida/Patrimônio": -0.93,
    "Dívida Líquida/EBIT": 83.98,
+   "Dívida Líquida/EBITDA": 83.98,
    "Liquidez Média Diária": 235,
    "Lucros Anuais": [
     {
@@ -9654,8 +10020,10 @@
    "Margem Líquida": 12.39,
    "ROE": -62.77,
    "ROIC": null,
+   "ROCE": 17.35,
    "Dívida Líquida/Patrimônio": 1.41,
    "Dívida Líquida/EBIT": -0.84,
+   "Dívida Líquida/EBITDA": -0.71,
    "Liquidez Média Diária": 22475,
    "Lucros Anuais": [
     {
@@ -9707,8 +10075,10 @@
    "Margem Líquida": 20.07,
    "ROE": 12.27,
    "ROIC": 12.5,
+   "ROCE": 11.7,
    "Dívida Líquida/Patrimônio": 0.38,
    "Dívida Líquida/EBIT": 2.2,
+   "Dívida Líquida/EBITDA": 1.95,
    "Liquidez Média Diária": 101347138,
    "Lucros Anuais": [
     {
@@ -9760,8 +10130,10 @@
    "Margem Líquida": -50.54,
    "ROE": -237.77,
    "ROIC": -22.76,
+   "ROCE": -13.89,
    "Dívida Líquida/Patrimônio": 3,
    "Dívida Líquida/EBIT": -3.29,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 167478,
    "Lucros Anuais": [
     {
@@ -9813,8 +10185,10 @@
    "Margem Líquida": 41.81,
    "ROE": 12.93,
    "ROIC": 15.95,
+   "ROCE": 12.84,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": 1.89,
+   "Dívida Líquida/EBITDA": 1.68,
    "Liquidez Média Diária": 112766981,
    "Lucros Anuais": [
     {
@@ -9866,8 +10240,10 @@
    "Margem Líquida": 41.81,
    "ROE": 12.93,
    "ROIC": 15.95,
+   "ROCE": 12.84,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": 1.89,
+   "Dívida Líquida/EBITDA": 1.68,
    "Liquidez Média Diária": 222112,
    "Lucros Anuais": [
     {
@@ -9919,8 +10295,10 @@
    "Margem Líquida": 41.81,
    "ROE": 12.93,
    "ROIC": 15.95,
+   "ROCE": 12.84,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": 1.89,
+   "Dívida Líquida/EBITDA": 1.68,
    "Liquidez Média Diária": 22355,
    "Lucros Anuais": [
     {
@@ -9972,8 +10350,10 @@
    "Margem Líquida": -3213.59,
    "ROE": 14.36,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -0.47,
    "Dívida Líquida/EBIT": -4.99,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 62623,
    "Lucros Anuais": [
     {
@@ -10025,8 +10405,10 @@
    "Margem Líquida": 13.57,
    "ROE": 18.44,
    "ROIC": 19.9,
+   "ROCE": 13.91,
    "Dívida Líquida/Patrimônio": -0.2,
    "Dívida Líquida/EBIT": -1.23,
+   "Dívida Líquida/EBITDA": -1.01,
    "Liquidez Média Diária": 23425205,
    "Lucros Anuais": [
     {
@@ -10078,8 +10460,10 @@
    "Margem Líquida": 5.39,
    "ROE": 4.52,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 58709698,
    "Lucros Anuais": [
     {
@@ -10131,8 +10515,10 @@
    "Margem Líquida": 26.39,
    "ROE": 12.53,
    "ROIC": 13.02,
+   "ROCE": 10.66,
    "Dívida Líquida/Patrimônio": 0.71,
    "Dívida Líquida/EBIT": 3.19,
+   "Dívida Líquida/EBITDA": 3.17,
    "Liquidez Média Diária": 114074,
    "Lucros Anuais": [
     {
@@ -10184,8 +10570,10 @@
    "Margem Líquida": 26.39,
    "ROE": 12.53,
    "ROIC": 13.02,
+   "ROCE": 10.66,
    "Dívida Líquida/Patrimônio": 0.71,
    "Dívida Líquida/EBIT": 3.19,
+   "Dívida Líquida/EBITDA": 3.17,
    "Liquidez Média Diária": 123262456,
    "Lucros Anuais": [
     {
@@ -10237,8 +10625,10 @@
    "Margem Líquida": 214.29,
    "ROE": 18.42,
    "ROIC": 18.66,
+   "ROCE": 17.43,
    "Dívida Líquida/Patrimônio": 0.04,
    "Dívida Líquida/EBIT": 0.21,
+   "Dívida Líquida/EBITDA": 0.2,
    "Liquidez Média Diária": 2948942,
    "Lucros Anuais": [
     {
@@ -10290,8 +10680,10 @@
    "Margem Líquida": 214.29,
    "ROE": 18.42,
    "ROIC": 18.66,
+   "ROCE": 17.43,
    "Dívida Líquida/Patrimônio": 0.04,
    "Dívida Líquida/EBIT": 0.21,
+   "Dívida Líquida/EBITDA": 0.2,
    "Liquidez Média Diária": 471660107,
    "Lucros Anuais": [
     {
@@ -10343,8 +10735,10 @@
    "Margem Líquida": 12.13,
    "ROE": 20.54,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 108867063,
    "Lucros Anuais": [
     {
@@ -10396,8 +10790,10 @@
    "Margem Líquida": 12.13,
    "ROE": 20.54,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1469328952,
    "Lucros Anuais": [
     {
@@ -10449,8 +10845,10 @@
    "Margem Líquida": -2.55,
    "ROE": -2.61,
    "ROIC": -0.45,
+   "ROCE": -0.33,
    "Dívida Líquida/Patrimônio": 1.57,
    "Dívida Líquida/EBIT": -136.87,
+   "Dívida Líquida/EBITDA": 2.94,
    "Liquidez Média Diária": 3094045,
    "Lucros Anuais": [
     {
@@ -10502,8 +10900,10 @@
    "Margem Líquida": -160.52,
    "ROE": 50.92,
    "ROIC": -2846.31,
+   "ROCE": -133.05,
    "Dívida Líquida/Patrimônio": -1.02,
    "Dívida Líquida/EBIT": -2.17,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 72616,
    "Lucros Anuais": [
     {
@@ -10555,8 +10955,10 @@
    "Margem Líquida": 52.59,
    "ROE": 26.99,
    "ROIC": 25.98,
+   "ROCE": 17.8,
    "Dívida Líquida/Patrimônio": 0.25,
    "Dívida Líquida/EBIT": 0.77,
+   "Dívida Líquida/EBITDA": 0.75,
    "Liquidez Média Diária": 54396357,
    "Lucros Anuais": [
     {
@@ -10608,8 +11010,10 @@
    "Margem Líquida": 0.87,
    "ROE": 1.92,
    "ROIC": 6.36,
+   "ROCE": 4.84,
    "Dívida Líquida/Patrimônio": 0.66,
    "Dívida Líquida/EBIT": 6.24,
+   "Dívida Líquida/EBITDA": 5.39,
    "Liquidez Média Diária": 60,
    "Lucros Anuais": [
     {
@@ -10661,8 +11065,10 @@
    "Margem Líquida": 0.87,
    "ROE": 1.92,
    "ROIC": 6.36,
+   "ROCE": 4.84,
    "Dívida Líquida/Patrimônio": 0.66,
    "Dívida Líquida/EBIT": 6.24,
+   "Dívida Líquida/EBITDA": 5.39,
    "Liquidez Média Diária": 114,
    "Lucros Anuais": [
     {
@@ -10714,8 +11120,10 @@
    "Margem Líquida": -0.99,
    "ROE": -8.12,
    "ROIC": 12.38,
+   "ROCE": 10.38,
    "Dívida Líquida/Patrimônio": 5.14,
    "Dívida Líquida/EBIT": 6.76,
+   "Dívida Líquida/EBITDA": 3.46,
    "Liquidez Média Diária": 14318089,
    "Lucros Anuais": [
     {
@@ -10767,8 +11175,10 @@
    "Margem Líquida": 9.71,
    "ROE": 17.52,
    "ROIC": 20.31,
+   "ROCE": 15.82,
    "Dívida Líquida/Patrimônio": -0.02,
    "Dívida Líquida/EBIT": -0.08,
+   "Dívida Líquida/EBITDA": -0.06,
    "Liquidez Média Diária": 11710419,
    "Lucros Anuais": [
     {
@@ -10820,8 +11230,10 @@
    "Margem Líquida": -15.72,
    "ROE": -2.18,
    "ROIC": -4.36,
+   "ROCE": -3.38,
    "Dívida Líquida/Patrimônio": -0.02,
    "Dívida Líquida/EBIT": 0.36,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 398291,
    "Lucros Anuais": [
     {
@@ -10873,8 +11285,10 @@
    "Margem Líquida": 19.91,
    "ROE": 21.02,
    "ROIC": 19.45,
+   "ROCE": 11.47,
    "Dívida Líquida/Patrimônio": 0.31,
    "Dívida Líquida/EBIT": 1.22,
+   "Dívida Líquida/EBITDA": 1.18,
    "Liquidez Média Diária": 12668509,
    "Lucros Anuais": [
     {
@@ -10926,8 +11340,10 @@
    "Margem Líquida": 13.01,
    "ROE": 72.12,
    "ROIC": 45.8,
+   "ROCE": 45.62,
    "Dívida Líquida/Patrimônio": 1.14,
    "Dívida Líquida/EBIT": 1.16,
+   "Dívida Líquida/EBITDA": 1.03,
    "Liquidez Média Diária": 12108510,
    "Lucros Anuais": [
     {
@@ -10979,8 +11395,10 @@
    "Margem Líquida": 15.44,
    "ROE": 25.94,
    "ROIC": 3.86,
+   "ROCE": 2.91,
    "Dívida Líquida/Patrimônio": 0.78,
    "Dívida Líquida/EBIT": 11.38,
+   "Dívida Líquida/EBITDA": 4.59,
    "Liquidez Média Diária": 14055943,
    "Lucros Anuais": [
     {
@@ -11032,8 +11450,10 @@
    "Margem Líquida": -6.88,
    "ROE": -67.62,
    "ROIC": -0.63,
+   "ROCE": -0.07,
    "Dívida Líquida/Patrimônio": -0.16,
    "Dívida Líquida/EBIT": 30.4,
+   "Dívida Líquida/EBITDA": -0.34,
    "Liquidez Média Diária": 7613915,
    "Lucros Anuais": [
     {
@@ -11085,8 +11505,10 @@
    "Margem Líquida": 141.69,
    "ROE": 10.55,
    "ROIC": 11.43,
+   "ROCE": 10.49,
    "Dívida Líquida/Patrimônio": 0.48,
    "Dívida Líquida/EBIT": 2.83,
+   "Dívida Líquida/EBITDA": 2.81,
    "Liquidez Média Diária": 18367363,
    "Lucros Anuais": [
     {
@@ -11138,8 +11560,10 @@
    "Margem Líquida": 4.4,
    "ROE": 11.37,
    "ROIC": 22.35,
+   "ROCE": 19.17,
    "Dívida Líquida/Patrimônio": 1.1,
    "Dívida Líquida/EBIT": 2.34,
+   "Dívida Líquida/EBITDA": 1.54,
    "Liquidez Média Diária": 604786,
    "Lucros Anuais": [
     {
@@ -11191,8 +11615,10 @@
    "Margem Líquida": 14.09,
    "ROE": 12.5,
    "ROIC": 25.87,
+   "ROCE": 14.25,
    "Dívida Líquida/Patrimônio": -0.24,
    "Dívida Líquida/EBIT": -1.23,
+   "Dívida Líquida/EBITDA": -0.86,
    "Liquidez Média Diária": 439829,
    "Lucros Anuais": [
     {
@@ -11244,8 +11670,10 @@
    "Margem Líquida": 9.35,
    "ROE": 14.41,
    "ROIC": 19.35,
+   "ROCE": 14.14,
    "Dívida Líquida/Patrimônio": -0.11,
    "Dívida Líquida/EBIT": -0.65,
+   "Dívida Líquida/EBITDA": -0.38,
    "Liquidez Média Diária": 309218460,
    "Lucros Anuais": [
     {
@@ -11297,8 +11725,10 @@
    "Margem Líquida": -411.83,
    "ROE": 508.15,
    "ROIC": -75.97,
+   "ROCE": -48.53,
    "Dívida Líquida/Patrimônio": -6.83,
    "Dívida Líquida/EBIT": -1.54,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 75267,
    "Lucros Anuais": [
     {
@@ -11350,8 +11780,10 @@
    "Margem Líquida": -13.29,
    "ROE": -8.41,
    "ROIC": -12.39,
+   "ROCE": -10.05,
    "Dívida Líquida/Patrimônio": -0.14,
    "Dívida Líquida/EBIT": 1.31,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 19359510,
    "Lucros Anuais": [
     {
@@ -11403,8 +11835,10 @@
    "Margem Líquida": 6.12,
    "ROE": 9.41,
    "ROIC": 17.87,
+   "ROCE": 10.48,
    "Dívida Líquida/Patrimônio": 0.49,
    "Dívida Líquida/EBIT": 1.84,
+   "Dívida Líquida/EBITDA": 1.43,
    "Liquidez Média Diária": 1420642,
    "Lucros Anuais": [
     {
@@ -11456,8 +11890,10 @@
    "Margem Líquida": 6.23,
    "ROE": 7.65,
    "ROIC": 8.47,
+   "ROCE": 6.33,
    "Dívida Líquida/Patrimônio": -0.08,
    "Dívida Líquida/EBIT": -0.98,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 18157712,
    "Lucros Anuais": [
     {
@@ -11509,8 +11945,10 @@
    "Margem Líquida": 21.43,
    "ROE": 24.43,
    "ROIC": 22.15,
+   "ROCE": 11.48,
    "Dívida Líquida/Patrimônio": 0.09,
    "Dívida Líquida/EBIT": 0.37,
+   "Dívida Líquida/EBITDA": 0.36,
    "Liquidez Média Diária": 43965936,
    "Lucros Anuais": [
     {
@@ -11562,8 +12000,10 @@
    "Margem Líquida": -9.94,
    "ROE": -21.9,
    "ROIC": 3.67,
+   "ROCE": 2.2,
    "Dívida Líquida/Patrimônio": 0.26,
    "Dívida Líquida/EBIT": 5.56,
+   "Dívida Líquida/EBITDA": 0.97,
    "Liquidez Média Diária": 287799,
    "Lucros Anuais": [
     {
@@ -11615,8 +12055,10 @@
    "Margem Líquida": 11.09,
    "ROE": 10.41,
    "ROIC": 7.36,
+   "ROCE": 6.2,
    "Dívida Líquida/Patrimônio": 0.42,
    "Dívida Líquida/EBIT": 3.99,
+   "Dívida Líquida/EBITDA": 3.81,
    "Liquidez Média Diária": 1776412,
    "Lucros Anuais": [
     {
@@ -11668,8 +12110,10 @@
    "Margem Líquida": 3.55,
    "ROE": 65.89,
    "ROIC": 15.07,
+   "ROCE": 113.7,
    "Dívida Líquida/Patrimônio": 8.43,
    "Dívida Líquida/EBIT": 5.93,
+   "Dívida Líquida/EBITDA": 4.72,
    "Liquidez Média Diária": 28403,
    "Lucros Anuais": [
     {
@@ -11721,8 +12165,10 @@
    "Margem Líquida": 0.23,
    "ROE": 0.79,
    "ROIC": 12.6,
+   "ROCE": 8.86,
    "Dívida Líquida/Patrimônio": 0.29,
    "Dívida Líquida/EBIT": 1.76,
+   "Dívida Líquida/EBITDA": 1.02,
    "Liquidez Média Diária": 306871681,
    "Lucros Anuais": [
     {
@@ -11774,8 +12220,10 @@
    "Margem Líquida": 23.53,
    "ROE": 23.77,
    "ROIC": 22.86,
+   "ROCE": 19.61,
    "Dívida Líquida/Patrimônio": 0.65,
    "Dívida Líquida/EBIT": 1.72,
+   "Dívida Líquida/EBITDA": 1.2,
    "Liquidez Média Diária": 17872806,
    "Lucros Anuais": [
     {
@@ -11827,8 +12275,10 @@
    "Margem Líquida": null,
    "ROE": null,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0.12,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -11880,8 +12330,10 @@
    "Margem Líquida": null,
    "ROE": null,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0.12,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -11933,8 +12385,10 @@
    "Margem Líquida": -3.23,
    "ROE": -30.91,
    "ROIC": 25.42,
+   "ROCE": 23.47,
    "Dívida Líquida/Patrimônio": 4.56,
    "Dívida Líquida/EBIT": 3.23,
+   "Dívida Líquida/EBITDA": 2.92,
    "Liquidez Média Diária": 14965,
    "Lucros Anuais": [
     {
@@ -11986,8 +12440,10 @@
    "Margem Líquida": 9.66,
    "ROE": 19.31,
    "ROIC": 61.87,
+   "ROCE": 18.52,
    "Dívida Líquida/Patrimônio": -0.52,
    "Dívida Líquida/EBIT": -1.73,
+   "Dívida Líquida/EBITDA": -1.46,
    "Liquidez Média Diária": 57524,
    "Lucros Anuais": [
     {
@@ -12039,8 +12495,10 @@
    "Margem Líquida": 30.34,
    "ROE": 31.46,
    "ROIC": 15.34,
+   "ROCE": 12.97,
    "Dívida Líquida/Patrimônio": 1.56,
    "Dívida Líquida/EBIT": 3.97,
+   "Dívida Líquida/EBITDA": 3.23,
    "Liquidez Média Diária": 289798305,
    "Lucros Anuais": [
     {
@@ -12092,8 +12550,10 @@
    "Margem Líquida": 3.41,
    "ROE": 12.28,
    "ROIC": 15.68,
+   "ROCE": 15.65,
    "Dívida Líquida/Patrimônio": 4.89,
    "Dívida Líquida/EBIT": 5.29,
+   "Dívida Líquida/EBITDA": 3.13,
    "Liquidez Média Diária": 138267344,
    "Lucros Anuais": [
     {
@@ -12145,8 +12605,10 @@
    "Margem Líquida": -4.93,
    "ROE": -11.07,
    "ROIC": 6.53,
+   "ROCE": 4.31,
    "Dívida Líquida/Patrimônio": 1.58,
    "Dívida Líquida/EBIT": 9.37,
+   "Dívida Líquida/EBITDA": 7.39,
    "Liquidez Média Diária": 97787001,
    "Lucros Anuais": [
     {
@@ -12198,8 +12660,10 @@
    "Margem Líquida": -26.7,
    "ROE": -6.06,
    "ROIC": -2.89,
+   "ROCE": -2.16,
    "Dívida Líquida/Patrimônio": 0.24,
    "Dívida Líquida/EBIT": -6.8,
+   "Dívida Líquida/EBITDA": 392.43,
    "Liquidez Média Diária": 59,
    "Lucros Anuais": [
     {
@@ -12251,8 +12715,10 @@
    "Margem Líquida": -26.7,
    "ROE": -6.06,
    "ROIC": -2.89,
+   "ROCE": -2.16,
    "Dívida Líquida/Patrimônio": 0.24,
    "Dívida Líquida/EBIT": -6.8,
+   "Dívida Líquida/EBITDA": 392.43,
    "Liquidez Média Diária": 162,
    "Lucros Anuais": [
     {
@@ -12304,8 +12770,10 @@
    "Margem Líquida": 5.89,
    "ROE": 6.11,
    "ROIC": 7.1,
+   "ROCE": 6.66,
    "Dívida Líquida/Patrimônio": 0.47,
    "Dívida Líquida/EBIT": 4.52,
+   "Dívida Líquida/EBITDA": 3.81,
    "Liquidez Média Diária": 3139575,
    "Lucros Anuais": [
     {
@@ -12357,8 +12825,10 @@
    "Margem Líquida": 6.79,
    "ROE": 7.29,
    "ROIC": 7.46,
+   "ROCE": 4.57,
    "Dívida Líquida/Patrimônio": -0.31,
    "Dívida Líquida/EBIT": -5.97,
+   "Dívida Líquida/EBITDA": -3.73,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -12410,8 +12880,10 @@
    "Margem Líquida": 6.79,
    "ROE": 7.29,
    "ROIC": 7.46,
+   "ROCE": 4.57,
    "Dívida Líquida/Patrimônio": -0.31,
    "Dívida Líquida/EBIT": -5.97,
+   "Dívida Líquida/EBITDA": -3.73,
    "Liquidez Média Diária": 46647,
    "Lucros Anuais": [
     {
@@ -12463,8 +12935,10 @@
    "Margem Líquida": 45.25,
    "ROE": 22.23,
    "ROIC": 20.87,
+   "ROCE": 19.77,
    "Dívida Líquida/Patrimônio": 0.64,
    "Dívida Líquida/EBIT": 1.87,
+   "Dívida Líquida/EBITDA": 1.76,
    "Liquidez Média Diária": 210880155,
    "Lucros Anuais": [
     {
@@ -12516,8 +12990,10 @@
    "Margem Líquida": -22.41,
    "ROE": 126,
    "ROIC": -28.99,
+   "ROCE": -15.76,
    "Dívida Líquida/Patrimônio": -3.45,
    "Dívida Líquida/EBIT": -4.86,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 376,
    "Lucros Anuais": [
     {
@@ -12569,8 +13045,10 @@
    "Margem Líquida": -22.41,
    "ROE": 126,
    "ROIC": -28.99,
+   "ROCE": -15.76,
    "Dívida Líquida/Patrimônio": -3.45,
    "Dívida Líquida/EBIT": -4.86,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 9704,
    "Lucros Anuais": [
     {
@@ -12622,8 +13100,10 @@
    "Margem Líquida": 0.6,
    "ROE": 1.95,
    "ROIC": 10.86,
+   "ROCE": 8.48,
    "Dívida Líquida/Patrimônio": 0.81,
    "Dívida Líquida/EBIT": 4.12,
+   "Dívida Líquida/EBITDA": 2.59,
    "Liquidez Média Diária": 9903466,
    "Lucros Anuais": [
     {
@@ -12675,8 +13155,10 @@
    "Margem Líquida": -12.47,
    "ROE": -21.11,
    "ROIC": 5.76,
+   "ROCE": 4.46,
    "Dívida Líquida/Patrimônio": 0.31,
    "Dívida Líquida/EBIT": 4.11,
+   "Dívida Líquida/EBITDA": 2.08,
    "Liquidez Média Diária": 75952357,
    "Lucros Anuais": [
     {
@@ -12728,8 +13210,10 @@
    "Margem Líquida": 13008.52,
    "ROE": -79.29,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1737,
    "Lucros Anuais": [
     {
@@ -12781,8 +13265,10 @@
    "Margem Líquida": 4.4,
    "ROE": 15.3,
    "ROIC": 16.74,
+   "ROCE": 15.18,
    "Dívida Líquida/Patrimônio": 0.33,
    "Dívida Líquida/EBIT": 1.47,
+   "Dívida Líquida/EBITDA": 1.35,
    "Liquidez Média Diária": 16555,
    "Lucros Anuais": [
     {
@@ -12834,8 +13320,10 @@
    "Margem Líquida": 8,
    "ROE": 10.97,
    "ROIC": 12.99,
+   "ROCE": 11.49,
    "Dívida Líquida/Patrimônio": 0.31,
    "Dívida Líquida/EBIT": 1.82,
+   "Dívida Líquida/EBITDA": 1.57,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -12887,8 +13375,10 @@
    "Margem Líquida": 17.29,
    "ROE": 28.55,
    "ROIC": 26.05,
+   "ROCE": 19.42,
    "Dívida Líquida/Patrimônio": 0.17,
    "Dívida Líquida/EBIT": 0.55,
+   "Dívida Líquida/EBITDA": 0.47,
    "Liquidez Média Diária": 146073,
    "Lucros Anuais": [
     {
@@ -12940,8 +13430,10 @@
    "Margem Líquida": -84.77,
    "ROE": -4305.83,
    "ROIC": -71.23,
+   "ROCE": -203.41,
    "Dívida Líquida/Patrimônio": 37.38,
    "Dívida Líquida/EBIT": -1.37,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 22370541,
    "Lucros Anuais": [
     {
@@ -12993,8 +13485,10 @@
    "Margem Líquida": 6.99,
    "ROE": 16.21,
    "ROIC": 15.81,
+   "ROCE": 14.14,
    "Dívida Líquida/Patrimônio": 1.57,
    "Dívida Líquida/EBIT": 3.86,
+   "Dívida Líquida/EBITDA": 2.05,
    "Liquidez Média Diária": 19013785,
    "Lucros Anuais": [
     {
@@ -13046,8 +13540,10 @@
    "Margem Líquida": 3.35,
    "ROE": 0.96,
    "ROIC": 4.65,
+   "ROCE": 5.01,
    "Dívida Líquida/Patrimônio": 0.42,
    "Dívida Líquida/EBIT": 6.4,
+   "Dívida Líquida/EBITDA": 4.07,
    "Liquidez Média Diária": 65115689,
    "Lucros Anuais": [
     {
@@ -13099,8 +13595,10 @@
    "Margem Líquida": -1322.76,
    "ROE": 11.07,
    "ROIC": null,
+   "ROCE": -261.47,
    "Dívida Líquida/Patrimônio": -0.78,
    "Dívida Líquida/EBIT": -38.88,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 3471,
    "Lucros Anuais": [
     {
@@ -13152,8 +13650,10 @@
    "Margem Líquida": 7.59,
    "ROE": 14.2,
    "ROIC": 17.44,
+   "ROCE": 12.69,
    "Dívida Líquida/Patrimônio": 1.64,
    "Dívida Líquida/EBIT": 3.56,
+   "Dívida Líquida/EBITDA": 2.62,
    "Liquidez Média Diária": 39959629,
    "Lucros Anuais": [
     {
@@ -13205,8 +13705,10 @@
    "Margem Líquida": 3.17,
    "ROE": 7.88,
    "ROIC": 12.19,
+   "ROCE": 10.02,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": -0.04,
+   "Dívida Líquida/EBITDA": -0.03,
    "Liquidez Média Diária": 28583,
    "Lucros Anuais": [
     {
@@ -13258,8 +13760,10 @@
    "Margem Líquida": 3.17,
    "ROE": 7.88,
    "ROIC": 12.19,
+   "ROCE": 10.02,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": -0.04,
+   "Dívida Líquida/EBITDA": -0.03,
    "Liquidez Média Diária": 2632,
    "Lucros Anuais": [
     {
@@ -13311,8 +13815,10 @@
    "Margem Líquida": -11.65,
    "ROE": -520.29,
    "ROIC": -13.25,
+   "ROCE": -5.85,
    "Dívida Líquida/Patrimônio": 8.95,
    "Dívida Líquida/EBIT": -6.79,
+   "Dívida Líquida/EBITDA": 6.55,
    "Liquidez Média Diária": 18346465,
    "Lucros Anuais": [
     {
@@ -13364,8 +13870,10 @@
    "Margem Líquida": -241.18,
    "ROE": 6.17,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -0.09,
    "Dívida Líquida/EBIT": -2.24,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 225950,
    "Lucros Anuais": [
     {
@@ -13417,8 +13925,10 @@
    "Margem Líquida": -88.37,
    "ROE": 7.92,
    "ROIC": 3.82,
+   "ROCE": 5.27,
    "Dívida Líquida/Patrimônio": 1.56,
    "Dívida Líquida/EBIT": 15.96,
+   "Dívida Líquida/EBITDA": 12.97,
    "Liquidez Média Diária": 86492,
    "Lucros Anuais": [
     {
@@ -13470,8 +13980,10 @@
    "Margem Líquida": 37.76,
    "ROE": 4.73,
    "ROIC": 4.19,
+   "ROCE": 3.13,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": -0.01,
+   "Dívida Líquida/EBITDA": -0.01,
    "Liquidez Média Diária": 7055,
    "Lucros Anuais": [
     {
@@ -13523,8 +14035,10 @@
    "Margem Líquida": 37.76,
    "ROE": 4.73,
    "ROIC": 4.19,
+   "ROCE": 3.13,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": -0.01,
+   "Dívida Líquida/EBITDA": -0.01,
    "Liquidez Média Diária": 3901,
    "Lucros Anuais": [
     {
@@ -13576,8 +14090,10 @@
    "Margem Líquida": 24.32,
    "ROE": 27.68,
    "ROIC": 23.38,
+   "ROCE": 17.5,
    "Dívida Líquida/Patrimônio": 0.65,
    "Dívida Líquida/EBIT": 1.68,
+   "Dívida Líquida/EBITDA": 1.14,
    "Liquidez Média Diária": 754895550,
    "Lucros Anuais": [
     {
@@ -13629,8 +14145,10 @@
    "Margem Líquida": 24.32,
    "ROE": 27.68,
    "ROIC": 23.38,
+   "ROCE": 17.5,
    "Dívida Líquida/Patrimônio": 0.65,
    "Dívida Líquida/EBIT": 1.68,
+   "Dívida Líquida/EBITDA": 1.14,
    "Liquidez Média Diária": 2563789481,
    "Lucros Anuais": [
     {
@@ -13682,8 +14200,10 @@
    "Margem Líquida": 1.24,
    "ROE": 9.17,
    "ROIC": 18.03,
+   "ROCE": 13.94,
    "Dívida Líquida/Patrimônio": 0.51,
    "Dívida Líquida/EBIT": 1.87,
+   "Dívida Líquida/EBITDA": 1.27,
    "Liquidez Média Diária": 1460431,
    "Lucros Anuais": [
     {
@@ -13735,8 +14255,10 @@
    "Margem Líquida": 2.1,
    "ROE": 9.59,
    "ROIC": 19.46,
+   "ROCE": 14.66,
    "Dívida Líquida/Patrimônio": 0.43,
    "Dívida Líquida/EBIT": 1.54,
+   "Dívida Líquida/EBITDA": 0.98,
    "Liquidez Média Diária": 39271682,
    "Lucros Anuais": [
     {
@@ -13788,8 +14310,10 @@
    "Margem Líquida": 10.74,
    "ROE": 32.94,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 111527,
    "Lucros Anuais": [
     {
@@ -13841,8 +14365,10 @@
    "Margem Líquida": 10.74,
    "ROE": 32.94,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 15888316,
    "Lucros Anuais": [
     {
@@ -13894,8 +14420,10 @@
    "Margem Líquida": 8.62,
    "ROE": 25.06,
    "ROIC": 33.37,
+   "ROCE": 16.02,
    "Dívida Líquida/Patrimônio": 0.13,
    "Dívida Líquida/EBIT": 0.35,
+   "Dívida Líquida/EBITDA": 0.34,
    "Liquidez Média Diária": 22601815,
    "Lucros Anuais": [
     {
@@ -13947,8 +14475,10 @@
    "Margem Líquida": -220.27,
    "ROE": 16.84,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -0.78,
    "Dívida Líquida/EBIT": -14.03,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 6596934,
    "Lucros Anuais": [
     {
@@ -14000,8 +14530,10 @@
    "Margem Líquida": 2.33,
    "ROE": 10.45,
    "ROIC": 11.58,
+   "ROCE": 11.3,
    "Dívida Líquida/Patrimônio": 0.84,
    "Dívida Líquida/EBIT": 3.95,
+   "Dívida Líquida/EBITDA": 2.12,
    "Liquidez Média Diária": 13451690,
    "Lucros Anuais": [
     {
@@ -14053,8 +14585,10 @@
    "Margem Líquida": 13.19,
    "ROE": 27.93,
    "ROIC": 21.67,
+   "ROCE": 19.82,
    "Dívida Líquida/Patrimônio": 0.42,
    "Dívida Líquida/EBIT": 1.37,
+   "Dívida Líquida/EBITDA": 1.22,
    "Liquidez Média Diária": 9876373,
    "Lucros Anuais": [
     {
@@ -14106,8 +14640,10 @@
    "Margem Líquida": 13.19,
    "ROE": 27.93,
    "ROIC": 21.67,
+   "ROCE": 19.82,
    "Dívida Líquida/Patrimônio": 0.42,
    "Dívida Líquida/EBIT": 1.37,
+   "Dívida Líquida/EBITDA": 1.22,
    "Liquidez Média Diária": 82492902,
    "Lucros Anuais": [
     {
@@ -14159,8 +14695,10 @@
    "Margem Líquida": 0.36,
    "ROE": 0.8,
    "ROIC": 11.35,
+   "ROCE": 9.05,
    "Dívida Líquida/Patrimônio": 0.44,
    "Dívida Líquida/EBIT": 2.69,
+   "Dívida Líquida/EBITDA": 2.01,
    "Liquidez Média Diária": 4359339,
    "Lucros Anuais": [
     {
@@ -14212,8 +14750,10 @@
    "Margem Líquida": 18.11,
    "ROE": 13.71,
    "ROIC": 11.79,
+   "ROCE": 10.31,
    "Dívida Líquida/Patrimônio": 0.77,
    "Dívida Líquida/EBIT": 3.69,
+   "Dívida Líquida/EBITDA": 1.75,
    "Liquidez Média Diária": 581249217,
    "Lucros Anuais": [
     {
@@ -14265,8 +14805,10 @@
    "Margem Líquida": 2.55,
    "ROE": 7.92,
    "ROIC": 13.23,
+   "ROCE": 11.61,
    "Dívida Líquida/Patrimônio": 1.18,
    "Dívida Líquida/EBIT": 4.09,
+   "Dívida Líquida/EBITDA": 2.29,
    "Liquidez Média Diária": 14079588,
    "Lucros Anuais": [
     {
@@ -14318,8 +14860,10 @@
    "Margem Líquida": 8.64,
    "ROE": 22.71,
    "ROIC": 181.61,
+   "ROCE": 10.5,
    "Dívida Líquida/Patrimônio": -0.89,
    "Dívida Líquida/EBIT": -4.59,
+   "Dívida Líquida/EBITDA": -4.05,
    "Liquidez Média Diária": 107611625,
    "Lucros Anuais": [
     {
@@ -14371,8 +14915,10 @@
    "Margem Líquida": -12.37,
    "ROE": 306.66,
    "ROIC": 11.33,
+   "ROCE": 5.94,
    "Dívida Líquida/Patrimônio": -11.64,
    "Dívida Líquida/EBIT": 9.65,
+   "Dívida Líquida/EBITDA": 3.58,
    "Liquidez Média Diária": 1350779,
    "Lucros Anuais": [
     {
@@ -14424,8 +14970,10 @@
    "Margem Líquida": 1.9,
    "ROE": 1.93,
    "ROIC": 13.86,
+   "ROCE": 12.71,
    "Dívida Líquida/Patrimônio": 0.59,
    "Dívida Líquida/EBIT": 2.67,
+   "Dívida Líquida/EBITDA": 1.45,
    "Liquidez Média Diária": 7949884,
    "Lucros Anuais": [
     {
@@ -14477,8 +15025,10 @@
    "Margem Líquida": 2.88,
    "ROE": 18.41,
    "ROIC": 28.81,
+   "ROCE": 19.6,
    "Dívida Líquida/Patrimônio": 0.38,
    "Dívida Líquida/EBIT": 0.96,
+   "Dívida Líquida/EBITDA": 0.56,
    "Liquidez Média Diária": 235272338,
    "Lucros Anuais": [
     {
@@ -14530,8 +15080,10 @@
    "Margem Líquida": 8.53,
    "ROE": 8.36,
    "ROIC": 15.87,
+   "ROCE": 10.56,
    "Dívida Líquida/Patrimônio": 1.19,
    "Dívida Líquida/EBIT": 3.42,
+   "Dívida Líquida/EBITDA": 2.41,
    "Liquidez Média Diária": 235678101,
    "Lucros Anuais": [
     {
@@ -14583,8 +15135,10 @@
    "Margem Líquida": 8.45,
    "ROE": 9.82,
    "ROIC": 13.83,
+   "ROCE": 9.87,
    "Dívida Líquida/Patrimônio": 0.68,
    "Dívida Líquida/EBIT": 2.93,
+   "Dívida Líquida/EBITDA": 1.74,
    "Liquidez Média Diária": 7699071,
    "Lucros Anuais": [
     {
@@ -14636,8 +15190,10 @@
    "Margem Líquida": -2.65,
    "ROE": -7.57,
    "ROIC": 9.74,
+   "ROCE": 6.72,
    "Dívida Líquida/Patrimônio": 1.12,
    "Dívida Líquida/EBIT": 5.43,
+   "Dívida Líquida/EBITDA": 3.52,
    "Liquidez Média Diária": 479269,
    "Lucros Anuais": [
     {
@@ -14689,8 +15245,10 @@
    "Margem Líquida": -2.65,
    "ROE": -7.57,
    "ROIC": 9.74,
+   "ROCE": 6.72,
    "Dívida Líquida/Patrimônio": 1.12,
    "Dívida Líquida/EBIT": 5.43,
+   "Dívida Líquida/EBITDA": 3.52,
    "Liquidez Média Diária": 24364271,
    "Lucros Anuais": [
     {
@@ -14742,8 +15300,10 @@
    "Margem Líquida": -6462.93,
    "ROE": 100.48,
    "ROIC": null,
+   "ROCE": -33.77,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 273285,
    "Lucros Anuais": [
     {
@@ -14795,8 +15355,10 @@
    "Margem Líquida": -6462.93,
    "ROE": 100.48,
    "ROIC": null,
+   "ROCE": -33.77,
    "Dívida Líquida/Patrimônio": 0,
    "Dívida Líquida/EBIT": 0,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 2163867,
    "Lucros Anuais": [
     {
@@ -14848,8 +15410,10 @@
    "Margem Líquida": 8.34,
    "ROE": 21.02,
    "ROIC": 36.03,
+   "ROCE": 12.18,
    "Dívida Líquida/Patrimônio": 0.33,
    "Dívida Líquida/EBIT": 0.69,
+   "Dívida Líquida/EBITDA": 0.59,
    "Liquidez Média Diária": 344706088,
    "Lucros Anuais": [
     {
@@ -14901,8 +15465,10 @@
    "Margem Líquida": 16.73,
    "ROE": 11.26,
    "ROIC": 10.99,
+   "ROCE": 8.04,
    "Dívida Líquida/Patrimônio": 0.35,
    "Dívida Líquida/EBIT": 2.35,
+   "Dívida Líquida/EBITDA": 1.14,
    "Liquidez Média Diária": 25301730,
    "Lucros Anuais": [
     {
@@ -14954,8 +15520,10 @@
    "Margem Líquida": 5.1,
    "ROE": 14.81,
    "ROIC": 15.05,
+   "ROCE": 12.68,
    "Dívida Líquida/Patrimônio": 2.52,
    "Dívida Líquida/EBIT": 4.76,
+   "Dívida Líquida/EBITDA": 3.69,
    "Liquidez Média Diária": 7896,
    "Lucros Anuais": [
     {
@@ -15007,8 +15575,10 @@
    "Margem Líquida": 7.39,
    "ROE": 12.63,
    "ROIC": 14.26,
+   "ROCE": 12.47,
    "Dívida Líquida/Patrimônio": 1.27,
    "Dívida Líquida/EBIT": 3.93,
+   "Dívida Líquida/EBITDA": 2.3,
    "Liquidez Média Diária": 591354523,
    "Lucros Anuais": [
     {
@@ -15060,8 +15630,10 @@
    "Margem Líquida": 7.39,
    "ROE": 12.63,
    "ROIC": 14.26,
+   "ROCE": 12.47,
    "Dívida Líquida/Patrimônio": 1.27,
    "Dívida Líquida/EBIT": 3.93,
+   "Dívida Líquida/EBITDA": 2.3,
    "Liquidez Média Diária": 7882252,
    "Lucros Anuais": [
     {
@@ -15113,8 +15685,10 @@
    "Margem Líquida": 14.35,
    "ROE": 28.35,
    "ROIC": 35.45,
+   "ROCE": 28.06,
    "Dívida Líquida/Patrimônio": 0.24,
    "Dívida Líquida/EBIT": 0.55,
+   "Dívida Líquida/EBITDA": 0.41,
    "Liquidez Média Diária": 19862789,
    "Lucros Anuais": [
     {
@@ -15166,8 +15740,10 @@
    "Margem Líquida": -27.65,
    "ROE": -12.55,
    "ROIC": 0.8,
+   "ROCE": 0.54,
    "Dívida Líquida/Patrimônio": 0.58,
    "Dívida Líquida/EBIT": 45.78,
+   "Dívida Líquida/EBITDA": 4.69,
    "Liquidez Média Diária": 62011,
    "Lucros Anuais": [
     {
@@ -15219,8 +15795,10 @@
    "Margem Líquida": -27.65,
    "ROE": -12.55,
    "ROIC": 0.8,
+   "ROCE": 0.54,
    "Dívida Líquida/Patrimônio": 0.58,
    "Dívida Líquida/EBIT": 45.78,
+   "Dívida Líquida/EBITDA": 4.69,
    "Liquidez Média Diária": 57206,
    "Lucros Anuais": [
     {
@@ -15272,8 +15850,10 @@
    "Margem Líquida": 7.53,
    "ROE": 7.13,
    "ROIC": 3.72,
+   "ROCE": 3.4,
    "Dívida Líquida/Patrimônio": 0.42,
    "Dívida Líquida/EBIT": 7.9,
+   "Dívida Líquida/EBITDA": 3.71,
    "Liquidez Média Diária": 2205139,
    "Lucros Anuais": [
     {
@@ -15325,8 +15905,10 @@
    "Margem Líquida": null,
    "ROE": 7.13,
    "ROIC": 6.8,
+   "ROCE": 5.98,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -2.13,
+   "Dívida Líquida/EBITDA": -2.13,
    "Liquidez Média Diária": 2166,
    "Lucros Anuais": [
     {
@@ -15378,8 +15960,10 @@
    "Margem Líquida": null,
    "ROE": 7.13,
    "ROIC": 6.8,
+   "ROCE": 5.98,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -2.13,
+   "Dívida Líquida/EBITDA": -2.13,
    "Liquidez Média Diária": 5185,
    "Lucros Anuais": [
     {
@@ -15431,8 +16015,10 @@
    "Margem Líquida": null,
    "ROE": 7.13,
    "ROIC": 6.8,
+   "ROCE": 5.98,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -2.13,
+   "Dívida Líquida/EBITDA": -2.13,
    "Liquidez Média Diária": 1932,
    "Lucros Anuais": [
     {
@@ -15484,8 +16070,10 @@
    "Margem Líquida": -19.19,
    "ROE": 22.31,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": 0.01,
    "Dívida Líquida/EBIT": 0.03,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 2035,
    "Lucros Anuais": [
     {
@@ -15533,8 +16121,10 @@
    "Margem Líquida": -846.43,
    "ROE": 15.74,
    "ROIC": null,
+   "ROCE": -61.6,
    "Dívida Líquida/Patrimônio": -0.49,
    "Dívida Líquida/EBIT": -4.48,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -15586,8 +16176,10 @@
    "Margem Líquida": 14.58,
    "ROE": 20.33,
    "ROIC": 36.38,
+   "ROCE": 25.26,
    "Dívida Líquida/Patrimônio": -0.13,
    "Dívida Líquida/EBIT": -0.42,
+   "Dívida Líquida/EBITDA": -0.39,
    "Liquidez Média Diária": 312768,
    "Lucros Anuais": [
     {
@@ -15639,8 +16231,10 @@
    "Margem Líquida": -1250.15,
    "ROE": -68.85,
    "ROIC": -34.44,
+   "ROCE": -8.66,
    "Dívida Líquida/Patrimônio": -0.22,
    "Dívida Líquida/EBIT": 0.83,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 1001,
    "Lucros Anuais": [
     {
@@ -15684,8 +16278,10 @@
    "Margem Líquida": 7.93,
    "ROE": 10.1,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 146625857,
    "Lucros Anuais": [
     {
@@ -15737,8 +16333,10 @@
    "Margem Líquida": 7.93,
    "ROE": 10.1,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 3306240,
    "Lucros Anuais": [
     {
@@ -15790,8 +16388,10 @@
    "Margem Líquida": 7.93,
    "ROE": 10.1,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": null,
    "Dívida Líquida/EBIT": null,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 4366684,
    "Lucros Anuais": [
     {
@@ -15843,8 +16443,10 @@
    "Margem Líquida": 6.04,
    "ROE": 3.76,
    "ROIC": 13.8,
+   "ROCE": 9.31,
    "Dívida Líquida/Patrimônio": 0.21,
    "Dívida Líquida/EBIT": 1.28,
+   "Dívida Líquida/EBITDA": 0.96,
    "Liquidez Média Diária": 72336840,
    "Lucros Anuais": [
     {
@@ -15896,8 +16498,10 @@
    "Margem Líquida": 6.04,
    "ROE": 3.76,
    "ROIC": 13.8,
+   "ROCE": 9.31,
    "Dívida Líquida/Patrimônio": 0.21,
    "Dívida Líquida/EBIT": 1.28,
+   "Dívida Líquida/EBITDA": 0.96,
    "Liquidez Média Diária": 2242185,
    "Lucros Anuais": [
     {
@@ -15949,8 +16553,10 @@
    "Margem Líquida": 6.04,
    "ROE": 3.76,
    "ROIC": 13.8,
+   "ROCE": 9.31,
    "Dívida Líquida/Patrimônio": 0.21,
    "Dívida Líquida/EBIT": 1.28,
+   "Dívida Líquida/EBITDA": 0.96,
    "Liquidez Média Diária": 14743469,
    "Lucros Anuais": [
     {
@@ -16002,8 +16608,10 @@
    "Margem Líquida": 9.78,
    "ROE": 10.65,
    "ROIC": 44.16,
+   "ROCE": 16,
    "Dívida Líquida/Patrimônio": -0.73,
    "Dívida Líquida/EBIT": -6.08,
+   "Dívida Líquida/EBITDA": -5.69,
    "Liquidez Média Diária": 106657548,
    "Lucros Anuais": [
     {
@@ -16055,8 +16663,10 @@
    "Margem Líquida": 5,
    "ROE": 13.07,
    "ROIC": 11.02,
+   "ROCE": 10.91,
    "Dívida Líquida/Patrimônio": 0.87,
    "Dívida Líquida/EBIT": 4.21,
+   "Dívida Líquida/EBITDA": 2.43,
    "Liquidez Média Diária": 40065081,
    "Lucros Anuais": [
     {
@@ -16108,8 +16718,10 @@
    "Margem Líquida": 28.52,
    "ROE": 25.73,
    "ROIC": 16.3,
+   "ROCE": 13.57,
    "Dívida Líquida/Patrimônio": 0.76,
    "Dívida Líquida/EBIT": 2.64,
+   "Dívida Líquida/EBITDA": 2.21,
    "Liquidez Média Diária": 713918767,
    "Lucros Anuais": [
     {
@@ -16161,8 +16773,10 @@
    "Margem Líquida": -6.6,
    "ROE": -1.7,
    "ROIC": 3.33,
+   "ROCE": 1.23,
    "Dívida Líquida/Patrimônio": 0.05,
    "Dívida Líquida/EBIT": 1.32,
+   "Dívida Líquida/EBITDA": 0.45,
    "Liquidez Média Diária": 281104,
    "Lucros Anuais": [
     {
@@ -16214,8 +16828,10 @@
    "Margem Líquida": 11.85,
    "ROE": 17.83,
    "ROIC": 25.47,
+   "ROCE": 18.52,
    "Dívida Líquida/Patrimônio": 0.26,
    "Dívida Líquida/EBIT": 0.82,
+   "Dívida Líquida/EBITDA": 0.56,
    "Liquidez Média Diária": 17135357,
    "Lucros Anuais": [
     {
@@ -16267,8 +16883,10 @@
    "Margem Líquida": -48.65,
    "ROE": 105.38,
    "ROIC": -288.57,
+   "ROCE": -39.67,
    "Dívida Líquida/Patrimônio": -1.16,
    "Dívida Líquida/EBIT": -2.57,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 152569,
    "Lucros Anuais": [
     {
@@ -16320,8 +16938,10 @@
    "Margem Líquida": 13.91,
    "ROE": 16.57,
    "ROIC": 13.99,
+   "ROCE": 8.46,
    "Dívida Líquida/Patrimônio": -0.12,
    "Dívida Líquida/EBIT": -0.93,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -16373,8 +16993,10 @@
    "Margem Líquida": 13.91,
    "ROE": 16.57,
    "ROIC": 13.99,
+   "ROCE": 8.46,
    "Dívida Líquida/Patrimônio": -0.12,
    "Dívida Líquida/EBIT": -0.93,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 3167657,
    "Lucros Anuais": [
     {
@@ -16426,8 +17048,10 @@
    "Margem Líquida": -0.4,
    "ROE": -1.86,
    "ROIC": 15.76,
+   "ROCE": 12.91,
    "Dívida Líquida/Patrimônio": 4.48,
    "Dívida Líquida/EBIT": 5.19,
+   "Dívida Líquida/EBITDA": 3.27,
    "Liquidez Média Diária": 66253929,
    "Lucros Anuais": [
     {
@@ -16479,8 +17103,10 @@
    "Margem Líquida": 3.85,
    "ROE": 6.37,
    "ROIC": 13.41,
+   "ROCE": 11.25,
    "Dívida Líquida/Patrimônio": 1.2,
    "Dívida Líquida/EBIT": 4.06,
+   "Dívida Líquida/EBITDA": 3.37,
    "Liquidez Média Diária": 54582471,
    "Lucros Anuais": [
     {
@@ -16532,8 +17158,10 @@
    "Margem Líquida": 8.53,
    "ROE": 11.27,
    "ROIC": 18.06,
+   "ROCE": 10.68,
    "Dívida Líquida/Patrimônio": 0.74,
    "Dívida Líquida/EBIT": 2.36,
+   "Dívida Líquida/EBITDA": 1.17,
    "Liquidez Média Diária": 231241662,
    "Lucros Anuais": [
     {
@@ -16585,8 +17213,10 @@
    "Margem Líquida": 11.43,
    "ROE": 11,
    "ROIC": 8.9,
+   "ROCE": 6.11,
    "Dívida Líquida/Patrimônio": 0.95,
    "Dívida Líquida/EBIT": 5.47,
+   "Dívida Líquida/EBITDA": 1.95,
    "Liquidez Média Diária": 41885066,
    "Lucros Anuais": [
     {
@@ -16638,8 +17268,10 @@
    "Margem Líquida": -31.86,
    "ROE": 12.65,
    "ROIC": null,
+   "ROCE": -78.95,
    "Dívida Líquida/Patrimônio": -0.1,
    "Dívida Líquida/EBIT": -7.98,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 16,
    "Lucros Anuais": [
     {
@@ -16691,8 +17323,10 @@
    "Margem Líquida": -31.86,
    "ROE": 12.65,
    "ROIC": null,
+   "ROCE": -78.95,
    "Dívida Líquida/Patrimônio": -0.1,
    "Dívida Líquida/EBIT": -7.98,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 7864,
    "Lucros Anuais": [
     {
@@ -16744,8 +17378,10 @@
    "Margem Líquida": -31.86,
    "ROE": 12.65,
    "ROIC": null,
+   "ROCE": -78.95,
    "Dívida Líquida/Patrimônio": -0.1,
    "Dívida Líquida/EBIT": -7.98,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -16797,8 +17433,10 @@
    "Margem Líquida": 0.87,
    "ROE": 1.72,
    "ROIC": 8.06,
+   "ROCE": 5.47,
    "Dívida Líquida/Patrimônio": 0.61,
    "Dívida Líquida/EBIT": 4.72,
+   "Dívida Líquida/EBITDA": 3.8,
    "Liquidez Média Diária": 6109477,
    "Lucros Anuais": [
     {
@@ -16850,8 +17488,10 @@
    "Margem Líquida": 17.16,
    "ROE": 63.07,
    "ROIC": 174.85,
+   "ROCE": 68.28,
    "Dívida Líquida/Patrimônio": -0.54,
    "Dívida Líquida/EBIT": -0.67,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 0,
    "Lucros Anuais": [
     {
@@ -16903,8 +17543,10 @@
    "Margem Líquida": 17.16,
    "ROE": 63.07,
    "ROIC": 174.85,
+   "ROCE": 68.28,
    "Dívida Líquida/Patrimônio": -0.54,
    "Dívida Líquida/EBIT": -0.67,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 2502,
    "Lucros Anuais": [
     {
@@ -16956,8 +17598,10 @@
    "Margem Líquida": 17.16,
    "ROE": 63.07,
    "ROIC": 174.85,
+   "ROCE": 68.28,
    "Dívida Líquida/Patrimônio": -0.54,
    "Dívida Líquida/EBIT": -0.67,
+   "Dívida Líquida/EBITDA": -0.6,
    "Liquidez Média Diária": 1952,
    "Lucros Anuais": [
     {
@@ -17009,8 +17653,10 @@
    "Margem Líquida": 17.08,
    "ROE": 16.39,
    "ROIC": 8.67,
+   "ROCE": 6.47,
    "Dívida Líquida/Patrimônio": 1.33,
    "Dívida Líquida/EBIT": 6.59,
+   "Dívida Líquida/EBITDA": 3.02,
    "Liquidez Média Diária": 387955386,
    "Lucros Anuais": [
     {
@@ -17062,8 +17708,10 @@
    "Margem Líquida": 16.32,
    "ROE": 3.7,
    "ROIC": 8.69,
+   "ROCE": 7.17,
    "Dívida Líquida/Patrimônio": 0.16,
    "Dívida Líquida/EBIT": 1.57,
+   "Dívida Líquida/EBITDA": 1.24,
    "Liquidez Média Diária": 1917103,
    "Lucros Anuais": [
     {
@@ -17115,8 +17763,10 @@
    "Margem Líquida": 36.48,
    "ROE": 20.27,
    "ROIC": 15.74,
+   "ROCE": 13.84,
    "Dívida Líquida/Patrimônio": 1.29,
    "Dívida Líquida/EBIT": 3.58,
+   "Dívida Líquida/EBITDA": 3.48,
    "Liquidez Média Diária": 102806399,
    "Lucros Anuais": [
     {
@@ -17168,8 +17818,10 @@
    "Margem Líquida": 36.48,
    "ROE": 20.27,
    "ROIC": 15.74,
+   "ROCE": 13.84,
    "Dívida Líquida/Patrimônio": 1.29,
    "Dívida Líquida/EBIT": 3.58,
+   "Dívida Líquida/EBITDA": 3.48,
    "Liquidez Média Diária": 2030471,
    "Lucros Anuais": [
     {
@@ -17221,8 +17873,10 @@
    "Margem Líquida": 36.48,
    "ROE": 20.27,
    "ROIC": 15.74,
+   "ROCE": 13.84,
    "Dívida Líquida/Patrimônio": 1.29,
    "Dívida Líquida/EBIT": 3.58,
+   "Dívida Líquida/EBITDA": 3.48,
    "Liquidez Média Diária": 4195381,
    "Lucros Anuais": [
     {
@@ -17274,8 +17928,10 @@
    "Margem Líquida": 1.87,
    "ROE": 2.08,
    "ROIC": 5.33,
+   "ROCE": 5.58,
    "Dívida Líquida/Patrimônio": 0.33,
    "Dívida Líquida/EBIT": 4.67,
+   "Dívida Líquida/EBITDA": 2.76,
    "Liquidez Média Diária": 590761,
    "Lucros Anuais": [
     {
@@ -17327,8 +17983,10 @@
    "Margem Líquida": 1.87,
    "ROE": 2.08,
    "ROIC": 5.33,
+   "ROCE": 5.58,
    "Dívida Líquida/Patrimônio": 0.33,
    "Dívida Líquida/EBIT": 4.67,
+   "Dívida Líquida/EBITDA": 2.76,
    "Liquidez Média Diária": 9882959,
    "Lucros Anuais": [
     {
@@ -17380,8 +18038,10 @@
    "Margem Líquida": -33.98,
    "ROE": -25.58,
    "ROIC": 3.44,
+   "ROCE": 2.6,
    "Dívida Líquida/Patrimônio": 1.1,
    "Dívida Líquida/EBIT": 15.18,
+   "Dívida Líquida/EBITDA": 11.6,
    "Liquidez Média Diária": 134980,
    "Lucros Anuais": [
     {
@@ -17433,8 +18093,10 @@
    "Margem Líquida": 24.88,
    "ROE": 24.27,
    "ROIC": 20.96,
+   "ROCE": 18.81,
    "Dívida Líquida/Patrimônio": 0.03,
    "Dívida Líquida/EBIT": 0.12,
+   "Dívida Líquida/EBITDA": 0.11,
    "Liquidez Média Diária": 523827,
    "Lucros Anuais": [
     {
@@ -17486,8 +18148,10 @@
    "Margem Líquida": 25.25,
    "ROE": 8.14,
    "ROIC": 327.12,
+   "ROCE": 5.73,
    "Dívida Líquida/Patrimônio": -0.96,
    "Dívida Líquida/EBIT": -6.94,
+   "Dívida Líquida/EBITDA": -3.28,
    "Liquidez Média Diária": 69146,
    "Lucros Anuais": [
     {
@@ -17539,8 +18203,10 @@
    "Margem Líquida": 25.25,
    "ROE": 8.14,
    "ROIC": 327.12,
+   "ROCE": 5.73,
    "Dívida Líquida/Patrimônio": -0.96,
    "Dívida Líquida/EBIT": -6.94,
+   "Dívida Líquida/EBITDA": -3.28,
    "Liquidez Média Diária": 101296,
    "Lucros Anuais": [
     {
@@ -17592,8 +18258,10 @@
    "Margem Líquida": 12.08,
    "ROE": 37.72,
    "ROIC": 38.65,
+   "ROCE": 14.59,
    "Dívida Líquida/Patrimônio": 0.2,
    "Dívida Líquida/EBIT": 0.43,
+   "Dívida Líquida/EBITDA": 0.39,
    "Liquidez Média Diária": 127311732,
    "Lucros Anuais": [
     {
@@ -17645,8 +18313,10 @@
    "Margem Líquida": 13.1,
    "ROE": 23.88,
    "ROIC": 30.48,
+   "ROCE": 30.01,
    "Dívida Líquida/Patrimônio": 0.2,
    "Dívida Líquida/EBIT": 0.54,
+   "Dívida Líquida/EBITDA": 0.49,
    "Liquidez Média Diária": 16033196,
    "Lucros Anuais": [
     {
@@ -17698,8 +18368,10 @@
    "Margem Líquida": 10.14,
    "ROE": 25.55,
    "ROIC": 34.91,
+   "ROCE": 32.15,
    "Dívida Líquida/Patrimônio": 0.03,
    "Dívida Líquida/EBIT": 0.08,
+   "Dívida Líquida/EBITDA": 0.07,
    "Liquidez Média Diária": 16903682,
    "Lucros Anuais": [
     {
@@ -17751,8 +18423,10 @@
    "Margem Líquida": 12.97,
    "ROE": 7.14,
    "ROIC": 13.9,
+   "ROCE": 7.55,
    "Dívida Líquida/Patrimônio": -0.08,
    "Dívida Líquida/EBIT": -0.58,
+   "Dívida Líquida/EBITDA": -0.28,
    "Liquidez Média Diária": 167498674,
    "Lucros Anuais": [
     {
@@ -17804,8 +18478,10 @@
    "Margem Líquida": -20.68,
    "ROE": 266.48,
    "ROIC": -44.07,
+   "ROCE": -18.38,
    "Dívida Líquida/Patrimônio": -5.36,
    "Dívida Líquida/EBIT": -2.79,
+   "Dívida Líquida/EBITDA": 106.53,
    "Liquidez Média Diária": 81899,
    "Lucros Anuais": [
     {
@@ -17857,8 +18533,10 @@
    "Margem Líquida": 21.63,
    "ROE": 26.12,
    "ROIC": 15.41,
+   "ROCE": 14.04,
    "Dívida Líquida/Patrimônio": 0.55,
    "Dívida Líquida/EBIT": 2.3,
+   "Dívida Líquida/EBITDA": 1.76,
    "Liquidez Média Diária": 205009072,
    "Lucros Anuais": [
     {
@@ -17910,8 +18588,10 @@
    "Margem Líquida": -39.3,
    "ROE": -82.27,
    "ROIC": -27.32,
+   "ROCE": -37.19,
    "Dívida Líquida/Patrimônio": 2.51,
    "Dívida Líquida/EBIT": -2.62,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 441689,
    "Lucros Anuais": [
     {
@@ -17963,8 +18643,10 @@
    "Margem Líquida": 12.4,
    "ROE": 12.37,
    "ROIC": 10.04,
+   "ROCE": 8.04,
    "Dívida Líquida/Patrimônio": 0.29,
    "Dívida Líquida/EBIT": 2.23,
+   "Dívida Líquida/EBITDA": 1.91,
    "Liquidez Média Diária": 2146929,
    "Lucros Anuais": [
     {
@@ -18016,8 +18698,10 @@
    "Margem Líquida": 3.22,
    "ROE": 11.75,
    "ROIC": 4.16,
+   "ROCE": 4.79,
    "Dívida Líquida/Patrimônio": 0.74,
    "Dívida Líquida/EBIT": 10.21,
+   "Dívida Líquida/EBITDA": 7.3,
    "Liquidez Média Diária": 27479993,
    "Lucros Anuais": [
     {
@@ -18069,8 +18753,10 @@
    "Margem Líquida": -8.26,
    "ROE": -33.65,
    "ROIC": -8.56,
+   "ROCE": -5.34,
    "Dívida Líquida/Patrimônio": 0.83,
    "Dívida Líquida/EBIT": -5.3,
+   "Dívida Líquida/EBITDA": 103.15,
    "Liquidez Média Diária": 15761356,
    "Lucros Anuais": [
     {
@@ -18122,8 +18808,10 @@
    "Margem Líquida": -58.11,
    "ROE": 15.16,
    "ROIC": null,
+   "ROCE": null,
    "Dívida Líquida/Patrimônio": -0.85,
    "Dívida Líquida/EBIT": -30.73,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 2359,
    "Lucros Anuais": [
     {
@@ -18175,8 +18863,10 @@
    "Margem Líquida": -7.11,
    "ROE": -9.66,
    "ROIC": -6.88,
+   "ROCE": -6.12,
    "Dívida Líquida/Patrimônio": 0.68,
    "Dívida Líquida/EBIT": -5.86,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 24930,
    "Lucros Anuais": [
     {
@@ -18228,8 +18918,10 @@
    "Margem Líquida": 2.26,
    "ROE": 17.26,
    "ROIC": 24.5,
+   "ROCE": 19.82,
    "Dívida Líquida/Patrimônio": 0.51,
    "Dívida Líquida/EBIT": 1.39,
+   "Dívida Líquida/EBITDA": 1.12,
    "Liquidez Média Diária": 406753900,
    "Lucros Anuais": [
     {
@@ -18281,8 +18973,10 @@
    "Margem Líquida": 5.09,
    "ROE": 13.26,
    "ROIC": 14.08,
+   "ROCE": 9.6,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 3.81,
+   "Dívida Líquida/EBITDA": 2.52,
    "Liquidez Média Diária": 356928,
    "Lucros Anuais": [
     {
@@ -18334,8 +19028,10 @@
    "Margem Líquida": 5.09,
    "ROE": 13.26,
    "ROIC": 14.08,
+   "ROCE": 9.6,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 3.81,
+   "Dívida Líquida/EBITDA": 2.52,
    "Liquidez Média Diária": 26281,
    "Lucros Anuais": [
     {
@@ -18387,8 +19083,10 @@
    "Margem Líquida": 5.09,
    "ROE": 13.26,
    "ROIC": 14.08,
+   "ROCE": 9.6,
    "Dívida Líquida/Patrimônio": 1.16,
    "Dívida Líquida/EBIT": 3.81,
+   "Dívida Líquida/EBITDA": 2.52,
    "Liquidez Média Diária": 18623198,
    "Lucros Anuais": [
     {
@@ -18440,8 +19138,10 @@
    "Margem Líquida": 5.94,
    "ROE": 6.04,
    "ROIC": 6.15,
+   "ROCE": 4.55,
    "Dívida Líquida/Patrimônio": -0.02,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": -0.23,
    "Liquidez Média Diária": 6201423,
    "Lucros Anuais": [
     {
@@ -18493,8 +19193,10 @@
    "Margem Líquida": 5.94,
    "ROE": 6.04,
    "ROIC": 6.15,
+   "ROCE": 4.55,
    "Dívida Líquida/Patrimônio": -0.02,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": -0.23,
    "Liquidez Média Diária": 84182294,
    "Lucros Anuais": [
     {
@@ -18546,8 +19248,10 @@
    "Margem Líquida": 5.94,
    "ROE": 6.04,
    "ROIC": 6.15,
+   "ROCE": 4.55,
    "Dívida Líquida/Patrimônio": -0.02,
    "Dívida Líquida/EBIT": -0.39,
+   "Dívida Líquida/EBITDA": -0.23,
    "Liquidez Média Diária": 235,
    "Lucros Anuais": [
     {
@@ -18599,8 +19303,10 @@
    "Margem Líquida": 1.01,
    "ROE": 1.1,
    "ROIC": 9.42,
+   "ROCE": 6.57,
    "Dívida Líquida/Patrimônio": 0.34,
    "Dívida Líquida/EBIT": 2.69,
+   "Dívida Líquida/EBITDA": 1.55,
    "Liquidez Média Diária": 1801891008,
    "Lucros Anuais": [
     {
@@ -18652,8 +19358,10 @@
    "Margem Líquida": 6.65,
    "ROE": 12.06,
    "ROIC": 17.89,
+   "ROCE": 14.18,
    "Dívida Líquida/Patrimônio": 3.4,
    "Dívida Líquida/EBIT": 4.32,
+   "Dívida Líquida/EBITDA": 3,
    "Liquidez Média Diária": 106890578,
    "Lucros Anuais": [
     {
@@ -18705,8 +19413,10 @@
    "Margem Líquida": 2.48,
    "ROE": 21.38,
    "ROIC": 22.04,
+   "ROCE": 17.37,
    "Dívida Líquida/Patrimônio": 0.68,
    "Dívida Líquida/EBIT": 1.84,
+   "Dívida Líquida/EBITDA": 1.62,
    "Liquidez Média Diária": 452388777,
    "Lucros Anuais": [
     {
@@ -18758,8 +19468,10 @@
    "Margem Líquida": 7.96,
    "ROE": 10.8,
    "ROIC": 9.27,
+   "ROCE": 9.7,
    "Dívida Líquida/Patrimônio": 0.2,
    "Dívida Líquida/EBIT": 1.78,
+   "Dívida Líquida/EBITDA": 1.3,
    "Liquidez Média Diária": 940201,
    "Lucros Anuais": [
     {
@@ -18811,8 +19523,10 @@
    "Margem Líquida": 25.4,
    "ROE": 26.76,
    "ROIC": 22.86,
+   "ROCE": 18.77,
    "Dívida Líquida/Patrimônio": 0.03,
    "Dívida Líquida/EBIT": 0.14,
+   "Dívida Líquida/EBITDA": 0.11,
    "Liquidez Média Diária": 84523872,
    "Lucros Anuais": [
     {
@@ -18864,8 +19578,10 @@
    "Margem Líquida": -75.67,
    "ROE": -38.56,
    "ROIC": -16.48,
+   "ROCE": -8.83,
    "Dívida Líquida/Patrimônio": 0.38,
    "Dívida Líquida/EBIT": -1.67,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 159873,
    "Lucros Anuais": [
     {
@@ -18917,8 +19633,10 @@
    "Margem Líquida": 10.68,
    "ROE": 10.04,
    "ROIC": 13.73,
+   "ROCE": 10.43,
    "Dívida Líquida/Patrimônio": 0.17,
    "Dívida Líquida/EBIT": 1.06,
+   "Dívida Líquida/EBITDA": 0.43,
    "Liquidez Média Diária": 191472926,
    "Lucros Anuais": [
     {
@@ -18970,8 +19688,10 @@
    "Margem Líquida": 11.15,
    "ROE": 13.1,
    "ROIC": 15.71,
+   "ROCE": 12.05,
    "Dívida Líquida/Patrimônio": 0.08,
    "Dívida Líquida/EBIT": 0.48,
+   "Dívida Líquida/EBITDA": 0.34,
    "Liquidez Média Diária": 5295822,
    "Lucros Anuais": [
     {
@@ -19023,8 +19743,10 @@
    "Margem Líquida": 3.65,
    "ROE": 4.36,
    "ROIC": 8.8,
+   "ROCE": 8.89,
    "Dívida Líquida/Patrimônio": 0.24,
    "Dívida Líquida/EBIT": 2.18,
+   "Dívida Líquida/EBITDA": 0.87,
    "Liquidez Média Diária": 165602,
    "Lucros Anuais": [
     {
@@ -19076,8 +19798,10 @@
    "Margem Líquida": 46.56,
    "ROE": 27.23,
    "ROIC": 12.81,
+   "ROCE": 11.27,
    "Dívida Líquida/Patrimônio": 0.29,
    "Dívida Líquida/EBIT": 1.75,
+   "Dívida Líquida/EBITDA": 1.3,
    "Liquidez Média Diária": 17618268,
    "Lucros Anuais": [
     {
@@ -19129,8 +19853,10 @@
    "Margem Líquida": 24.89,
    "ROE": 35.06,
    "ROIC": 20.77,
+   "ROCE": 20.98,
    "Dívida Líquida/Patrimônio": 0.22,
    "Dívida Líquida/EBIT": 0.86,
+   "Dívida Líquida/EBITDA": 0.72,
    "Liquidez Média Diária": 35510736,
    "Lucros Anuais": [
     {
@@ -19182,8 +19908,10 @@
    "Margem Líquida": 0.49,
    "ROE": 3.12,
    "ROIC": 13.13,
+   "ROCE": 10.68,
    "Dívida Líquida/Patrimônio": 1.6,
    "Dívida Líquida/EBIT": 4.69,
+   "Dívida Líquida/EBITDA": 3,
    "Liquidez Média Diária": 1278929,
    "Lucros Anuais": [
     {
@@ -19235,8 +19963,10 @@
    "Margem Líquida": 15.4,
    "ROE": 29.34,
    "ROIC": 41.98,
+   "ROCE": 30.07,
    "Dívida Líquida/Patrimônio": -0.12,
    "Dívida Líquida/EBIT": -0.33,
+   "Dívida Líquida/EBITDA": -0.29,
    "Liquidez Média Diária": 536746085,
    "Lucros Anuais": [
     {
@@ -19288,8 +20018,10 @@
    "Margem Líquida": -6.63,
    "ROE": -6.79,
    "ROIC": -64.69,
+   "ROCE": -15.7,
    "Dívida Líquida/Patrimônio": -0.67,
    "Dívida Líquida/EBIT": 3.14,
+   "Dívida Líquida/EBITDA": null,
    "Liquidez Média Diária": 65909,
    "Lucros Anuais": [
     {
@@ -19341,8 +20073,10 @@
    "Margem Líquida": 2.39,
    "ROE": 14.85,
    "ROIC": 41.24,
+   "ROCE": 33.72,
    "Dívida Líquida/Patrimônio": 0.18,
    "Dívida Líquida/EBIT": 0.37,
+   "Dívida Líquida/EBITDA": 0.3,
    "Liquidez Média Diária": 17526,
    "Lucros Anuais": [
     {
@@ -19394,8 +20128,10 @@
    "Margem Líquida": 2.39,
    "ROE": 14.85,
    "ROIC": 41.24,
+   "ROCE": 33.72,
    "Dívida Líquida/Patrimônio": 0.18,
    "Dívida Líquida/EBIT": 0.37,
+   "Dívida Líquida/EBITDA": 0.3,
    "Liquidez Média Diária": 53961,
    "Lucros Anuais": [
     {
@@ -19447,8 +20183,10 @@
    "Margem Líquida": 15.57,
    "ROE": 14.78,
    "ROIC": 42.18,
+   "ROCE": 30.16,
    "Dívida Líquida/Patrimônio": -0.01,
    "Dívida Líquida/EBIT": -0.03,
+   "Dívida Líquida/EBITDA": -0.03,
    "Liquidez Média Diária": 5526261,
    "Lucros Anuais": [
     {
@@ -19500,8 +20238,10 @@
    "Margem Líquida": 2.72,
    "ROE": 9.68,
    "ROIC": 13.33,
+   "ROCE": 14.18,
    "Dívida Líquida/Patrimônio": 0.49,
    "Dívida Líquida/EBIT": 2.48,
+   "Dívida Líquida/EBITDA": 2.35,
    "Liquidez Média Diária": 1605,
    "Lucros Anuais": [
     {
@@ -19553,8 +20293,10 @@
    "Margem Líquida": 2.72,
    "ROE": 9.68,
    "ROIC": 13.33,
+   "ROCE": 14.18,
    "Dívida Líquida/Patrimônio": 0.49,
    "Dívida Líquida/EBIT": 2.48,
+   "Dívida Líquida/EBITDA": 2.35,
    "Liquidez Média Diária": 76879,
    "Lucros Anuais": [
     {
@@ -19606,8 +20348,10 @@
    "Margem Líquida": 2.04,
    "ROE": 3.86,
    "ROIC": 11.68,
+   "ROCE": 10.64,
    "Dívida Líquida/Patrimônio": 1.47,
    "Dívida Líquida/EBIT": 5.09,
+   "Dívida Líquida/EBITDA": 2.63,
    "Liquidez Média Diária": 62747031,
    "Lucros Anuais": [
     {

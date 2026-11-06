@@ -1,32 +1,5 @@
 const _ = require('lodash');
 
-// "Ibovespa em promoção": cheap companies whose dividends look sustainable.
-//
-// A stock enters the ranking when it:
-// - trades more than R$ 1 mi/day and has a positive EBIT margin;
-// - is operating normally (not in judicial/extrajudicial recovery, bankruptcy or liquidation);
-// - has a sustainable dividend yield above 6%: the lower of the last-12-months yield and the
-//   5-year average yield, so one-off special dividends don't count;
-// - pays out at most 100% of its net income;
-// - paid dividends in at least 3 of the last 5 years;
-// - has net debt below 3x EBIT;
-// - made a profit in each of the last annual statements (at least 3 years of history) and in
-//   the last 12 months.
-const DEFAULT_CRITERIA = Object.freeze({
-    minLiquidity: 1_000_000,
-    minEbitMargin: 0,
-    minDividendYield: 6,
-    maxPayout: 100,
-    minDividendYears: 3,
-    maxNetDebtToEbit: 3,
-    minProfitYears: 3,
-    limit: 50,
-    sort: 'evEbit',
-    excludedTickers: [], // manual overrides, if ever needed
-});
-
-const SORTS = ['evEbit', 'magicFormula'];
-
 const isNumber = v => typeof v === 'number' && Number.isFinite(v);
 
 const sustainableDividendYield = stock =>
@@ -42,42 +15,93 @@ function hasConsistentProfit(stock, minYears) {
         stock['P/L'] > 0;
 }
 
-function isEligible(stock, c, excluded) {
-    return stock['Liquidez Média Diária'] > c.minLiquidity &&
-        stock['Margem Ebit'] > c.minEbitMargin &&
-        isNumber(stock['EV/EBIT']) &&
-        !stock['Situação'] &&
-        sustainableDividendYield(stock) > c.minDividendYield &&
-        isNumber(stock.Payout) && stock.Payout > 0 && stock.Payout <= c.maxPayout &&
-        stock['Anos com Dividendos'] >= c.minDividendYears &&
-        isNumber(stock['Dívida Líquida/EBIT']) && stock['Dívida Líquida/EBIT'] < c.maxNetDebtToEbit &&
-        hasConsistentProfit(stock, c.minProfitYears) &&
-        !excluded.has(stock.Ativo);
-}
+// Rules shared by every strategy: liquid, operating normally, has an EV/EBIT to sort by.
+const COMMON_DEFAULTS = {
+    minLiquidity: 1_000_000,
+    limit: 50,
+    sort: 'evEbit',
+    excludedTickers: [], // manual overrides, if ever needed
+};
+
+const isTradableAndHealthy = (stock, c) =>
+    stock['Liquidez Média Diária'] > c.minLiquidity &&
+    !stock['Situação'] &&
+    isNumber(stock['EV/EBIT']);
+
+const STRATEGIES = {
+    // "Dividendos sustentáveis": cheap companies whose dividends look sustainable.
+    // - sustainable DY > 6%: the lower of the 12-month and the 5-year average yield
+    //   (one-off special dividends don't count);
+    // - payout <= 100%, dividends in at least 3 of the last 5 years;
+    // - positive EBIT margin, net debt < 3x EBIT;
+    // - profit in every recent annual statement (min. 3 years) and in the last 12 months.
+    dividendos: {
+        defaults: {
+            minEbitMargin: 0,
+            minDividendYield: 6,
+            maxPayout: 100,
+            minDividendYears: 3,
+            maxNetDebtToEbit: 3,
+            minProfitYears: 3,
+        },
+        isEligible: (stock, c) =>
+            stock['Margem Ebit'] > c.minEbitMargin &&
+            sustainableDividendYield(stock) > c.minDividendYield &&
+            isNumber(stock.Payout) && stock.Payout > 0 && stock.Payout <= c.maxPayout &&
+            stock['Anos com Dividendos'] >= c.minDividendYears &&
+            isNumber(stock['Dívida Líquida/EBIT']) && stock['Dívida Líquida/EBIT'] < c.maxNetDebtToEbit &&
+            hasConsistentProfit(stock, c.minProfitYears),
+    },
+
+    // "Qualidade a bom preço" (value investing + quality + financial strength):
+    // - ROCE > 15%: EBIT / average capital employed (equity + non-current liabilities);
+    // - net debt < 1x EBITDA (net cash is even better);
+    // - P/L between 0 and 10 (buy at a discount to a historical multiple).
+    qualidade: {
+        defaults: {
+            minRoce: 15,
+            maxNetDebtToEbitda: 1,
+            maxPriceToEarnings: 10,
+        },
+        isEligible: (stock, c) =>
+            isNumber(stock.ROCE) && stock.ROCE > c.minRoce &&
+            isNumber(stock['Dívida Líquida/EBITDA']) && stock['Dívida Líquida/EBITDA'] < c.maxNetDebtToEbitda &&
+            stock['P/L'] > 0 && stock['P/L'] <= c.maxPriceToEarnings,
+    },
+};
+
+const STRATEGY_NAMES = Object.keys(STRATEGIES);
+const SORTS = ['evEbit', 'magicFormula'];
+
+// Kept for backwards compatibility: the default (dividend) strategy's criteria.
+const DEFAULT_CRITERIA = Object.freeze({ ...COMMON_DEFAULTS, ...STRATEGIES.dividendos.defaults });
 
 // Greenblatt's "magic formula": cheapest (EV/EBIT) + best return on capital (ROIC), by position.
 function sortByMagicFormula(stocks) {
-    const position = (sorted) => new Map(sorted.map((s, i) => [s.Ativo, i]));
+    const position = sorted => new Map(sorted.map((s, i) => [s.Ativo, i]));
     const byEv = position(_.orderBy(stocks, ['EV/EBIT'], ['asc']));
     const byRoic = position(_.orderBy(stocks, [s => (isNumber(s.ROIC) ? s.ROIC : -Infinity)], ['desc']));
     return _.orderBy(stocks, [s => byEv.get(s.Ativo) + byRoic.get(s.Ativo), 'EV/EBIT'], ['asc', 'asc']);
 }
 
-function rankStocks(stocks, criteria = {}) {
-    const c = { ...DEFAULT_CRITERIA, ...criteria };
+function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
+    const definition = STRATEGIES[strategy];
+    if (!definition) throw new RangeError(`unknown strategy "${strategy}"`);
+    const c = { ...COMMON_DEFAULTS, ...definition.defaults, ...criteria };
     if (!SORTS.includes(c.sort)) throw new RangeError(`unknown sort "${c.sort}"`);
     const excluded = new Set(c.excludedTickers);
 
+    const eligible = stocks.filter(s =>
+        isTradableAndHealthy(s, c) && definition.isEligible(s, c) && !excluded.has(s.Ativo));
+
     // One ticker per company: the most liquid one.
-    const eligible = _.uniqBy(
-        _.orderBy(stocks.filter(s => isEligible(s, c, excluded)), ['Liquidez Média Diária'], ['desc']),
-        s => s.Empresa);
+    const unique = _.uniqBy(_.orderBy(eligible, ['Liquidez Média Diária'], ['desc']), s => s.Empresa);
 
     const sorted = c.sort === 'magicFormula'
-        ? sortByMagicFormula(eligible)
-        : _.orderBy(eligible, ['EV/EBIT', 'Liquidez Média Diária'], ['asc', 'desc']);
+        ? sortByMagicFormula(unique)
+        : _.orderBy(unique, ['EV/EBIT', 'Liquidez Média Diária'], ['asc', 'desc']);
 
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }
 
-module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, sustainableDividendYield };
+module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES, sustainableDividendYield };

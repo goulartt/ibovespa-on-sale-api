@@ -113,6 +113,15 @@ describe('buildStock', () => {
         assert.equal(s['Anos com Lucro'], 1);
     });
 
+    test('computes ROCE and net debt / EBITDA', () => {
+        const s = buildStock({ ...company, ebitda: 400, capitalEmpregado: 800 }, 'XXXX3', market, 1000);
+        assert.equal(s.ROCE, 25); // 200 EBIT / 800 capital employed
+        assert.equal(s['Dívida Líquida/EBITDA'], 0.75); // 300 / 400
+        const missing = buildStock({ ...company, ebitda: -5, capitalEmpregado: null }, 'XXXX3', market, 1000);
+        assert.equal(missing.ROCE, null);
+        assert.equal(missing['Dívida Líquida/EBITDA'], null);
+    });
+
     test('payout and ROIC are null when they cannot be computed', () => {
         const s = buildStock({ ...company, lucro: -10, patrimonio: -400 }, 'XXXX3', market, 1000);
         assert.equal(s.Payout, null);

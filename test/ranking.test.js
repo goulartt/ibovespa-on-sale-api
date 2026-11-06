@@ -129,3 +129,36 @@ describe('magic formula sort', () => {
         assert.throws(() => rankStocks([stock()], { sort: 'nope' }), /unknown sort/);
     });
 });
+
+describe('quality strategy (qualidade a bom preço)', () => {
+    const quality = (overrides = {}) => stock({ ROCE: 20, 'Dívida Líquida/EBITDA': 0.5, 'P/L': 8, ...overrides });
+    const keeps = overrides => rankStocks([quality(overrides)], { strategy: 'qualidade' }).length === 1;
+
+    test('requires ROCE above 15%', () => {
+        assert.equal(keeps({ ROCE: 15.1 }), true);
+        assert.equal(keeps({ ROCE: 15 }), false);
+        assert.equal(keeps({ ROCE: null }), false);
+    });
+
+    test('requires net debt below 1x EBITDA (net cash is fine)', () => {
+        assert.equal(keeps({ 'Dívida Líquida/EBITDA': -2 }), true);
+        assert.equal(keeps({ 'Dívida Líquida/EBITDA': 1.03 }), false);
+        assert.equal(keeps({ 'Dívida Líquida/EBITDA': null }), false);
+    });
+
+    test('requires P/L between 0 and 10', () => {
+        assert.equal(keeps({ 'P/L': 10 }), true);
+        assert.equal(keeps({ 'P/L': 13.5 }), false);
+        assert.equal(keeps({ 'P/L': -4 }), false);
+    });
+
+    test('ignores the dividend rules and keeps the common ones', () => {
+        assert.equal(keeps({ 'Dividend Yield': 0, 'DY Médio 5 Anos': 0, Payout: null, 'Anos com Dividendos': 0 }), true);
+        assert.equal(keeps({ 'Liquidez Média Diária': 10 }), false);
+        assert.equal(keeps({ 'Situação': 'Em recuperação judicial' }), false);
+    });
+
+    test('rejects unknown strategies', () => {
+        assert.throws(() => rankStocks([stock()], { strategy: 'nope' }), /unknown strategy/);
+    });
+});

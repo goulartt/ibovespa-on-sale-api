@@ -1,5 +1,5 @@
 const express = require('express');
-const { rankStocks, DEFAULT_CRITERIA, SORTS } = require('../domain/ranking');
+const { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES } = require('../domain/ranking');
 const { HttpError } = require('../lib/httpError');
 
 const asyncHandler = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
@@ -39,9 +39,13 @@ function createIbovespaRouter({ stocksRepository }) {
     }));
 
     router.get('/filtered', asyncHandler(async (req, res) => {
+        const strategy = enumParam(req.query, 'strategy', STRATEGY_NAMES, 'dividendos');
         const criteria = {
+            strategy,
             limit: numberParam(req.query, 'limit', { min: 1, max: 200, integer: true, fallback: DEFAULT_CRITERIA.limit }),
-            minDividendYield: numberParam(req.query, 'minDy', { min: 0, max: 100, fallback: DEFAULT_CRITERIA.minDividendYield }),
+            ...(strategy === 'dividendos' && {
+                minDividendYield: numberParam(req.query, 'minDy', { min: 0, max: 100, fallback: DEFAULT_CRITERIA.minDividendYield }),
+            }),
             sort: enumParam(req.query, 'sort', SORTS, DEFAULT_CRITERIA.sort),
         };
         const dataset = await stocksRepository.getDataset();

@@ -7,6 +7,7 @@ const { logger: defaultLogger } = require('../lib/logger');
 const BASE = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC';
 
 const PROFIT_HISTORY_YEARS = 5;
+const DEPRECIATION_ACCOUNT = '7.04.01';
 const DRE_ACCOUNT = /^3\.\d\d(\.\d\d)?$/; // first two levels of the income statement
 const BPA_ACCOUNTS = new Set(['1.01.01', '1.01.02']);
 const BPP_ACCOUNT = c => c === '2.01.04' || c === '2.02.01' || /^2\.\d\d$/.test(c); // + level 2 (equity)
@@ -76,6 +77,14 @@ function ingest(companies, zip, type, year) {
                 f.labels[src].set(r.CD_CONTA, r.DS_CONTA);
             }
         }
+        // Depreciation & amortization (for EBITDA) from the value-added statement (DVA). It is a
+        // year-to-date flow like the income statement, so it is stored with the same keys.
+        const dva = latestVersionOnly(readCsv(zip, `${prefix}_DVA_${src}_${year}.csv`,
+            r => r.CD_CONTA === DEPRECIATION_ACCOUNT && /deprecia/i.test(r.DS_CONTA)));
+        for (const r of dva) {
+            filing(r.CNPJ_CIA, r.DT_REFER)[src].set(`DRE|${r.ORDEM_EXERC}|${r.DT_INI_EXERC}|${r.CD_CONTA}`, Number(r.VL_CONTA) * scale(r));
+        }
+
         for (const [file, keep] of [['BPA', c => BPA_ACCOUNTS.has(c)], ['BPP', BPP_ACCOUNT]]) {
             const bp = latestVersionOnly(readCsv(zip, `${prefix}_${file}_${src}_${year}.csv`,
                 r => keep(r.CD_CONTA) && r.ORDEM_EXERC === 'ÚLTIMO'));
@@ -85,6 +94,10 @@ function ingest(companies, zip, type, year) {
                 if (/^Patrim[ôo]nio L[íi]quido/i.test(r.DS_CONTA) && r.CD_CONTA.split('.').length === 2) {
                     f.equityAccount = f.equityAccount || {};
                     f.equityAccount[src] = r.CD_CONTA;
+                }
+                if (/^Passivo N[ãa]o Circulante/i.test(r.DS_CONTA) && r.CD_CONTA.split('.').length === 2) {
+                    f.nonCurrentLiabilitiesAccount = f.nonCurrentLiabilitiesAccount || {};
+                    f.nonCurrentLiabilitiesAccount[src] = r.CD_CONTA;
                 }
             }
         }
@@ -159,6 +172,26 @@ function annualNetIncome(company) {
     return result.slice(-PROFIT_HISTORY_YEARS);
 }
 
+// Capital employed (equity + non-current liabilities) of one filing, or null when unavailable.
+function capitalEmployed(filing, src) {
+    const equity = filing.equityAccount?.[src];
+    const nonCurrent = filing.nonCurrentLiabilitiesAccount?.[src];
+    if (!equity || !nonCurrent) return null;
+    const value = (filing[src].get(`BP|${equity}`) ?? 0) + (filing[src].get(`BP|${nonCurrent}`) ?? 0);
+    return value > 0 ? value : null;
+}
+
+// Average of the latest capital employed and the one at the previous fiscal year end.
+function averageCapitalEmployed(company, dates, latestDate, src) {
+    const latest = capitalEmployed(company.filings.get(latestDate), src);
+    if (latest == null) return null;
+    const previousAnnual = [...dates].reverse()
+        .map(d => [d, company.filings.get(d)])
+        .find(([d, f]) => d < latestDate && f.type === 'DFP');
+    const previous = previousAnnual && capitalEmployed(previousAnnual[1], src);
+    return previous == null ? latest : (latest + previous) / 2;
+}
+
 function buildCompany(cnpj, company) {
     const dates = [...company.filings.keys()].sort();
     const latestDate = dates[dates.length - 1];
@@ -175,6 +208,8 @@ function buildCompany(cnpj, company) {
     // Banks and insurers don't have an EBIT line (3.05 has a different meaning in their DRE).
     const financeira = !/^Resultado Antes do Resultado Financeiro/i.test(labels.get('3.05') || '');
     const get = conta => values.get(`BP|${conta}`) ?? 0;
+    const ebit = financeira ? null : ttm(company, latest, src, '3.05');
+    const depreciation = financeira ? null : ttm(company, latest, src, DEPRECIATION_ACCOUNT);
 
     return {
         cnpj,
@@ -183,7 +218,10 @@ function buildCompany(cnpj, company) {
         financeira,
         acoes: sharesFiling.shares,
         receita: ttm(company, latest, src, '3.01'),
-        ebit: financeira ? null : ttm(company, latest, src, '3.05'),
+        ebit,
+        // DVA reports depreciation as a negative "retention"
+        ebitda: ebit != null && depreciation != null ? ebit + Math.abs(depreciation) : null,
+        capitalEmpregado: financeira ? null : averageCapitalEmployed(company, dates, latestDate, src),
         lucro,
         patrimonio: latest.equityAccount && latest.equityAccount[src] ? get(latest.equityAccount[src]) : null,
         dividaLiquida: financeira ? null : get('2.01.04') + get('2.02.01') - get('1.01.01') - get('1.01.02'),

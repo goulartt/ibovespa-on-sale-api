@@ -21,14 +21,25 @@ const dre = (dtRefer, ordem, dtIni, dtFim, { receita, ebit, lucro, controladora 
 
 function dfp2025() {
     return cvmZip({
+        'dfp_cia_aberta_DVA_con_2025.csv': [DVA_HEADER, dva('2025-12-31', 'ÚLTIMO', '2025-01-01', '2025-12-31', -50)],
+        'dfp_cia_aberta_BPP_con_2025.csv': [BP_HEADER,
+            [CNPJ, '2025-12-31', 1, 'EMPRESA', 'MIL', 'ÚLTIMO', '2025-12-31', '2.02', 'Passivo Não Circulante', 300],
+            [CNPJ, '2025-12-31', 1, 'EMPRESA', 'MIL', 'ÚLTIMO', '2025-12-31', '2.03', 'Patrimônio Líquido Consolidado', 500]],
         'dfp_cia_aberta_DRE_con_2025.csv': [DRE_HEADER,
             ...dre('2025-12-31', 'ÚLTIMO', '2025-01-01', '2025-12-31', { receita: 1000, ebit: 200, lucro: 100, controladora: 90 })],
         'dfp_cia_aberta_composicao_capital_2025.csv': [CAP_HEADER, [CNPJ, '2025-12-31', 1, 1000, 500, 10, 0]],
     });
 }
 
+const DVA_HEADER = DRE_HEADER;
+const dva = (dtRefer, ordem, dtIni, dtFim, value) =>
+    [CNPJ, dtRefer, 1, 'EMPRESA', 'MIL', ordem, dtIni, dtFim, '7.04.01', 'Depreciação, Amortização e Exaustão', value];
+
 function itr2026({ versao = 1 } = {}) {
     return cvmZip({
+        'itr_cia_aberta_DVA_con_2026.csv': [DVA_HEADER,
+            dva('2026-09-30', 'ÚLTIMO', '2026-01-01', '2026-09-30', -40),
+            dva('2026-09-30', 'PENÚLTIMO', '2025-01-01', '2025-09-30', -30)],
         'itr_cia_aberta_DRE_con_2026.csv': [DRE_HEADER,
             // year to date 2026 and 2025, plus quarter-only rows that must be ignored
             ...dre('2026-09-30', 'ÚLTIMO', '2026-01-01', '2026-09-30', { receita: 900, ebit: 180, lucro: 120, controladora: 110 }, versao),
@@ -43,6 +54,7 @@ function itr2026({ versao = 1 } = {}) {
         'itr_cia_aberta_BPP_con_2026.csv': [BP_HEADER,
             [CNPJ, '2026-09-30', versao, 'EMPRESA', 'MIL', 'ÚLTIMO', '2026-09-30', '2.01.04', 'Empréstimos e Financiamentos', 100],
             [CNPJ, '2026-09-30', versao, 'EMPRESA', 'MIL', 'ÚLTIMO', '2026-09-30', '2.02.01', 'Empréstimos e Financiamentos', 200],
+            [CNPJ, '2026-09-30', versao, 'EMPRESA', 'MIL', 'ÚLTIMO', '2026-09-30', '2.02', 'Passivo Não Circulante', 400],
             [CNPJ, '2026-09-30', versao, 'EMPRESA', 'MIL', 'ÚLTIMO', '2026-09-30', '2.03', 'Patrimônio Líquido Consolidado', 600]],
     });
 }
@@ -84,6 +96,10 @@ describe('buildCompany', () => {
         assert.equal(c.patrimonio, 600_000);
         assert.equal(c.dividaLiquida, (100 + 200 - 50 - 30) * 1000);
         assert.deepEqual(c.acoes, { on: 990, pn: 500 }); // treasury shares removed, from the DFP
+        // EBITDA = EBIT TTM + D&A TTM (50 + 40 - 30)
+        assert.equal(c.ebitda, (230 + 60) * 1000);
+        // average of (600 + 400) now and (500 + 300) at the previous year end
+        assert.equal(c.capitalEmpregado, ((1000 + 800) / 2) * 1000);
     });
 
     test('collects the net income of each annual statement', () => {

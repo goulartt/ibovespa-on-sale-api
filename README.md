@@ -22,11 +22,11 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 | Rota | Descrição |
 | --- | --- |
-| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
+| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`dividendos`, padrão, ou `qualidade`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
 
-### Critérios do ranking
+### Estratégia `dividendos` (padrão)
 
 - Liquidez média diária > R$ 1 mi e margem EBIT positiva.
 - DY sustentável > 6%: o menor entre o DY de 12 meses e o DY médio de 5 anos (exclui dividendos extraordinários).
@@ -34,6 +34,16 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 - Lucro em todos os últimos balanços anuais (mínimo 3) e nos últimos 12 meses.
 - Dívida líquida / EBIT < 3.
 - Fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM).
+### Estratégia `qualidade` (qualidade a bom preço)
+
+- ROCE > 15%: EBIT dos últimos 12 meses ÷ capital empregado médio (patrimônio líquido + passivo
+  não circulante, média entre o último balanço e o do fim do ano anterior).
+- Dívida líquida / EBITDA < 1 (EBITDA = EBIT + depreciação e amortização da DVA, 12 meses).
+- P/L entre 0 e 10.
+
+### Comum às duas
+
+- Liquidez média diária > R$ 1 mi e fora de recuperação judicial/extrajudicial, falência ou liquidação.
 - Cada ação traz o `Setor`: o setor de atividade da CVM agrupado em Energia e saneamento,
   Commodities, Construção e imóveis, Financeiro, Consumo, Indústria e serviços ou Outros.
 - Ordenação por EV/EBIT ou pela Fórmula Mágica (posição no EV/EBIT + posição no ROIC); uma ação por empresa.
