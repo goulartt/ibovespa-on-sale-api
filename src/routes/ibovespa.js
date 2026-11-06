@@ -42,7 +42,7 @@ function createIbovespaRouter({ stocksRepository }) {
         const strategy = enumParam(req.query, 'strategy', STRATEGY_NAMES, 'dividendos');
         const criteria = {
             strategy,
-            limit: numberParam(req.query, 'limit', { min: 1, max: 200, integer: true, fallback: DEFAULT_CRITERIA.limit }),
+            limit: numberParam(req.query, 'limit', { min: 1, max: 500, integer: true, fallback: DEFAULT_CRITERIA.limit }),
             ...(strategy === 'dividendos' && {
                 minDividendYield: numberParam(req.query, 'minDy', { min: 0, max: 100, fallback: DEFAULT_CRITERIA.minDividendYield }),
             }),

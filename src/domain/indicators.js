@@ -60,6 +60,7 @@ function buildStock(company, ticker, market, cap) {
         'Payout': round(payout),
         'P/EBIT': round(ratio(cap, company.ebit)),
         'EV/EBIT': round(ratio(ev, company.ebit)),
+        'EBIT/EV': round(percent(company.ebit, ev)),
         'Margem Ebit': round(percent(company.ebit, company.receita)),
         'Margem Líquida': round(percent(company.lucro, company.receita)),
         'ROE': round(percent(company.lucro, company.patrimonio)),

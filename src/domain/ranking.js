@@ -28,7 +28,19 @@ const isTradableAndHealthy = (stock, c) =>
     !stock['Situação'] &&
     isNumber(stock['EV/EBIT']);
 
+// EBIT/EV ("earnings yield"): the higher, the cheaper. Falls back to 1 / (EV/EBIT) for datasets
+// built before the field existed. Companies with a negative EV end up last.
+const earningsYield = s =>
+    isNumber(s['EBIT/EV']) ? s['EBIT/EV'] : (s['EV/EBIT'] > 0 ? 100 / s['EV/EBIT'] : -Infinity);
+
 const STRATEGIES = {
+    // "Deep Value": the cheapest companies by EBIT/EV, with only the basic filters
+    // (liquidity, positive EBIT, no banks/insurers, no judicial recovery).
+    deepValue: {
+        defaults: {},
+        isEligible: stock => stock['Margem Ebit'] > 0,
+    },
+
     // "Dividendos sustentáveis": cheap companies whose dividends look sustainable.
     // - sustainable DY > 6%: the lower of the 12-month and the 5-year average yield
     //   (one-off special dividends don't count);
@@ -76,12 +88,12 @@ const SORTS = ['evEbit', 'magicFormula'];
 // Kept for backwards compatibility: the default (dividend) strategy's criteria.
 const DEFAULT_CRITERIA = Object.freeze({ ...COMMON_DEFAULTS, ...STRATEGIES.dividendos.defaults });
 
-// Greenblatt's "magic formula": cheapest (EV/EBIT) + best return on capital (ROIC), by position.
+// Greenblatt's "magic formula": cheapest (EBIT/EV) + best return on capital (ROIC), by position.
 function sortByMagicFormula(stocks) {
     const position = sorted => new Map(sorted.map((s, i) => [s.Ativo, i]));
-    const byEv = position(_.orderBy(stocks, ['EV/EBIT'], ['asc']));
+    const byEv = position(_.orderBy(stocks, [earningsYield], ['desc']));
     const byRoic = position(_.orderBy(stocks, [s => (isNumber(s.ROIC) ? s.ROIC : -Infinity)], ['desc']));
-    return _.orderBy(stocks, [s => byEv.get(s.Ativo) + byRoic.get(s.Ativo), 'EV/EBIT'], ['asc', 'asc']);
+    return _.orderBy(stocks, [s => byEv.get(s.Ativo) + byRoic.get(s.Ativo), earningsYield], ['asc', 'desc']);
 }
 
 function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
@@ -99,7 +111,7 @@ function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
 
     const sorted = c.sort === 'magicFormula'
         ? sortByMagicFormula(unique)
-        : _.orderBy(unique, ['EV/EBIT', 'Liquidez Média Diária'], ['asc', 'desc']);
+        : _.orderBy(unique, [earningsYield, 'Liquidez Média Diária'], ['desc', 'desc']);
 
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }

@@ -18,6 +18,20 @@ const DISTRESSED_STATUSES = {
     'PARALISADA': 'Paralisada',
 };
 
+// Banks and insurers: EBIT and EV don't apply to them (financial results are their operation).
+// Some insurers (e.g. Porto Seguro, Caixa Seguridade) file statements in the industrial format,
+// so they are identified by their CVM sector. Insurance brokers ("corretora"/"corretagem") are
+// regular service companies and stay.
+const FINANCIAL_SECTOR = /banco|intermedia[çc][ãa]o financeira|arrendamento|securitiza|factoring|cr[ée]dito/i;
+const INSURANCE_SECTOR = /segurador/i;
+const BROKER_NAME = /corret/i;
+
+function isFinancialInstitution(rawSector, name) {
+    const sector = String(rawSector || '');
+    if (FINANCIAL_SECTOR.test(sector)) return true;
+    return INSURANCE_SECTOR.test(sector) && !BROKER_NAME.test(String(name || ''));
+}
+
 function parseCsv(text) {
     const lines = text.split(/\r?\n/);
     const header = lines[0].split(';');
@@ -38,6 +52,7 @@ function parseRegistry(text) {
             situacao,
             desde: situacao ? row.DT_INI_SIT_EMISSOR || null : null,
             setor: sectorGroup(row.SETOR_ATIV),
+            financeira: isFinancialInstitution(row.SETOR_ATIV, row.DENOM_SOCIAL),
         });
     }
     return result;
@@ -53,4 +68,4 @@ async function loadRegistry({ http = axios } = {}) {
     return registry;
 }
 
-module.exports = { loadRegistry, parseRegistry, DISTRESSED_STATUSES };
+module.exports = { loadRegistry, parseRegistry, isFinancialInstitution, DISTRESSED_STATUSES };

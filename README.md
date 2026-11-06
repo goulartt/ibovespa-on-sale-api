@@ -22,11 +22,15 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 | Rota | Descrição |
 | --- | --- |
-| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`dividendos`, padrão, ou `qualidade`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–200, padrão 50) e `minDy` (0–100, padrão 6). |
+| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`deepValue`, `dividendos` — padrão por compatibilidade — ou `qualidade`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–500, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
 
-### Estratégia `dividendos` (padrão)
+### Estratégia `deepValue`
+
+- Só os filtros comuns + EBIT positivo, ordenado pelo maior EBIT/EV (EV/EBIT invertido).
+
+### Estratégia `dividendos`
 
 - Liquidez média diária > R$ 1 mi e margem EBIT positiva.
 - DY sustentável > 6%: o menor entre o DY de 12 meses e o DY médio de 5 anos (exclui dividendos extraordinários).
@@ -44,6 +48,9 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 ### Comum às duas
 
 - Liquidez média diária > R$ 1 mi e fora de recuperação judicial/extrajudicial, falência ou liquidação.
+- Sem bancos, seguradoras e holdings financeiras: identificados pelo formato da DRE ou pelo setor da
+  CVM (corretoras de seguros, como Wiz e Qualicorp, continuam).
+- Ordenação pelo maior EBIT/EV (empresas com EV negativo ficam no fim).
 - Cada ação traz o `Setor`: o setor de atividade da CVM agrupado em Energia e saneamento,
   Commodities, Construção e imóveis, Financeiro, Consumo, Indústria e serviços ou Outros.
 - Ordenação por EV/EBIT ou pela Fórmula Mágica (posição no EV/EBIT + posição no ROIC); uma ação por empresa.

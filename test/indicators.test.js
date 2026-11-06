@@ -154,3 +154,10 @@ describe('buildStocks', () => {
         assert.equal(stocks.find(s => s.Ativo === 'AAAA11')['P/L'], 10); // company-level cap from the ON price
     });
 });
+
+test('EBIT/EV is the inverse of EV/EBIT, in percent', () => {
+    const company = { empresa: 'X', receita: 1000, ebit: 100, lucro: 50, patrimonio: 500, dividaLiquida: 300 };
+    const s = buildStock(company, 'XXXX3', { price: 10, dividendos12m: 0 }, 200); // EV = 500
+    assert.equal(s['EV/EBIT'], 5);
+    assert.equal(s['EBIT/EV'], 20);
+});

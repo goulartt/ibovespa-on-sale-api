@@ -42,11 +42,16 @@ function writeAtomically(file, content) {
 
 async function main() {
     const registry = await loadRegistry();
-    const companies = (await loadFundamentals()).map(c => ({
-        ...c,
-        situacao: registry.get(c.cnpj)?.situacao ?? null,
-        setor: registry.get(c.cnpj)?.setor ?? null,
-    }));
+    const companies = (await loadFundamentals()).map(c => {
+        const info = registry.get(c.cnpj);
+        return {
+            ...c,
+            situacao: info?.situacao ?? null,
+            setor: info?.setor ?? null,
+            // banks/insurers filed in the industrial format: drop the EBIT-based figures
+            ...(info?.financeira && { financeira: true, ebit: null, ebitda: null, dividaLiquida: null, capitalEmpregado: null }),
+        };
+    });
     logger.info(`${companies.filter(c => c.situacao).length} listed companies in a distressed situation (CVM registry)`);
     const tickers = companies.flatMap(c => c.tickers.map(t => t.ticker));
     logger.info(`${companies.length} companies with CVM statements, ${tickers.length} tickers`);

@@ -162,3 +162,36 @@ describe('quality strategy (qualidade a bom preço)', () => {
         assert.throws(() => rankStocks([stock()], { strategy: 'nope' }), /unknown strategy/);
     });
 });
+
+describe('deep value strategy', () => {
+    const deep = (stocks, extra) => rankStocks(stocks, { strategy: 'deepValue', ...extra });
+
+    test('keeps only the basic filters: liquidity, positive EBIT, has EV/EBIT, no distress', () => {
+        const stocks = [
+            stock({ Ativo: 'OK3', Empresa: 'OK', 'Dividend Yield': 0, 'DY Médio 5 Anos': 0, Payout: null, 'Anos com Dividendos': 0, 'Dívida Líquida/EBIT': 9, 'Lucros Anuais': [] }),
+            stock({ Ativo: 'ILIQ3', Empresa: 'ILIQ', 'Liquidez Média Diária': 900_000 }),
+            stock({ Ativo: 'LOSS3', Empresa: 'LOSS', 'Margem Ebit': -2 }),
+            stock({ Ativo: 'BANK4', Empresa: 'BANK', 'EV/EBIT': null }),
+            stock({ Ativo: 'RJ3', Empresa: 'RJ', 'Situação': 'Em recuperação judicial' }),
+        ];
+        assert.deepEqual(deep(stocks).map(s => s.Ativo), ['OK3']);
+    });
+
+    test('ranks by the highest EBIT/EV, negative EV last', () => {
+        const stocks = [
+            stock({ Ativo: 'B3', Empresa: 'B', 'EV/EBIT': 10, 'EBIT/EV': 10 }),
+            stock({ Ativo: 'A3', Empresa: 'A', 'EV/EBIT': 2, 'EBIT/EV': 50 }),
+            stock({ Ativo: 'NEG3', Empresa: 'NEG', 'EV/EBIT': -2, 'EBIT/EV': -50 }),
+            stock({ Ativo: 'OLD3', Empresa: 'OLD', 'EV/EBIT': 4 }), // no EBIT/EV field: 25%
+        ];
+        assert.deepEqual(deep(stocks).map(s => s.Ativo), ['A3', 'OLD3', 'B3', 'NEG3']);
+    });
+
+    test('one ticker per company, the most liquid', () => {
+        const stocks = [
+            stock({ Ativo: 'XXXX3', Empresa: 'X', 'Liquidez Média Diária': 2e6 }),
+            stock({ Ativo: 'XXXX4', Empresa: 'X', 'Liquidez Média Diária': 9e6 }),
+        ];
+        assert.deepEqual(deep(stocks).map(s => s.Ativo), ['XXXX4']);
+    });
+});

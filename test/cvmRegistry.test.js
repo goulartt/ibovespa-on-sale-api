@@ -18,7 +18,7 @@ const CSV = [HEADER, ...ROWS].join('\n');
 describe('parseRegistry', () => {
     test('maps distressed companies to a readable situation', () => {
         const r = parseRegistry(CSV);
-        assert.deepEqual(r.get('1'), { situacao: 'Em recuperação judicial', desde: '2023-05-16', setor: 'Energia e saneamento' });
+        assert.deepEqual(r.get('1'), { situacao: 'Em recuperação judicial', desde: '2023-05-16', setor: 'Energia e saneamento', financeira: false });
         assert.equal(r.get('2').situacao, 'Em recuperação extrajudicial');
         assert.equal(r.get('3').situacao, 'Falida');
         assert.equal(r.get('4').situacao, 'Em liquidação');
@@ -26,12 +26,26 @@ describe('parseRegistry', () => {
 
     test('normally operating companies have no situation but keep their sector', () => {
         const r = parseRegistry(CSV);
-        assert.deepEqual(r.get('5'), { situacao: null, desde: null, setor: 'Commodities' });
-        assert.deepEqual(r.get('6'), { situacao: null, desde: null, setor: null });
+        assert.deepEqual(r.get('5'), { situacao: null, desde: null, setor: 'Commodities', financeira: false });
+        assert.deepEqual(r.get('6'), { situacao: null, desde: null, setor: null, financeira: false });
     });
 
     test('ignores cancelled companies', () => {
         assert.equal(parseRegistry(CSV).has('7'), false);
+    });
+});
+
+describe('isFinancialInstitution', () => {
+    const { isFinancialInstitution } = require('../src/sources/cvmRegistry');
+    test('flags banks, credit companies and insurers, but not insurance brokers', () => {
+        assert.equal(isFinancialInstitution('Bancos', 'BCO BRASIL S.A.'), true);
+        assert.equal(isFinancialInstitution('Emp. Adm. Part. - Intermediação Financeira', 'ALFA HOLDINGS S.A.'), true);
+        assert.equal(isFinancialInstitution('Seguradoras e Corretoras', 'PORTO SEGURO S.A.'), true);
+        assert.equal(isFinancialInstitution('Emp. Adm. Part. - Seguradoras e Corretoras', 'CAIXA SEGURIDADE PARTICIPAÇÕES S.A.'), true);
+        assert.equal(isFinancialInstitution('Seguradoras e Corretoras', 'WIZ CO PARTICIPAÇÕES E CORRETAGEM DE SEGUROS S.A.'), false);
+        assert.equal(isFinancialInstitution('Seguradoras e Corretoras', 'QUALICORP CONSULTORIA E CORRETORA DE SEGUROS S.A.'), false);
+        assert.equal(isFinancialInstitution('Bolsas de Valores/Mercadorias e Futuros', 'B3 S.A.'), false);
+        assert.equal(isFinancialInstitution('Energia Elétrica', 'CEMIG'), false);
     });
 });
 
