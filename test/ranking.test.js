@@ -68,16 +68,16 @@ describe('rankStocks', () => {
 describe('dividend sustainability and quality rules', () => {
     const keeps = (overrides) => rankStocks([stock(overrides)]).length === 1;
 
-    test('uses the lower of the 12-month and 5-year dividend yields', () => {
-        assert.equal(keeps({ 'Dividend Yield': 55, 'DY Médio 5 Anos': 7 }), true);
+    test('requires DY above 6% in 12 months and above 5% on the 5-year average', () => {
+        assert.equal(keeps({ 'Dividend Yield': 55, 'DY Médio 5 Anos': 5.5 }), true);
         assert.equal(keeps({ 'Dividend Yield': 55, 'DY Médio 5 Anos': 5 }), false); // one-off special dividend
-        assert.equal(keeps({ 'Dividend Yield': 5, 'DY Médio 5 Anos': 12 }), false); // stopped paying recently
+        assert.equal(keeps({ 'Dividend Yield': 6, 'DY Médio 5 Anos': 12 }), false); // stopped paying recently
         assert.equal(keeps({ 'DY Médio 5 Anos': null }), false);
     });
 
-    test('requires a payout between 0 and 100% of net income', () => {
-        assert.equal(keeps({ Payout: 100 }), true);
-        assert.equal(keeps({ Payout: 108 }), false);
+    test('requires a payout between 0 and 120% of net income', () => {
+        assert.equal(keeps({ Payout: 120 }), true);
+        assert.equal(keeps({ Payout: 121 }), false);
         assert.equal(keeps({ Payout: null }), false);
     });
 
@@ -86,9 +86,11 @@ describe('dividend sustainability and quality rules', () => {
         assert.equal(keeps({ 'Anos com Dividendos': 2 }), false);
     });
 
-    test('requires net debt below 3x EBIT (net cash is fine)', () => {
+    test('requires net debt below 3x EBIT, 4.5x for utilities (net cash is fine)', () => {
         assert.equal(keeps({ 'Dívida Líquida/EBIT': -0.5 }), true);
         assert.equal(keeps({ 'Dívida Líquida/EBIT': 3 }), false);
+        assert.equal(keeps({ 'Dívida Líquida/EBIT': 4, Setor: 'Energia e saneamento' }), true);
+        assert.equal(keeps({ 'Dívida Líquida/EBIT': 4.5, Setor: 'Energia e saneamento' }), false);
         assert.equal(keeps({ 'Dívida Líquida/EBIT': null }), false);
     });
 
@@ -140,15 +142,17 @@ describe('quality strategy (qualidade a bom preço)', () => {
         assert.equal(keeps({ ROCE: null }), false);
     });
 
-    test('requires net debt below 1x EBITDA (net cash is fine)', () => {
+    test('requires net debt below 1.5x EBITDA (net cash is fine)', () => {
         assert.equal(keeps({ 'Dívida Líquida/EBITDA': -2 }), true);
-        assert.equal(keeps({ 'Dívida Líquida/EBITDA': 1.03 }), false);
+        assert.equal(keeps({ 'Dívida Líquida/EBITDA': 1.03 }), true); // LEVE3
+        assert.equal(keeps({ 'Dívida Líquida/EBITDA': 1.5 }), false);
         assert.equal(keeps({ 'Dívida Líquida/EBITDA': null }), false);
     });
 
-    test('requires P/L between 0 and 10', () => {
-        assert.equal(keeps({ 'P/L': 10 }), true);
-        assert.equal(keeps({ 'P/L': 13.5 }), false);
+    test('requires P/L between 0 and 15', () => {
+        assert.equal(keeps({ 'P/L': 13.5 }), true); // B3SA3
+        assert.equal(keeps({ 'P/L': 15 }), true);
+        assert.equal(keeps({ 'P/L': 15.1 }), false);
         assert.equal(keeps({ 'P/L': -4 }), false);
     });
 

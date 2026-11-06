@@ -2,10 +2,6 @@ const _ = require('lodash');
 
 const isNumber = v => typeof v === 'number' && Number.isFinite(v);
 
-const sustainableDividendYield = stock =>
-    isNumber(stock['Dividend Yield']) && isNumber(stock['DY Médio 5 Anos'])
-        ? Math.min(stock['Dividend Yield'], stock['DY Médio 5 Anos'])
-        : null;
 
 function hasConsistentProfit(stock, minYears) {
     const years = stock['Lucros Anuais'];
@@ -42,38 +38,43 @@ const STRATEGIES = {
     },
 
     // "Dividendos sustentáveis": cheap companies whose dividends look sustainable.
-    // - sustainable DY > 6%: the lower of the 12-month and the 5-year average yield
-    //   (one-off special dividends don't count);
-    // - payout <= 100%, dividends in at least 3 of the last 5 years;
-    // - positive EBIT margin, net debt < 3x EBIT;
+    // - DY > 6% in the last 12 months and > 5% on the 5-year average (one-off special dividends
+    //   don't count);
+    // - payout <= 120% (dividends paid now often refer to the previous year's profit),
+    //   dividends in at least 3 of the last 5 years;
+    // - positive EBIT margin, net debt < 3x EBIT (4.5x for regulated utilities);
     // - profit in every recent annual statement (min. 3 years) and in the last 12 months.
     dividendos: {
         defaults: {
             minEbitMargin: 0,
             minDividendYield: 6,
-            maxPayout: 100,
+            minDividendYield5y: 5,
+            maxPayout: 120,
             minDividendYears: 3,
             maxNetDebtToEbit: 3,
+            maxNetDebtToEbitBySector: { 'Energia e saneamento': 4.5 },
             minProfitYears: 3,
         },
         isEligible: (stock, c) =>
             stock['Margem Ebit'] > c.minEbitMargin &&
-            sustainableDividendYield(stock) > c.minDividendYield &&
+            stock['Dividend Yield'] > c.minDividendYield &&
+            stock['DY Médio 5 Anos'] > c.minDividendYield5y &&
             isNumber(stock.Payout) && stock.Payout > 0 && stock.Payout <= c.maxPayout &&
             stock['Anos com Dividendos'] >= c.minDividendYears &&
-            isNumber(stock['Dívida Líquida/EBIT']) && stock['Dívida Líquida/EBIT'] < c.maxNetDebtToEbit &&
+            isNumber(stock['Dívida Líquida/EBIT']) &&
+            stock['Dívida Líquida/EBIT'] < (c.maxNetDebtToEbitBySector[stock.Setor] ?? c.maxNetDebtToEbit) &&
             hasConsistentProfit(stock, c.minProfitYears),
     },
 
     // "Qualidade a bom preço" (value investing + quality + financial strength):
     // - ROCE > 15%: EBIT / average capital employed (equity + non-current liabilities);
-    // - net debt < 1x EBITDA (net cash is even better);
-    // - P/L between 0 and 10 (buy at a discount to a historical multiple).
+    // - net debt < 1.5x EBITDA (net cash is even better);
+    // - P/L between 0 and 15 (a ~25% discount to a 20x market multiple).
     qualidade: {
         defaults: {
             minRoce: 15,
-            maxNetDebtToEbitda: 1,
-            maxPriceToEarnings: 10,
+            maxNetDebtToEbitda: 1.5,
+            maxPriceToEarnings: 15,
         },
         isEligible: (stock, c) =>
             isNumber(stock.ROCE) && stock.ROCE > c.minRoce &&
@@ -116,4 +117,4 @@ function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }
 
-module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES, sustainableDividendYield };
+module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES };

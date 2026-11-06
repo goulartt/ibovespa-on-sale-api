@@ -33,17 +33,17 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 ### Estratégia `dividendos`
 
 - Liquidez média diária > R$ 1 mi e margem EBIT positiva.
-- DY sustentável > 6%: o menor entre o DY de 12 meses e o DY médio de 5 anos (exclui dividendos extraordinários).
-- Payout ≤ 100% e proventos pagos em pelo menos 3 dos últimos 5 anos.
+- DY de 12 meses > 6% e DY médio de 5 anos > 5% (exclui dividendos extraordinários).
+- Payout ≤ 120% e proventos pagos em pelo menos 3 dos últimos 5 anos.
 - Lucro em todos os últimos balanços anuais (mínimo 3) e nos últimos 12 meses.
-- Dívida líquida / EBIT < 3.
+- Dívida líquida / EBIT < 3 (4,5 em Energia e saneamento).
 - Fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM).
 ### Estratégia `qualidade` (qualidade a bom preço)
 
 - ROCE > 15%: EBIT dos últimos 12 meses ÷ capital empregado médio (patrimônio líquido + passivo
   não circulante, média entre o último balanço e o do fim do ano anterior).
-- Dívida líquida / EBITDA < 1 (EBITDA = EBIT + depreciação e amortização da DVA, 12 meses).
-- P/L entre 0 e 10.
+- Dívida líquida / EBITDA < 1,5 (EBITDA = EBIT + depreciação e amortização da DVA, 12 meses).
+- P/L entre 0 e 15.
 
 ### Comum às duas
 
