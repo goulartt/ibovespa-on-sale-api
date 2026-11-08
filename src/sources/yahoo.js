@@ -151,6 +151,19 @@ function adjCloseOn(history, iso) {
     return i >= 0 && history.days[i].date === iso ? history.days[i].adj : null;
 }
 
+// Split-adjusted close (not adjusted for dividends) on exactly `iso`, or null.
+function closeOn(history, iso) {
+    if (!history) return null;
+    const i = indexAt(history.days, iso);
+    return i >= 0 && history.days[i].date === iso ? history.days[i].close : null;
+}
+
+// Dividends per share (split-adjusted) with ex-date in (from, to].
+function dividendsBetween(history, from, to) {
+    if (!history) return 0;
+    return history.dividends.filter(d => d.iso > from && d.iso <= to).reduce((sum, d) => sum + d.amount, 0);
+}
+
 async function fetchHistory(ticker, { from, to = new Date(), symbol, ...options } = {}) {
     const params = {
         period1: Math.floor(Date.parse(`${from}T00:00:00Z`) / 1000),
@@ -164,5 +177,5 @@ async function fetchHistory(ticker, { from, to = new Date(), symbol, ...options 
 
 module.exports = {
     parseChart, fetchChart, getMarketData, movingAverage, dividendsByTrailingYear,
-    parseHistory, marketAt, adjCloseOn, fetchHistory, indexAt,
+    parseHistory, marketAt, adjCloseOn, closeOn, dividendsBetween, fetchHistory, indexAt,
 };

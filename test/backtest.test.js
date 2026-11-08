@@ -215,3 +215,71 @@ test('share counts before 2020 come from the FRE capital history', () => {
     const built = buildCompanyAsOf('X', noShares, '2025-04-01', [{ date: '2020-01-01', on: 300, pn: 0 }]);
     assert.deepEqual(built.acoes, { on: 300, pn: 0 });
 });
+
+// ---- Taxes (BRL) ----
+const { BRAZIL_TAXES } = require('../src/backtest/engine');
+
+// Two months: buys on 2024-01-02, sells on the rebalance day.
+const taxCalendar = ['2023-12-29', '2024-01-02', '2024-01-03', '2024-02-01', '2024-02-02', '2024-03-01'];
+const zeroCdi = cdiIndex(taxCalendar, new Map());
+const taxRun = ({ capital, prices, rankings, dividendsOn = null, mode = 'rotation', rebalanceOn = ['2024-02-01'] }) => simulate({
+    calendar: taxCalendar, start: '2024-01-02', end: '2024-03-01', cdi: zeroCdi, mode, size: 1, buffer: 1, cost: 0,
+    initialCapital: capital, taxes: BRAZIL_TAXES, rebalanceOn, dividendsOn,
+    priceOn: (t, d) => prices[t]?.[taxCalendar.indexOf(d) - 1] ?? null,
+    rankAt: asOf => rankings[asOf] || rankingOf(['A']),
+});
+
+test('15% on the gain of a month with sales above R$ 20 thousand', () => {
+    const r = taxRun({
+        capital: 100000,
+        prices: { A: [10, 10, 12, 12, 12], B: [10, 10, 10, 10, 10] },
+        rankings: { '2024-01-03': rankingOf(['B']) }, // A leaves the ranking -> sold on 2024-02-01 at 12
+    });
+    assert.equal(r.taxesPaid, 20000 * 0.15); // R$ 120k sold, R$ 20k gain; paid when February closes
+    assert.equal(r.liquidation.value, 120000 - 3000);
+});
+
+test('sales up to R$ 20 thousand in a month are exempt', () => {
+    const r = taxRun({
+        capital: 15000,
+        prices: { A: [10, 10, 12, 12, 12], B: [10, 10, 10, 10, 10] },
+        rankings: { '2024-01-03': rankingOf(['B']) },
+    });
+    assert.equal(r.taxesPaid, 0); // R$ 18k sold
+    assert.equal(r.liquidation.value, 18000);
+});
+
+test('losses offset later gains', () => {
+    const r = taxRun({
+        capital: 100000,
+        // A: -20% then sold; B bought at 10, worth 13 at the end
+        prices: { A: [10, 10, 8, 8, 8], B: [10, 10, 10, 10, 13] },
+        rankings: { '2024-01-03': rankingOf(['B']) },
+    });
+    assert.equal(r.taxesPaid, 0); // February: R$ 20k loss, no tax
+    // selling B at the end: 80k / 10 x 13 = 104k -> gain 24k - 20k of past loss = 4k taxable
+    assert.ok(Math.abs(r.liquidation.tax - 4000 * 0.15) < 1e-6);
+    assert.ok(Math.abs(r.liquidation.value - (104000 - 600)) < 1e-6);
+});
+
+test('dividends are tax free and reinvested in the same stock', () => {
+    const r = taxRun({
+        capital: 100000,
+        mode: 'buyAndHold',
+        prices: { A: [10, 10, 10, 10, 10] },
+        rankings: {},
+        dividendsOn: (t, from, to) => (to === '2024-02-01' ? 1 : 0),
+    });
+    assert.equal(r.dividendsReceived, 10000);
+    assert.equal(r.values[r.values.length - 1][1], 110000);
+    assert.equal(r.liquidation.tax, 0); // basis includes the reinvested dividends: no gain
+});
+
+test('cash pays 15% of the CDI income', () => {
+    const cdi = cdiIndex(taxCalendar, new Map([['2024-01-02', 1]]));
+    const r = simulate({
+        calendar: taxCalendar, start: '2024-01-02', end: '2024-01-03', cdi, mode: 'buyAndHold', size: 1, cost: 0,
+        initialCapital: 100000, taxes: BRAZIL_TAXES, priceOn: () => null, rankAt: () => [],
+    });
+    assert.ok(Math.abs(r.values[1][1] - 100850) < 1e-6); // 1% CDI, 0.85% net
+});

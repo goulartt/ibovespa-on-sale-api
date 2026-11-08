@@ -42,9 +42,19 @@ function cdiIndex(calendar, rates) {
     return index;
 }
 
+// Brazilian individual taxes on stocks (swing trade): 15% on the month's net gain from sales,
+// exempt when the month's sales total up to R$ 20,000; losses offset later gains. Cash earning the
+// CDI pays 15% of its income (as a long-term CDB/Treasury would).
+const BRAZIL_TAXES = Object.freeze({ gainsRate: 0.15, monthlyExemption: 20000, cashIncomeRate: 0.15 });
+
 function simulate({
     calendar, start, end, rankAt, keepRankAt = null, priceOn, cdi, mode = 'rotation',
     size = 10, buffer = 20, cost = 0.001, maxStaleDays = 10, rebalanceOn,
+    initialCapital = 1,
+    // Optional: dividends per share paid in (previousDay, day], reinvested in the same stock. Use
+    // with prices that are NOT dividend-adjusted (so gains and dividends are told apart).
+    dividendsOn = null,
+    taxes = null, // e.g. BRAZIL_TAXES; needs initialCapital in BRL for the exemption
 }) {
     if (!MODES.includes(mode)) throw new RangeError(`unknown mode "${mode}"`);
     const first = calendar.findIndex(d => d >= start);
@@ -52,24 +62,66 @@ function simulate({
     const days = calendar.slice(first).filter(d => d <= end);
     const rebalance = new Set(mode === 'rotation' ? (rebalanceOn || rebalanceDates(calendar, days[0], end)) : []);
 
-    let cash = 1;
+    let cash = initialCapital;
     let positions = [];
     const values = [];
     const trades = [];
     const events = [];
     let initial = [];
 
+    // Tax ledger of the current month.
+    let monthSales = 0;
+    let monthGain = 0;
+    let carriedLoss = 0;
+    let taxesPaid = 0;
+    let dividendsReceived = 0;
+
+    // Tax due if the month ended now (does not change the ledger).
+    const monthTax = (sales = monthSales, gain = monthGain, loss = carriedLoss) => {
+        if (!taxes || sales <= taxes.monthlyExemption || gain <= 0) return 0;
+        return Math.max(0, gain - loss) * taxes.gainsRate;
+    };
+    const closeMonth = () => {
+        if (taxes) {
+            const tax = monthTax();
+            if (tax > 0) {
+                cash -= tax;
+                taxesPaid += tax;
+                carriedLoss = 0;
+            } else if (monthGain < 0) {
+                carriedLoss += -monthGain; // losses offset later gains
+            } else if (monthSales > taxes.monthlyExemption) {
+                carriedLoss = Math.max(0, carriedLoss - monthGain); // gain fully offset by past losses
+            }
+        }
+        monthSales = 0;
+        monthGain = 0;
+    };
+
+    // Sells a position at its last price; returns the proceeds (added to cash).
+    const sell = (p, fee = cost) => {
+        const gross = p.units * p.last;
+        const proceeds = gross * (1 - fee);
+        monthSales += gross;
+        monthGain += proceeds - p.basis;
+        cash += proceeds;
+        return proceeds;
+    };
+
     const fill = (ranking, day, bought) => {
         const held = new Set(positions.map(p => p.empresa));
         let slots = size - positions.length;
+        const reserve = monthTax(); // keep the tax of this month's sales aside
         for (const stock of ranking) {
             if (slots <= 0) break;
             if (held.has(stock.Empresa)) continue;
             const price = priceOn(stock.Ativo, day);
             if (!price) continue;
-            const amount = cash / slots;
+            const amount = Math.max(0, cash - reserve) / slots;
             cash -= amount;
-            positions.push({ ticker: stock.Ativo, empresa: stock.Empresa, units: (amount * (1 - cost)) / price, last: price, stale: 0 });
+            positions.push({
+                ticker: stock.Ativo, empresa: stock.Empresa, units: (amount * (1 - cost)) / price, last: price, stale: 0, basis: amount,
+            });
             held.add(stock.Empresa);
             slots--;
             bought.push({ ticker: stock.Ativo, empresa: stock.Empresa, rank: stock.Ranking });
@@ -78,17 +130,28 @@ function simulate({
 
     days.forEach((day, i) => {
         const previous = calendar[first + i - 1];
-        if (i > 0) cash *= cdi.get(day) / cdi.get(previous);
+        if (i > 0 && day.slice(0, 7) !== previous.slice(0, 7)) closeMonth();
+        if (i > 0) {
+            const growth = cdi.get(day) / cdi.get(previous) - 1;
+            cash *= 1 + growth * (taxes ? 1 - taxes.cashIncomeRate : 1);
+        }
 
         positions = positions.filter(p => {
             const price = priceOn(p.ticker, day);
             if (price) {
                 p.last = price;
                 p.stale = 0;
+                const dividend = dividendsOn && i > 0 ? dividendsOn(p.ticker, previous, day) : 0;
+                if (dividend > 0) {
+                    const amount = p.units * dividend;
+                    dividendsReceived += amount;
+                    p.units += (amount * (1 - cost)) / price; // reinvested in the same stock
+                    p.basis += amount;
+                }
                 return true;
             }
             if (++p.stale <= maxStaleDays) return true;
-            cash += p.units * p.last;
+            sell(p, 0);
             events.push({ date: day, ticker: p.ticker, event: 'sem cotação' });
             return false;
         });
@@ -105,7 +168,7 @@ function simulate({
             positions = positions.filter(p => {
                 const rank = rankOf.get(p.empresa) ?? null;
                 if (keep ? keep.has(p.empresa) : rank != null && rank <= buffer) return true;
-                cash += p.units * p.last * (1 - cost);
+                sell(p);
                 sold.push({ ticker: p.ticker, empresa: p.empresa, rank });
                 return false;
             });
@@ -114,10 +177,25 @@ function simulate({
             if (sold.length || bought.length) trades.push({ date: day, sold, bought });
         }
 
-        values.push([day, cash + positions.reduce((sum, p) => sum + p.units * p.last, 0)]);
+        values.push([day, cash - monthTax() + positions.reduce((sum, p) => sum + p.units * p.last, 0)]);
     });
 
-    return { values, initial, trades, events, holdings: positions.map(p => p.ticker) };
+    // What would be left after selling everything on the last day and paying the tax.
+    const holdingsValue = positions.reduce((sum, p) => sum + p.units * p.last, 0);
+    const exitProceeds = holdingsValue * (1 - cost);
+    const exitGain = positions.reduce((sum, p) => sum + p.units * p.last * (1 - cost) - p.basis, 0);
+    const exitTax = monthTax(monthSales + holdingsValue, monthGain + exitGain);
+
+    return {
+        values,
+        initial,
+        trades,
+        events,
+        holdings: positions.map(p => p.ticker),
+        taxesPaid,
+        dividendsReceived,
+        liquidation: { value: cash + exitProceeds - exitTax, tax: exitTax, taxesPaid: taxesPaid + exitTax },
+    };
 }
 
 // ---- Metrics ----
@@ -183,6 +261,7 @@ function sampleCurve(values, every = 5) {
 }
 
 module.exports = {
+    BRAZIL_TAXES,
     simulate, rebalanceDates, cdiIndex, summarizeSeries, yearlyReturns, sampleCurve, maxDrawdown, volatility,
     MODES, REBALANCE_ANCHORS,
 };

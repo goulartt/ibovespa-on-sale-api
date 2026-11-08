@@ -5,11 +5,11 @@
 const path = require('path');
 const { loadHistory } = require('../src/sources/cvm');
 const { loadRegistry } = require('../src/sources/cvmRegistry');
-const { fetchHistory, adjCloseOn } = require('../src/sources/yahoo');
+const { fetchHistory, adjCloseOn, closeOn, dividendsBetween } = require('../src/sources/yahoo');
 const { fetchCdi } = require('../src/sources/benchmarks');
 const { createRanker } = require('../src/backtest/pointInTime');
 const {
-    simulate, rebalanceDates, cdiIndex, summarizeSeries, yearlyReturns, sampleCurve, MODES,
+    simulate, rebalanceDates, cdiIndex, summarizeSeries, yearlyReturns, sampleCurve, MODES, BRAZIL_TAXES,
 } = require('../src/backtest/engine');
 const { rankStocks } = require('../src/domain/ranking');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
@@ -25,6 +25,7 @@ const PARAMS = { cost: 0.001, maxStaleDays: 10 };
 // Portfolio size per strategy (sell when a stock leaves the top 2x). The dividend list is naturally
 // short (1 to 6 eligible stocks a quarter in 2014-2019), so 20 slots would mostly be cash.
 const SIZES = { deepValue: 20, qualidade: 20, dividendos: 10 };
+const CAPITAL = 100000; // BRL invested at the start of each simulation (with taxes)
 const MAX_HISTORY_FAILURE_RATIO = 0.5; // many tickers of delisted companies have no history
 
 const round = (v, d = 2) => (v == null || !Number.isFinite(v) ? null : Math.round(v * 10 ** d) / 10 ** d);
@@ -73,11 +74,33 @@ async function main() {
     };
     const firstDay = from => calendar.find(d => d >= from);
     const lastDay = to => [...calendar].reverse().find(d => d <= to);
-    const run = (strategy, mode, start, end) => simulate({
+    const run = (strategy, mode, start, end, extra = {}) => simulate({
         calendar, start, end, cdi, priceOn, mode, rebalanceOn: rebalanceDates(calendar, start, end), ...PARAMS,
         size: SIZES[strategy], buffer: 2 * SIZES[strategy],
         rankAt: asOf => rankAt(asOf, strategy),
+        ...extra,
     });
+    // R$ 100 thousand, prices not adjusted for dividends (dividends reinvested, tax free), with or
+    // without Brazilian taxes on the gains of sales and on the CDI income of cash.
+    const money = taxes => ({
+        initialCapital: CAPITAL,
+        taxes,
+        priceOn: (ticker, day) => closeOn(histories[ticker], day),
+        dividendsOn: (ticker, from, to) => dividendsBetween(histories[ticker], from, to),
+    });
+
+    function simulateMoney(strategy, mode, start, end) {
+        const gross = run(strategy, mode, start, end, money(null));
+        const net = run(strategy, mode, start, end, money(BRAZIL_TAXES));
+        return {
+            aporte: CAPITAL,
+            semImpostos: round(gross.liquidation.value, 0),
+            liquido: round(net.liquidation.value, 0),
+            impostosVendas: round(net.taxesPaid, 0), // paid along the way (month by month)
+            impostoResgate: round(net.liquidation.tax, 0), // selling everything at the end
+            proventos: round(net.dividendsReceived, 0),
+        };
+    }
 
     const periods = [
         { id: 'completo', label: `${FROM_YEAR} até hoje`, from: `${FROM_YEAR}-01-01`, to: today },
@@ -105,14 +128,32 @@ async function main() {
                     carteiraAtual: result.holdings,
                     trocas: result.trades,
                     eventos: result.events,
+                    simulacao: simulateMoney(strategy, mode, start, end),
                 };
-                logger.info(`${p.id} ${strategy} ${mode}: ${round(m.retornoAnual)}% a.a. (CDI ${round(m.cdi)}% no período)`);
+                logger.info(`${p.id} ${strategy} ${mode}: ${round(m.retornoAnual)}% a.a. (CDI ${round(m.cdi)}% no período); `
+                    + `R$ 100 mil -> R$ ${round(estrategias[strategy][mode].simulacao.liquido, 0)} líquido`);
             }
         }
+        // CDB of 100% of the CDI and an Ibovespa ETF: 15% on the gain when redeemed (no exemption).
+        const netOf = factor => round(CAPITAL * (1 + (factor - 1) * (factor > 1 ? 1 - BRAZIL_TAXES.gainsRate : 1)), 0);
+        const grossOf = factor => round(CAPITAL * factor, 0);
+        const cdiFactor = cdi.get(end) / cdi.get(start);
+        const ibovFactor = ibovOn.get(end) / ibovOn.get(start);
+        const simulacaoBenchmarks = {
+            cdi: { semImpostos: grossOf(cdiFactor), liquido: netOf(cdiFactor), impostos: round(grossOf(cdiFactor) - netOf(cdiFactor), 0) },
+            ibov: { semImpostos: grossOf(ibovFactor), liquido: netOf(ibovFactor), impostos: round(grossOf(ibovFactor) - netOf(ibovFactor), 0) },
+        };
         const bench = values => ({
             metricas: roundAll(summarizeSeries(values, cdiValues)), anual: roundAll(yearlyReturns(values)), curva: sampleCurve(values),
         });
-        return { id: p.id, label: p.label, inicio: start, fim: end, benchmarks: { cdi: bench(cdiValues), ibov: bench(ibovValues) }, estrategias };
+        return {
+            id: p.id, label: p.label, inicio: start, fim: end,
+            benchmarks: {
+                cdi: { ...bench(cdiValues), simulacao: simulacaoBenchmarks.cdi },
+                ibov: { ...bench(ibovValues), simulacao: simulacaoBenchmarks.ibov },
+            },
+            estrategias,
+        };
     });
 
     // Robustness: one portfolio started each January, held (with the same rules) until today.
@@ -137,6 +178,8 @@ async function main() {
         sources: ['CVM dados abertos (DFP/ITR/FCA/FRE/cadastro)', 'Yahoo Finance', 'Banco Central (SGS 12, CDI)'],
         parametros: {
             ...PARAMS,
+            aporte: CAPITAL,
+            impostos: BRAZIL_TAXES,
             tamanhos: SIZES,
             ancorasRebalanceamento: ['05/04', '20/05', '20/08', '20/11'],
         },

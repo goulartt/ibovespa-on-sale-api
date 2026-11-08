@@ -94,8 +94,15 @@ janeiro, quantas bateram o CDI.
   20/nov): vende quem saiu do top 40 ou dos filtros e compra as mais bem colocadas fora da carteira.
 - Retorno total (proventos reinvestidos), 0,1% de custo por operação, caixa rendendo CDI e ativos sem
   cotação por 10 pregões convertidos em caixa.
+- **Com R$ 100 mil e impostos:** cada estratégia também é simulada em reais, com preços sem ajuste por
+  proventos (dividendos isentos e reinvestidos na própria ação) e o IR de pessoa física: 15% sobre o
+  lucro líquido do mês nas vendas, isento quando o mês vende até R$ 20 mil, prejuízos compensando
+  lucros seguintes, caixa rendendo CDI menos 15% de IR e o imposto de vender tudo no último dia
+  (`BRAZIL_TAXES` em `src/backtest/engine.js`). Comparação com um CDB de 100% do CDI e um ETF de
+  Ibovespa, ambos com 15% sobre o ganho no resgate.
 - Limitações: viés de sobrevivência (cerca de um terço dos códigos desde 2014 não tem histórico no
-  Yahoo), cadastro da CVM atual e balanços reapresentados (versão final com a data da primeira entrega).
+  Yahoo), cadastro da CVM atual, balanços reapresentados (versão final com a data da primeira entrega)
+  e JCP misturado aos dividendos no Yahoo (os 15% retidos na fonte sobre o JCP não são descontados).
 
 ### Pesquisa de variações
 
