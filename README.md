@@ -80,7 +80,7 @@ As respostas trazem o cabeçalho `X-Data-Updated-At`. Erros retornam JSON `{ "er
 ## Backtest
 
 `npm run backtest` (cerca de 10 minutos e 10 GB de memória; roda todo mês em
-`.github/workflows/backtest.yml`) simula as 20 primeiras de cada estratégia de jan/2014 até hoje e
+`.github/workflows/backtest.yml`) simula as 20 primeiras de cada estratégia (10 em Dividendos, cuja lista é naturalmente curta) de jan/2014 até hoje e
 compara com o CDI (Banco Central, série SGS 12) e o Ibovespa, em três períodos: completo, 2014–2019
 (usado para escolher as regras) e 2020–hoje (validação). Também compara as regras atuais com as
 anteriores (`PREVIOUS_RULES` em `src/domain/ranking.js`) e conta, de 12 carteiras iniciadas em cada

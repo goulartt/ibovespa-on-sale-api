@@ -1,4 +1,5 @@
-// Backtest of the strategies since 2014 against the CDI and the Ibovespa: top 20, buy-and-hold and
+// Backtest of the strategies since 2014 against the CDI and the Ibovespa: top 20 (top 10 for
+// dividends), buy-and-hold and
 // quarterly rotation, current rules vs. the rules before the 2014-2026 review. Writes
 // data/backtest.json. Run: npm run backtest (monthly via .github/workflows/backtest.yml)
 const path = require('path');
@@ -21,7 +22,10 @@ const PRICES_FROM = `${FROM_YEAR - 6}-01-01`;
 // Intrinsic value needs the interest rates of each date, not available historically here.
 const STRATEGY_NAMES = ['deepValue', 'dividendos', 'qualidade'];
 const VERSIONS = { novas: {}, anteriores: PREVIOUS_RULES };
-const PARAMS = { size: 20, buffer: 40, cost: 0.001, maxStaleDays: 10 };
+const PARAMS = { cost: 0.001, maxStaleDays: 10 };
+// Portfolio size per strategy (sell when a stock leaves the top 2x). The dividend list is naturally
+// short (1 to 6 eligible stocks a quarter in 2014-2019), so 20 slots would mostly be cash.
+const SIZES = { deepValue: 20, qualidade: 20, dividendos: 10 };
 const MAX_HISTORY_FAILURE_RATIO = 0.5; // many tickers of delisted companies have no history
 
 const round = (v, d = 2) => (v == null || !Number.isFinite(v) ? null : Math.round(v * 10 ** d) / 10 ** d);
@@ -74,6 +78,7 @@ async function main() {
     const lastDay = to => [...calendar].reverse().find(d => d <= to);
     const run = (strategy, version, mode, start, end) => simulate({
         calendar, start, end, cdi, priceOn, mode, rebalanceOn: rebalanceDates(calendar, start, end), ...PARAMS,
+        size: SIZES[strategy], buffer: 2 * SIZES[strategy],
         rankAt: asOf => rankAt(asOf, strategy, version),
     });
 
@@ -139,7 +144,11 @@ async function main() {
     writeAtomically(OUTPUT, JSON.stringify({
         updatedAt: new Date().toISOString(),
         sources: ['CVM dados abertos (DFP/ITR/FCA/FRE/cadastro)', 'Yahoo Finance', 'Banco Central (SGS 12, CDI)'],
-        parametros: { ...PARAMS, ancorasRebalanceamento: ['05/04', '20/05', '20/08', '20/11'] },
+        parametros: {
+            ...PARAMS,
+            tamanhos: SIZES,
+            ancorasRebalanceamento: ['05/04', '20/05', '20/08', '20/11'],
+        },
         periodos,
         robustez,
     }));
