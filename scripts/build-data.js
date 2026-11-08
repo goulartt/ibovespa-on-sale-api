@@ -1,10 +1,13 @@
 // Builds data/stocks.json from CVM open data (fundamentals) + Yahoo Finance (market data).
 // Run: npm run build:data  (runs on weekdays via .github/workflows/update-data.yml)
+const fs = require('fs');
 const path = require('path');
 const { loadFundamentals } = require('../src/sources/cvm');
 const { loadRegistry } = require('../src/sources/cvmRegistry');
 const { getMarketData } = require('../src/sources/yahoo');
 const { buildStocks } = require('../src/domain/indicators');
+const { discountRates } = require('../src/domain/intrinsicValue');
+const { fetchTesouro, fetchIpcaExpectation } = require('../src/sources/rates');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
 const { logger } = require('../src/lib/logger');
 const { writeAtomically } = require('../src/lib/files');
@@ -33,6 +36,28 @@ async function fetchMarketData(tickers) {
     return market;
 }
 
+// Discount rate of the intrinsic value. If a source is down, reuse the last published assumptions
+// rather than failing the whole daily update.
+async function loadAssumptions() {
+    try {
+        const [tesouro, focus] = await Promise.all([fetchTesouro(), fetchIpcaExpectation()]);
+        const rates = discountRates({ tesouro: tesouro.taxa, ipca: focus.ipca });
+        logger.info(`intrinsic value: ${tesouro.titulo} ${tesouro.taxa}% + IPCA ${focus.ipca}% - ${rates.crescimentoPerpetuidade}% = ${rates.taxaFinal.toFixed(2)}%`);
+        return {
+            tesouro: { titulo: tesouro.titulo, taxa: tesouro.taxa, data: tesouro.data },
+            ipca: { taxa: focus.ipca, data: focus.data, fonte: 'Boletim Focus (mediana, próximos 12 meses)' },
+            ...rates,
+        };
+    } catch (e) {
+        logger.warn(`could not load the intrinsic value rates (${e.message}); reusing the previous ones`);
+        try {
+            return JSON.parse(fs.readFileSync(OUTPUT, 'utf8')).premissas || null;
+        } catch {
+            return null;
+        }
+    }
+}
+
 async function main() {
     const registry = await loadRegistry();
     const companies = (await loadFundamentals()).map(c => {
@@ -50,14 +75,16 @@ async function main() {
     const tickers = companies.flatMap(c => c.tickers.map(t => t.ticker));
     logger.info(`${companies.length} companies with CVM statements, ${tickers.length} tickers`);
 
-    const stocks = buildStocks(companies, await fetchMarketData(tickers));
+    const premissas = await loadAssumptions();
+    const stocks = buildStocks(companies, await fetchMarketData(tickers), { rates: premissas });
     if (stocks.length < MIN_STOCKS) {
         throw new Error(`only ${stocks.length} stocks built; refusing to overwrite ${OUTPUT}`);
     }
 
     writeAtomically(OUTPUT, JSON.stringify({
         updatedAt: new Date().toISOString(),
-        sources: ['CVM dados abertos (DFP/ITR/FCA)', 'Yahoo Finance'],
+        sources: ['CVM dados abertos (DFP/ITR/FCA)', 'Yahoo Finance', 'Tesouro Transparente', 'Banco Central (Focus)'],
+        premissas,
         stocks,
     }, null, 1));
     logger.info(`wrote ${stocks.length} stocks to ${OUTPUT}`);

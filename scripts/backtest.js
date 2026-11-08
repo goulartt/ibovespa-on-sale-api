@@ -10,13 +10,14 @@ const { createRanker } = require('../src/backtest/pointInTime');
 const {
     simulate, rebalanceDates, cdiIndex, summarizeSeries, yearlyReturns, sampleCurve, MODES,
 } = require('../src/backtest/engine');
-const { STRATEGY_NAMES } = require('../src/domain/ranking');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
 const { logger } = require('../src/lib/logger');
 const { writeAtomically } = require('../src/lib/files');
 
 const OUTPUT = path.join(__dirname, '..', 'data', 'backtest.json');
 const START_YEARS = [2023, 2024, 2025];
+// Intrinsic value needs the interest rates of each date, not available historically here.
+const STRATEGY_NAMES = ['deepValue', 'dividendos', 'qualidade'];
 const PRICES_FROM = '2017-01-01'; // 5 years of dividends before the first start + moving averages
 const PARAMS = { size: 10, buffer: 20, cost: 0.001, maxStaleDays: 10 };
 const MAX_HISTORY_FAILURE_RATIO = 0.3;

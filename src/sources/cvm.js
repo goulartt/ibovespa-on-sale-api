@@ -173,7 +173,9 @@ function annualNetIncome(company) {
         const src = filing.con.size > 0 ? 'con' : 'ind';
         const conta = netIncomeAccount(filing, src);
         const value = conta && ytd(filing[src], 'ÚLTIMO', conta);
-        if (value) result.push({ ano: Number(date.slice(0, 4)), lucro: value.v });
+        const equity = filing.equityAccount?.[src];
+        const patrimonio = equity ? filing[src].get(`BP|${equity}`) ?? null : null;
+        if (value) result.push({ ano: Number(date.slice(0, 4)), lucro: value.v, patrimonio });
     }
     return result.slice(-PROFIT_HISTORY_YEARS);
 }
@@ -217,10 +219,15 @@ function buildCompany(cnpj, company) {
     const ebit = financeira ? null : ttm(company, latest, src, '3.05');
     const depreciation = financeira ? null : ttm(company, latest, src, DEPRECIATION_ACCOUNT);
 
+    const lucrosAnuais = annualNetIncome(company);
+    const roes = lucrosAnuais.filter(y => y.patrimonio > 0).map(y => y.lucro / y.patrimonio);
+
     return {
         cnpj,
         dataBalanco: latestDate,
-        lucrosAnuais: annualNetIncome(company),
+        lucrosAnuais,
+        // average ROE of the annual statements (fraction), for the intrinsic value growth rate
+        roeMedio: roes.length ? roes.reduce((a, b) => a + b, 0) / roes.length : null,
         financeira,
         acoes: sharesFiling.shares,
         receita: ttm(company, latest, src, '3.01'),

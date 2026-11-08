@@ -102,6 +102,11 @@ describe('buildCompany', () => {
         assert.equal(c.capitalEmpregado, ((1000 + 800) / 2) * 1000);
     });
 
+    test('average ROE uses the years with positive equity', () => {
+        const companies = companiesFrom([dfp2025(), 'DFP', 2025], [itr2026(), 'ITR', 2026]);
+        assert.equal(buildCompany(CNPJ, companies.get(CNPJ)).roeMedio, 90_000 / 500_000);
+    });
+
     test('collects the net income of each annual statement', () => {
         const dfp2024 = cvmZip({
             'dfp_cia_aberta_DRE_con_2024.csv': [DRE_HEADER,
@@ -109,8 +114,8 @@ describe('buildCompany', () => {
         });
         const companies = companiesFrom([dfp2024, 'DFP', 2024], [dfp2025(), 'DFP', 2025], [itr2026(), 'ITR', 2026]);
         assert.deepEqual(buildCompany(CNPJ, companies.get(CNPJ)).lucrosAnuais, [
-            { ano: 2024, lucro: -25_000 },
-            { ano: 2025, lucro: 90_000 },
+            { ano: 2024, lucro: -25_000, patrimonio: null },
+            { ano: 2025, lucro: 90_000, patrimonio: 500_000 },
         ]);
     });
 

@@ -52,6 +52,15 @@ function createIbovespaRouter({ stocksRepository }) {
         sendStocks(res, dataset, rankStocks(dataset.stocks, criteria));
     }));
 
+    // Assumptions of the intrinsic value (discount rate inputs) used in the current dataset.
+    router.get('/premissas', asyncHandler(async (req, res) => {
+        const dataset = await stocksRepository.getDataset();
+        if (!dataset.premissas) throw new HttpError(404, 'Premissas do valor intrínseco indisponíveis.');
+        res.set('X-Data-Updated-At', dataset.updatedAt);
+        res.set('Cache-Control', 'public, max-age=60, s-maxage=600, stale-while-revalidate=86400');
+        res.json(dataset.premissas);
+    }));
+
     return router;
 }
 

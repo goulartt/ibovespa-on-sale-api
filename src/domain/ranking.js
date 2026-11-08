@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const { profitVariation } = require('./intrinsicValue');
 
 const isNumber = v => typeof v === 'number' && Number.isFinite(v);
 
@@ -19,10 +20,22 @@ const COMMON_DEFAULTS = {
     excludedTickers: [], // manual overrides, if ever needed
 };
 
-const isTradableAndHealthy = (stock, c) =>
+// Strategies sorted by EBIT/EV need it; `requiresEbit: false` lets banks in (intrinsic value).
+const isTradableAndHealthy = (stock, c, definition) =>
     stock['Liquidez Média Diária'] > c.minLiquidity &&
     !stock['Situação'] &&
-    isNumber(stock['EV/EBIT']);
+    (definition.requiresEbit === false || isNumber(stock['EV/EBIT']));
+
+const average = values => values.reduce((a, b) => a + b, 0) / values.length;
+
+function hasPredictableProfit(stock, c) {
+    const profits = stock['Lucros Anuais'].map(y => y.lucro);
+    const mean = average(profits);
+    const variation = profitVariation(profits);
+    const ttm = stock['Lucro Líquido'];
+    return variation != null && variation <= c.maxProfitVariation &&
+        ttm >= c.minProfitToAverage * mean && ttm <= c.maxProfitToAverage * mean;
+}
 
 // EBIT/EV ("earnings yield"): the higher, the cheaper. Falls back to 1 / (EV/EBIT) for datasets
 // built before the field existed. Companies with a negative EV end up last.
@@ -83,6 +96,29 @@ const STRATEGIES = {
             isNumber(stock['Dívida Líquida/EBITDA']) && stock['Dívida Líquida/EBITDA'] < c.maxNetDebtToEbitda &&
             stock['P/L'] > 0 && stock['P/L'] <= c.maxPriceToEarnings,
     },
+
+    // "Valor intrínseco": price target by a simplified discounted cash flow (see
+    // domain/intrinsicValue.js), ranked by the discount of the price to it. The method needs a
+    // predictable profit:
+    // - profit in every recent annual statement (min. 3);
+    // - last-12-months profit between 0.5x and 2x the annual average (one-off gains or collapses
+    //   would distort the projection);
+    // - annual profits that vary moderately (coefficient of variation up to 50%).
+    valorIntrinseco: {
+        defaults: {
+            minProfitYears: 3,
+            minProfitToAverage: 0.5,
+            maxProfitToAverage: 2,
+            maxProfitVariation: 0.5,
+        },
+        requiresEbit: false,
+        sortBy: stock => stock['Desconto'],
+        isEligible: (stock, c) =>
+            isNumber(stock['Valor Intrínseco']) && stock['Valor Intrínseco'] > 0 &&
+            isNumber(stock['Desconto']) &&
+            hasConsistentProfit(stock, c.minProfitYears) &&
+            hasPredictableProfit(stock, c),
+    },
 };
 
 const STRATEGY_NAMES = Object.keys(STRATEGIES);
@@ -107,14 +143,15 @@ function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
     const excluded = new Set(c.excludedTickers);
 
     const eligible = stocks.filter(s =>
-        isTradableAndHealthy(s, c) && definition.isEligible(s, c) && !excluded.has(s.Ativo));
+        isTradableAndHealthy(s, c, definition) && definition.isEligible(s, c) && !excluded.has(s.Ativo));
 
     // One ticker per company: the most liquid one.
     const unique = _.uniqBy(_.orderBy(eligible, ['Liquidez Média Diária'], ['desc']), s => s.Empresa);
 
-    const sorted = c.sort === 'magicFormula'
-        ? sortByMagicFormula(unique)
-        : _.orderBy(unique, [earningsYield, 'Liquidez Média Diária'], ['desc', 'desc']);
+    let sorted;
+    if (definition.sortBy) sorted = _.orderBy(unique, [definition.sortBy, 'Liquidez Média Diária'], ['desc', 'desc']);
+    else if (c.sort === 'magicFormula') sorted = sortByMagicFormula(unique);
+    else sorted = _.orderBy(unique, [earningsYield, 'Liquidez Média Diária'], ['desc', 'desc']);
 
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }

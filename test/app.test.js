@@ -134,3 +134,22 @@ describe('GET /api/backtest', () => {
         assert.equal(isValidBacktest(null), false);
     });
 });
+
+describe('GET /api/ibovespa/premissas', () => {
+    const PREMISSAS = { tesouro: { titulo: 'Tesouro IPCA+ com Juros Semestrais 2037', taxa: 7.7 }, ipca: { taxa: 4.9 }, retornoExigido: 12.6, crescimentoPerpetuidade: 3, taxaFinal: 9.6 };
+
+    test('serves the intrinsic value assumptions, or 404 when missing', async () => {
+        let data = { ...DATA, premissas: PREMISSAS };
+        const ctx = await serve(createApp({ stocksRepository: { getDataset: async () => data }, logger }));
+        try {
+            let res = await fetch(`${ctx.base}/api/ibovespa/premissas`);
+            assert.equal(res.status, 200);
+            assert.deepEqual(await res.json(), PREMISSAS);
+            data = DATA;
+            res = await fetch(`${ctx.base}/api/ibovespa/premissas`);
+            assert.equal(res.status, 404);
+        } finally {
+            ctx.server.close();
+        }
+    });
+});

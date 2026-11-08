@@ -1,6 +1,8 @@
 // Turns company fundamentals (CVM) + market data (Yahoo) into the indicators served by the API.
 // Units follow the original Status Invest format: percentages as 0-100 numbers, money in BRL.
 
+const { intrinsicValue, profitVariation, safetyMargin } = require('./intrinsicValue');
+
 const round = (value, digits = 2) => {
     if (value == null || !Number.isFinite(value)) return null;
     const factor = 10 ** digits;
@@ -26,9 +28,9 @@ function shareCountScale({ patrimonio, receita }, rawMarketCap) {
     return scaleBy(patrimonio, MIN_PLAUSIBLE.priceToBook) ?? scaleBy(receita, MIN_PLAUSIBLE.priceToSales) ?? 1;
 }
 
-// Company market cap = ON shares x ON price + PN shares x average PN price.
-// `prices` maps ticker -> price. Returns null when no ON/PN ticker has a price (e.g. only units trade).
-function marketCap(company, prices) {
+// Company market cap = ON shares x ON price + PN shares x average PN price, and the total number
+// of shares. `prices` maps ticker -> price. Returns null when no ON/PN ticker has a price.
+function capitalization(company, prices) {
     const priceOf = classe => average(company.tickers
         .filter(t => t.classe === classe && prices[t.ticker] != null)
         .map(t => prices[t.ticker]));
@@ -37,10 +39,43 @@ function marketCap(company, prices) {
     const fallback = on ?? pn;
     if (fallback == null) return null;
     const raw = company.acoes.on * (on ?? fallback) + company.acoes.pn * (pn ?? fallback);
-    return raw * shareCountScale(company, raw);
+    const scale = shareCountScale(company, raw);
+    return { cap: raw * scale, shares: (company.acoes.on + company.acoes.pn) * scale };
 }
 
-function buildStock(company, ticker, market, cap) {
+function marketCap(company, prices) {
+    return capitalization(company, prices)?.cap ?? null;
+}
+
+// Intrinsic value fields for one ticker (null when the method doesn't apply or no rates).
+function valuationFields(company, market, cap, rates) {
+    const years = company.lucrosAnuais || [];
+    const avgProfit = average(years.map(y => y.lucro));
+    // Average payout: this ticker's 5-year average dividend yield x market cap / average annual
+    // profit (a yield works for units and every share class alike).
+    const payoutMedio = avgProfit > 0 && market.dividendosMedia5a != null && market.price > 0
+        ? ((market.dividendosMedia5a / market.price) * cap) / avgProfit
+        : null;
+    const v = rates ? intrinsicValue({
+        lucro: company.lucro, roeMedio: company.roeMedio, payoutMedio, valorMercado: cap, preco: market.price,
+    }, rates) : null;
+    const variation = profitVariation(years.map(y => y.lucro));
+    const margin = v ? safetyMargin(variation) : null;
+    return {
+        'Valor Intrínseco': round(v?.precoTeto),
+        // buy price: intrinsic value minus a margin of safety that grows with profit variation
+        'Preço Teto': margin == null ? null : round(v.precoTeto * (1 - margin / 100)),
+        'Margem de Segurança': margin,
+        'Variação do Lucro': variation == null ? null : round(variation * 100),
+        'Desconto': round(v?.desconto),
+        'ROE Médio': company.roeMedio == null ? null : round(company.roeMedio * 100),
+        'Payout Médio': payoutMedio == null ? null : round(Math.min(Math.max(payoutMedio, 0), 1) * 100),
+        'Crescimento Esperado': round(v?.crescimento),
+        'Lucro Líquido': round(company.lucro, 0),
+    };
+}
+
+function buildStock(company, ticker, market, cap, { rates = null } = {}) {
     const ev = company.dividaLiquida == null ? null : cap + company.dividaLiquida;
     const investedCapital = company.patrimonio == null || company.dividaLiquida == null ? null : company.patrimonio + company.dividaLiquida;
     // Share of the (company-level) net income paid out, based on this ticker's dividends.
@@ -76,6 +111,7 @@ function buildStock(company, ticker, market, cap) {
         'Situação': company.situacao ?? null,
         // bank/insurer by statement format or by CVM sector
         'Instituição Financeira': Boolean(company.financeira || company.instituicaoFinanceira),
+        ...valuationFields(company, market, cap, rates),
         'MA5': round(market.MA5),
         'MA10': round(market.MA10),
         'MA20': round(market.MA20),
@@ -85,18 +121,19 @@ function buildStock(company, ticker, market, cap) {
     };
 }
 
-// Builds one stock per traded ticker of each company that has market data.
-function buildStocks(companies, marketByTicker) {
+// Builds one stock per traded ticker of each company that has market data. `rates`
+// ({ taxaFinal } in %) enables the intrinsic value fields.
+function buildStocks(companies, marketByTicker, { rates = null } = {}) {
     const prices = Object.fromEntries(Object.entries(marketByTicker).map(([t, m]) => [t, m.price]));
     const stocks = [];
     for (const company of companies) {
         const cap = marketCap(company, prices);
         if (cap == null) continue;
         for (const { ticker } of company.tickers) {
-            if (marketByTicker[ticker]) stocks.push(buildStock(company, ticker, marketByTicker[ticker], cap));
+            if (marketByTicker[ticker]) stocks.push(buildStock(company, ticker, marketByTicker[ticker], cap, { rates }));
         }
     }
     return stocks.sort((a, b) => a.Ativo.localeCompare(b.Ativo));
 }
 
-module.exports = { round, ratio, percent, average, shareCountScale, marketCap, buildStock, buildStocks };
+module.exports = { round, ratio, percent, average, shareCountScale, marketCap, capitalization, buildStock, buildStocks };

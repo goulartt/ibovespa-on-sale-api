@@ -22,8 +22,9 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 | Rota | Descrição |
 | --- | --- |
-| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`deepValue`, `dividendos` — padrão por compatibilidade — ou `qualidade`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–500, padrão 50) e `minDy` (0–100, padrão 6). |
+| `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`deepValue`, `dividendos` — padrão por compatibilidade —, `qualidade` ou `valorIntrinseco`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–500, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
+| `GET /api/ibovespa/premissas` | Premissas do valor intrínseco do dia (Tesouro IPCA+, IPCA esperado e taxas). |
 | `GET /api/backtest` | Resultado do backtest (`data/backtest.json`, veja abaixo). |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
 
@@ -48,6 +49,19 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
   não circulante, média entre o último balanço e o do fim do ano anterior).
 - Dívida líquida / EBITDA < 1,5 (EBITDA = EBIT + depreciação e amortização da DVA, 12 meses).
 - P/L entre 0 e 15.
+
+### Estratégia `valorIntrinseco` (preço teto)
+
+Fluxo de caixa descontado simplificado (um ano de projeção + perpetuidade), ordenado pelo desconto:
+
+- crescimento `g` = ROE médio dos balanços anuais × (1 − payout médio de 5 anos);
+- fluxo do próximo ano = lucro líquido dos últimos 12 meses × (1 + g);
+- taxa = Tesouro IPCA+ com juros semestrais mais próximo de 10 anos (Tesouro Transparente) + IPCA
+  esperado para 12 meses (Boletim Focus) − 3% de crescimento na perpetuidade;
+- valor justo = fluxo ÷ taxa; desconto = (valor justo − valor de mercado) ÷ valor justo; o preço teto
+  de cada ativo é proporcional ao seu preço (vale para units e classes ON/PN);
+- só empresas com lucro previsível: lucro em todos os últimos anos (mín. 3), variação de até 50% da
+  média e lucro de 12 meses entre 0,5× e 2× a média anual. Bancos e seguradoras entram.
 
 ### Comum às duas
 
@@ -103,6 +117,8 @@ src/domain/indicators.js         cálculo dos indicadores
 src/sources/cvm.js               leitura dos dados abertos da CVM
 src/sources/yahoo.js             cotações e dividendos (atuais e históricos)
 src/sources/benchmarks.js        CDI (Banco Central)
+src/domain/intrinsicValue.js     valor intrínseco (preço teto)
+src/sources/rates.js             Tesouro IPCA+ e IPCA esperado (Focus)
 src/backtest/engine.js           simulação das carteiras e métricas
 src/backtest/pointInTime.js      rankings em datas passadas
 src/repository/stocksRepository.js  carga e cache do dataset
