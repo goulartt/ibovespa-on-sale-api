@@ -43,6 +43,10 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 - Lucro em todos os últimos balanços anuais (mínimo 3) e nos últimos 12 meses.
 - Dívida líquida / EBIT < 3 (4,5 em Energia e saneamento).
 - Fora de recuperação judicial/extrajudicial, falência ou liquidação (cadastro da CVM).
+Cada ação também traz o **preço teto de Bazin** (`Preço Teto Bazin` = dividendo médio por ação dos
+últimos 5 anos ÷ 6%) e o `Desconto Bazin`; o site permite filtrar a lista de dividendos pelas ações
+abaixo dele.
+
 ### Estratégia `qualidade` (qualidade a bom preço)
 
 - ROCE > 15%: EBIT dos últimos 12 meses ÷ capital empregado médio (patrimônio líquido + passivo

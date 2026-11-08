@@ -117,3 +117,16 @@ test('margin of safety grows with the variation of the annual profits', () => {
     assert.equal(safetyMargin(0.45), 40);
     assert.equal(safetyMargin(null), null);
 });
+
+test('Bazin price ceiling: 5-year average dividend / 6%', () => {
+    const company = {
+        empresa: 'B', tickers: [{ ticker: 'BBBB3', classe: 'ON' }], acoes: { on: 100, pn: 0 },
+        patrimonio: 1000, receita: 2000, lucro: 100, lucrosAnuais: [],
+    };
+    const [stock] = buildStocks([company], { BBBB3: { price: 8, dividendosMedia5a: 0.6 } });
+    assert.equal(stock['Preço Teto Bazin'], 10);
+    assert.equal(stock['Desconto Bazin'], 20);
+    const [none] = buildStocks([company], { BBBB3: { price: 8, dividendosMedia5a: 0 } });
+    assert.equal(none['Preço Teto Bazin'], null);
+    assert.equal(none['Desconto Bazin'], null);
+});

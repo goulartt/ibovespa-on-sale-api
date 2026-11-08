@@ -47,6 +47,18 @@ function marketCap(company, prices) {
     return capitalization(company, prices)?.cap ?? null;
 }
 
+// Décio Bazin's price ceiling: the price at which the average dividend of the last 5 years
+// yields the 6% a year he required.
+const BAZIN_YIELD = 6;
+
+function bazinFields(market) {
+    const ceiling = market.dividendosMedia5a > 0 ? market.dividendosMedia5a / (BAZIN_YIELD / 100) : null;
+    return {
+        'Preço Teto Bazin': round(ceiling),
+        'Desconto Bazin': ceiling && market.price > 0 ? round(((ceiling - market.price) / ceiling) * 100) : null,
+    };
+}
+
 // Intrinsic value fields for one ticker (null when the method doesn't apply or no rates).
 function valuationFields(company, market, cap, rates) {
     const years = company.lucrosAnuais || [];
@@ -112,6 +124,7 @@ function buildStock(company, ticker, market, cap, { rates = null } = {}) {
         // bank/insurer by statement format or by CVM sector
         'Instituição Financeira': Boolean(company.financeira || company.instituicaoFinanceira),
         ...valuationFields(company, market, cap, rates),
+        ...bazinFields(market),
         'MA5': round(market.MA5),
         'MA10': round(market.MA10),
         'MA20': round(market.MA20),
@@ -136,4 +149,4 @@ function buildStocks(companies, marketByTicker, { rates = null } = {}) {
     return stocks.sort((a, b) => a.Ativo.localeCompare(b.Ativo));
 }
 
-module.exports = { round, ratio, percent, average, shareCountScale, marketCap, capitalization, buildStock, buildStocks };
+module.exports = { BAZIN_YIELD, round, ratio, percent, average, shareCountScale, marketCap, capitalization, buildStock, buildStocks };
