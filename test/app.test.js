@@ -109,3 +109,28 @@ describe('HTTP API', () => {
         }
     });
 });
+
+describe('GET /api/backtest', () => {
+    const { isValidBacktest } = require('../src/routes/backtest');
+    const BACKTEST = { updatedAt: '2026-11-08T00:00:00.000Z', inicios: [{ ano: 2023, estrategias: {}, benchmarks: {} }] };
+
+    test('serves the backtest dataset', async () => {
+        const stocksRepository = { getDataset: async () => DATA };
+        const backtestRepository = { getDataset: async () => BACKTEST };
+        const ctx = await serve(createApp({ stocksRepository, backtestRepository, logger }));
+        try {
+            const res = await fetch(`${ctx.base}/api/backtest`);
+            assert.equal(res.status, 200);
+            assert.equal(res.headers.get('x-data-updated-at'), BACKTEST.updatedAt);
+            assert.deepEqual(await res.json(), BACKTEST);
+        } finally {
+            ctx.server.close();
+        }
+    });
+
+    test('validates the dataset shape', () => {
+        assert.equal(isValidBacktest(BACKTEST), true);
+        assert.equal(isValidBacktest({ updatedAt: 'x', inicios: [] }), false);
+        assert.equal(isValidBacktest(null), false);
+    });
+});

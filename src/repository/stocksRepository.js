@@ -13,8 +13,10 @@ function isValidDataset(data) {
         data.stocks.every(s => s && typeof s.Ativo === 'string');
 }
 
+// Also serves other committed datasets (e.g. data/backtest.json) through `isValid`.
 function createStocksRepository({
     url,
+    isValid = isValidDataset,
     ttlMs,
     fallback,
     fetchJson = (u, timeout) => axios.get(u, { timeout }).then(r => r.data),
@@ -22,7 +24,7 @@ function createStocksRepository({
     now = Date.now,
     logger = defaultLogger,
 }) {
-    if (!isValidDataset(fallback)) throw new Error('stocksRepository: invalid fallback dataset');
+    if (!isValid(fallback)) throw new Error('stocksRepository: invalid fallback dataset');
 
     let current = fallback;
     let checkedAt = -Infinity;
@@ -31,7 +33,7 @@ function createStocksRepository({
     async function refresh() {
         try {
             const data = await fetchJson(url, timeoutMs);
-            if (!isValidDataset(data)) {
+            if (!isValid(data)) {
                 logger.warn(`ignoring invalid dataset from ${url}`);
             } else if (Date.parse(data.updatedAt) >= Date.parse(current.updatedAt)) {
                 current = data;

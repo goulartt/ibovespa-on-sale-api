@@ -1,0 +1,45 @@
+name: Update backtest
+
+on:
+  schedule:
+    # Monthly, on the 2nd at 23:00 UTC (20:00 BRT).
+    - cron: '0 23 2 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - run: node --max-old-space-size=6144 scripts/backtest.js
+
+      - name: Commit data/backtest.json
+        run: |
+          if git diff --quiet -- data/backtest.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add data/backtest.json
+          git commit -m "chore: update backtest [skip ci]"
+          git pull --rebase
+          git push

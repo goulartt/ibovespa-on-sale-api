@@ -8,6 +8,8 @@ const config = Object.freeze({
     // Latest dataset committed by the daily GitHub Actions job (see .github/workflows/update-data.yml).
     stocksDataUrl: process.env.STOCKS_DATA_URL ||
         'https://raw.githubusercontent.com/goulartt/ibovespa-on-sale-api/main/data/stocks.json',
+    backtestDataUrl: process.env.BACKTEST_DATA_URL ||
+        'https://raw.githubusercontent.com/goulartt/ibovespa-on-sale-api/main/data/backtest.json',
     stocksCacheTtlMs: toPositiveInt(process.env.STOCKS_CACHE_TTL_MS, 10 * 60 * 1000),
     httpTimeoutMs: toPositiveInt(process.env.HTTP_TIMEOUT_MS, 5000),
     // Data older than this is reported as "stale" by /api/health.

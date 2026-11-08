@@ -1,6 +1,5 @@
 // Builds data/stocks.json from CVM open data (fundamentals) + Yahoo Finance (market data).
 // Run: npm run build:data  (runs on weekdays via .github/workflows/update-data.yml)
-const fs = require('fs');
 const path = require('path');
 const { loadFundamentals } = require('../src/sources/cvm');
 const { loadRegistry } = require('../src/sources/cvmRegistry');
@@ -8,6 +7,7 @@ const { getMarketData } = require('../src/sources/yahoo');
 const { buildStocks } = require('../src/domain/indicators');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
 const { logger } = require('../src/lib/logger');
+const { writeAtomically } = require('../src/lib/files');
 
 const OUTPUT = path.join(__dirname, '..', 'data', 'stocks.json');
 const CONCURRENCY = 4;
@@ -31,13 +31,6 @@ async function fetchMarketData(tickers) {
     }
     logger.info(`market data for ${Object.keys(market).length} tickers (${failures} errors)`);
     return market;
-}
-
-function writeAtomically(file, content) {
-    fs.mkdirSync(path.dirname(file), { recursive: true });
-    const tmp = `${file}.tmp`;
-    fs.writeFileSync(tmp, content);
-    fs.renameSync(tmp, file);
 }
 
 async function main() {

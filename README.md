@@ -24,6 +24,7 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 | --- | --- |
 | `GET /api/ibovespa/filtered` | Ranking (critérios abaixo). Parâmetros opcionais: `strategy` (`deepValue`, `dividendos` — padrão por compatibilidade — ou `qualidade`), `sort` (`evEbit`, padrão, ou `magicFormula`), `limit` (1–500, padrão 50) e `minDy` (0–100, padrão 6). |
 | `GET /api/ibovespa/all` | Todas as ações com indicadores. |
+| `GET /api/backtest` | Resultado do backtest (`data/backtest.json`, veja abaixo). |
 | `GET /api/health` | Status e data da última atualização (`stale` se tiver mais de 4 dias). |
 
 ### Estratégia `deepValue`
@@ -58,6 +59,24 @@ Yahoo Finance (v8 chart) ────────┘        (GitHub Actions, dia
 
 As respostas trazem o cabeçalho `X-Data-Updated-At`. Erros retornam JSON `{ "error": "..." }`.
 
+## Backtest
+
+`npm run backtest` (cerca de 5 minutos; roda todo mês em `.github/workflows/backtest.yml`) simula as 10
+primeiras de cada estratégia a partir de jan/2023, jan/2024 e jan/2025 até hoje e compara com o CDI
+(Banco Central, série SGS 12) e o Ibovespa:
+
+- **Sem olhar o futuro:** em cada data, os rankings são recalculados com as mesmas regras do site,
+  usando só os balanços já entregues à CVM (`DT_RECEB`), as cotações e os proventos até o pregão
+  anterior. O preço é convertido para o número de ações da época (desfazendo desdobramentos posteriores).
+- **Comprar e segurar:** a carteira inicial, com pesos iguais, sem trocas.
+- **Rotação trimestral:** nos primeiros pregões após 5/abr, 20/mai, 20/ago e 20/nov, vende quem saiu
+  do top 20 (ou dos filtros) e compra as mais bem colocadas que não estão na carteira.
+- Retorno total (proventos reinvestidos, preço ajustado), 0,1% de custo por operação, caixa rendendo
+  CDI e ativos sem cotação por 10 pregões convertidos em caixa.
+- Limitações: viés de sobrevivência (empresas sem histórico no Yahoo), cadastro da CVM atual
+  (situação válida a partir da data de início) e balanços reapresentados (versão final com a data
+  de entrega da primeira).
+
 ## Desenvolvimento
 
 ```bash
@@ -65,10 +84,11 @@ npm ci
 npm test               # testes (node:test)
 npm run test:coverage  # com cobertura
 npm run build:data     # baixa CVM + Yahoo e gera data/stocks.json (~1 min)
+npm run backtest       # gera data/backtest.json (~5 min)
 npm start              # http://localhost:8080
 ```
 
-Variáveis de ambiente opcionais: `PORT`, `STOCKS_DATA_URL`, `STOCKS_CACHE_TTL_MS`,
+Variáveis de ambiente opcionais: `PORT`, `STOCKS_DATA_URL`, `BACKTEST_DATA_URL`, `STOCKS_CACHE_TTL_MS`,
 `HTTP_TIMEOUT_MS`, `STALE_AFTER_MS`, `LOG_LEVEL` (`debug`, `info`, `warn`, `error`, `silent`).
 
 ## Estrutura
@@ -77,12 +97,17 @@ Variáveis de ambiente opcionais: `PORT`, `STOCKS_DATA_URL`, `STOCKS_CACHE_TTL_M
 index.js                         entrada (Vercel / npm start)
 src/app.js                       app Express, health, 404 e tratamento de erros
 src/routes/ibovespa.js           rotas e validação de parâmetros
+src/routes/backtest.js           rota do backtest
 src/domain/ranking.js            critérios do ranking
 src/domain/indicators.js         cálculo dos indicadores
 src/sources/cvm.js               leitura dos dados abertos da CVM
-src/sources/yahoo.js             cotações e dividendos
+src/sources/yahoo.js             cotações e dividendos (atuais e históricos)
+src/sources/benchmarks.js        CDI (Banco Central)
+src/backtest/engine.js           simulação das carteiras e métricas
+src/backtest/pointInTime.js      rankings em datas passadas
 src/repository/stocksRepository.js  carga e cache do dataset
 scripts/build-data.js            geração do data/stocks.json
+scripts/backtest.js              geração do data/backtest.json
 test/                            testes
 ```
 

@@ -103,6 +103,12 @@ function ingest(companies, zip, type, year) {
         }
     }
 
+    // Delivery date of each filing (first version), so backtests only use what was public then.
+    for (const r of readCsv(zip, `${prefix}_${year}.csv`)) {
+        const f = companies.get(r.CNPJ_CIA)?.filings.get(r.DT_REFER);
+        if (f && r.DT_RECEB && (!f.receivedAt || r.DT_RECEB < f.receivedAt)) f.receivedAt = r.DT_RECEB;
+    }
+
     const capital = latestVersionOnly(readCsv(zip, `${prefix}_composicao_capital_${year}.csv`));
     for (const r of capital) {
         const on = Number(r.QT_ACAO_ORDIN_CAP_INTEGR) - Number(r.QT_ACAO_ORDIN_TESOURO || 0);
@@ -283,8 +289,57 @@ async function loadFundamentals({ now = new Date(), download = downloadZip } = {
     return result;
 }
 
+// ---- Point-in-time view (backtests) ----
+
+const addDays = (iso, days) => {
+    const d = new Date(`${iso}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10);
+};
+// Legal deadlines, used when the delivery date is unknown.
+const FALLBACK_LAG_DAYS = { DFP: 90, ITR: 45 };
+
+const availableOn = (dtRefer, filing) => filing.receivedAt || addDays(dtRefer, FALLBACK_LAG_DAYS[filing.type] || 90);
+
+// Fundamentals of a company as they were known on `asOf` (ISO date): only filings delivered by
+// then. Returns null when nothing was public yet or the latest filing is older than ~18 months.
+function buildCompanyAsOf(cnpj, company, asOf) {
+    const filings = new Map([...company.filings].filter(([dtRefer, f]) => availableOn(dtRefer, f) <= asOf));
+    if (filings.size === 0) return null;
+    const fundamentals = buildCompany(cnpj, { filings });
+    if (!fundamentals || fundamentals.dataBalanco < addDays(asOf, -548)) return null;
+    return fundamentals;
+}
+
+// Raw statements from `fromYear - 5` to now (for backtests), plus tickers from every FCA since
+// `fromYear - 1` (so companies that delisted since then are still known).
+async function loadHistory({ fromYear, now = new Date(), download = downloadZip } = {}) {
+    const year = now.getUTCFullYear();
+    const companies = new Map();
+    const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+    const docs = [
+        ...range(fromYear - PROFIT_HISTORY_YEARS - 1, year).map(y => ['DFP', y]),
+        ...range(fromYear - 1, year).map(y => ['ITR', y]),
+    ];
+    for (const [type, y] of docs) {
+        const zip = await download(type, y);
+        if (zip) ingest(companies, zip, type, y);
+    }
+    if (companies.size === 0) throw new Error('no CVM statements could be loaded');
+
+    const fcaZips = [];
+    for (const y of range(fromYear - 1, year).reverse()) {
+        const zip = await download('FCA', y);
+        if (zip) fcaZips.push({ zip, year: y });
+    }
+    return { companies, tickers: readTickers(fcaZips) };
+}
+
 module.exports = {
     loadFundamentals,
+    loadHistory,
+    buildCompanyAsOf,
+    availableOn,
     downloadZip,
     // exported for tests
     readCsv,

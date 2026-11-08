@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const { createIbovespaRouter } = require('./routes/ibovespa');
+const { createBacktestRouter } = require('./routes/backtest');
 const { HttpError } = require('./lib/httpError');
 const { logger: defaultLogger } = require('./lib/logger');
 
-function createApp({ stocksRepository, logger = defaultLogger, staleAfterMs = Infinity, now = Date.now }) {
+function createApp({ stocksRepository, backtestRepository, logger = defaultLogger, staleAfterMs = Infinity, now = Date.now }) {
     const app = express();
     app.disable('x-powered-by');
     app.use(cors({ exposedHeaders: ['X-Data-Updated-At'] }));
@@ -21,6 +22,7 @@ function createApp({ stocksRepository, logger = defaultLogger, staleAfterMs = In
     });
 
     app.use('/api/ibovespa', createIbovespaRouter({ stocksRepository }));
+    if (backtestRepository) app.use('/api/backtest', createBacktestRouter({ backtestRepository }));
 
     app.use((req, res, next) => next(new HttpError(404, 'Rota não encontrada.')));
 

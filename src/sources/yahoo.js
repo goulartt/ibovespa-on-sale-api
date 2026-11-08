@@ -39,10 +39,13 @@ function parseChart(chart, now = Date.now()) {
     const lastTradeMs = (chart.meta?.regularMarketTime || last.ts) * 1000;
     if (now - lastTradeMs > STALE_AFTER_MS) return null;
 
-    const price = chart.meta?.regularMarketPrice || last.close;
-    const closes = quotes.map(x => x.close);
-    const dividendosPorAno = dividendsByTrailingYear(chart.events?.dividends, now / 1000);
+    return summarize(chart.meta?.regularMarketPrice || last.close, quotes, Object.values(chart.events?.dividends || {}), now / 1000);
+}
 
+// Market data from daily quotes ({ close, volume }, oldest first) and dividends ({ date, amount }).
+function summarize(price, quotes, dividends, nowS) {
+    const closes = quotes.map(x => x.close);
+    const dividendosPorAno = dividendsByTrailingYear(dividends, nowS);
     const market = {
         price,
         liquidezMediaDiaria: average(quotes.slice(-LIQUIDITY_WINDOW).map(x => x.close * x.volume)),
@@ -56,11 +59,16 @@ function parseChart(chart, now = Date.now()) {
 
 const isRetryable = status => status === 429 || status >= 500 || status == null;
 
-async function fetchChart(ticker, { http = axios, sleep = defaultSleep, maxAttempts = 4 } = {}) {
+// `ticker` is a B3 code (".SA" is appended) unless `symbol` is given (e.g. "^BVSP").
+async function fetchChart(ticker, {
+    http = axios, sleep = defaultSleep, maxAttempts = 4,
+    params = { range: '5y', interval: '1d', events: 'div' },
+    symbol = `${ticker}.SA`,
+} = {}) {
     for (let attempt = 1; ; attempt++) {
         try {
-            const { data } = await http.get(`${CHART_URL}/${encodeURIComponent(ticker)}.SA`, {
-                params: { range: '5y', interval: '1d', events: 'div' },
+            const { data } = await http.get(`${CHART_URL}/${encodeURIComponent(symbol)}`, {
+                params,
                 timeout: 15 * 1000,
             });
             return data?.chart?.result?.[0] ?? null;
@@ -77,4 +85,84 @@ async function getMarketData(ticker, options = {}) {
     return parseChart(await fetchChart(ticker, options), options.now);
 }
 
-module.exports = { parseChart, fetchChart, getMarketData, movingAverage, dividendsByTrailingYear };
+// ---- Price history (backtests) ----
+
+const isoDate = (ts, offsetS = 0) => new Date((ts + offsetS) * 1000).toISOString().slice(0, 10);
+
+// Daily history with prices adjusted for splits (`close`) and for splits + dividends (`adj`,
+// the total return), plus dividends and splits by ISO date.
+function parseHistory(chart) {
+    if (!chart || !Array.isArray(chart.timestamp) || !chart.indicators?.quote?.[0]) return null;
+    const offset = chart.meta?.gmtoffset ?? -10800;
+    const q = chart.indicators.quote[0];
+    const adj = chart.indicators.adjclose?.[0]?.adjclose || [];
+    const days = [];
+    chart.timestamp.forEach((ts, i) => {
+        const close = q.close?.[i];
+        if (!Number.isFinite(close) || close <= 0) return;
+        const date = isoDate(ts, offset);
+        const day = { date, close, adj: Number.isFinite(adj[i]) ? adj[i] : close, volume: q.volume?.[i] || 0 };
+        if (days.length && days[days.length - 1].date === date) days[days.length - 1] = day;
+        else days.push(day);
+    });
+    if (days.length === 0) return null;
+    const events = kind => Object.values(chart.events?.[kind] || {})
+        .filter(e => Number.isFinite(e.date))
+        .map(e => ({ ...e, iso: isoDate(e.date, offset) }))
+        .sort((a, b) => a.date - b.date);
+    return {
+        days,
+        dividends: events('dividends').filter(d => Number.isFinite(d.amount)),
+        splits: events('splits').filter(s => s.numerator > 0 && s.denominator > 0),
+    };
+}
+
+// Index of the last day on or before `iso`, or -1.
+function indexAt(days, iso) {
+    let lo = 0;
+    let hi = days.length - 1;
+    let found = -1;
+    while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        if (days[mid].date <= iso) { found = mid; lo = mid + 1; } else hi = mid - 1;
+    }
+    return found;
+}
+
+// Market data as it was on `asOf` (ISO date): only quotes and dividends up to that day, with the
+// price converted back to the share count of that time (Yahoo adjusts history for later splits).
+function marketAt(history, asOf) {
+    if (!history) return null;
+    const i = indexAt(history.days, asOf);
+    if (i < 0) return null;
+    const asOfS = Date.parse(`${asOf}T23:59:59Z`) / 1000;
+    if (asOfS * 1000 - Date.parse(`${history.days[i].date}T00:00:00Z`) > STALE_AFTER_MS) return null;
+    const factor = history.splits.filter(s => s.iso > asOf).reduce((f, s) => f * (s.numerator / s.denominator), 1);
+    const quotes = history.days.slice(Math.max(0, i - 250), i + 1)
+        .map(d => ({ close: d.close * factor, volume: d.volume / factor }));
+    const dividends = history.dividends.filter(d => d.iso <= asOf).map(d => ({ date: d.date, amount: d.amount * factor }));
+    return summarize(quotes[quotes.length - 1].close, quotes, dividends, asOfS);
+}
+
+// Total-return price (dividends reinvested) on exactly `iso`, or null when it didn't trade.
+function adjCloseOn(history, iso) {
+    if (!history) return null;
+    const i = indexAt(history.days, iso);
+    return i >= 0 && history.days[i].date === iso ? history.days[i].adj : null;
+}
+
+async function fetchHistory(ticker, { from, to = new Date(), symbol, ...options } = {}) {
+    const params = {
+        period1: Math.floor(Date.parse(`${from}T00:00:00Z`) / 1000),
+        period2: Math.floor(new Date(to).getTime() / 1000) + 86400,
+        interval: '1d',
+        events: 'div,split',
+        includeAdjustedClose: true,
+    };
+    return parseHistory(await fetchChart(ticker, { ...options, params, symbol: symbol || `${ticker}.SA` }));
+}
+
+module.exports = {
+    parseChart, fetchChart, getMarketData, movingAverage, dividendsByTrailingYear,
+    parseHistory, marketAt, adjCloseOn, fetchHistory, indexAt,
+};
