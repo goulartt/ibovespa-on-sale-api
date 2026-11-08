@@ -176,11 +176,4 @@ function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }
 
-// Rules before the 2014-2026 backtest review, for comparison in the backtest.
-const PREVIOUS_RULES = Object.freeze({
-    deepValue: { requireUptrend: false },
-    qualidade: { maxProfitVariation: Infinity },
-    dividendos: {},
-});
-
-module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES, PREVIOUS_RULES };
+module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES };

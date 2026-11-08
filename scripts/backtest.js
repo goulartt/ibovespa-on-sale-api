@@ -11,7 +11,7 @@ const { createRanker } = require('../src/backtest/pointInTime');
 const {
     simulate, rebalanceDates, cdiIndex, summarizeSeries, yearlyReturns, sampleCurve, MODES,
 } = require('../src/backtest/engine');
-const { rankStocks, PREVIOUS_RULES } = require('../src/domain/ranking');
+const { rankStocks } = require('../src/domain/ranking');
 const { mapWithConcurrency } = require('../src/lib/concurrency');
 const { logger } = require('../src/lib/logger');
 const { writeAtomically } = require('../src/lib/files');
@@ -21,7 +21,6 @@ const FROM_YEAR = 2014; // CVM open data starts in 2010; the rules need 3 annual
 const PRICES_FROM = `${FROM_YEAR - 6}-01-01`;
 // Intrinsic value needs the interest rates of each date, not available historically here.
 const STRATEGY_NAMES = ['deepValue', 'dividendos', 'qualidade'];
-const VERSIONS = { novas: {}, anteriores: PREVIOUS_RULES };
 const PARAMS = { cost: 0.001, maxStaleDays: 10 };
 // Portfolio size per strategy (sell when a stock leaves the top 2x). The dividend list is naturally
 // short (1 to 6 eligible stocks a quarter in 2014-2019), so 20 slots would mostly be cash.
@@ -67,19 +66,17 @@ async function main() {
     const ranker = createRanker({ companies, tickers, registry, histories, capital });
     const priceOn = (ticker, day) => adjCloseOn(histories[ticker], day);
     const rankings = new Map();
-    const rankAt = (asOf, strategy, version) => {
-        const key = `${asOf}|${strategy}|${version}`;
-        if (!rankings.has(key)) {
-            rankings.set(key, rankStocks(ranker.stocksAt(asOf), { strategy, limit: Infinity, ...VERSIONS[version][strategy] }));
-        }
+    const rankAt = (asOf, strategy) => {
+        const key = `${asOf}|${strategy}`;
+        if (!rankings.has(key)) rankings.set(key, rankStocks(ranker.stocksAt(asOf), { strategy, limit: Infinity }));
         return rankings.get(key);
     };
     const firstDay = from => calendar.find(d => d >= from);
     const lastDay = to => [...calendar].reverse().find(d => d <= to);
-    const run = (strategy, version, mode, start, end) => simulate({
+    const run = (strategy, mode, start, end) => simulate({
         calendar, start, end, cdi, priceOn, mode, rebalanceOn: rebalanceDates(calendar, start, end), ...PARAMS,
         size: SIZES[strategy], buffer: 2 * SIZES[strategy],
-        rankAt: asOf => rankAt(asOf, strategy, version),
+        rankAt: asOf => rankAt(asOf, strategy),
     });
 
     const periods = [
@@ -97,22 +94,19 @@ async function main() {
         const estrategias = {};
         for (const strategy of STRATEGY_NAMES) {
             estrategias[strategy] = {};
-            for (const version of Object.keys(VERSIONS)) {
-                estrategias[strategy][version] = {};
-                for (const mode of MODES) {
-                    const result = run(strategy, version, mode, start, end);
-                    const m = summarizeSeries(result.values, cdiValues);
-                    estrategias[strategy][version][mode] = {
-                        metricas: { ...roundAll(m), operacoes: result.trades.reduce((n, t) => n + t.sold.length + t.bought.length, 0) },
-                        anual: roundAll(yearlyReturns(result.values)),
-                        curva: sampleCurve(result.values),
-                        carteiraInicial: result.initial,
-                        carteiraAtual: result.holdings,
-                        trocas: result.trades,
-                        eventos: result.events,
-                    };
-                    logger.info(`${p.id} ${strategy} ${version} ${mode}: ${round(m.retornoAnual)}% a.a. (CDI ${round(m.cdi)}% no período)`);
-                }
+            for (const mode of MODES) {
+                const result = run(strategy, mode, start, end);
+                const m = summarizeSeries(result.values, cdiValues);
+                estrategias[strategy][mode] = {
+                    metricas: { ...roundAll(m), operacoes: result.trades.reduce((n, t) => n + t.sold.length + t.bought.length, 0) },
+                    anual: roundAll(yearlyReturns(result.values)),
+                    curva: sampleCurve(result.values),
+                    carteiraInicial: result.initial,
+                    carteiraAtual: result.holdings,
+                    trocas: result.trades,
+                    eventos: result.events,
+                };
+                logger.info(`${p.id} ${strategy} ${mode}: ${round(m.retornoAnual)}% a.a. (CDI ${round(m.cdi)}% no período)`);
             }
         }
         const bench = values => ({
@@ -127,17 +121,14 @@ async function main() {
     const robustez = { anos: startYears };
     for (const strategy of STRATEGY_NAMES) {
         robustez[strategy] = {};
-        for (const version of Object.keys(VERSIONS)) {
-            robustez[strategy][version] = {};
-            for (const mode of MODES) {
-                const beat = startYears.filter(y => {
-                    const start = firstDay(`${y}-01-01`);
-                    const values = run(strategy, version, mode, start, today).values;
-                    const v = values[values.length - 1][1] / values[0][1];
-                    return v > cdi.get(today) / cdi.get(start);
-                }).length;
-                robustez[strategy][version][mode] = { acimaCdi: beat, total: startYears.length };
-            }
+        for (const mode of MODES) {
+            const beat = startYears.filter(y => {
+                const start = firstDay(`${y}-01-01`);
+                const values = run(strategy, mode, start, today).values;
+                const v = values[values.length - 1][1] / values[0][1];
+                return v > cdi.get(today) / cdi.get(start);
+            }).length;
+            robustez[strategy][mode] = { acimaCdi: beat, total: startYears.length };
         }
     }
 

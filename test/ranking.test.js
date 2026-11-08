@@ -1,7 +1,6 @@
 const { test, describe } = require('node:test');
 const assert = require('node:assert/strict');
 const { rankStocks } = require('../src/domain/ranking');
-const { PREVIOUS_RULES } = require('../src/domain/ranking');
 const { stock } = require('./helpers');
 
 describe('rankStocks', () => {
@@ -215,7 +214,7 @@ test('Deep Value only buys stocks above the 200-day moving average', () => {
         stock({ Ativo: 'NEW3', Empresa: 'NEW', MA200: null }),
     ];
     assert.deepEqual(rankStocks(stocks, { strategy: 'deepValue' }).map(s => s.Ativo), ['UP3']);
-    assert.deepEqual(rankStocks(stocks, { strategy: 'deepValue', ...PREVIOUS_RULES.deepValue }).map(s => s.Ativo).sort(), ['DOWN3', 'NEW3', 'UP3']);
+    assert.deepEqual(rankStocks(stocks, { strategy: 'deepValue', requireUptrend: false }).map(s => s.Ativo).sort(), ['DOWN3', 'NEW3', 'UP3']);
 });
 
 test('Qualidade requires a stable profit', () => {
@@ -227,5 +226,5 @@ test('Qualidade requires a stable profit', () => {
         q({ Ativo: 'LOS3', Empresa: 'LOS', 'Lucros Anuais': years([-10, 100, 100]) }),
     ];
     assert.deepEqual(rankStocks(stocks, { strategy: 'qualidade' }).map(s => s.Ativo), ['STB3']);
-    assert.deepEqual(rankStocks(stocks, { strategy: 'qualidade', ...PREVIOUS_RULES.qualidade }).map(s => s.Ativo).sort(), ['CYC3', 'LOS3', 'STB3']);
+    assert.deepEqual(rankStocks(stocks, { strategy: 'qualidade', maxProfitVariation: Infinity }).map(s => s.Ativo).sort(), ['CYC3', 'LOS3', 'STB3']);
 });
