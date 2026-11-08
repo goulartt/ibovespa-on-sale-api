@@ -79,21 +79,38 @@ As respostas trazem o cabeçalho `X-Data-Updated-At`. Erros retornam JSON `{ "er
 
 ## Backtest
 
-`npm run backtest` (cerca de 5 minutos; roda todo mês em `.github/workflows/backtest.yml`) simula as 10
-primeiras de cada estratégia a partir de jan/2023, jan/2024 e jan/2025 até hoje e compara com o CDI
-(Banco Central, série SGS 12) e o Ibovespa:
+`npm run backtest` (cerca de 10 minutos e 10 GB de memória; roda todo mês em
+`.github/workflows/backtest.yml`) simula as 20 primeiras de cada estratégia de jan/2014 até hoje e
+compara com o CDI (Banco Central, série SGS 12) e o Ibovespa, em três períodos: completo, 2014–2019
+(usado para escolher as regras) e 2020–hoje (validação). Também compara as regras atuais com as
+anteriores (`PREVIOUS_RULES` em `src/domain/ranking.js`) e conta, de 12 carteiras iniciadas em cada
+janeiro, quantas bateram o CDI.
 
 - **Sem olhar o futuro:** em cada data, os rankings são recalculados com as mesmas regras do site,
   usando só os balanços já entregues à CVM (`DT_RECEB`), as cotações e os proventos até o pregão
   anterior. O preço é convertido para o número de ações da época (desfazendo desdobramentos posteriores).
-- **Comprar e segurar:** a carteira inicial, com pesos iguais, sem trocas.
-- **Rotação trimestral:** nos primeiros pregões após 5/abr, 20/mai, 20/ago e 20/nov, vende quem saiu
-  do top 20 (ou dos filtros) e compra as mais bem colocadas que não estão na carteira.
-- Retorno total (proventos reinvestidos, preço ajustado), 0,1% de custo por operação, caixa rendendo
-  CDI e ativos sem cotação por 10 pregões convertidos em caixa.
-- Limitações: viés de sobrevivência (empresas sem histórico no Yahoo), cadastro da CVM atual
-  (situação válida a partir da data de início) e balanços reapresentados (versão final com a data
-  de entrega da primeira).
+- **Número de ações antes de 2020:** do histórico do capital social no Formulário de Referência
+  (FRE), porque a composição do capital nos ITR/DFP só existe desde 2020.
+- **Comprar e segurar** ou **rotação trimestral** (primeiros pregões após 5/abr, 20/mai, 20/ago e
+  20/nov): vende quem saiu do top 40 ou dos filtros e compra as mais bem colocadas fora da carteira.
+- Retorno total (proventos reinvestidos), 0,1% de custo por operação, caixa rendendo CDI e ativos sem
+  cotação por 10 pregões convertidos em caixa.
+- Limitações: viés de sobrevivência (cerca de um terço dos códigos desde 2014 não tem histórico no
+  Yahoo), cadastro da CVM atual e balanços reapresentados (versão final com a data da primeira entrega).
+
+### Pesquisa de variações
+
+`scripts/research/` testa variações das estratégias sobre uma base em cache:
+
+```bash
+node --max-old-space-size=10240 scripts/research/build-cache.js /tmp/cache.v8 2014
+node --max-old-space-size=10240 scripts/research/run.js /tmp/cache.v8 scripts/research/variants.js
+```
+
+Resultados de nov/2026 (top 20, rotação trimestral, retorno ao ano; CDI de 9,9% em 2014–2019 e
+10,0% em 2020–2026): a média móvel de 200 pregões no Deep Value levou a validação de 7,1% para 13,4%
+ao ano; o lucro estável na Qualidade, de 5,0% para 11,6%. Manter a Qualidade até P/L 25, rotação
+semestral ou anual e a Fórmula Mágica não ajudaram.
 
 ## Desenvolvimento
 

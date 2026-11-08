@@ -5,8 +5,9 @@ const { buildStocks } = require('../domain/indicators');
 const { rankStocks } = require('../domain/ranking');
 
 // companies: cnpj -> raw CVM company (loadHistory); tickers: cnpj -> { empresa, tickers };
-// registry: cnpj -> CVM registry entry (current snapshot); histories: ticker -> parseHistory().
-function createRanker({ companies, tickers, registry, histories }) {
+// registry: cnpj -> CVM registry entry (current snapshot); histories: ticker -> parseHistory();
+// capital: cnpj -> share count history from the FRE (loadHistory), for dates before 2020.
+function createRanker({ companies, tickers, registry, histories, capital = new Map() }) {
     const stocksCache = new Map();
 
     function stocksAt(asOf) {
@@ -15,7 +16,7 @@ function createRanker({ companies, tickers, registry, histories }) {
         for (const [cnpj, raw] of companies) {
             const listed = tickers.get(cnpj);
             if (!listed || listed.tickers.length === 0) continue;
-            const fundamentals = buildCompanyAsOf(cnpj, raw, asOf);
+            const fundamentals = buildCompanyAsOf(cnpj, raw, asOf, capital.get(cnpj));
             if (!fundamentals) continue;
             const info = registry.get(cnpj);
             list.push({

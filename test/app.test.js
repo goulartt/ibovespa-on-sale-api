@@ -112,7 +112,7 @@ describe('HTTP API', () => {
 
 describe('GET /api/backtest', () => {
     const { isValidBacktest } = require('../src/routes/backtest');
-    const BACKTEST = { updatedAt: '2026-11-08T00:00:00.000Z', inicios: [{ ano: 2023, estrategias: {}, benchmarks: {} }] };
+    const BACKTEST = { updatedAt: '2026-11-08T00:00:00.000Z', periodos: [{ id: 'completo', estrategias: {}, benchmarks: {} }] };
 
     test('serves the backtest dataset', async () => {
         const stocksRepository = { getDataset: async () => DATA };
@@ -130,7 +130,7 @@ describe('GET /api/backtest', () => {
 
     test('validates the dataset shape', () => {
         assert.equal(isValidBacktest(BACKTEST), true);
-        assert.equal(isValidBacktest({ updatedAt: 'x', inicios: [] }), false);
+        assert.equal(isValidBacktest({ updatedAt: 'x', periodos: [] }), false);
         assert.equal(isValidBacktest(null), false);
     });
 });

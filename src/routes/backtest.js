@@ -5,9 +5,9 @@ function isValidBacktest(data) {
     return Boolean(data) &&
         typeof data.updatedAt === 'string' &&
         !Number.isNaN(Date.parse(data.updatedAt)) &&
-        Array.isArray(data.inicios) &&
-        data.inicios.length > 0 &&
-        data.inicios.every(s => s && s.estrategias && s.benchmarks);
+        Array.isArray(data.periodos) &&
+        data.periodos.length > 0 &&
+        data.periodos.every(p => p && p.estrategias && p.benchmarks);
 }
 
 function createBacktestRouter({ backtestRepository }) {

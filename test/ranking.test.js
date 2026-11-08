@@ -1,6 +1,7 @@
 const { test, describe } = require('node:test');
 const assert = require('node:assert/strict');
 const { rankStocks } = require('../src/domain/ranking');
+const { PREVIOUS_RULES } = require('../src/domain/ranking');
 const { stock } = require('./helpers');
 
 describe('rankStocks', () => {
@@ -205,4 +206,26 @@ describe('deep value strategy', () => {
         ];
         assert.deepEqual(deep(stocks).map(s => s.Ativo), ['XXXX4']);
     });
+});
+
+test('Deep Value only buys stocks above the 200-day moving average', () => {
+    const stocks = [
+        stock({ Ativo: 'UP3', Empresa: 'UP', 'Cotação': 10, MA200: 9 }),
+        stock({ Ativo: 'DOWN3', Empresa: 'DOWN', 'Cotação': 10, MA200: 11 }),
+        stock({ Ativo: 'NEW3', Empresa: 'NEW', MA200: null }),
+    ];
+    assert.deepEqual(rankStocks(stocks, { strategy: 'deepValue' }).map(s => s.Ativo), ['UP3']);
+    assert.deepEqual(rankStocks(stocks, { strategy: 'deepValue', ...PREVIOUS_RULES.deepValue }).map(s => s.Ativo).sort(), ['DOWN3', 'NEW3', 'UP3']);
+});
+
+test('Qualidade requires a stable profit', () => {
+    const q = o => stock({ ROCE: 30, 'Dívida Líquida/EBITDA': 0.5, 'P/L': 8, ...o });
+    const years = values => values.map((lucro, i) => ({ ano: 2021 + i, lucro }));
+    const stocks = [
+        q({ Ativo: 'STB3', Empresa: 'STB', 'Lucros Anuais': years([100, 110, 95, 105, 100]) }),
+        q({ Ativo: 'CYC3', Empresa: 'CYC', 'Lucros Anuais': years([10, 300, 40, 20, 250]) }), // cyclical
+        q({ Ativo: 'LOS3', Empresa: 'LOS', 'Lucros Anuais': years([-10, 100, 100]) }),
+    ];
+    assert.deepEqual(rankStocks(stocks, { strategy: 'qualidade' }).map(s => s.Ativo), ['STB3']);
+    assert.deepEqual(rankStocks(stocks, { strategy: 'qualidade', ...PREVIOUS_RULES.qualidade }).map(s => s.Ativo).sort(), ['CYC3', 'LOS3', 'STB3']);
 });

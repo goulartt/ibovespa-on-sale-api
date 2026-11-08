@@ -4,7 +4,8 @@
 //   trading day (only information available before the trade).
 // - "buyAndHold" never trades again. "rotation" checks the ranking on each rebalance date: a
 //   position ranked worse than `buffer` (or no longer ranked) is sold and replaced by the best
-//   ranked company not held. Surviving positions are not rebalanced.
+//   ranked company not held. Surviving positions are not rebalanced. With `keepRankAt`, a position
+//   is kept while it appears in that (usually looser) ranking instead, whatever its position.
 // - Cash earns the CDI. A position without quotes for `maxStaleDays` trading days (delisted) is
 //   turned into cash at its last price.
 // - Prices are total-return prices (dividends reinvested).
@@ -42,7 +43,7 @@ function cdiIndex(calendar, rates) {
 }
 
 function simulate({
-    calendar, start, end, rankAt, priceOn, cdi, mode = 'rotation',
+    calendar, start, end, rankAt, keepRankAt = null, priceOn, cdi, mode = 'rotation',
     size = 10, buffer = 20, cost = 0.001, maxStaleDays = 10, rebalanceOn,
 }) {
     if (!MODES.includes(mode)) throw new RangeError(`unknown mode "${mode}"`);
@@ -99,10 +100,11 @@ function simulate({
         } else if (rebalance.has(day)) {
             const ranking = rankAt(previous);
             const rankOf = new Map(ranking.map(s => [s.Empresa, s.Ranking]));
+            const keep = keepRankAt ? new Set(keepRankAt(previous).map(s => s.Empresa)) : null;
             const sold = [];
             positions = positions.filter(p => {
                 const rank = rankOf.get(p.empresa) ?? null;
-                if (rank != null && rank <= buffer) return true;
+                if (keep ? keep.has(p.empresa) : rank != null && rank <= buffer) return true;
                 cash += p.units * p.last * (1 - cost);
                 sold.push({ ticker: p.ticker, empresa: p.empresa, rank });
                 return false;

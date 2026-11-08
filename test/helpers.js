@@ -15,6 +15,7 @@ function stock(overrides = {}) {
         'Ativo': 'AAAA3',
         'Empresa': 'EMPRESA A',
         'Cotação': 10,
+        'MA200': 9, // above the 200-day average (Deep Value uptrend rule)
         'Dividend Yield': 8,
         'EV/EBIT': 5,
         'Margem Ebit': 20,

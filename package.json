@@ -8,7 +8,7 @@
     "test": "LOG_LEVEL=silent node --test",
     "test:coverage": "LOG_LEVEL=silent node --test --experimental-test-coverage",
     "build:data": "node scripts/build-data.js",
-    "backtest": "node scripts/backtest.js"
+    "backtest": "node --max-old-space-size=10240 scripts/backtest.js"
   },
   "keywords": [],
   "author": "",

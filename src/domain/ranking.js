@@ -28,6 +28,13 @@ const isTradableAndHealthy = (stock, c, definition) =>
 
 const average = values => values.reduce((a, b) => a + b, 0) / values.length;
 
+function hasStableProfit(stock, c) {
+    const profits = (stock['Lucros Anuais'] || []).map(y => y.lucro);
+    if (profits.length < c.minProfitYears || !profits.every(p => p > 0)) return false;
+    const variation = profitVariation(profits);
+    return variation != null && variation <= c.maxProfitVariation;
+}
+
 function hasPredictableProfit(stock, c) {
     const profits = stock['Lucros Anuais'].map(y => y.lucro);
     const mean = average(profits);
@@ -47,9 +54,16 @@ const STRATEGIES = {
     // (liquidity, positive EBIT, no banks/insurers, no judicial recovery). Banks filed in the
     // banking format have no EBIT anyway; this also drops insurers and financial holdings that file
     // in the industrial format (Porto Seguro, Caixa Seguridade, Itaúsa...).
+    //
+    // Uptrend: only stocks trading above their 200-day moving average. In the 2014-2026 backtest
+    // this was the one change that improved both the period used to choose the rules (2014-2019)
+    // and the validation period (2020-2026): cheap stocks that are already recovering, instead of
+    // cheap stocks still falling.
     deepValue: {
-        defaults: {},
-        isEligible: stock => stock['Margem Ebit'] > 0 && !stock['Instituição Financeira'],
+        defaults: { requireUptrend: true },
+        isEligible: (stock, c) =>
+            stock['Margem Ebit'] > 0 && !stock['Instituição Financeira'] &&
+            (!c.requireUptrend || (stock.MA200 > 0 && stock['Cotação'] > stock.MA200)),
     },
 
     // "Dividendos sustentáveis": cheap companies whose dividends look sustainable.
@@ -84,14 +98,20 @@ const STRATEGIES = {
     // "Qualidade a bom preço" (value investing + quality + financial strength):
     // - ROCE > 15%: EBIT / average capital employed (equity + non-current liabilities);
     // - net debt < 1.5x EBITDA (net cash is even better);
-    // - P/L between 0 and 15 (a ~25% discount to a 20x market multiple).
+    // - P/L between 0 and 15 (a ~25% discount to a 20x market multiple);
+    // - stable profit: profit in every recent annual statement (min. 3) varying up to 50% around
+    //   the average. Without it, the strategy bought cyclicals (steel, mining) at peak earnings,
+    //   when ROCE is high and P/L is low just before profits fall (2014-2026 backtest).
     qualidade: {
         defaults: {
             minRoce: 15,
             maxNetDebtToEbitda: 1.5,
             maxPriceToEarnings: 15,
+            maxProfitVariation: 0.5,
+            minProfitYears: 3,
         },
         isEligible: (stock, c) =>
+            (c.maxProfitVariation === Infinity || hasStableProfit(stock, c)) &&
             isNumber(stock.ROCE) && stock.ROCE > c.minRoce &&
             isNumber(stock['Dívida Líquida/EBITDA']) && stock['Dívida Líquida/EBITDA'] < c.maxNetDebtToEbitda &&
             stock['P/L'] > 0 && stock['P/L'] <= c.maxPriceToEarnings,
@@ -156,4 +176,11 @@ function rankStocks(stocks, { strategy = 'dividendos', ...criteria } = {}) {
     return sorted.slice(0, c.limit).map((stock, index) => ({ Ranking: index + 1, ...stock }));
 }
 
-module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES };
+// Rules before the 2014-2026 backtest review, for comparison in the backtest.
+const PREVIOUS_RULES = Object.freeze({
+    deepValue: { requireUptrend: false },
+    qualidade: { maxProfitVariation: Infinity },
+    dividendos: {},
+});
+
+module.exports = { rankStocks, DEFAULT_CRITERIA, SORTS, STRATEGY_NAMES, PREVIOUS_RULES };

@@ -296,6 +296,47 @@ async function loadFundamentals({ now = new Date(), download = downloadZip } = {
     return result;
 }
 
+// ---- Share count history (backtests) ----
+// The "composição do capital" file only exists since 2020. Before that, the share count comes from
+// the capital history in the Formulário de Referência (FRE): each change of the share capital with
+// its approval date and the number of ON and PN shares.
+const CAPITAL_TYPE_PREFERENCE = ['Capital Integralizado', 'Capital Subscrito', 'Capital Emitido'];
+
+// Pure: adds the rows of one FRE zip to `history` (cnpj -> Map approvalDate -> { on, pn, type }).
+function ingestCapital(history, zip, year) {
+    for (const r of latestVersionOnly(readCsv(zip, `fre_cia_aberta_capital_social_${year}.csv`)
+        .map(row => ({ ...row, CNPJ_CIA: row.CNPJ_Companhia, DT_REFER: row.Data_Referencia, VERSAO: row.Versao })))) {
+        const rank = CAPITAL_TYPE_PREFERENCE.indexOf(r.Tipo_Capital);
+        const on = Number(r.Quantidade_Acoes_Ordinarias);
+        const pn = Number(r.Quantidade_Acoes_Preferenciais);
+        const date = r.Data_Autorizacao_Aprovacao;
+        if (rank < 0 || !/^\d{4}-\d{2}-\d{2}$/.test(date || '') || !(on + pn > 0)) continue;
+        if (!history.has(r.CNPJ_CIA)) history.set(r.CNPJ_CIA, new Map());
+        const byDate = history.get(r.CNPJ_CIA);
+        const current = byDate.get(date);
+        if (!current || rank < current.rank) byDate.set(date, { on, pn, rank });
+    }
+}
+
+// cnpj -> [{ date, on, pn }] sorted by date.
+function finalizeCapital(history) {
+    const result = new Map();
+    for (const [cnpj, byDate] of history) {
+        result.set(cnpj, [...byDate].sort(([a], [b]) => a.localeCompare(b)).map(([date, v]) => ({ date, on: v.on, pn: v.pn })));
+    }
+    return result;
+}
+
+// Shares outstanding on `asOf` according to the capital history (last change approved by then).
+function sharesFromCapital(capital, asOf) {
+    let found = null;
+    for (const c of capital || []) {
+        if (c.date > asOf) break;
+        found = c;
+    }
+    return found && { on: found.on, pn: found.pn };
+}
+
 // ---- Point-in-time view (backtests) ----
 
 const addDays = (iso, days) => {
@@ -310,9 +351,16 @@ const availableOn = (dtRefer, filing) => filing.receivedAt || addDays(dtRefer, F
 
 // Fundamentals of a company as they were known on `asOf` (ISO date): only filings delivered by
 // then. Returns null when nothing was public yet or the latest filing is older than ~18 months.
-function buildCompanyAsOf(cnpj, company, asOf) {
+function buildCompanyAsOf(cnpj, company, asOf, capital = null) {
     const filings = new Map([...company.filings].filter(([dtRefer, f]) => availableOn(dtRefer, f) <= asOf));
     if (filings.size === 0) return null;
+    // Before 2020 the filings have no share count: take it from the FRE capital history.
+    if (![...filings.values()].some(f => f.shares)) {
+        const shares = sharesFromCapital(capital, asOf);
+        if (!shares) return null;
+        const latest = [...filings.keys()].sort().pop();
+        filings.set(latest, { ...filings.get(latest), shares });
+    }
     const fundamentals = buildCompany(cnpj, { filings });
     if (!fundamentals || fundamentals.dataBalanco < addDays(asOf, -548)) return null;
     return fundamentals;
@@ -339,7 +387,14 @@ async function loadHistory({ fromYear, now = new Date(), download = downloadZip 
         const zip = await download('FCA', y);
         if (zip) fcaZips.push({ zip, year: y });
     }
-    return { companies, tickers: readTickers(fcaZips) };
+
+    // Share counts before 2020 (see ingestCapital).
+    const capital = new Map();
+    for (const y of range(Math.max(fromYear - 4, 2010), Math.min(year, 2021))) {
+        const zip = await download('FRE', y);
+        if (zip) ingestCapital(capital, zip, y);
+    }
+    return { companies, tickers: readTickers(fcaZips), capital: finalizeCapital(capital) };
 }
 
 module.exports = {
@@ -347,6 +402,9 @@ module.exports = {
     loadHistory,
     buildCompanyAsOf,
     availableOn,
+    ingestCapital,
+    finalizeCapital,
+    sharesFromCapital,
     downloadZip,
     // exported for tests
     readCsv,

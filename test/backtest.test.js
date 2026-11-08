@@ -142,6 +142,24 @@ test('rotation sells only what falls out of the buffer and buys the best not hel
     assert.ok(Math.abs(r.values[r.values.length - 1][1] - expected) < 1e-12);
 });
 
+test('with keepRankAt, positions stay while they pass the looser ranking', () => {
+    const rankings = {
+        '2023-12-29': rankingOf(['A', 'B']),
+        '2024-01-04': rankingOf(['C', 'D', 'E', 'F']), // A and B are gone from the strict ranking
+    };
+    const r = simulate({
+        calendar, start: '2024-01-02', end: '2024-01-08', cdi: flatCdi, priceOn: () => 10, mode: 'rotation',
+        size: 2, buffer: 2, cost: 0, rebalanceOn: ['2024-01-05'],
+        rankAt: asOf => rankings[asOf],
+        keepRankAt: () => rankingOf(['Z', 'A']), // A still passes the looser rules
+    });
+    assert.deepEqual(r.trades, [{
+        date: '2024-01-05',
+        sold: [{ ticker: 'B', empresa: 'B', rank: null }],
+        bought: [{ ticker: 'C', empresa: 'C', rank: 1 }],
+    }]);
+});
+
 test('a delisted position becomes cash earning the CDI', () => {
     const cdi = cdiIndex(calendar, new Map(calendar.map(d => [d, 1])));
     const priceOn = (t, d) => (t === 'A' && d > '2024-01-03' ? null : 10);
@@ -170,4 +188,30 @@ test('metrics: return, CDI comparison, drawdown and yearly returns', () => {
     assert.ok(Math.abs(yearly['2024'] + 10) < 1e-9);
     assert.ok(Math.abs(yearly['2025'] - 50) < 1e-9);
     assert.deepEqual(sampleCurve([['a', 2], ['b', 3], ['c', 4]], 2), [['a', 1], ['c', 2]]);
+});
+
+// ---- Share count history (FRE) ----
+const { cvmZip } = require('./helpers');
+const { ingestCapital, finalizeCapital, sharesFromCapital } = require('../src/sources/cvm');
+
+test('share counts before 2020 come from the FRE capital history', () => {
+    const H = ['CNPJ_Companhia', 'Data_Referencia', 'Versao', 'Tipo_Capital', 'Data_Autorizacao_Aprovacao', 'Quantidade_Acoes_Ordinarias', 'Quantidade_Acoes_Preferenciais'];
+    const zip = cvmZip({ 'fre_cia_aberta_capital_social_2015.csv': [H,
+        ['X', '2015-01-01', '1', 'Capital Emitido', '2012-05-01', '90', '0'],
+        ['X', '2015-01-01', '1', 'Capital Integralizado', '2012-05-01', '100', '50'],
+        ['X', '2015-01-01', '1', 'Capital Integralizado', '2014-07-01', '200', '50'],
+        ['X', '2015-01-01', '1', 'Capital Autorizado', '2014-08-01', '999', '0'],
+    ] });
+    const history = new Map();
+    ingestCapital(history, zip, 2015);
+    const capital = finalizeCapital(history).get('X');
+    assert.deepEqual(capital, [{ date: '2012-05-01', on: 100, pn: 50 }, { date: '2014-07-01', on: 200, pn: 50 }]);
+    assert.equal(sharesFromCapital(capital, '2012-01-01'), null);
+    assert.deepEqual(sharesFromCapital(capital, '2013-01-01'), { on: 100, pn: 50 });
+    assert.deepEqual(sharesFromCapital(capital, '2015-01-01'), { on: 200, pn: 50 });
+
+    const noShares = { filings: new Map([['2024-12-31', { ...filing('DFP', '2024-01-01', '2024-12-31', 200, '2025-03-20'), shares: undefined }]]) };
+    assert.equal(buildCompanyAsOf('X', noShares, '2025-04-01'), null);
+    const built = buildCompanyAsOf('X', noShares, '2025-04-01', [{ date: '2020-01-01', on: 300, pn: 0 }]);
+    assert.deepEqual(built.acoes, { on: 300, pn: 0 });
 });

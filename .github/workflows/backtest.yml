@@ -29,7 +29,7 @@ jobs:
 
       - run: npm test
 
-      - run: node --max-old-space-size=6144 scripts/backtest.js
+      - run: npm run backtest
 
       - name: Commit data/backtest.json
         run: |
